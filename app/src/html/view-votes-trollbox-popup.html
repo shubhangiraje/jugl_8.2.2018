@@ -1,0 +1,55 @@
+<kendo-mobile-modal-view
+        ng-if="infoPopup.showTrollboxVotes"
+        ng-controller="VotesTrollboxPopupCtrl as votesTrollboxPopupCtrl"
+        id="view-votes-trollbox-popup"
+        class="modal" style="width: 90%;" modal modal-top="true"
+        ng-cloak>
+
+    <div class="modal-resize-box">
+        <div class="votes-box">
+            <kendo-mobile-list-view ng-if="data.log.items.length > 0" class="list-votes">
+                <li ng-repeat="item in data.log.items">
+                    <div class="user-box clearfix">
+                        <div class="user-box-avatar" ng-click="navigate('view-user-profile.html?id='+item.user.id)">
+                            <img ng-src="{{item.user.avatar}}" />
+                        </div>
+                        <div class="user-box-info">
+                            <div class="user-box-username">{{::item.user|userName}}</div>
+                            <div class="user-box-rating">
+                                <div class="star-rating">
+                                    <span once-style="{width:(+item.user.rating)+'%'}"></span>
+                                </div>
+                                <div class="count-user-feedback">({{::item.user.feedback_count}})</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div ng-if="item.vote<0 && !data.type" class="vote dislike-btn">&nbsp;</div>
+                    <div ng-if="item.vote>0 && !data.type" class="vote like-btn">&nbsp;</div>
+                    <div ng-if="data.type" class="vote">{{::item.user.video_identification_score}}</div>
+
+                </li>
+            </kendo-mobile-list-view>
+
+            <div class="load-btn-box" ng-show="data.log.hasMore">
+                <kendo-mobile-button k-on-click="data.log.loadMore()">
+                    <span ng-if="!data.log.loading"><translate>Load More</translate></span>
+                    <span ng-if="data.log.loading" class="km-loader km-widget select-loader" data-role="loader" style="">
+                    <span class="km-loading km-spin"></span>
+                    <span class="km-loading-left"></span>
+                    <span class="km-loading-right"></span>
+                    <h1><translate>Loading</translate>...</h1>
+                    <span class="btn-text-android"><translate>Loading</translate></span>
+                </span>
+                </kendo-mobile-button>
+            </div>
+
+        </div>
+
+        <div class="btn-box box-sizing">
+            <kendo-mobile-button class="closeModalBtn"><translate>Schließen</translate></kendo-mobile-button>
+        </div>
+    </div>
+
+
+</kendo-mobile-modal-view>

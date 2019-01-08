@@ -1,0 +1,417 @@
+<kendo-mobile-view
+        id="view-deals-completed"
+        k-layout="'layout-main'"
+        ng-controller="DealsCompletedCtrl as dealsCompletedCtrl"
+        k-on-show="data.onShow(kendoEvent)"
+        k-use-native-scrolling="config.views.useNativeScrolling"
+        ng-cloak>
+
+    <kendo-mobile-header>
+        <kendo-mobile-nav-bar>
+            <kendo-mobile-view-title ng-click="showInfoPopup('view-deals-completed')"><div class="view-title-ios">{{"Abgeschlossene Geschäfte & Bewertungen"|translate}}</div></kendo-mobile-view-title>
+            <kendo-mobile-button class="platform-ios" data-align="right" k-on-click="showInfoPopup('view-deals-completed')"><span ng-class="{'blink': isOneShowInfoPopup('view-deals-completed')}" class="icon-info-ios"></span></kendo-mobile-button>
+        </kendo-mobile-nav-bar>
+    </kendo-mobile-header>
+
+    <div class="info-icon-box">
+        <span ng-click="showInfoPopup('view-deals-completed')" class="platform-android icon-info-android" ng-class="{'blink': isOneShowInfoPopup('view-deals-completed')}"></span>
+    </div>
+
+    <div class="android-title">
+        <h1 ng-click="showInfoPopup('view-deals-completed')">{{"Abgeschlossene Geschäfte & Bewertungen"|translate}}</h1>
+    </div>
+
+    <kendo-mobile-list-view class="filter-select-list" data-role="listview" data-style="inset">
+        <li>
+            <select ng-model="data.log.filter.type">
+                <option value="" translate>Typ des Handels</option>
+                <option value="search_request" translate>Deine Suchaufträge</option>
+                <option value="search_request_offer" translate>Deine Angebote auf Suchaufträge</option>
+                <option value="offer" translate>verkaufte Artikel</option>
+                <option value="offer_request" translate>gekaufte Artikel</option>
+                <option value="offer|1" translate>ich habe abgemahnt</option>
+                <option value="offer_request|1" translate>ich wurde abgemahnt</option>
+                <option value="||DELETED" translate>Gelöscht</option>
+                <option value="|||1" translate>Noch nicht bewertet</option>
+            </select>
+        </li>
+    </kendo-mobile-list-view>
+
+
+    <div ng-if="data.log.loading && !data.log.hasMore" class="km-loader km-widget select-loader" data-role="loader" style="">
+        <span class="km-loading km-spin"></span>
+        <span class="km-loading-left"></span>
+        <span class="km-loading-right"></span>
+        <h1><translate>Loading</translate>...</h1>
+    </div>
+
+    <div ng-if="data.log.items.length == 0 && !data.log.loading" class="results-empty-text">
+        <translate>Momentan gibt es noch keine von Dir abgeschlossenen oder dem Filter entsprechenden Geschäfte.</translate>
+    </div>
+
+    <kendo-mobile-list-view class="list-deals-completed">
+        <li ng-repeat="item in data.log.items">
+
+            <div ng-if="item.type=='search_request'" class="offer-type offer-type-search-request" ng-class="{'offer-type-delete': item.deal.status=='DELETED'}">
+
+                <div class="btn-offer-deletes" ng-if="item.deal.status=='DELETED'">
+                    <button type="button" class="btn-offer-unlink" ng-click="data.unlink(item)"><translate>Endgültig löschen</translate></button>
+                    <button type="button" class="btn-offer-undelete" ng-click="data.undelete(item)"><translate>Wiederherstellen</translate></button>
+                </div>
+
+                <div class="found-offer">
+                    <div class="box-found-picture">
+                        <a href="" ng-click="navigate('view-searches-details.html?id='+item.deal.id)">
+                            <div class="found-img">
+                                <img ng-src="{{::item.deal.image}}" />
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="box-found-info">
+                        <a href="" ng-click="navigate('view-searches-details.html?id='+item.deal.id)">
+                            <div class="found-info-type"><translate>Dein Suchauftrag</translate></div>
+                            <div class="found-title">{{::item.deal.title}}</div>
+                            <div class="found-category clearfix">
+                                <span>{{::item.deal.level1Interest}}</span>
+                                <span ng-if="item.deal.level2Interest">{{::item.deal.level2Interest}}</span>
+                                <span ng-if="item.deal.level3Interests">{{::item.deal.level3Interests}}</span>
+                            </div>
+                            <div class="found-price">{{::item.deal.price_from|priceFormat}} - {{::item.deal.price_to|priceFormat}} &euro;</div>
+                            <div class="found-date">{{::item.deal.create_dt|date:"dd.MM.yyyy"}}</div>
+                        </a>
+                    </div>
+                </div>
+
+                <ul class="found-offer-users-list">
+                    <li ng-repeat="dealOffer in item.dealOffers" class="deals-offer-box">
+                        <a href="" class="link-details" ng-click="navigate('view-searches-offer-details.html?id='+dealOffer.id)">
+                            <div class="deals-offer-text">
+                                <translate>Du hast folgendes Angebot erhalten</translate>
+                                <span class="offer-user-relevance">{{::dealOffer.relevancy}}%</span>
+                            </div>
+
+                            <div class="offer-comments">
+                                <p set-if="dealOffer.description">{{::dealOffer.description}}</p>
+                                <p set-if="!dealOffer.description" class="no-comments"><translate>Kein Kommentar</translate></p>
+                            </div>
+
+                            <div class="found-price">{{::dealOffer.price_from|priceFormat}} - {{::dealOffer.price_to|priceFormat}} &euro;</div>
+                        </a>
+
+                        <div class="deal-offer-user-box clearfix">
+                            <div class="from-user-text"><translate>von:</translate></div>
+                            <div class="offer-user-box clearfix">
+                                <a href="" ng-click="navigate('view-user-profile.html?id='+dealOffer.user.id)">
+                                    <div class="offer-user-avatar"><img ng-src="{{dealOffer.user.avatarMobile}}" alt=""/></div>
+                                </a>
+                                <div class="offer-user-name">{{::dealOffer.user|userName}}</div>
+                                <div class="offer-user-rating">
+                                    <div class="star-rating">
+                                        <span once-style="{width:(+dealOffer.user.rating)+'%'}"></span>
+                                    </div>
+                                    <div class="user-feedback-count">({{::dealOffer.user.feedback_count}})</div>
+                                    <div ng-if="dealOffer.user.packet=='VIP'" class="user-packet">&nbsp;</div>
+                                    <div ng-if="dealOffer.user.packet=='VIP_PLUS'" class="user-packet-vip-plus">&nbsp;</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="deal-accept-box clearfix">
+                            <div class="deal-accept-text">
+                                <translate>Du wurdest dafür bewertet mit</translate>:
+                            </div>
+                            <div class="deal-accept-rating-box clearfix">
+                                <div class="star-rating">
+                                    <span ng-style="{width:(+dealOffer.counter_rating)+'%'}"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="deal-accept-box clearfix">
+                            <div class="deal-accept-text">
+                                <span ng-if="dealOffer.rating"><translate>Du hast <a href="" ng-click="navigate('view-user-profile.html?id='+dealOffer.user.id)">{{::dealOffer.user|userName}}</a> dafür bewertet mit</translate>:</span>
+                                <span ng-if="!dealOffer.rating" class="red"><translate>Noch nicht bewertet</translate></span>
+                            </div>
+                            <div class="deal-accept-rating-box clearfix">
+                                <div ng-if="dealOffer.rating" class="star-rating">
+                                    <span ng-style="{width:(+dealOffer.rating)+'%'}"></span>
+                                </div>
+                                <a data-rel="modalview" href="#deals-completed-update-user-feedback-popup" data-id="{{::dealOffer.user_feedback_id}}" data-search-request-offer-id="{{::dealOffer.id}}" data-role="button" class="completing-rate-link"><translate>Handel bewerten</translate></a>
+                            </div>
+                        </div>
+
+                    </li>
+                </ul>
+            </div>
+
+            <div ng-if="item.type=='search_request_offer'" class="offer-type offer-type-search-request-offer">
+                <div class="found-offer">
+                    <div class="box-found-picture">
+                        <a href="" ng-click="navigate('view-searches-details.html?id='+item.deal.id)">
+                            <div class="found-img">
+                                <img ng-src="{{::item.deal.image}}" />
+                            </div>
+                        </a>
+                    </div>
+                    <div class="box-found-info">
+                        <a href="" ng-click="navigate('view-searches-details.html?id='+item.deal.id)">
+                            <div class="found-info-type"><translate>Dein Angebot auf den Suchauftrag</translate></div>
+                            <div class="found-title">{{::item.deal.title}}</div>
+                            <div class="found-category clearfix">
+                                <span>{{::item.deal.level1Interest}}</span>
+                                <span ng-if="item.deal.level2Interest">{{::item.deal.level2Interest}}</span>
+                                <span ng-if="item.deal.level3Interests">{{::item.deal.level3Interests}}</span>
+                            </div>
+                        </a>
+
+                        <div class="offer-user-box clearfix">
+                            <div class="deals-offer-text"><translate>von</translate>:</div>
+                            <div class="offer-user-avatar" ng-click="data.gotoProfile(item.deal.user.id)">
+                                <img ng-src="{{item.deal.user.avatarMobile}}" alt=""/>
+                            </div>
+                            <div class="offer-user-name">{{::item.deal.user|userName}}</div>
+                            <div class="offer-user-rating">
+                                <div class="star-rating">
+                                    <span once-style="{width:(+item.deal.user.rating)+'%'}"></span>
+                                </div>
+                                <div class="user-feedback-count">({{::item.deal.user.feedback_count}})</div>
+                                <div ng-if="item.deal.user.packet=='VIP'" class="user-packet">&nbsp;</div>
+                                <div ng-if="item.deal.user.packet=='VIP_PLUS'" class="user-packet-vip-plus">&nbsp;</div>
+                            </div>
+                        </div>
+                        <div class="found-price">{{::item.deal.price_from|priceFormat}} - {{::item.deal.price_to|priceFormat}} &euro;</div>
+
+                        <div class="found-date">{{::item.deal.create_dt|date:"dd.MM.yyyy"}}</div>
+                    </div>
+                </div>
+
+                <ul class="found-offer-users-list">
+                    <li class="deals-offer-box">
+                        <a href="" ng-click="navigate('view-searches-offer-details.html?id='+item.dealOffer.id)" class="link-deal-offer-details">
+                            <div class="deals-offer-text">
+                                <translate>Dein Angebot</translate>
+                            </div>
+
+                            <div class="offer-comments">
+                                <p set-if="item.dealOffer.description">{{::item.dealOffer.description}}</p>
+                                <p set-if="!item.dealOffer.description" class="no-comments"><translate>Kein Kommentar</translate></p>
+                            </div>
+                        </a>
+
+                        <!--<div class="found-price">{{::item.dealOffer.price_from|priceFormat}} - {{::item.dealOffer.price_to|priceFormat}} &euro;</div>-->
+
+                        <div class="deal-accept-box clearfix">
+                            <div class="deal-accept-text">
+                                <translate>Du wurdest dafür bewertet mit</translate>:
+                            </div>
+                            <div class="deal-accept-rating-box clearfix">
+                                <div class="star-rating">
+                                    <span ng-style="{width:(+item.dealOffer.rating)+'%'}"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="deal-accept-box clearfix">
+                            <div class="deal-accept-text">
+                                <span ng-if="item.dealOffer.counter_rating"><translate>Du hast <a href="" ng-click="navigate('view-user-profile.html?id='+item.deal.user.id)">{{::item.deal.user|userName}}</a> dafür bewertet mit</translate>:</span>
+                                <span ng-if="!item.dealOffer.counter_rating" class="red"><translate>Noch nicht bewertet</translate></span>
+                            </div>
+                            <div class="deal-accept-rating-box clearfix">
+                                <div ng-if="item.dealOffer.counter_rating" class="star-rating">
+                                    <span ng-style="{width:(+item.dealOffer.counter_rating)+'%'}"></span>
+                                </div>
+                                <a data-rel="modalview" href="#deals-completed-update-counter-user-feedback-popup" data-search-request-offer-id="{{::item.dealOffer.id}}" data-role="button" class="completing-rate-link"><translate>Handel bewerten</translate></a>
+                            </div>
+                        </div>
+
+                    </li>
+                </ul>
+            </div>
+
+            <div ng-if="item.type=='offer'" class="offer-type offer-type-offer" ng-class="{'offer-type-delete': item.deal.status=='DELETED'}">
+                <div class="btn-offer-deletes" ng-if="item.deal.status=='DELETED'">
+                    <button type="button" class="btn-offer-unlink" k-on-click="data.unlink(item)"><translate>Endgültig löschen</translate></button>
+                    <button type="button" class="btn-offer-undelete" k-on-click="data.undelete(item)"><translate>Wiederherstellen</translate></button>
+                </div>
+
+                <div class="found-offer">
+                    <div class="box-found-picture">
+                        <a href="" ng-click="navigate('view-offers-details.html?id='+item.deal.id)">
+                            <div class="found-img">
+                                <img ng-src="{{::item.deal.image}}" />
+                            </div>
+                        </a>
+                    </div>
+                    <div class="box-found-info">
+                        <a href="" ng-click="navigate('view-offers-details.html?id='+item.deal.id)">
+                            <div class="found-info-type"><translate>Du hast folgenden Artikel verkauft</translate></div>
+                            <div class="found-title">{{::item.deal.title}}</div>
+                            <div class="found-category clearfix">
+                                <span>{{::item.deal.level1Interest}}</span>
+                                <span ng-if="item.deal.level2Interest">{{::item.deal.level2Interest}}</span>
+                                <span ng-if="item.deal.level3Interests">{{::item.deal.level3Interests}}</span>
+                            </div>
+
+                            <div class="found-price">{{::item.deal.price|priceFormat}} &euro;</div>
+
+                            <div set-if="item.deal.view_bonus && marketingEnabled" class="found-bonus promotion-bonus"><translate>Werbebonus</translate>:&nbsp;<span>{{::item.deal.view_bonus|priceFormat}}<span class="icon-jugl green"></span></span></div>
+                            <div set-if="item.deal.buy_bonus" class="found-bonus buy-bonus"><translate>Kaufbonus</translate>:&nbsp;<span>{{::item.deal.buy_bonus|priceFormat}}<span class="icon-jugl blue"></span></span></div>
+
+                            <div class="found-date">{{::item.deal.create_dt|date:"dd.MM.yyyy"}}</div>
+                        </a>
+                    </div>
+                </div>
+
+                <ul class="found-offer-users-list">
+                    <li ng-repeat="dealOffer in item.dealOffers" class="deals-offer-box">
+
+                        <div class="deals-offer-text"><translate>Wurde angenommen am {{::dealOffer.closed_dt|date:"dd.MM.yyyy"}} von</translate>:</div>
+
+                        <div class="deal-offer-user-box clearfix">
+                            <div class="offer-user-box clearfix">
+                                <a href="" ng-click="navigate('view-user-profile.html?id='+dealOffer.user.id)">
+                                    <div class="offer-user-avatar"><img ng-src="{{dealOffer.user.avatarMobile}}" alt=""/></div>
+                                </a>
+                                <div class="offer-user-name">{{::dealOffer.user|userName}}</div>
+                                <div class="offer-user-rating">
+                                    <div class="star-rating">
+                                        <span once-style="{width:(+dealOffer.user.rating)+'%'}"></span>
+                                    </div>
+                                    <div class="user-feedback-count">({{::dealOffer.user.feedback_count}})</div>
+                                    <div ng-if="dealOffer.user.packet=='VIP'" class="user-packet">&nbsp;</div>
+                                    <div ng-if="dealOffer.user.packet=='VIP_PLUS'" class="user-packet-vip-plus">&nbsp;</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="offer-comments">
+                            <p set-if="dealOffer.description">{{::dealOffer.description}}</p>
+                            <p set-if="!dealOffer.description" class="no-comments"><translate>Kein Kommentar</translate></p>
+                        </div>
+
+                        <div class="deal-accept-box clearfix">
+                            <div class="deal-accept-text">
+                                <translate>Du wurdest bewertet von</translate> <a href="" ng-click="navigate('view-user-profile.html?id='+dealOffer.user.id)">{{::dealOffer.user|userName}}</a> <translate>mit</translate>:
+                            </div>
+                            <div class="deal-accept-rating-box clearfix">
+                                <div class="star-rating">
+                                    <span ng-style="{width:(+dealOffer.counter_rating)+'%'}"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="deal-accept-box clearfix">
+                            <div class="deal-accept-text">
+                                <span ng-if="dealOffer.rating"><translate>Du hast <a href="" ng-click="navigate('view-user-profile.html?id='+dealOffer.user.id)">{{::dealOffer.user|userName}}</a> dafür bewertet mit</translate>:</span>
+                                <span ng-if="!dealOffer.rating" class="red"><translate>Noch nicht bewertet</translate></span>
+                            </div>
+                            <div class="deal-accept-rating-box clearfix">
+                                <div ng-if="dealOffer.rating" class="star-rating">
+                                    <span ng-style="{width:(+dealOffer.rating)+'%'}"></span>
+                                </div>
+                                <a data-rel="modalview" href="#deals-completed-update-user-feedback-popup" data-id="{{::item.deal.user_feedback_id}}"  data-offer-request-id="{{::dealOffer.id}}" data-role="button" class="completing-rate-link"><translate>Handel bewerten</translate></a>
+                            </div>
+                        </div>
+
+                    </li>
+                </ul>
+            </div>
+
+            <div ng-if="item.type=='offer_request'" class="offer-type offer-type-offer-request">
+                <div class="found-offer">
+                    <div class="box-found-picture">
+                        <a href="" ng-click="navigate('view-offers-details.html?id='+item.deal.id)">
+                            <div class="found-img">
+                                <img ng-src="{{::item.deal.image}}" />
+                            </div>
+                        </a>
+                    </div>
+                    <div class="box-found-info">
+                        <a href="" ng-click="navigate('view-offers-details.html?id='+item.deal.id)">
+                            <div class="found-info-type"><translate>Du hast folgenden Artikel gekauft</translate></div>
+                            <div class="found-title">{{::item.deal.title}}</div>
+                            <div class="found-category clearfix">
+                                <span>{{::item.deal.level1Interest}}</span>
+                                <span ng-if="item.deal.level2Interest">{{::item.deal.level2Interest}}</span>
+                                <span ng-if="item.deal.level3Interests">{{::item.deal.level3Interests}}</span>
+                            </div>
+                        </a>
+                        <div class="offer-user-box clearfix">
+                            <div class="deals-offer-text"><translate>von</translate>:</div>
+                            <div class="offer-user-avatar" ng-click="data.gotoProfile(item.deal.user.id)">
+                                <img ng-src="{{item.deal.user.avatarMobile}}" alt="" />
+                            </div>
+                            <div class="offer-user-name">{{::item.deal.user|userName}}</div>
+                            <div class="offer-user-rating">
+                                <div class="star-rating">
+                                    <span once-style="{width:(+item.deal.user.rating)+'%'}"></span>
+                                </div>
+                                <div class="user-feedback-count">({{::item.deal.user.feedback_count}})</div>
+                                <div ng-if="item.deal.user.packet=='VIP'" class="user-packet">&nbsp;</div>
+                                <div ng-if="item.deal.user.packet=='VIP_PLUS'" class="user-packet-vip-plus">&nbsp;</div>
+                            </div>
+                        </div>
+
+                        <div set-if="item.deal.view_bonus && marketingEnabled" class="found-bonus promotion-bonus"><translate>Werbebonus</translate>:&nbsp;<span>{{::item.deal.view_bonus|priceFormat}}<span class="icon-jugl green"></span></span></div>
+                        <div set-if="item.deal.buy_bonus" class="found-bonus buy-bonus"><translate>Kaufbonus</translate>:&nbsp;<span>{{::item.deal.buy_bonus|priceFormat}}<span class="icon-jugl blue"></span></span></div>
+
+                        <div class="found-date">{{::item.deal.create_dt|date:"dd.MM.yyyy"}}</div>
+                    </div>
+                </div>
+
+                <ul class="found-offer-users-list">
+                    <li class="deal-offer-box">
+                        <div set-if="item.dealOffer.description" class="deals-offer-text"><translate>Dein Kommentar</translate>:</div>
+                        <div set-if="item.dealOffer.description" class="offer-comments">
+                            <p>{{::item.dealOffer.description}}</p>
+                        </div>
+
+                        <div class="deal-accept-box clearfix">
+                            <div class="deal-accept-text">
+                                <translate>Du wurdest bewertet von</translate> <a href="" ng-click="navigate('view-user-profile.html?id='+item.deal.user.id)">{{::item.deal.user|userName}}</a> <translate>mit</translate>:
+                            </div>
+                            <div class="deal-accept-rating-box clearfix">
+                                <div class="star-rating">
+                                    <span ng-style="{width:(+item.dealOffer.rating)+'%'}"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="deal-accept-box clearfix">
+                            <div class="deal-accept-text">
+                                <span ng-if="item.dealOffer.counter_rating"><translate>Du hast <a href="" ng-click="navigate('view-user-profile.html?id='+item.deal.user.id)">{{::item.deal.user|userName}}</a> dafür bewertet mit</translate>:</span>
+                                <span ng-if="!item.dealOffer.counter_rating" class="red"><translate>Noch nicht bewertet</translate></span>
+                            </div>
+                            <div class="deal-accept-rating-box clearfix">
+                                <div ng-if="item.dealOffer.counter_rating" class="star-rating">
+                                    <span ng-style="{width:(+item.dealOffer.counter_rating)+'%'}"></span>
+                                </div>
+                                <a data-rel="modalview" href="#deals-completed-update-counter-user-feedback-popup" data-offer-request-id="{{::item.dealOffer.id}}" data-role="button" class="completing-rate-link"><translate>Handel bewerten</translate></a>
+                            </div>
+                        </div>
+
+                    </li>
+                </ul>
+            </div>
+
+
+        </li>
+
+    </kendo-mobile-list-view>
+
+
+    <div class="load-btn-box" ng-show="data.log.hasMore">
+        <kendo-mobile-button k-on-click="data.log.loadMore()">
+            <span ng-if="!data.log.loading"><translate>Load More</translate></span>
+            <span ng-if="data.log.loading" class="km-loader km-widget select-loader" data-role="loader" style="">
+                <span class="km-loading km-spin"></span>
+                <span class="km-loading-left"></span>
+                <span class="km-loading-right"></span>
+                <h1><translate>Loading</translate>...</h1>
+                <span class="btn-text-android"><translate>Loading</translate></span>
+            </span>
+        </kendo-mobile-button>
+    </div>
+
+
+</kendo-mobile-view>

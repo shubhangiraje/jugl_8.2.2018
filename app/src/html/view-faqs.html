@@ -1,0 +1,47 @@
+<kendo-mobile-view
+        id="view-faqs"
+        k-layout="'layout-main'"
+        ng-controller="FaqCtrl as faqCtrl"
+        k-on-show="data.onShow(kendoEvent)"
+        k-use-native-scrolling="config.views.useNativeScrolling"
+        ng-cloak>
+
+    <kendo-mobile-header>
+        <kendo-mobile-nav-bar>
+            <kendo-mobile-view-title><div class="view-title-ios"><translate>Fragen / Antworten</translate></div></kendo-mobile-view-title>
+            <kendo-mobile-back-button k-on-click="onClickBack()" data-align="left"><span class="platform-android"><translate>Zurück</translate></span></kendo-mobile-back-button>
+        </kendo-mobile-nav-bar>
+    </kendo-mobile-header>
+
+    <div class="android-title">
+        <h1><translate>Fragen / Antworten</translate></h1>
+    </div>
+
+    <div ng-if="data.log.loading && !data.log.hasMore" class="km-loader km-widget select-loader" data-role="loader">
+        <span class="km-loading km-spin"></span>
+        <span class="km-loading-left"></span>
+        <span class="km-loading-right"></span>
+        <h1><translate>Loading</translate>...</h1>
+    </div>
+
+    <kendo-mobile-list-view ng-if="data.log.items.length > 0" class="faqs-list-box">
+        <li ng-repeat="item in data.log.items" class="faqs-box" id="faq{{item.id}}">
+            <div class="faq-question">{{::item.question}}</div>
+            <div class="faq-response" ng-bind-html="item.response"></div>
+        </li>
+    </kendo-mobile-list-view>
+
+    <div class="load-btn-box" ng-show="data.log.hasMore">
+        <kendo-mobile-button k-on-click="data.log.loadMore()">
+            <span ng-if="!data.log.loading"><translate>Load More</translate></span>
+            <span ng-if="data.log.loading" class="km-loader km-widget select-loader" data-role="loader" style="">
+                <span class="km-loading km-spin"></span>
+                <span class="km-loading-left"></span>
+                <span class="km-loading-right"></span>
+                <h1><translate>Loading</translate>...</h1>
+                <span class="btn-text-android"><translate>Loading</translate></span>
+            </span>
+        </kendo-mobile-button>
+    </div>
+
+</kendo-mobile-view>

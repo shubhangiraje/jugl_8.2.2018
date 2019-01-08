@@ -1,0 +1,68 @@
+server {
+        listen 80;
+        server_name jugl.loc22;
+        root /var/www/jugl/web;
+
+        client_max_body_size 100M;
+
+	access_log /var/log/nginx/jugl_access.log;
+	error_log /var/log/nginx/jugl_error.log;
+
+
+        # static files
+	location ~ ^/(favicon.ico|robots.txt|assets/|static/|utils/adminer/adminer.css) {
+	    expires 24h;
+	    access_log off;
+
+    	    add_header 'Access-Control-Allow-Origin' 'http://jugl_app.loc2';
+	    add_header 'Access-Control-Expose-Headers' '';
+	}
+
+	location ~ ^/(files|chat_files)/ {
+	    expires 24h;
+	    #access_log off;
+	}
+
+        # if file not exists, try to build thumbnail
+	location ~ ^/thumbs/ {
+    	    try_files $uri /index.php;
+    	    expires 24h;
+	    #access_log off;
+
+    	    add_header 'Access-Control-Allow-Origin' 'http://jugl_app.loc2';
+	    add_header 'Access-Control-Expose-Headers' '';
+
+	}
+
+        location ~ ^/(index.php|utils/|deploy.php) {
+	    include fastcgi_params;
+
+	    fastcgi_pass   localhost:9000;
+	    fastcgi_index  index.php;
+
+	    fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
+	    fastcgi_param  PATH_TRANSLATED  $document_root$fastcgi_script_name;
+	    fastcgi_param  HTTP_AUTHORIZATION $http_authorization;
+
+	    fastcgi_read_timeout 300;
+    }
+
+    location / {
+	    rewrite ^ /index.php last;
+    }
+
+    location = / {
+        rewrite ^(.*) /newsite/juglnet$1 break;
+        proxy_pass http://66.219.106.146;
+        proxy_set_header Host juglcoin.com;
+        proxy_read_timeout 600s;
+    }
+
+    location /newsite/juglnet {
+        proxy_pass http://66.219.106.146;
+        proxy_set_header Host juglcoin.com;
+        proxy_read_timeout 600s;
+    }
+}
+
+

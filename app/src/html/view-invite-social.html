@@ -1,0 +1,24 @@
+<kendo-mobile-view
+        k-title="'Social'"
+        ng-controller="InviteSocialCtrl"
+        id="view-invite-social"
+        k-on-after-show="data.onShow(kendoEvent)"
+        k-layout="'layout-main'"
+        ng-cloak>
+
+    <kendo-mobile-header>
+        <kendo-mobile-nav-bar>
+            <kendo-mobile-view-title><translate>Einladungslink teilen</translate></kendo-mobile-view-title>
+            <kendo-mobile-back-button k-on-click="onClickBack()" data-align="left"><span class="platform-android"><translate>Zurück</translate></span></kendo-mobile-back-button>
+        </kendo-mobile-nav-bar>
+    </kendo-mobile-header>
+
+    <h3><translate>Einladungslink teilen</translate></h3>
+
+    <ul class="social-list-box">
+        <li><a ng-click="openUrlInBrowser(data.twitter)"><img src="img/twitter.png" alt="twitter"/>Twitter</a></li>
+        <li><a ng-click="openUrlInBrowser(data.facebook)"><img src="img/facebook.png" alt="facebook"/>Facebook</a></li>
+        <li><a ng-click="openUrlInBrowser(data.googleplus)"><img src="img/google-plus.png" alt="google"/>Google+</a></li>
+    </ul>
+
+</kendo-mobile-view>

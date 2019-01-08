@@ -1,0 +1,45 @@
+<kendo-mobile-modal-view
+        k-on-open="data.onOpen(kendoEvent)"
+        ng-controller="OfferHistoryViewPopupCtrl as offerHistoryViewPopupCtrl"
+        id="view-offer-history-view-popup"
+        k-use-native-scrolling="config.views.useNativeScrolling"
+        style="width: 90%;"
+        class="modal" modal ng-cloak>
+
+    <div class="modal-resize-box">
+        <div class="offer-history-view-box">
+            <div class="offer-history-view-user-box user-box clearfix">
+                <div class="user-box-avatar"><img ng-src="{{data.log.user.avatarMobile}}" alt=""/></div>
+                <div class="user-box-info">
+                    <div class="user-box-username blurDetails">{{data.log.user|userName}}</div>
+                    <div class="user-box-city blurDetails">{{data.log.user.city}}</div>
+                </div>
+            </div>
+            <kendo-mobile-list-view class="list-votes">
+                <li ng-repeat="item in data.log.items" class="clearfix">
+                    <div class="offer-history-view-create-dt">{{::item.create_dt|date:data.dateTimeFormat}}</div>
+                    <div class="offer-history-view-duration">{{::item.duration|secondsToTime}}</div>
+                </li>
+            </kendo-mobile-list-view>
+
+            <div class="load-btn-box" ng-show="data.log.hasMore" style="margin-bottom: 0">
+                <kendo-mobile-button k-on-click="data.loadMore()">
+                    <span ng-if="!data.log.loading"><translate>Load More</translate></span>
+                    <span ng-if="data.log.loading" class="km-loader km-widget select-loader" data-role="loader" style="">
+                    <span class="km-loading km-spin"></span>
+                    <span class="km-loading-left"></span>
+                    <span class="km-loading-right"></span>
+                    <h1><translate>Loading</translate>...</h1>
+                    <span class="btn-text-android"><translate>Loading</translate></span>
+                </span>
+                </kendo-mobile-button>
+            </div>
+        </div>
+
+        <div class="btn-box">
+            <kendo-mobile-button class="closeModalBtn"><translate>Cancel</translate></kendo-mobile-button>
+        </div>
+
+    </div>
+
+</kendo-mobile-modal-view>

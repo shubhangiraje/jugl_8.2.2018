@@ -1,0 +1,49 @@
+<kendo-mobile-view
+        k-title="'Network'"
+        id="view-network"
+        k-layout="'layout-main'"
+        ng-controller="NetworkCtrl"
+        k-on-show="data.onShow(kendoEvent)"
+        k-use-native-scrolling="config.views.useNativeScrolling"
+        ng-cloak>
+
+    <kendo-mobile-header>
+        <kendo-mobile-nav-bar>
+            <!--<kendo-mobile-button href="view-network.html?id={{data.parent}}" k-align="'left'" ng-class="{'ios-hide-back-arrow':!data.parent}"><span class="platform-android"><translate>{{data.parent ? 'Zurück':'&nbsp;'}}</translate></span></kendo-mobile-button>-->
+
+            <kendo-mobile-back-button k-on-click="onClickBack()" ng-class="{'back-button-hide':!data.parent}" data-align="left"><span class="platform-android"><translate>Zurück</translate></span></kendo-mobile-back-button>
+
+            <kendo-mobile-view-title>{{data.user|userName}}</kendo-mobile-view-title>
+            <kendo-mobile-button class="platform-ios" data-align="right" k-on-click="showInfoPopup('view-network')"><span ng-class="{'blink': isOneShowInfoPopup('view-network')}" class="icon-info-ios"></span></kendo-mobile-button>
+        </kendo-mobile-nav-bar>
+    </kendo-mobile-header>
+
+    <div class="info-icon-box">
+        <span ng-click="showInfoPopup('view-network')" ng-class="{'blink': isOneShowInfoPopup('view-network')}" class="platform-android icon-info-android"></span>
+    </div>
+
+    <div class="android-title">
+        <h1>{{data.user|userName}}</h1>
+    </div>
+
+    <script id="template-network-item" type="text/x-kendo-template">
+        <div once-if="dataItem.hasChildren" class="contact-box-img">
+            <div class="user-avatar clickable-avatar"><img ng-src="{{::dataItem.avatarMobile}}" ng-click="data.gotoProfile(dataItem.id)" /></div>
+        </div>
+        <a once-if="dataItem.hasChildren" href="" ng-click="navigate('view-network.html?id='+dataItem.id+'&user_hierarchy_id='+data.user_hierarchy_id)" class="km-listview-link label-for-clickable-avatar contact-box-info">
+            <div class="username">{{::dataItem|userName}}</div>
+        </a>
+        <div once-if="!dataItem.hasChildren">
+            <div class="contact-box-img">
+                <div class="user-avatar"><img ng-src="{{::dataItem.avatarMobile}}" ng-click="data.gotoProfile(dataItem.id)" /></div>
+            </div>
+            <div class="contact-box-info">
+                <div class="username">{{::dataItem|userName}} <div ng-click="updateCountry(dataItem.id, dataItem);" id="{{::dataItem.flag}}" class="flag flag-32 flag-{{dataItem.flag}}"></div>	</div>
+            </div>
+        </div>
+    </script>
+
+    <kendo-mobile-list-view k-options="data.listViewOptions" class="list-box-user list-box-network" k-style="'inset'" >
+    </kendo-mobile-list-view>
+
+</kendo-mobile-view>

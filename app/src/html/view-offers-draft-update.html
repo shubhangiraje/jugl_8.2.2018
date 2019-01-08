@@ -1,0 +1,385 @@
+<kendo-mobile-view
+        id="view-offers-draft-update"
+        k-layout="'layout-main'"
+        ng-controller="OfferDraftUpdateCtrl as offerDraftUpdateCtrl"
+        k-on-show="data.onShow(kendoEvent)"
+        k-on-hide="data.onHide(kendoEvent)"
+        k-use-native-scrolling="config.views.useNativeScrolling"
+        fields-scroll ng-cloak>
+
+    <kendo-mobile-header>
+        <kendo-mobile-nav-bar>
+            <kendo-mobile-view-title ng-click="showInfoPopup('view-offers-add')"><div class="view-title-ios"><translate>Inserat schalten / etwas verkaufen</translate></div></kendo-mobile-view-title>
+            <kendo-mobile-button class="platform-ios" data-align="right" k-on-click="showInfoPopup('view-offers-add')"><span ng-class="{'blink': isOneShowInfoPopup('view-offers-add')}" class="icon-info-ios"></span></kendo-mobile-button>
+        </kendo-mobile-nav-bar>
+    </kendo-mobile-header>
+
+    <div class="view-searches-add">
+        <div class="info-icon-box">
+            <span ng-click="showInfoPopup('view-offers-add')" ng-class="{'blink': isOneShowInfoPopup('view-offers-add')}" class="platform-android icon-info-android"></span>
+        </div>
+        <div class="android-title">
+            <h1 ng-click="showInfoPopup('view-offers-add')"><translate>Kostenlos inserieren<br />Verkaufen / Inserat schalten</translate></h1>
+        </div>
+        <p class="text"><translate>Bitte beachten: Eine Mehrfachschaltung kostenloser Anzeigen mit identischem Inhalt im gleichen Zeitraum ist nicht möglich.</translate></p>
+        <div class="form-container">
+            <kendo-mobile-list-view class="searches-add-list" k-type="'group'" k-style="'inset'">
+                <li><translate>Kategorie</translate>
+                    <ul>
+                        <li class="category-list textarea-field col-1">
+                            <div class="description">
+                                <translate>Nutzer-/Kundenkreis:</translate> <span class="countRequests">{{data.offer.receiversAllCount|priceFormat}}</span>
+                            </div>
+
+                            <div class="title-category"><translate>Kategorie</translate>*:</div>
+                            <ul class="searches-add-category-list">
+                                <li ng-if="data.offer.offerInterests[0].level1Interest.id">{{data.offer.offerInterests[0].level1Interest.title}}</li>
+                                <li ng-if="data.offer.offerInterests[0].level2Interest.id">{{data.offer.offerInterests[0].level2Interest.title}}</li>
+                                <li ng-if="data.offer.offerInterests[0].level3Interest.id"><span ng-repeat="interest in data.offer.offerInterests">{{interest.level3Interest.title}}{{!$last ? ', ':''}}</span></li>
+                            </ul>
+                            <div class="cat-message"><translate>Hier kannst Du die Kategorie auswählen, unter der die Anzeige erscheinen soll.</translate></div>
+                            <kendo-mobile-button ng-click="data.addInterests()" class="link-update-category"><translate>Kategorie ändern</translate></kendo-mobile-button>
+
+                        </li>
+                        <li class="textarea-field col-1 full">
+                            <label><translate>Typ der Inserat*</translate></label>
+                            <div ng-if="data.offer.type=='AD'"><translate>Die klassische Form der Inserat - Gewinne neue Kunden, mach auf Dich aufmerksam. Informiere potentielle Interessenten über Deine Ware und Angebote. (Inserat für konkurrierende Unternehmen ist nicht kostenfrei.)</translate></div>
+                            <div ng-if="data.offer.type=='AUTOSELL'"><translate>Du bietest etwas an und wenn der Interessent auf den "Kaufen"-Button klickt, kommt der Handel sofort zustande.</translate></div>
+                            <div ng-if="data.offer.type=='AUCTION'"><translate>Du bietest etwas an und erhältst Gebote in unterschiedlicher Höhe auf Deine Ware. Du kannst Dir, unabhängig von der Höhe des Gebots, einen Käufer aussuchen. Falls Du Dich entscheiden solltest, Deine Ware doch nicht zu verkaufen, bist Du nicht verpflichtet ein Gebot anzunehmen. (z.B. wenn die Gebote nicht Deinen Vorstellungen entsprechen). Du kannst auch mehrere Gebote in unterschiedlicher Höhe annehmen und somit in einem Bieterverfahren mehrere Stücke einer Ware verkaufen.</translate></div>
+                            <select ng-model="data.offer.type" style="margin-top:10px;" bs-has-classes >
+                                <option value="" translate>Typ auswählen</option>
+                                <option ng-if="marketingEnabled" value="AD" translate>Ohne Kaufmöglichkeit</option>
+                                <option value="AUTOSELL" translate>Sofortkauf (mit Kaufbonus und Provision)</option>
+                                <option value="AUCTION" translate>Bieterverfahren (mit Kaufbonus und Provision)</option>
+                            </select>
+                        </li>
+                        <li class="textarea-field col-1">
+                            <div class="description">
+                                <translate>Interessenten können Dir direkt über die Anzeige eine Nachricht senden. Im Messenger wird Dir diese Nachricht als zu der Inserat zugehörig angezeigt.</translate>
+                            </div>
+                            <div class="col-switcher">
+                                <label class="lbl-message"><translate>Nachrichten zulassen</translate>:</label>
+                                <div out-focus-switch><kendo-mobile-switch ng-model="data.offer.allow_contact" k-on-label="''" k-off-label="''" /></div>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                <li ng-show="data.offer.offerParamValues.length>0">
+                    <ul>
+                        <li ng-repeat="item in data.offer.offerParamValues">
+                            <label>{{::item.param.title}}<span ng-if="item.param.required">*</span>:</label>
+                            <div ng-if="item.param.type==='LIST'">
+                                <select ng-model="item.param_value_id" ng-options="value.id as value.title for value in item.param.values"></select>
+                            </div>
+                            <div ng-if="item.param.type!=='LIST'">
+                                <input type="text" ng-model="item.param_value" />
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+
+                <li><translate>Anzeigedetails</translate>
+                    <ul>
+                        <li class="textarea-field" bs-has-classes>
+                            <div class="description"><translate>Gib hier den Titel Deiner Anzeige ein. Er ist das Erste, was ein potentieller Interessent liest.</translate></div>
+                            <textarea rows="2" ng-model="data.offer.title" maxlength="200" server-error="data.offer.$errors.title" placeholder="{{ 'Titel eingeben*' | translate }}"></textarea>
+                        </li>
+
+                        <li class="textarea-field" bs-has-classes>
+                            <div class="description"><translate>Gib hier die Beschreibung Deiner Anzeige ein. Je detaillierter diese ist, desto genauer wissen potentielle Interessenten, worum es bei Deiner Anzeige geht.</translate></div>
+
+                            <textarea rows="4" ng-model="data.offer.description" maxlength="2000" server-error="data.offer.$errors.description" placeholder="{{ 'Beschreibung eingeben*' | translate }}"></textarea>
+                        </li>
+
+                        <li class="textarea-field li-pictures">
+                            <div class="description"><translate>Hebe Deine Anzeige hervor, um Deine Anzeigen attraktiver zu gestalten. Lade Bilder Deiner Ware hoch. Steigere die Aufmerksamkeit der Jugler und Deine Erfolgsquote.</translate></div>
+                            <ul ng-if="data.offer.files.length > 0" class="uploaded-pictures-box">
+                                <li ng-repeat="file in data.offer.files">
+                                    <img ng-src="{{file.thumbs.imageBig}}" />
+                                    <span class="delete" ng-click="data.deleteFile(file.id)"></span>
+                                </li>
+                            </ul>
+                            <div ng-if="!data.fileUpload" class="km-loader km-widget select-loader" data-role="loader">
+                                <span class="km-loading km-spin"></span>
+                                <span class="km-loading-left"></span>
+                                <span class="km-loading-right"></span>
+                                <h1><translate>Loading</translate>...</h1>
+                            </div>
+                            <div ng-if="data.offer.files.length != 30" class="upload-pictures-box" ng-click="data.uploadImage()">
+                                <span class="icon-add-image"></span>
+                            </div>
+                        </li>
+
+                        <li ng-if="data.offer.type=='AUTOSELL'" bs-has-classes class="textarea-field col-1">
+                            <div class="description"><translate>Gib hier Deine Preisvorstellung ein. Bitte beachte, dass diese Angabe in Euro ist.</translate></div>
+                            <input ng-model="data.offer.price" class="w-currency" type="number" server-error="data.offer.$errors.price" placeholder="{{ 'Preis eingeben*' | translate }}" />
+                            <span class="currency">&euro;</span>
+                        </li>
+
+                        <li ng-if="data.offer.type=='AUCTION'" bs-has-classes class="textarea-field col-1">
+                            <div class="description"><translate>Gib hier Deine Preisvorstellung ein. Diese dient als Richtwert für die Erstellung der Gebote Deiner Interessenten. Bitte beachte, dass diese Angabe in Euro ist.</translate></div>
+                            <div class="relative">
+                                <input ng-model="data.offer.price" class="w-currency" type="number" server-error="data.offer.$errors.price" placeholder="{{ 'Preisvorstellung eingeben*' | translate }}"  />
+                                <span class="currency">&euro;</span>
+                            </div>
+                        </li>
+
+                        <li ng-if="data.offer.type=='AUCTION'" bs-has-classes class="textarea-field col-1">
+                            <div class="description"><translate>Hier kannst Du einstellen, ab welcher Gebotshöhe Du eine Benachrichtigung von Jugl.net erhalten möchtest.</translate></div>
+                            <div class="relative">
+                                <input ng-model="data.offer.notify_if_price_bigger" class="w-currency" type="number" server-error="data.offer.$errors.notify_if_price_bigger" placeholder="{{ 'Gebots-Benachrichtigung erhalten ab*' | translate }}"/>
+                                <span class="currency">&euro;</span>
+                            </div>
+                        </li>
+
+
+                        <li ng-if="data.offer.type!='AD'" bs-has-classes class="textarea-field col-1">
+                            <div class="description"><translate>Gib hier die Stückzahl ein. Wenn alle Waren verkauft sind, läuft die Anzeige automatisch aus.</translate></div>
+                            <input ng-model="data.offer.amount" type="number" server-error="data.offer.$errors.amount" placeholder="{{ 'Stückzahl angeben*' | translate }}" />
+                            <br /><br />
+                            <div class="description"><translate>Wenn Du hier ein Häkchen setzt, dann wird in Deiner Anzeige die noch verfügbare Stückzahl Deiner Ware angezeigt.</translate></div>
+                            <div class="col-switcher">
+                                <label><translate>Stückzahl anzeigen</translate>:</label><div out-focus-switch><kendo-mobile-switch ng-model="data.offer.show_amount" k-on-label="''" k-off-label="''" server-error="data.offer.$errors.show_amount" /></div>
+                            </div>
+                        </li>
+
+                        <li ng-if="data.offer.type!='AD'" bs-has-classes class="textarea-field col-1">
+                            <div class="description"><translate>Wenn Du Deine Ware versenden möchtest, dann gib hier bitte die Lieferzeit ein, die Dein Paket bis zum Empfänger benötigt und wie viel der Versand kosten soll. Wenn Du Deine Ware nur zur Selbstabholung anbietest, dann gib hier bitte jeweils eine 0 ein.</translate></div>
+                            <div class="relative">
+                                <input ng-model="data.offer.delivery_days" class="w-currency" type="number" server-error="data.offer.$errors.delivery_days" placeholder="{{ 'Lieferzeit angeben*' | translate }}" />
+                                <span class="currency"><translate>Tage</translate></span>
+                            </div>
+                            <div class="relative">
+                                <input ng-model="data.offer.delivery_cost" class="w-currency" type="number" server-error="data.offer.$errors.delivery_cost" placeholder="{{ 'Versandkosten angeben' | translate }}"/>
+                                <span class="currency">&euro;</span>
+                            </div>
+                        </li>
+
+                        <li ng-if="data.offer.type!='AD'" bs-has-classes class="textarea-field col-1">
+                            <div class="description"><translate>Wähle nun die von Dir akzeptierten Zahlungsmethoden aus. Bitte beachte, dass Du eine Zahlung per Überweisung oder Paypal nur angeben kannst, wenn Du die dazugehörigen Daten in Deinem Profil (Menüleiste -> Mein Profil / Meine Daten) hinterlegt hast.</translate></div>
+
+                            <div class="col-switcher">
+                                <label><translate>Banküberweisung</translate>:</label>
+                                <div out-focus-switch><kendo-mobile-switch ng-model="data.offer.pay_allow_bank" k-on-label="''" k-off-label="''" /></div>
+                            </div>
+                            <div class="col-switcher">
+                                <label><translate>Paypal</translate>:</label><div out-focus-switch><kendo-mobile-switch ng-model="data.offer.pay_allow_paypal" k-on-label="''" k-off-label="''" /></div>
+                            </div>
+                            <div class="col-switcher">
+                                <label><translate>Jugls</translate>:</label><div out-focus-switch><kendo-mobile-switch ng-model="data.offer.pay_allow_jugl" k-on-label="''" k-off-label="''" /></div>
+                            </div>
+
+                            <div class="col-switcher">
+                                <label><translate>Barzahlung</translate>:</label>
+                                <div out-focus-switch><kendo-mobile-switch ng-model="data.offer.pay_allow_pod" k-on-label="''" k-off-label="''" /></div>
+                            </div>
+                        </li>
+
+                    </ul>
+                </li>
+
+                <li ng-show="data.offer.type!='AD'"><translate>Ort</translate>
+                    <ul>
+                        <li bs-has-classes  class="textarea-field col-2">
+                            <div class="description"><translate>Gib hier den Ort an, an dem Deine Ware abgeholt werden kann. Wenn Deine Ware nicht zur Selbstabholung angeboten wird, gib hier Deinen Standort an.</translate></div>
+                            <label><translate>Land</translate>*:</label>
+                            <select ng-model="data.offer.country_id" ng-options="item.id as item.country for item in data.countries"></select>
+                            <label><translate>PLZ*:</translate></label><input ng-model="data.offer.zip" type="text" server-error="data.offer.$errors.zip" />
+                            <label><translate>Ort:</translate></label><input ng-model="data.offer.city" type="text" server-error="data.offer.$errors.city" />
+                            <label><translate>Straße/Nr.:</translate></label><input ng-model="data.offer.address" type="text" server-error="data.offer.$errors.address" />
+                        </li>
+                    </ul>
+                </li>
+
+
+                <li><translate>Dauer der Veröffentlichung</translate>
+                    <ul>
+                        <li class="textarea-field col-2">
+                            <div class="description"><translate>Lege fest, wie lange Deine Inserat bei Jugl.net zu sehen sein soll.</translate></div>
+                            <label class="labelw100"><translate>Anzeige aktiv bis:</translate></label>
+                            <br />
+                            <label><span><translate>Tag</translate>:</span></label>
+                            <select ng-model="data.offer.active_till_parts.day" ng-options="item.key as item.val for item in data.birthDayList">
+                                <option value=""></option>
+                            </select>
+
+
+                            <label><span><translate>Monat</translate>:</span></label>
+                            <select ng-model="data.offer.active_till_parts.month"  ng-options="item.key as item.val for item in data.birthMonthList">
+                                <option value=""></option>
+                            </select>
+
+                            <label><span><translate>Jahr</translate>:</span></label>
+                            <select ng-model="data.offer.active_till_parts.year" ng-options="item.key as item.val for item in data.birthYearList">
+                                <option value=""></option>
+                            </select>
+                            <div class="notes-text"><translate>Bei fehlender Eingabe bleibt Deine Anzeige 6 Monate aktiv.</translate></div>
+                        </li>
+                    </ul>
+                </li>
+
+            </kendo-mobile-list-view>
+
+            <kendo-mobile-list-view class="searches-add-list restrict-form" k-type="'group'" k-style="'inset'">
+                <li ng-show="data.offer.type!='AD'"  class="boni-cnt"><translate>Boni festlegen</translate>
+                    <ul >
+                        <li class="textarea-field col-1">
+                            <div class="relative"><div class="description"><translate>Gib hier den Kaufbonus für Deine/n Käufer an. Nachdem Du den Geldeingang bestätigt hast, erhält der Käufer den Kaufbonus. Der Kaufbonus sollte ca. 1-5% des Kaufpreises sein.</translate></div></div>
+
+                            <div class="description">Je realistischer der Kaufbonus ist, desto seriöser wirkt Deine Anzeige auf den Käufer.</div>
+                            <div class="relative">
+                                <input ng-model="data.offer.buy_bonus" class="w-currency" type="number" server-error="data.offer.$errors.buy_bonus" placeholder="{{ 'Kaufbonus eingeben*' | translate }}" />
+                                <span class="currency icon-jugl-light"></span>
+                            </div>
+                            <div class="description">3% des Kaufbonus-Wertes erhält derjenige, der Dich zu Jugl.net eingeladen hat, nachdem Du den Geldeingang bestätigst:</div>
+                            <div class="relative">
+                                <input ng-model="data.offer.buy_bonus_provision" class="w-currency" readonly="readonly" type="number" server-error="data.offer.$errors.buy_bonus_provision" />
+                                <span class="currency icon-jugl-light"></span>
+                            </div>
+
+                        </li>
+                    </ul>
+                </li>
+
+
+                <li ng-if="marketingEnabled" class="boni-cnt"><translate>Annonce auf Startseite anzeigen (kostenpflichtig)</translate>
+                    <ul>
+                        <li class="textarea-field col-1 ">
+                            <div class="description"><translate>Wenn Du dies nicht willst, setze hier einen Haken:</translate></div>
+                            <div class="col-switcher">
+                                <label class="lbl-message"><translate>Ohne Werbebonus</translate>:</label>
+                                <div out-focus-switch><kendo-mobile-switch ng-model="data.offer.without_view_bonus" k-on-label="''" k-off-label="''" /></div>
+                            </div>
+                        </li>
+
+                        <li ng-if="!data.offer.without_view_bonus" class="textarea-field col-1">
+                            <div class="description" ng-if="!data.offer.without_view_bonus"><translate>Du kannst Deine Annonce auf der Startseite anzeigen lassen. Dabei erhält jeder, der Deine Anzeige ansieht (mind. 30 Sekunden), eine von Dir festgelegte Anzahl von Jugl-Punkten (Werbebonus).</translate></div>
+                            <div class="description" ng-if="!data.offer.without_view_bonus"><translate>Maximale Aufmerksamkeit für Dich und Dein Produkt! Schalte Deine Annonce auf der Startseite und profitiere von unserem cleveren System. Mit dem Werbebonus = "Jugls for view" wird der User von Dir dafür belohnt, dass er sich über Deine Neuigkeiten oder Produkte informiert. Kunden, die Du normalerweise nicht erreicht hättest, werden durch den Werbebonus auf Dein Produkt aufmerksam.</translate></div>
+                            <div class="description mg10" ng-if="!data.offer.without_view_bonus">
+                                <translate>Gib an, wie viel Werbebonus der einzelne Interessent für das Lesen Deiner Inserat auf der Startseite in der Kategorie</translate>
+                                <ul class="searches-add-category-list">
+                                    <li ng-if="data.offer.offerInterests[0].level1Interest.id">{{data.offer.offerInterests[0].level1Interest.title}}</li>
+                                    <li ng-if="data.offer.offerInterests[0].level2Interest.id">{{data.offer.offerInterests[0].level2Interest.title}}</li>
+                                    <li ng-if="data.offer.offerInterests[0].level3Interest.id"><span ng-repeat="interest in data.offer.offerInterests">{{interest.level3Interest.title}}{{!$last ? ', ':''}}</span></li>
+                                </ul>
+                                <translate>erhält (mind. {{data.offer.view_bonus_interest}} <span class="currency icon-jugl-light currency-rel"></span>). 1 Jugl = 1 Cent. </translate>
+                                <br /><br />
+                                <kendo-mobile-button ng-click="data.addInterests()" class="link-update-category center">
+                                    <translate>Kategorie ändern</translate>
+                                </kendo-mobile-button>
+                                <br /><br />
+                                <input ng-if="!data.offer.without_view_bonus" ng-model="data.offer.view_bonus" type="number" server-error="data.offer.$errors.view_bonus" placeholder="{{ 'Werbebonus festlegen*' | translate }}" style="margin-bottom:10px" />
+                            </div>
+                            <div class="description" ng-if="!data.offer.without_view_bonus">
+                                <translate>Bei jedem Klick gehen vom Werbebonus zusätzlich<br />+ 10% an Jugl.net und<br />+ 10% an den, der Dich zu Jugl.net eingeladen hat.</translate>
+                            </div>
+
+                        </li>
+                        <li ng-if="!data.offer.without_view_bonus" class="textarea-field col-1" ng-if="!data.offer.without_view_bonus">
+                            <div class="description mg10" ng-if="!data.offer.without_view_bonus">
+                                <div class="description" ng-if="!data.offer.without_view_bonus"><translate>Lege Dein Budget fest (mind. {{data.offer.view_bonus_total_interest}} <span class="currency icon-jugl-light currency-rel"></span>). Nicht verbrauchtes Budget wird sofort wieder gutgeschrieben.</translate></div>
+                                <input ng-if="!data.offer.without_view_bonus" ng-model="data.offer.view_bonus_total" type="number" server-error="data.offer.$errors.view_bonus_total" placeholder="{{ 'Gesamtbudget für Werbeaktion festlegen*' | translate }}" />
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                <li ng-show="!data.offer.without_view_bonus" class="interestAccess"><translate>Interessenten-/Kundenkreis einschränken</translate>
+
+                    <ul>
+                        <li class="textarea-field col-1">
+                            <div class="description"><b><translate>Definiere genau, wer Deine Inserat mit Werbebonus sehen kann.</translate></b></div>
+                            <div class="description"><translate>In den nachfolgenden Feldern kannst Du den Kreis derer einschränken, die Deine Inserat mit Werbebonus (Jugls for view) sehen können. Damit kannst Du Dein Werbebudget ganz gezielt einsetzen.</translate></div>
+                        </li>
+                        <li class="textarea-field col-1">
+                            <div class="description bold"><translate>Anzeige sichbar für:</translate></div>
+                            <label class="label-checkbox km-listview-label"><translate>Premium-Mitglieder</translate><input type="radio" value="VIP" ng-model="data.offer.uf_packet" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" class="ng-pristine ng-untouched ng-valid km-widget km-icon km-check"/></label>
+                            <label class="label-checkbox km-listview-label"><translate>Basis-Mitglieder</translate><input type="radio" value="STANDART" ng-model="data.offer.uf_packet" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" class="ng-pristine ng-untouched ng-valid km-widget km-icon km-check"/></label>
+                            <label class="label-checkbox km-listview-label"><translate>Alle</translate><input type="radio" value="ALL" ng-model="data.offer.uf_packet" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" class="ng-pristine ng-untouched ng-valid km-widget km-icon km-check"/></label>
+                        </li>
+                        <li class="textarea-field col-1">
+                            <div class="description bold"><translate>Anzeige sichbar für:</translate></div>
+                            <label class="label-checkbox km-listview-label"><translate>Weiblich</translate><input type="radio" value="F" ng-model="data.offer.uf_sex" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" class="ng-pristine ng-untouched ng-valid km-widget km-icon km-check"/></label>
+                            <label class="label-checkbox km-listview-label"><translate>Männlich</translate><input type="radio" value="M" ng-model="data.offer.uf_sex" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" class="ng-pristine ng-untouched ng-valid km-widget km-icon km-check"/></label>
+                            <label class="label-checkbox km-listview-label"><translate>Alle</translate><input type="radio" value="A" ng-model="data.offer.uf_sex" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" class="ng-pristine ng-untouched ng-valid km-widget km-icon km-check"/></label>
+                        </li>
+                        <li class="textarea-field col-1">
+                            <label class="description bold label-title line-col-2"><translate>Alter</translate>:</label>
+                            <input class="line-col-2" ng-model="data.offer.uf_age_from" type="number" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" placeholder="{{ 'von' | translate }}" />
+                            <input class="line-col-2" ng-model="data.offer.uf_age_to" type="number" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" placeholder="{{ 'bis' | translate }}" />
+                        </li>
+                        <li class="textarea-field col-1">
+                            <div class="description bold"><translate>Sichtbarkeit räumlich einschränken:</translate></div>
+                            <input class="line-col-2" ng-model="data.offer.uf_zip" type="text" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" placeholder="{{ 'PLZ' | translate }}"/>
+                            <input class="line-col-2" ng-model="data.offer.uf_city" type="text" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" placeholder="{{ 'Ort' | translate }}" />
+
+                            <select ng-model="data.offer.uf_distance_km" selectpicker="{title:'Umkreis (km)'}" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" >
+                                <option value="">Umkreis (km)</option>
+                                <option value="1">1 {{"km"|translate}}</option>
+                                <option value="5">5 {{"km"|translate}}</option>
+                                <option value="10">10 {{"km"|translate}}</option>
+                                <option value="20">20 {{"km"|translate}}</option>
+                                <option value="50">50 {{"km"|translate}}</option>
+                                <option value="100">100 {{"km"|translate}}</option>
+                            </select>
+
+                            <select ng-model="data.offer.uf_country_id" selectpicker="{title:'Land'}" ng-options="item.id as item.country for item in data.countries" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" >
+                                <option value="">Land</option>
+                            </select>
+                        </li>
+                        <li class="textarea-field col-1">
+                            <div class="description"><translate>Hier kannst Du zum Beispiel, wenn Du 0-3 eingibst, nur neuen Mitgliedern Deine Inserat zeigen. Gibst Du "ab 25 Tage" ein, handelt es sich eher um erfahrene Juglmitglieder</translate></div>
+                            <label class="description bold label-title"><translate>Mitglied seit (in Tagen)</translate>:</label>
+                            <input class="line-col-2" ng-model="data.offer.uf_member_from" type="number" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" placeholder="{{ 'von' | translate }}" />
+                            <input class="line-col-2" ng-model="data.offer.uf_member_to" type="number" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" placeholder="{{ 'bis' | translate }}" />
+                        </li>
+                        <li class="textarea-field col-1">
+                            <div class="description p"><translate>Hier kannst Du auswählen, ob nur Mitglieder, die schon einmal einen Suchauftrag bei Jugl.net erstellt haben, Deine Inserat sehen können.</translate></div>
+
+                            <input ng-model="data.offer.uf_active_search_requests_from" type="number" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" placeholder="{{ 'Anzahl aktiver Suchaufträge bei Jugl.net' | translate }}" />
+                        </li>
+                        <li class="textarea-field col-1">
+                            <div class="description bold"><translate>Durchschnittswert Nachrichten User pro 24Std.:</translate></div>
+                            <input class="line-col-2" ng-model="data.offer.uf_messages_per_day_from" type="number" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" placeholder="{{ 'von' | translate }}" />
+                            <input class="line-col-2" ng-model="data.offer.uf_messages_per_day_to" type="number" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" placeholder="{{ 'bis' | translate }}" />
+                        </li>
+                        <li class="textarea-field col-1">
+                            <div class="description"><translate>Hier kannst Du eingeben, wie oft sich ein User Inserat ansieht, bevor dieser einen Artikel kauft. Gibst Du hier z.B. von 50 bis 100 ein, dann zeigst Du Deine Inserat nur Mitgliedern, die auf 50-100 gelesene Inseraten einen Kauf tätigen.</translate></div>
+                            <label class="description bold label-title"><translate>Verhältnis gekaufter Artikel zu gelesener Inserat (Kaufbonus erhalten) 1</translate>:</label>
+                            <input class="line-col-2" ng-model="data.offer.uf_offers_view_buy_ratio_from" type="number" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" placeholder="{{ 'von' | translate }}" />
+                            <input class="line-col-2" ng-model="data.offer.uf_offers_view_buy_ratio_to" type="number" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" placeholder="{{ 'bis' | translate }}" />
+                        </li>
+                        <li class="textarea-field col-1">
+                            <div class="description"><translate>Hier kannst Du auswählen, wie viel Umsatz in Euro ein Mitglied durchschnittlich erzielt haben muss, um Deine Inserat sehen zu können.</translate></div>
+                            <label class="description bold label-title"><translate>Durchschnittlicher Umsatz in</translate> &euro;:</label>
+                            <input class="line-col-2" ng-model="data.offer.uf_offer_year_turnover_from" type="number" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" placeholder="{{ 'von' | translate }}" />
+                            <input class="line-col-2" ng-model="data.offer.uf_offer_year_turnover_to" type="number" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" placeholder="{{ 'bis' | translate }}" />
+                        </li>
+                        <li class="textarea-field col-1">
+                            <div class="description label-title"><translate>Zeige Deine Inserat nur Mitgliedern, die genügend Punkte auf ihrem Jugl-Konto haben, um Deine Waren erwerben zu können.</translate></div>
+                            <input class="line-col-1" ng-model="data.offer.uf_balance_from" type="number" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" placeholder="{{ 'Kontostand ab' | translate }}" />
+                        </li>
+                        <li class="textarea-field col-1">
+                            <div class="description label-title"><translate>Zeige Deine Anzeige nur Nutzern, die schon einmal Artikel in dieser Kategorie gekauft haben.</translate></div>
+                            <select ng-model="data.offer.uf_offer_request_completed_interest_id" ng-options="item.id as item.title for item in data.level1Interests" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" >
+                                <option value=""></option>
+                            </select>
+                        </li>
+                    </ul>
+                </li>
+            </kendo-mobile-list-view>
+            <div class="description user-radius-category">
+                <translate>Nutzer-/Kundenkreis:</translate> <span class="countRequests">{{data.offer.receiversAllCount|priceFormat}}</span>
+            </div>
+        </div>
+        <!--<div class="btn-box">
+            <kendo-mobile-button k-on-click="data.save()"><translate>Werbeaktion jetzt starten</translate></kendo-mobile-button>
+        </div>-->
+
+        <div class="btn-box primar-btn">
+            <kendo-mobile-button k-on-click="data.preview()"><translate>Vorschau ansehen</translate></kendo-mobile-button>
+        </div>
+        <p class="cat-message center">Die Vorschau ermöglicht es Dir, Deine Anzeige vor der Veröffentlichung noch einmal genau zu überprüfen und ggf. Korrekturen vorzunehmen.</p>
+    </div>
+
+
+</kendo-mobile-view>

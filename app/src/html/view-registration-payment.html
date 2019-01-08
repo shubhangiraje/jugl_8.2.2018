@@ -1,0 +1,132 @@
+<kendo-mobile-view
+        id="view-registration-payment"
+        k-layout="'layout-main'"
+        ng-controller="RegistrationPaymentCtrl as registrationPaymentCtrl"
+        k-on-show="data.onShow(kendoEvent)"
+        k-on-before-hide="data.beforeHide(kendoEvent)"
+        k-use-native-scrolling="config.views.useNativeScrolling"
+        ng-cloak>
+
+    <kendo-mobile-header>
+        <kendo-mobile-nav-bar>
+            <kendo-mobile-view-title><translate>Mitgliedschaft wählen</translate></kendo-mobile-view-title>
+        </kendo-mobile-nav-bar>
+    </kendo-mobile-header>
+
+    <div class="registration-payment-page">
+
+        <div ng-if="!data.isUpgrade" class="registration-payment-start-text-box">
+            <h2><translate>Mitgliedschaft wählen</translate></h2>
+            <p><translate>Herzlichen Glückwunsch, so einfach und schnell hast Du zum ersten Mal mit der JuglApp Geld verdient. Du hast jetzt die Möglichkeit, mit der Auswahl des PremiumPlus-Pakets (für <b>{{(data.registeredByCode ? 0:data.VIPPlusPrice)|priceFormat}}€</b> für 12 Monate) zukünftig 10% mehr Gewinn zu machen, Dein Netzwerk leichter aufzubauen und zu strukturieren und Du erhältst fünfmal so viel für Deine Likes.</translate></p>
+            <h2><translate>Wähle nun Deine Mitgliedschaft</translate></h2>
+            <p><translate>Wir würden uns sehr freuen, wenn Du Dich für eine PremiumPlus-Mitgliedschaft entscheidest. Mit einem Beitrag von nur<br><b>{{(data.registeredByCode ? 0:data.VIPPlusPrice)|priceFormat}}€</b><br>investierst Du nicht nur in Dich selbst und erhältst dadurch höhere Gewinne, sondern unterstützt auch den reibungslosen Betrieb der Plattform und somit auch Dein eigenes wirtschaftliches Netzwerk. Deine <b>{{(data.registeredByCode ? 0:data.VIPPlusPrice)|priceFormat}}€</b> sind eine Investition für's Leben.</translate></p>
+            <p><translate>Ein späteres Upgrade zu diesem Preis ist nicht mehr möglich.</translate></p>
+            <p><translate>Faire Konditionen: Einmalige Zahlung für 12 Monate, läuft automatisch aus, kann jederzeit von Dir verlängert werden.</translate></p>
+            <p><translate>Vielen Dank!</translate></p>
+        </div>
+
+        <div class="registration-payment-box">
+            <div class="payment-packet-box premium-plus">
+                <div class="payment-packet-top">
+                    <div class="payment-packet-top-name"><translate>PremiumPlus</translate></div>
+                    <div class="payment-packet-top-text"><translate>Maximal gewinnbringend</translate></div>
+                </div>
+                <div class="payment-packet-price">{{data.VIPPlusPrice|priceFormat}}€<span><translate>für 12 Monate</translate></span></div>
+                <ul class="payment-packet-list">
+                    <li><translate>Für {{data.VIPPlusPrice|priceFormat}}€ im Jahr sicherst Du Dir enorme Vorteile.</translate></li>
+                    <li><translate><span class="text-red">PREMIUMPLUS</span> Gewinnaufteilung: Du bekommst von jedem verdienten Jugl 70%. 1% geht an JuglApp und 29% gehen an den, der Dich in das Netzwerk eingeladen hat.</translate></li>
+                    <li>
+                        <p><translate>Du hast mehr Möglichkeiten Deine Zielgruppe präzise nach Interessen zu definieren.</translate></p>
+                        <p><translate>Du kannst unbegrenzt viele Mitglieder für Level 1 werben. (Freigabe nach Prüfung)</translate></p>
+                        <p><translate>Du kannst Mitglieder in Dein Netzwerk aufnehmen, die direkt über jugl.net kommen (Netzwerk aufbauen).</translate></p>
+                        <p><translate>Du erhältst höhere Boni für das Einladen neuer Mitglieder per Link (bis zu 30€) und aus dem Netzwerkaufbau (bis zu 20€).</translate></p>
+                        <p><translate>Dein Profil wirkt seriöser auf andere Nutzer.</translate></p>
+                        <p><translate>Du kannst einen Abwerbestopp für Mitglieder aus dem Netzwerkaufbau festlegen (mit deren Zustimmung).</translate></p>
+                        <p><translate>Du kannst Nutzer aus Level 1 anderen Teamleadern Deines Netzwerks zur Betreuung zuordnen.</translate></p>
+                        <p><translate>Du hast die Möglichkeit unbegrenzt private und gewerbliche Anzeigen zu schalten (Ausnahmen: Online Geld verdienen, konkurrierende Unternehmen)</translate></p>
+                        <p><translate>Du erhältst fünfmal so viel Geld für Deine Likes.</translate></p>
+                    </li>
+                    <li><translate><span class="text-red">PREMIUMPLUS Mitglieder</span> sind die interessantesten Geschäftspartner für Unternehmen und private Nutzer im Netzwerk.</translate></li>
+                    <li><translate>Die <span class="text-red">PREMIUMPLUS-Mitgliedschaft</span> läuft automatisch nach 12 Monaten aus und kann von Dir dann jederzeit verlängert werden.<br/>
+                        Kein Abo!</translate></li>
+                </ul>
+<!-- REVERT_PREMIUM_MONTH
+                <kendo-mobile-list-view ng-if="data.VIPList" class="offer-pay-radio vip-list">
+                    <li ng-repeat="packet in data.VIPList"><label class="label-checkbox">{{packet.title}}<input type="radio" name="payment_method" ng-model='data.VIP.packet' value="{{packet.value}}"/></label></li>
+                </kendo-mobile-list-view>
+-->
+                <div class="payment-packet-bottom btn-box">
+                    <kendo-mobile-button k-on-click="data.selectVIPPlus()" scroll-to="#paymentMethod"><translate>Mitgliedschaft wählen</translate></kendo-mobile-button>
+                </div>
+            </div>
+
+            <div ng-if="!data.isUpgrade || data.currentPacket!='VIP'" class="payment-packet-box premium">
+                <div class="payment-packet-top">
+                    <div class="payment-packet-top-name"><translate>Premium</translate></div>
+                    <div class="payment-packet-top-text"><translate>Maximal gewinnbringend</translate></div>
+                </div>
+                <div class="payment-packet-price">{{(data.registeredByCode ? 0:data.VIPPrice)|priceFormat}}€<span><translate>einmalig</translate></span></div>
+                <ul class="payment-packet-list">
+                    <li><translate>Für einmalig {{(data.registeredByCode ? 0:data.VIPPrice)|priceFormat}} € sicherst Du Dir großzügige Vorteile.</translate></li>
+                    <li><translate><span class="text-red">PREMIUM</span> Gewinnaufteilung: Du bekommst von jedem verdienten Jugl 70 %. 1 % gehen an JuglApp und 29 % gehen an den, der Dich in das Netzwerk eingeladen hat.</translate></li>
+                    <li>
+                        <p><translate>Als Händler oder Privatperson hast Du mehr Möglichkeiten Deine Zielgruppe präzise nach Interessen zu definieren.</translate></p>
+                        <p><translate>Unbegrenzt Mitglieder werben für Level 1. (Freigabe nach Prüfung) </translate></p>
+                        <p><translate>Mitglieder, die direkt über jugl.net kommen kannst Du in Dein Netzwerk aufnehmen.</translate></p>
+                    </li>
+                    <li><translate><span class="text-red">PREMIUM Mitglieder</span> sind die interessanteren Geschäftspartner für Unternehmen und private Nutzer im Netzwerk. <span class="text-red">10% MEHR GEWINN!</span></translate></li>
+                </ul>
+                <!-- REVERT_PREMIUM_MONTH
+                                <kendo-mobile-list-view ng-if="data.VIPList" class="offer-pay-radio vip-list">
+                                    <li ng-repeat="packet in data.VIPList"><label class="label-checkbox">{{packet.title}}<input type="radio" name="payment_method" ng-model='data.VIP.packet' value="{{packet.value}}"/></label></li>
+                                </kendo-mobile-list-view>
+                -->
+                <div class="payment-packet-bottom btn-box">
+                    <kendo-mobile-button k-on-click="data.selectVIP()" scroll-to="#paymentMethod"><translate>Mitgliedschaft wählen</translate></kendo-mobile-button>
+                </div>
+            </div>
+
+            <div id="paymentMethod">
+                <div ng-if="data.paymentMethod" class="method-payment-box standard" >
+                    <h2><translate>Wähle die gewünschte Zahlungsart:</translate></h2>
+                    <kendo-mobile-list-view class="method-payment-list" k-style="'inset'">
+                        <li><label class="label-checkbox"><translate>Giropay</translate><input value="PAYONE_GIROPAY" type="radio" ng-model="data.VIP.payment_method" /></label></li>
+                        <!--
+                                            <li><label class="label-checkbox"><translate>Paypal</translate><input value="PAYONE_PAYPAL" type="radio" ng-model="data.VIP.payment_method" /></label></li>
+                        -->
+                        <li><label class="label-checkbox"><translate>Kreditkarte</translate><input value="PAYONE_CC" type="radio" ng-model="data.VIP.payment_method" /></label></li>
+                        <li><label class="label-checkbox"><translate>Sofortüberweisung</translate><input value="PAYONE_SOFORT" type="radio" ng-model="data.VIP.payment_method" /></label></li>
+                        <li><label class="label-checkbox"><translate>Banküberweisung</translate><input value="ELV" type="radio" ng-model="data.VIP.payment_method" /></label></li>
+                    </kendo-mobile-list-view>
+                    <p><translate>Die Belastung Ihres Kreditkartenkontos erfolgt i.d.R. 2-3 Werktage nach Abschluss der Bestellung. Ihre Kreditkartendaten können Sie auf der nächsten Seite eingeben. Bitte weiter klicken.</translate></p>
+                    <div class="method-payment-img">
+                        <img src="img/visa.png" alt="visa">
+                        <img src="img/mastercard.png" alt="mastercard">
+                    </div>
+                    <div class="btn-box">
+                        <kendo-mobile-button ng-disabled="data.VIP.saving" k-on-click="data.saveVIP()"><translate>Jetzt bezahlen</translate></kendo-mobile-button>
+                    </div>
+                </div>
+            </div>
+
+            <div ng-if="!data.isUpgrade" class="payment-packet-box standard">
+                <div class="payment-packet-top">
+                    <div class="payment-packet-top-name"><translate>standard</translate></div>
+                </div>
+                <div class="payment-packet-price">0€</div>
+                <ul class="payment-packet-list">
+                    <li><translate>Du bekommst von jedem verdienten Jugl 60 %. 11 % gehen an JuglApp und 29 % gehen an den, der Dich in das Netzwerk eingeladen hat.</translate></li>
+                    <li><translate>Unser Tipp: Für nur einmalig 3 € kannst du alle Vorteile von JuglApp uneingeschränkt nutzen und Du unterstützt unsere Gemeinschaft und somit Dein eigenes wirtschaftliches Netzwerk.</translate></li>
+                    <li><translate>ACHTUNG: Ein späteres Upgrade zu diesem Preis ist nicht mehr möglich!</translate></li>
+                </ul>
+                <div class="payment-packet-bottom btn-box">
+                    <kendo-mobile-button k-on-click="data.saveSTD()"><translate>Mitgliedschaft wählen</translate></kendo-mobile-button>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+
+</kendo-mobile-view>

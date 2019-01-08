@@ -1,0 +1,106 @@
+<kendo-mobile-view
+        id="view-invite-log"
+        k-layout="'layout-main'"
+        k-use-native-scrolling="config.views.useNativeScrolling"
+        k-on-show="data.onShow(kendoEvent)"
+        ng-controller="InviteLogCtrl"
+        ng-cloak>
+
+    <kendo-mobile-header>
+        <kendo-mobile-nav-bar>
+            <kendo-mobile-view-title ng-click="showInfoPopup('view-invite-log')"><translate>Einladungshistorie</translate></kendo-mobile-view-title>
+            <kendo-mobile-back-button k-on-click="onClickBack()" data-align="left"><span class="platform-android"><translate>Zurück</translate></span></kendo-mobile-back-button>
+            <kendo-mobile-button class="platform-ios" data-align="right" k-on-click="showInfoPopup('view-invite-log')"><span ng-class="{'blink': isOneShowInfoPopup('view-invite-log')}" class="icon-info-ios"></span></kendo-mobile-button>
+        </kendo-mobile-nav-bar>
+    </kendo-mobile-header>
+
+    <div class="info-icon-box">
+        <span ng-click="showInfoPopup('view-invite-log')" ng-class="{'blink': isOneShowInfoPopup('view-invite-log')}" class="platform-android icon-info-android"></span>
+    </div>
+
+    <div class="android-title">
+        <h1 ng-click="showInfoPopup('view-invite-log')"><translate>Einladungshistorie</translate></h1>
+    </div>
+
+    <p class="text"><translate>Es werden nur Einladungen per SMS und per Email angezeigt, Einladungen per Link oder Whatsapp können nicht dargestellt werden.</translate></p>
+
+    <kendo-mobile-button-group k-options="data.statusFilterOptions" id="select-period">
+        <li><translate>Offen</translate></li>
+        <li><translate>Link geklickt</translate></li>
+        <li><translate>Registriert</translate></li>
+    </kendo-mobile-button-group>
+
+    <div ng-if="data.log.loading && !data.log.hasMore" class="km-loader km-widget select-loader" data-role="loader" style="">
+        <span class="km-loading km-spin"></span>
+        <span class="km-loading-left"></span>
+        <span class="km-loading-right"></span>
+        <h1><translate>Loading</translate>...</h1>
+    </div>
+
+   <!-- <kendo-mobile-list-view k-type="'group'" k-style="'inset'">-->
+    <!--<div class="km-listview-wrapper">-->
+        <ul class="km-widget km-listview km-listgroupinset list-invite-log-wrapper">
+            <li ng-repeat="group in data.log.grouped" class="km-group-container">
+                <div class="km-group-title">
+                    <div class="km-text">{{::group.dt}}</div>
+                </div>
+
+                <ul class="friends-history-list km-list">
+                    <li ng-repeat="item in group.items">
+                        {{::item.name}}
+                        <div class="friends-history-list-btns">
+                            <kendo-mobile-button ng-if="item.status!='Registriert'" k-on-click="data.resend(item)" class="friend-btn"><translate>Erneut einladen</translate></kendo-mobile-button>
+                            <button ng-if="item.status!='Registriert'" type="button" class="delete-invite-btn" ng-click="data.delete(item.id)">&nbsp;</button>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    <!--</div>-->
+    <!--</kendo-mobile-list-view>-->
+
+<!--
+    <script id="template-funds-item" type="text/x-kendo-template">
+        {{::dataItem.address}}
+        <kendo-mobile-button ng-if="dataItem.status!='Registriert'" k-on-click="data.resend(dataItem)" class="friend-btn">Erneut einladen</kendo-mobile-button>
+    </script>
+
+    <kendo-mobile-list-view k-options="data.listViewOptions" k-style="'inset'">
+    </kendo-mobile-list-view>
+-->
+
+    <div class="load-btn-box" ng-show="data.log.hasMore">
+        <kendo-mobile-button k-on-click="data.log.loadMore()">
+            <span ng-if="!data.log.loading"><translate>Load More</translate></span>
+            <span ng-if="data.log.loading" class="km-loader km-widget select-loader" data-role="loader" style="">
+                <span class="km-loading km-spin"></span>
+                <span class="km-loading-left"></span>
+                <span class="km-loading-right"></span>
+                <h1><translate>Loading</translate>...</h1>
+                <span class="btn-text-android"><translate>Loading</translate></span>
+            </span>
+        </kendo-mobile-button>
+    </div>
+
+<!--
+    <kendo-mobile-list-view k-type="'group'" data-style="inset">
+        <li>Offen
+            <ul class="friends-history-list">
+                <li>Emerson Anderson<kendo-mobile-button class="friend-btn">Erneut einladen</kendo-mobile-button></li>
+                <li>Stella Miller<kendo-mobile-button class="friend-btn">Erneut einladen</kendo-mobile-button></li>
+                <li>Janetta Ainslee<kendo-mobile-button class="friend-btn">Erneut einladen</kendo-mobile-button></li>
+                <li>Stella Miller<kendo-mobile-button class="friend-btn">Erneut einladen</kendo-mobile-button></li>
+            </ul>
+        </li>
+        <li>Akzeptiert
+            <ul class="friends-history-list">
+                <li>Emerson Anderson<kendo-mobile-button class="friend-btn">Erneut einladen</kendo-mobile-button></li>
+                <li>Stella Miller<kendo-mobile-button class="friend-btn">Erneut einladen</kendo-mobile-button></li>
+                <li>Janetta Ainslee<kendo-mobile-button class="friend-btn">Erneut einladen</kendo-mobile-button></li>
+                <li>Stella Miller<kendo-mobile-button class="friend-btn">Erneut einladen</kendo-mobile-button></li>
+            </ul>
+        </li>
+    </kendo-mobile-list-view>
+-->
+
+</kendo-mobile-view>

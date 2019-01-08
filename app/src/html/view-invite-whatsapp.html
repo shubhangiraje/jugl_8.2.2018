@@ -1,0 +1,36 @@
+<kendo-mobile-view
+        ng-controller="InviteWhatsappCtrl"
+        id="view-invite-whatsapp"
+        k-layout="'layout-main'"
+        class="appearance"
+        k-on-after-show="data.onShow(kendoEvent)"
+        k-use-native-scrolling="config.views.useNativeScrolling"
+        fields-scroll ng-cloak>
+
+    <kendo-mobile-header>
+        <kendo-mobile-nav-bar>
+            <kendo-mobile-view-title><translate>Einladen per Whatsapp</translate></kendo-mobile-view-title>
+            <kendo-mobile-back-button k-on-click="onClickBack()"  data-align="left"><span class="platform-android"><translate>Zurück</translate></span></kendo-mobile-back-button>
+        </kendo-mobile-nav-bar>
+    </kendo-mobile-header>
+
+    <kendo-mobile-scroller class="box-view-invite-email invite-whatsapp">
+        <h3><translate>Per Whatsapp einladen</translate></h3>
+
+        <kendo-mobile-list-view class="list-textarea">
+            <li class="textarea-field"><label><translate>Nachricht</translate><textarea ng-model="data.text" style="resize: none" placeholder="{{'Text'|translate}}"></textarea></label></li>
+        </kendo-mobile-list-view>
+
+        <div class="btn-box">
+            <kendo-mobile-button k-on-click="data.send()"><translate>Einladen</translate></kendo-mobile-button>
+        </div>
+    </kendo-mobile-scroller>
+
+
+
+</kendo-mobile-view>
+
+
+
+
+

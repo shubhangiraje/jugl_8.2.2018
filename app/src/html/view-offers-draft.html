@@ -1,0 +1,98 @@
+<kendo-mobile-view
+        id="view-offers-draft"
+        k-layout="'layout-main'"
+        k-on-show="data.onShow(kendoEvent)"
+        k-on-hide="data.onShow(kendoEvent)"
+        ng-controller="OfferDraftCtrl as offerDraftCtrl"
+        k-use-native-scrolling="config.views.useNativeScrolling"
+        ng-cloak>
+
+    <kendo-mobile-header>
+        <kendo-mobile-nav-bar>
+            <kendo-mobile-view-title><translate>Entwürfe</translate></kendo-mobile-view-title>
+            <kendo-mobile-back-button  k-on-click="onClickBack()" data-align="left"><span class="platform-android"><translate>Zurück</translate></span></kendo-mobile-back-button>
+        </kendo-mobile-nav-bar>
+    </kendo-mobile-header>
+
+    <div class="android-title">
+        <h1><translate>Entwürfe</translate></h1>
+    </div>
+
+    <div ng-if="data.log.loading && !data.log.hasMore" class="km-loader km-widget select-loader" data-role="loader" style="">
+        <span class="km-loading km-spin"></span>
+        <span class="km-loading-left"></span>
+        <span class="km-loading-right"></span>
+        <h1><translate>Loading</translate>...</h1>
+    </div>
+
+    <div ng-if="data.log.items.length == 0 && !data.log.loading" class="results-empty-text">
+        <translate>Keine Entwürfe vorhanden</translate>
+    </div>
+
+    <kendo-mobile-list-view class="found-interests-list">
+        <li ng-repeat="item in data.log.items" id="offer-{{item.id}}">
+            <div class="found-offer">
+                <div class="box-found-picture">
+                    <a href="" ng-click="navigate('view-offers-draft-update.html?id='+item.id)" class="box-found-link">
+                        <div class="found-img">
+                            <img ng-src="{{::item.image}}" />
+                        </div>
+                    </a>
+                </div>
+
+                <div class="box-found-info">
+                    <div class="found-offer-type">
+                        <span ng-click="showInfoPopup('info-offer-type')" ng-if="item.type == 'AUCTION'"><translate>Bieterverfahren</translate></span>
+                        <span ng-click="showInfoPopup('info-offer-type')" ng-if="item.type == 'AD'"><translate>Keine Kaufmöglichkeit</translate></span>
+                        <span ng-click="showInfoPopup('info-offer-type')" ng-if="item.type == 'AUTOSELL'"><translate>Sofortkauf</translate></span>
+                    </div>
+                    <a href="" ng-click="navigate('view-offers-draft-update.html?id='+item.id)" class="box-found-link">
+                        <div ng-if="item.title" class="found-title">{{::item.title}}</div>
+                        <div ng-if="!item.title" class="found-title">(<translate>Entwurf</translate>)</div>
+
+                        <div class="found-category clearfix">
+                            <span>{{::item.level1Interest}}</span>
+                            <span ng-if="item.level2Interest">{{::item.level2Interest}}</span>
+                            <span ng-if="item.level3Interests">{{::item.level3Interests}}</span>
+                        </div>
+                        <div ng-if="item.type!='AD' && item.price" class="found-price">{{::item.price|priceFormat}} &euro;</div>
+                    </a>
+
+                    <div ng-if="item.view_bonus && marketingEnabled" class="found-bonus promotion-bonus"><translate>Werbebonus</translate>:&nbsp;<span>{{::item.view_bonus|priceFormat}}<span class="icon-jugl green"></span></span></div>
+                    <div ng-if="item.buy_bonus" class="found-bonus buy-bonus"><translate>Kaufbonus</translate>:&nbsp;<span>{{::item.buy_bonus|priceFormat}}<span class="icon-jugl blue"></span></span></div>
+                    <div ng-if="item.view_bonus_total" class="found-bonus">
+                        <translate>Budget</translate>:&nbsp;<span>{{::item.view_bonus_total|priceFormat}}<span class="icon-jugl"></span></span>
+                    </div>
+
+                    <div ng-if="item.view_bonus_used" class="found-bonus"><translate>Budget verbraucht</translate>:&nbsp;<span>{{::item.view_bonus_used|priceFormat}}<span class="icon-jugl"></span></span></div>
+                    <div ng-if="item.show_amount == 1 && item.amount" class="found-bonus"><translate>Stückzahl</translate>:&nbsp;<span>{{::item.amount}}</span></div>
+                    <div ng-if="item.active_till" class="found-bonus"><translate>Aktiv bis</translate>:&nbsp;<span>{{::item.active_till|date:"dd.MM.yyyy"}}</span></div>
+                    <div ng-if="item.delivery_cost>0" class="found-bonus"><translate>Versandkosten</translate>:&nbsp;<span>{{::item.delivery_cost|priceFormat}} &euro;</span></div>
+                    <div class="found-date">{{::item.create_dt|date:"dd.MM.yyyy"}}</div>
+                </div>
+
+                <div class="btn-del-offer" ng-click="data.delete(item.id)"></div>
+            </div>
+        </li>
+
+    </kendo-mobile-list-view>
+
+
+    <div class="load-btn-box" ng-show="data.log.hasMore">
+        <kendo-mobile-button k-on-click="data.log.loadMore()">
+            <span ng-if="!data.log.loading"><translate>Load More</translate></span>
+            <span ng-if="data.log.loading" class="km-loader km-widget select-loader" data-role="loader" style="">
+                <span class="km-loading km-spin"></span>
+                <span class="km-loading-left"></span>
+                <span class="km-loading-right"></span>
+                <h1><translate>Loading</translate>...</h1>
+                <span class="btn-text-android"><translate>Loading</translate></span>
+            </span>
+        </kendo-mobile-button>
+    </div>
+
+</kendo-mobile-view>
+
+
+
+

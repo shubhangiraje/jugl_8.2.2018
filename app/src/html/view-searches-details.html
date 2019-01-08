@@ -1,0 +1,151 @@
+<kendo-mobile-view
+        id="view-searches-details"
+        k-layout="'layout-main'"
+        ng-controller="SearchRequestDetailCtrl"
+        k-on-show="data.onShow(kendoEvent)"
+        k-use-native-scrolling="config.views.useNativeScrolling" ng-cloak>
+
+    <kendo-mobile-header>
+        <kendo-mobile-nav-bar>
+            <kendo-mobile-view-title>&nbsp;</kendo-mobile-view-title>
+            <kendo-mobile-back-button k-on-click="onClickBack()" data-align="left"><span class="platform-android"><translate>Zurück</translate></span></kendo-mobile-back-button>
+        </kendo-mobile-nav-bar>
+    </kendo-mobile-header>
+
+    <div class="box-details-info">
+        <div class="details-title details-title-and-favorite allow-clipboard">{{data.searchRequest.title}}
+            <div ng-if="!data.searchRequest.favorite" ng-click="data.addFavorite(data.searchRequest.id)" ng-class="{'favorite-false': !data.searchRequest.favorite}" class="favorite"><translate>Merken</translate></div>
+            <div ng-if="data.searchRequest.favorite" ng-class="{'favorite-true': data.searchRequest.favorite}" class="favorite"><translate>Gemerkt</translate></div>
+        </div>
+        <div class="details-category clearfix">
+            <span>{{data.searchRequest.level1Interest}}</span>
+            <span ng-if="data.searchRequest.level2Interest">{{data.searchRequest.level2Interest}}</span>
+            <span ng-if="data.searchRequest.level3Interests">{{data.searchRequest.level3Interests}}</span>
+        </div>
+        <div ng-if="data.searchRequest.price_to" class="details-price"><translate>Preise</translate>:&nbsp;<span>{{data.searchRequest.price_from|priceFormat}} - {{data.searchRequest.price_to|priceFormat}} &euro;</span></div>
+        <div ng-if="!data.searchRequest.price_to" class="details-price"><translate>Preise</translate>:&nbsp;<span>{{data.searchRequest.price_from|priceFormat}} &euro;</span></div>
+        <div ng-if="data.searchRequest.bonus" class="details-bonus"><translate>Vermittlungsbonus</translate>:&nbsp;<span>{{data.searchRequest.bonus|priceFormat}} <span class="icon-jugl blue"></span></span></div>
+
+        <div class="offer-user-box clearfix">
+            <a href="" ng-click="navigate('view-user-profile.html?id='+data.searchRequest.user.id)">
+                <div class="offer-user-avatar">
+                    <img ng-src="{{data.searchRequest.user.avatarMobile}}" alt=""/>
+                </div>
+            </a>
+            <div class="offer-user-name">{{data.searchRequest.user|userName}}</div>
+            <div class="offer-user-rating">
+                <div class="star-rating">
+                    <span ng-style="{width:(+data.searchRequest.user.rating)+'%'}"></span>
+                </div>
+                <div class="user-feedback-count">({{::data.searchRequest.user.feedback_count}})</div>
+                <div ng-if="data.searchRequest.user.packet=='VIP'" class="user-packet">&nbsp;</div>
+                <div ng-if="data.searchRequest.user.packet=='VIP_PLUS'" class="user-packet-vip-plus">&nbsp;</div>
+            </div>
+        </div>
+    </div>
+
+
+    <ul class="box-details-gallery">
+
+        <li ng-if="data.searchRequest.bigImages" ng-repeat="image in data.searchRequest.images" >
+            <a data-urls="{{data.searchRequest.bigImages}}" data-index="{{$index}}" href="#view-photo-swipe-popup" data-rel="modalview" data-role="button">
+                <img ng-src="{{image}}" />
+            </a>
+        </li>
+
+        <!--<li ng-if="data.searchRequest.bigImages" ng-repeat="image in data.searchRequest.images" ng-click="data.showGallery($index, data.searchRequest.bigImages)"><img ng-src="{{image}}" /></li>-->
+        <li ng-if="!data.searchRequest.bigImages"><img ng-src="{{data.searchRequest.images[0]}}" /></li>
+    </ul>
+
+    <kendo-mobile-list-view class="details-list" k-type="'group'" k-style="'inset'">
+        <li><translate>Details</translate>
+            <ul class="details-param-list allow-clipboard">
+                <li ng-if="pv.value" ng-repeat="pv in data.searchRequest.paramValues"><span class="details-param">{{pv.title}}: </span><span class="details-value">{{pv.value}}</span></li>
+            </ul>
+        </li>
+        <li><translate>Beschreibung</translate>
+            <ul class="details-description allow-clipboard">
+                <li>
+                    <div ng-if="data.searchRequest.search_request_type=='STANDART'" class="description-text" ng-bind-html="data.searchRequest.description | linky" open-link></div>
+                    <div ng-if="data.searchRequest.search_request_type=='EXTERNAL_AD'" class="description-text" ng-bind-html="data.searchRequest.description" open-link></div>
+                </li>
+            </ul>
+        </li>
+        <li><translate>ORT</translate>
+            <ul class="details-param-list allow-clipboard">
+                <li><span class="details-param"><translate>Land</translate>: </span><span class="details-value">{{data.searchRequest.country|translate}}</span></li>
+                <li><span class="details-param"><translate>PLZ</translate>: </span><span class="details-value">{{data.searchRequest.zip}}</span></li>
+                <li><span class="details-param"><translate>Ort</translate>: </span><span class="details-value">{{data.searchRequest.city}}</span></li>
+                <li><span class="details-param"><translate>Straße/Nr.</translate>: </span><span class="details-value">{{data.searchRequest.address}}</span></li>
+            </ul>
+        </li>
+        <li><translate>Fragen zum Auftrag / zum Produkt</translate>
+            <div class="btn-box">
+                <kendo-mobile-button href="#view-search-request-comment-popup" data-search-request-id="{{data.searchRequest.id}}" data-rel="modalview"><translate>Frage hinzufügen</translate></kendo-mobile-button>
+            </div>
+
+            <ul class="profile-feedback-list">
+                <li ng-repeat="itemComment in data.comments.items" class="profile-feedback-list-item">
+                    <div class="clearfix">
+                        <div class="feedback-date-and-rating">
+                            <div class="feedback-date">{{itemComment.create_dt|date:"dd.MM.yyyy"}}</div>
+                        </div>
+
+                        <div class="offer-user-box clearfix">
+                            <div ng-click="navigate('view-user-profile.html?id='+itemComment.user.id)" class="offer-user-avatar">
+                                <img ng-src="{{itemComment.user.avatarMobile}}" alt=""/>
+                            </div>
+                            <div class="offer-user-name">{{::itemComment.user|userName}}</div>
+                            <div class="offer-user-rating">
+                                <div class="star-rating">
+                                    <span once-style="{width:(+itemComment.user.rating)+'%'}"></span>
+                                </div>
+                                <div class="user-feedback-count">({{::itemComment.user.feedback_count}})</div>
+                                <div ng-if="itemComment.user.packet=='VIP'" class="user-packet">&nbsp;</div>
+                                <div ng-if="itemComment.user.packet=='VIP_PLUS'" class="user-packet-vip-plus">&nbsp;</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="feedback-text" ng-bind-html="itemComment.comment|linky" open-link></div>
+                    <ul ng-if="itemComment.response" class="feedback-response-box">
+                        <li>
+                            <div class="offer-user-box clearfix">
+                                <div ng-click="navigate('view-user-profile.html?id='+data.searchRequest.user.id)" class="offer-user-avatar">
+                                    <img ng-src="{{data.searchRequest.user.avatarMobile}}" alt=""/>
+                                </div>
+                                <div class="offer-user-name">{{::data.searchRequest.user|userName}}</div>
+                                <div class="offer-user-rating">
+                                    <div class="feedback-response-dt">{{itemComment.response_dt|date:"dd.MM.yyyy"}}</div>
+                                </div>
+                            </div>
+                            <div class="feedback-text" ng-bind-html="itemComment.response|linky" open-link></div>
+                        </li>
+                    </ul>
+                    <div ng-if="status.user.id==data.searchRequest.user.id" class="btn-box-line">
+                        <kendo-mobile-button data-rel="modalview" data-id="{{::itemComment.id}}" href="#view-search-request-comment-response-popup"><translate>Antworten</translate></kendo-mobile-button>
+                    </div>
+                </li>
+            </ul>
+
+            <div class="load-btn-box" ng-show="data.comments.hasMore">
+                <kendo-mobile-button k-on-click="data.commentsLoadMore()">
+                    <span ng-if="!data.comments.loading"><translate>Load More</translate></span>
+                    <span ng-if="data.comments.loading" class="km-loader km-widget select-loader" data-role="loader" style="">
+                        <span class="km-loading km-spin"></span>
+                        <span class="km-loading-left"></span>
+                        <span class="km-loading-right"></span>
+                        <h1><translate>Loading</translate>...</h1>
+                        <span class="btn-text-android"><translate>Loading</translate></span>
+                    </span>
+                </kendo-mobile-button>
+            </div>
+        </li>
+    </kendo-mobile-list-view>
+    <div class="btn-box" ng-if="status.user.id!=data.searchRequest.user.id && data.searchRequest.search_request_type=='STANDART'">
+        <kendo-mobile-button ng-if="data.searchRequest.status=='ACTIVE'" href="view-searches-offer-add.html?id={{data.searchRequest.id}}"><translate>Anbieten</translate></kendo-mobile-button>
+        <kendo-mobile-button href="view-searches-search-by-user.html?id={{data.searchRequest.user.id}}"><translate>Weitere Anzeigen des Anbieters anzeigen</translate></kendo-mobile-button>
+        <kendo-mobile-button ng-if="!data.searchRequest.spamReported" k-on-click="data.spamReport({search_request_id:data.searchRequest.id})"><translate>Spam melden</translate></kendo-mobile-button>
+        <kendo-mobile-button ng-if="data.searchRequest.spamReported" k-on-click=""><translate>Spam gemeldet</translate></kendo-mobile-button>
+    </div>
+
+</kendo-mobile-view>

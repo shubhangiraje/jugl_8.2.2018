@@ -1,0 +1,27 @@
+<kendo-mobile-view
+        id="view-error"
+        k-layout="'layout-main'"
+        k-use-native-scrolling="config.views.useNativeScrolling"
+        ng-cloak
+        >
+
+    <kendo-mobile-header>
+        <kendo-mobile-nav-bar>
+            <kendo-mobile-back-button k-on-click="onClickBack()" data-align="left"><span class="platform-android"><translate>Zurück</translate></span></kendo-mobile-back-button>
+        </kendo-mobile-nav-bar>
+    </kendo-mobile-header>
+
+
+    <div class="head-title">
+        <h1><translate>Diese Seite ist leider nicht mehr vorhanden.</translate></h1>
+    </div>
+
+    <div class="page-content">
+        <p><translate>Evtl. wurde die Seite gelöscht oder ist nicht mehr aktiv.</translate></p>
+    </div>
+
+    <div class="btn-box">
+        <kendo-mobile-button href="#:back"><translate>Zurück zur vorherigen Seite</translate></kendo-mobile-button>
+    </div>
+
+</kendo-mobile-view>

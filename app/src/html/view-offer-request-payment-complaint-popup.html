@@ -1,0 +1,16 @@
+<kendo-mobile-modal-view
+        k-on-open="data.onOpen(kendoEvent)"
+        ng-controller="OfferRequestPaymentComplaintPopupCtrl as offerRequestPaymentComplaintPopupCtrl"
+        id="offer-request-payment-complaint-popup"
+        class="modal" style="width: 90%;" modal ng-cloak>
+
+    <div class="feedback-box">
+        <label><translate>Mahnungstexte:</translate></label>
+        <textarea ng-model="data.paymentComplaint.text" rows="6"></textarea>
+    </div>
+
+    <div class="btn-box">
+        <kendo-mobile-button class="closeModalBtn"><translate>Cancel</translate></kendo-mobile-button>
+        <kendo-mobile-button k-on-click="data.save()"><translate>Absenden</translate></kendo-mobile-button>
+    </div>
+</kendo-mobile-modal-view>

@@ -1,0 +1,2974 @@
+/* Android css */
+
+.km-android input[type="text"]:focus,
+.km-android select:focus,
+.km-android textarea:focus,
+.km-android.km-pane input[type="text"]:focus {
+    color: #000000;
+    border-color: #33b5e5;
+}
+
+@font-face {
+    font-family: 'jugl-icons';
+    src:url('../fonts/jugl-icons.eot?-frhln');
+    src:url('../fonts/jugl-icons.eot?#iefix-frhln') format('embedded-opentype'),
+    url('../fonts/jugl-icons.woff?-frhln') format('woff'),
+    url('../fonts/jugl-icons.ttf?-frhln') format('truetype'),
+    url('../fonts/jugl-icons.svg?-frhln#jugl-icons') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+/* ALL */
+
+.km-android .km-state-active .km-listview-link,
+.km-android .km-state-active .km-listview-label,
+.km-android .km-listview-label input[type=radio]:checked:after {
+    background: #33b5e5 !important;
+    color: #ffffff !important;
+}
+
+.km-android .view-title-ios {
+    font-size: 0;
+}
+
+.km-android .km-drawer .km-state-active .km-listview-link {
+    background: none !important;
+    color: inherit !important;
+}
+
+.km-android .km-drawer .km-icon {
+    z-index: 0;
+}
+
+
+.km-android .km-button {
+    font-weight: normal;
+}
+
+.km-android input[type=text]:not(.k-input),
+.km-android input[type=password] {
+    border-width: 0 0 4px;
+}
+
+.km-android .text {
+    font-size: 1.3em;
+    font-weight: normal;
+    line-height: 1.3em;
+    margin-top: .5em;
+    margin-bottom: .5em;
+}
+
+.km-android .android-title,
+.km-android .head-title {
+    text-align: center;
+    padding: 15px 35px 10px;
+}
+
+.km-android .android-title h1,
+.km-android .head-title h1 {
+    font-size: 20px;
+    font-weight: bold;
+    line-height: normal;
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+}
+
+.km-android .platform-ios {
+    display: none !important;
+}
+
+.km-android .has-error input,
+.km-android .has-error textarea,
+.km-android .has-error select {
+    border-color: #c74652 !important;
+}
+
+.km-android .dop-title {
+    font-size: 20px;
+    font-weight: bold;
+    line-height: normal;
+    padding: 0 1em 1em;
+    text-align: center;
+}
+
+
+.km-android input:disabled,
+.km-android input:read-only,
+.km-android select:disabled {
+    color: #a8a8aa;
+}
+
+
+/* LOGIN */
+
+/*.km-android .login-box {*/
+    /*width: 100%;*/
+    /*margin-top: 40px;*/
+    /*position: absolute;*/
+    /*top: 50%;*/
+    /*-webkit-transform: translateY(-50%);*/
+    /*-ms-transform: translateY(-50%);*/
+    /*transform: translateY(-50%);*/
+    /*-webkit-box-sizing: border-box;*/
+    /*-moz-box-sizing: border-box;*/
+    /*box-sizing: border-box;*/
+/*}*/
+
+/*.km-android #view-login .km-scroll-container {*/
+    /*-webkit-transform: none;*/
+    /*-ms-transform: none;*/
+    /*transform: none;*/
+/*}*/
+
+.km-android #view-login .login-box {
+    padding: 0 23px;
+}
+
+.km-android #view-login .km-listview-wrapper {
+    padding: 0;
+}
+
+.km-android-light #view-login .km-list>li {
+    box-shadow: none;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+
+
+/* TAB STRIP */
+
+.km-android .km-tabstrip .km-icon {
+    margin-top: 7px;
+}
+
+.km-android .km-tabstrip .km-icon:after{
+    font-family: 'jugl-icons';
+    font-size: .9em;
+}
+
+
+.km-android .km-icon-drawer:after {
+    content: "\e612";
+}
+
+.km-android .km-icon-message:after {
+    content: "\e613";
+}
+
+.km-android .km-icon-megaphone:after {
+    content: "\e611";
+}
+
+.km-android .km-icon-coins:after {
+    content: "\e60d";
+}
+
+
+.km-android .km-tabstrip .km-badge {
+    top: 3px;
+}
+
+.km-android .km-badge {
+    opacity: 1;
+    background: #1eb3ea;
+    z-index: 999;
+    min-width: 12px;
+    padding: 0 3px;
+    height: 18px;
+    border-radius: 9px;
+    line-height: 20px;
+}
+
+
+.km-android #layout-main-drawer.km-state-active {
+    color: rgba(34, 34, 34, 0.4);
+    border-bottom-color: #e9e9e9;
+}
+
+
+
+
+/* DRAWER */
+
+.km-android #drawer-main {
+    width: 290px;
+}
+
+.km-android #drawer-main .km-content {
+    padding-top: 20px;
+}
+
+.km-android #drawer-main .km-content,
+.km-android #drawer-main .km-list > li,
+.km-android #drawer-main .km-listview-link > .km-icon,
+.km-android #drawer-main .km-list li > .km-icon {
+    background-color: #4e4e4e;
+    color: #ffffff;
+}
+
+.km-android #drawer-main .km-list {
+    /*padding-left: 5px;*/
+}
+
+.km-android #drawer-main .left-menu li a {
+    line-height: normal;
+    margin: 0;
+    padding-left: 24px;
+}
+
+
+.km-android #drawer-main .km-list .km-icon {
+    position: absolute;
+    left: 0;
+    top: 10px;
+}
+
+.km-android #drawer-main .km-icon:after {
+    font-family: 'jugl-icons';
+}
+
+.km-android .km-icon-user-add:after {
+    content: "\e618";
+}
+
+.km-android .km-icon-structure:after {
+    content: "\e60a";
+}
+
+.km-icon-user:after {
+    content: "\e617";
+}
+
+.km-android .km-icon-search:after {
+    content: "\e61d";
+}
+
+.km-android .km-icon-setting:after {
+    content: "\e615";
+}
+
+.km-android .km-icon-help:after {
+    content: "\e60f";
+}
+
+.km-android .km-icon-logout:after {
+    content: "\e610";
+}
+
+.km-android .km-icon-interest:after {
+    content: "\e633";
+}
+
+.km-android .km-icon-search-other-interest:after {
+    content: "\e624";
+}
+
+.km-android .km-icon-search-interest:after {
+    content: "\e623";
+}
+
+.km-android .km-icon-search-my:after {
+    content: "\e62a";
+}
+
+.km-android .km-icon-offers-my:after {
+    content: "\e629";
+    top: 1px;
+}
+
+.km-android .km-icon-offers-search:after {
+    content: "\e626";
+    top: 1px;
+}
+
+.km-android .km-icon-offers-add:after {
+    content: '\e627';
+    top: 1px;
+}
+
+.km-android .km-icon-deals-completed:after {
+    content: '\e625';
+}
+
+.km-android .km-icon-all-functions:after {
+    content: '\e62c';
+    top: 1px;
+}
+
+.km-android .km-icon-earn-money:after {
+    content: '\e62f';
+    top: 1px;
+}
+
+.km-android .km-icon-favorites:after {
+    content: '\e622';
+    top: 0;
+}
+
+.km-android .km-icon-impressum:after {
+    content: '\e61e';
+    top: 0;
+}
+
+.km-android .km-icon-dashboard:after {
+    content: '\e908';
+    top: 0;
+}
+
+.km-android .km-icon-info:after {
+    content: '\e624';
+    top: 0;
+}
+
+.km-android .km-icon-profile-delete:after {
+    content: "\e90c";
+}
+
+.km-android .km-icon-forum:after {
+    content: "\e914";
+    top: -2px;
+}
+
+.km-android .km-icon-manage-network:after {
+    content: "\e916";
+}
+
+.km-android .km-icon-data-protection:after {
+    content: "\e91a";
+}
+
+
+/* CONTACT */
+
+.km-android #view-contacts .km-list>li > a.details-link, .km-android #view-select-contact .km-list>li > a.details-link {
+    text-decoration: none;
+    overflow: hidden;
+    line-height: normal;
+}
+
+/*
+.km-android .list-box-user.km-list.list-box-chat-contacts li{
+    position: absolute;
+}
+*/
+
+.km-android .list-box-user.km-list li {
+    padding-left: 5px;
+    position: relative;
+}
+
+.km-android .km-icon-group:after,
+.km-android .km-icon-group:before,
+.km-android .km-icon-ungroup:after,
+.km-android .km-icon-ungroup:before{
+    top: 2px;
+    right: 10px;
+}
+
+.km-android #view-contacts .km-filter-wrap input {
+    width: 100%;
+    position: static;
+    margin-top: 0;
+}
+
+.km-android .chats-btn-box {
+    margin-top: 20px;
+}
+
+.km-android .chats-btn-box>li {
+    width: 50%;
+    position: relative;
+}
+
+.km-android .km-buttongroup .km-button .km-text.button-group-badge {
+    width: auto;
+    position: absolute;
+    right: 5px;
+    top: -10px;
+}
+
+
+/* NETWORK */
+
+.km-android #view-network .list-box-user.km-widget .km-listview-link {
+    position: relative;
+}
+
+.km-android #view-network .list-box-user.km-widget .km-listview-link:before {
+    content: '\e0e2';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 50%;
+    right: 0;
+    margin-top: -10px;
+    font-family: 'Kendo UI';
+    color: #cacaca;
+}
+
+.km-android #view-network .list-box-user.km-widget .km-state-active .km-listview-link:before {
+    color: #ffffff;
+}
+
+/* FUNDS */
+
+.km-android .funds-list.km-list>li {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.km-android .funds-user-list.km-list .balance {
+    box-shadow: none;
+}
+
+.km-android .funds-user-list.km-list>li {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.km-android .funds-user-list li>div {
+    font-weight: bold;
+}
+
+.km-android .funds-user-list .balance .balance-sep {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.km-android .funds-user-list .balance .balance-sep .value {
+    font-weight: bold;
+}
+
+.km-android #view-funds .funds-payout-btn {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.km-android .funds-list.km-list>li {
+    box-shadow: 0 1px 0 rgba(34,34,34,.135);
+    -webkit-box-shadow: 0 1px 0 rgba(34,34,34,.135);
+}
+
+.km-android #view-funds .group-title-text {
+    background: 0 0;
+    padding: .8em 0 .5em;
+    margin: 0 1em;
+    line-height: inherit;
+    text-transform: uppercase;
+    color: rgba(34,34,34,.4);
+    box-shadow: rgba(34, 34, 34, 0.298039) 0px -1px 0px 0px inset;
+    font-size: 0.9em;
+}
+
+.km-android #view-funds .title-text {
+    padding-left: 8px;
+}
+
+
+.km-android .select-loader.km-loader {
+    background: none;
+    height: 26px;
+    position: relative;
+    margin: 7px 0;
+}
+
+.km-android .select-loader .km-loading {
+    top: 0;
+}
+
+.km-android .load-btn-box {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.km-android .load-btn-box .km-loading {
+    position: relative;
+    left: 0;
+    top: 0;
+    margin: 0 5px 0 0;
+    padding: 0;
+}
+
+.km-android .load-btn-box .km-loader {
+    position: relative;
+    background: none;
+}
+
+.km-android .funds-collapsible .funds-collaps-head {
+    line-height: 2em;
+}
+
+
+/* FRIENDS */
+
+
+.km-android .friends-invite-list.km-list .km-listview-link {
+    line-height: normal;
+    margin: 0;
+    padding-left: 24px;
+}
+
+
+.km-android .friends-invite-list .km-icon {
+    position: absolute;
+    left: 0;
+    top: 8px;
+}
+
+.km-android .friends-invite-list .km-icon:after {
+    font-family: 'jugl-icons';
+    top: 2px;
+
+}
+
+.km-android .km-icon-sms:after {
+    content: "\e616";
+}
+
+.km-android .km-icon-email:after {
+    content: "\e60e";
+}
+
+.km-android .km-icon-social:after {
+    content: "\e609";
+}
+
+.km-android .km-icon-clock:after {
+    content: "\e600";
+}
+
+.km-android .km-icon-whatsapp:after {
+    content: "\ea93";
+}
+
+
+
+.km-android .list-invite-log-wrapper {
+    padding: 0 1em;
+}
+
+.km-android .friends-history-list.km-list>li {
+    font-weight: bold;
+    padding-left: 5px;
+    padding-right: 0;
+}
+
+.km-android .friends-history-list .km-button {
+    font-size: .78em;
+}
+
+.km-android .friends-invite-list.km-list>li {
+    font-weight: bold;
+}
+
+.km-android .friends-invite-list.km-list>li:first-child {
+    box-shadow: none;
+}
+
+
+.km-android #view-invite-email h3,
+.km-android #view-invite-sms-send h3,
+.km-android #view-invite-social h3,
+.km-android #view-invite-whatsapp h3 {
+    margin-bottom: 0;
+    margin-top: 22px;
+    font-size: 1.3em;
+}
+
+
+/*email*/
+
+.km-android .box-view-invite-email h3 {
+    font-weight: bold;
+}
+
+.km-android .box-view-invite-email .ul-email-list {
+    font-size: 1.3em;
+    list-style: none;
+    padding: 0;
+    margin-top: 0;
+    margin-left: 0.9em;
+}
+
+.km-android .box-view-invite-email .ul-email-list>li {
+    font-weight: normal;
+    margin-top: 7px;
+}
+
+.km-android .box-view-invite-email .list-textarea {
+    margin-bottom: 0;
+}
+
+.km-android .box-view-invite-email .list-textarea.km-list>li label {
+    font-weight: bold;
+}
+
+.km-android .box-view-invite-email .list-textarea.km-list>li {
+    box-shadow: none;
+    padding: 0 .1em;
+    margin-top: 5px;
+}
+
+.km-android .box-view-invite-email .list-textarea.km-list textarea {
+    width: 100%;
+    border: 1px solid rgba(153, 153, 153, 0.498039);
+    height: 125px;
+    margin: 0;
+}
+
+
+/* sms */
+
+.km-android #view-invite-sms-contacts .km-widget .km-listview-label {
+    font-weight: bold;
+}
+
+.km-android #view-invite-sms-contacts .km-listview-label {
+    padding-left: 5px;
+    padding-right: 0;
+}
+
+
+/* sms-send */
+
+.km-android #view-invite-sms-send .list-textarea.km-list {
+    margin-bottom: 0;
+}
+
+
+.km-android #view-invite-sms-send .list-textarea.km-list>li {
+    padding: 0;
+}
+
+.km-android #view-invite-sms-send .list-textarea.km-list>li:last-child {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+
+.km-android #view-invite-sms-send .list-textarea textarea {
+    width: 100%;
+    float: none;
+    border: 1px solid rgba(153, 153, 153, 0.498039);
+}
+
+
+/* PROFILE */
+
+.km-android .profile-list.km-list>li {
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
+.km-android .profile-list.km-list>li>span {
+    color: #0092df;
+    line-height: inherit;
+    font-weight: bold;
+}
+
+.km-android .profile-list.km-list>li>div {
+    color: #0092df;
+    line-height: normal;
+    font-weight: bold;
+}
+
+.km-android .profile-list.km-list>li.company-name>span {
+    color: #000000;
+}
+
+.km-android .profile-list.group {
+    margin: 0 0 20px 0;
+    border: 1px solid rgba(34,34,34,.3);
+    padding: 0 .7em;
+}
+
+.km-android .profile-list.group.one {
+    margin-top: 20px;
+}
+
+.km-android .profile-list.km-list>li.profile-bank-data {
+    padding: 0;
+}
+
+.km-android .profile-bank-data-list {
+    list-style: none;
+    padding: 0;
+}
+
+.km-android .profile-bank-data-list:last-child {
+    margin-bottom: 10px;
+}
+
+.km-android .profile-bank-data-list li {
+    border-top: 1px solid rgba(34,34,34,.135);
+    line-height: 2em;
+    padding: .5em 5px;
+}
+
+.km-android .profile-bank-data-list li>span {
+    float: right;
+    line-height: inherit;
+    color: #0092df;
+    font-weight: bold;
+}
+
+.km-android .profile-bank-data-list li:first-child {
+    border-top: none;
+}
+
+
+
+
+/* Chat */
+
+.km-android #view-chat .messenger-conversation-wrapper {
+    border-top: 0;
+}
+
+.km-android #view-chat .messenger-conversation-wrapper .km-view-title {
+    display: block;
+    visibility: visible;
+    position: relative;
+    margin: 0;
+    min-height: 40px;
+}
+
+.km-android #view-chat .messenger-conversation-wrapper .km-view-title .icon-info-android {
+    position: absolute;
+    right: 10px;
+    top: 0;
+}
+
+
+.km-android #view-chat .messenger-conversation-form {
+    padding: 27px 0 12px 0;
+    box-sizing: border-box;
+    position:fixed;
+    bottom: 0;
+    left:0;
+    right:0;
+    background:white;
+    z-index:100;
+}
+
+.km-android #view-chat .messenger-conversation-form .border-top {
+    font-size: 0;
+    line-height: 1;
+    height: 0;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 15px;
+    border-top: 1px solid #b0b0b0;
+}
+
+.km-android .messenger-conversation-form .upload-image,
+.km-android .messenger-conversation-form .smiles {
+    display: inline-block;
+    overflow: hidden;
+    position: absolute;
+}
+
+.km-android .messenger-conversation-form .smiles {
+    overflow: visible;
+    left: 50px;
+    bottom: 20px;
+}
+
+.km-android .messenger-conversation-form .upload-image {
+    bottom: 19px;
+}
+
+.km-android .messenger-conversation-form .upload-image:after {
+    content: '\e61b';
+    display: block;
+    position: relative;
+    z-index: 3;
+    cursor: pointer;
+    text-align: center;
+    font-family: 'jugl-icons';
+    font-size: 21px;
+    color: #858585;
+    padding: 2px 1px 1px 0;
+}
+
+.km-android .messenger-conversation-form .smiles:after {
+    content: '\e608';
+    display: block;
+    position: relative;
+    z-index: 3;
+    cursor: pointer;
+    text-align: center;
+    font-family: 'jugl-icons';
+    font-size: 21px;
+    color: #858585;
+    padding-top: 2px;
+    padding-right: 2px;
+}
+
+.km-android .messenger-conversation-form label {
+    display: block;
+    margin: 0 43px 0 75px;
+}
+
+.km-android .messenger-conversation-form label textarea {
+    width: 100%;
+    resize: none;
+    outline: 4px solid #ffffff;
+    outline-offset: -5px;
+    border-width: 0 0 5px 0;
+    background: #ffffff;
+}
+
+.km-android .messenger-conversation-form button.btn-send-message {
+    display: inline-block;
+    font-size: 0;
+    line-height: 1;
+    border: 0;
+    background: transparent;
+    position: absolute;
+    right: 10px;
+    bottom: 20px;
+}
+
+.km-android .messenger-conversation-form button.btn-send-message.send-audio:after {
+    content: '\e800';
+    display: block;
+    position: relative;
+    z-index: 3;
+    cursor: pointer;
+    text-align: center;
+    font-family: 'jugl-icons';
+    font-size: 25px;
+    color: #858585;
+    margin-right: 4px;
+}
+
+.km-android .messenger-conversation-form button.btn-send-message.send-text:after {
+    content: '\e607';
+    display: block;
+    position: relative;
+    z-index: 3;
+    cursor: pointer;
+    text-align: center;
+    font-family: 'jugl-icons';
+    font-size: 25px;
+    color: #858585;
+}
+
+.km-android .messenger-conversation .km-loader.select-loader {
+    height: 35px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.km-android .android-call:before {
+    content: '\e801';
+    font-family: 'jugl-icons';
+    font-size: 18px;
+    position: relative;
+    top: 5px;
+    right: -8px;
+    margin-right: 4px;
+}
+
+.km-android .android-call.km-state-active:before {
+    color: #ffffff;
+}
+
+
+.km-android .ios-call {
+    display: none;
+}
+
+
+
+
+
+
+/* USER-PROFILE */
+
+.km-android .profile-data-list {
+    margin-bottom: 20px;
+}
+
+.km-android .list-user-data .km-list>li {
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
+
+.km-android .last-logged-box span,
+.km-android .list-user-data .km-list>li span {
+    font-weight: bold;
+}
+
+.km-android .last-logged-box {
+    padding: 0 1em;
+    margin-top: 10px;
+}
+
+.km-android .last-logged {
+    padding: 8px 0;
+    font-size: 1.3em;
+    font-weight: 400;
+    line-height: 1em;
+    overflow: hidden;
+}
+
+.km-android #view-profile .user-profile {
+    margin-top: 10px;
+}
+
+.km-android #view-user-profile .user-profile .status-box {
+    margin-top: 6px;
+}
+
+
+
+/* USER SEARCH */
+
+.km-android .list-user-search {
+    padding: 0 1em;
+}
+
+.km-android  #view-new-user-network .list-user-search{
+    padding: 0;
+}
+
+.km-android .search-form-list .search-age {
+    float: left;
+    padding-top: 5px;
+    padding-right: 20px;
+}
+
+.km-android .search-form-list .search-age input {
+    position: relative;
+    width: 34px;
+    margin-left: 5px;
+
+}
+
+.km-android .search-form-list .search-sex {
+    float: left;
+    padding-top: 5px;
+}
+
+.km-android .search-form-list .search-sex select:not([multiple]) {
+    position: relative;
+    width: 95px;
+    margin-left: 5px;
+    padding-bottom: 10px;
+}
+
+
+.km-android #view-user-search .km-group-container:first-child .km-group-title {
+    display: none;
+}
+
+.km-android .list-user-search.km-list>li:first-child {
+    box-shadow: none;
+}
+
+.km-android .list-user-search.km-list>li>a {
+    text-decoration: none;
+}
+
+.km-android .user-search-count {
+    text-align: center;
+    padding: .5em 1em 1em;
+    font-size: 17px;
+    font-weight: bold;
+    line-height: normal;
+}
+
+
+
+
+
+/* ACTIVITY LIST */
+
+.km-android .filter-select-list {
+    margin-bottom: 0;
+}
+
+
+
+.km-android .filter-select-list.km-list li {
+    padding: .5em 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.km-android .activity-list.km-list>li {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+.km-android .activity-list.km-list>li:first-child {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+
+
+/* INTERESTS */
+
+
+.km-android .interests-add-btn>li:last-child {
+    border-bottom: none;
+}
+
+.km-android .km-list.interests-add-btn {
+    margin-bottom: 0;
+}
+
+.km-android .interests-add-btn .interest-add-icon {
+    width: 65px;
+    height: 65px;
+    background: #a7a7a7;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    float: left;
+    position: relative;
+}
+
+.km-android .interests-add-btn .interest-add-icon:before {
+    content: '';
+    width: 8px;
+    height: 34px;
+    background: #ffffff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -17px;
+    margin-left: -4px;
+}
+
+.km-android .interests-add-btn .interest-add-icon:after {
+    content: '';
+    width: 34px;
+    height: 8px;
+    background: #ffffff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -4px;
+    margin-left: -17px;
+}
+
+.km-android .view-interests-list>li:first-child {
+    box-shadow: none;
+    -webkit-box-shadow: none;
+}
+
+.km-android .interests-add-btn>li:first-child {
+    border-bottom: 1px solid rgba(34,34,34,.135);
+}
+
+.km-android .view-interests-list .km-state-active .interest-count,
+.km-android .view-interests-list .km-state-active .interest-add-title {
+    color: #ffffff;
+}
+
+.km-android .view-interests-list .km-state-active .interest-add-icon {
+    background: #ffffff;
+}
+
+.km-android .view-interests-list .km-state-active .interest-add-icon:before,
+.km-android .view-interests-list .km-state-active .interest-add-icon:after {
+    background: #33b5e5;
+}
+
+.km-android #view-interests-update .my-interests-list.km-widget .km-listview-link:before {
+    content: '\e0e2';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    top: 50%;
+    right: 0;
+    margin-top: -10px;
+    font-family: 'Kendo UI';
+    color: #cacaca;
+}
+
+.km-android #view-interests-update .view-interests-list.km-widget .km-state-active .km-listview-link:before {
+    color: #ffffff;
+}
+
+.km-android #view-interests-update .km-navbar [class*=item] .km-text {
+    border-right-width: 0;
+}
+
+.km-android #view-offers-my .found-interests-list>li:first-child {
+    box-shadow: none;
+}
+
+.km-android #view-interests-addstep3 .interest-btn-box {
+    padding-bottom: 15px;
+}
+
+
+.km-android .or-text {
+    font-size: 16px;
+    text-align: center;
+}
+
+.km-android .view-interests-list .interest-info-box {
+    padding-right: 20px;
+}
+
+.km-android .interest-count-offers {
+    display: inline-block;
+    height: 20px;
+    min-width: 10px;
+    padding: 0 5px;
+    border-radius: 12px;
+    border: 2px solid #0092df;
+    line-height: 20px;
+    text-align: center;
+    color: #0092df;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+
+
+
+/*.km-android #view-interests .view-interests-list.km-list>li {*/
+    /*box-shadow: none;*/
+    /*border-bottom: 2px solid rgba(34,34,34,.135);*/
+/*}*/
+
+.km-android #view-interests .view-interests-list.km-list>li:last-child {
+    border-bottom: none;
+}
+
+
+
+/* Searches add */
+
+.km-android .searches-add-list a.link-update-category {
+    font-size: 13px;
+}
+
+.km-android .offer-update-popup .km-list {
+    margin-bottom: 0;
+}
+
+.km-android .searches-add-list .km-list>li label,
+.km-android .filter-interests-list.km-list>li label,
+.km-android .offer-update-popup .searches-add-list.km-list>li label,
+.km-android .offers-bet-list.km-list li label {
+    width: 55%;
+    display: inline-block;
+}
+
+.km-android .searches-add-list .km-list>li label.label-title,
+.km-android .offers-bet-list li label.label-title {
+    width: auto;
+    display: block;
+    padding-top: 6px;
+    padding-bottom: 7px;
+}
+
+.km-android .searches-add-list .km-list>li label.km-listview-label {
+    width: auto;
+    display: block;
+}
+
+
+.km-android .searches-add-list .km-list input[type=text]:not(.k-input),
+.km-android .searches-add-list .km-list input[type=number],
+.km-android .searches-add-list .km-list select:not([multiple]),
+.km-android .filter-interests-list.km-list select:not([multiple]),
+.km-android .offer-update-popup .searches-add-list.km-list>li input,
+.km-android .offer-update-popup .searches-add-list.km-list>li select,
+.km-android .offers-bet-list.km-list li input[type=text]:not(.k-input),
+.km-android .offers-bet-list.km-list li select:not([multiple]),
+.km-android .offers-bet-list.km-list input[type=number] {
+    width: 45%;
+    z-index: 0;
+}
+
+.km-android .textarea-field {
+    padding-right: 0;
+}
+
+.km-android .textarea-field textarea {
+    float: none;
+    width: 100%;
+    resize: none;
+    border: 1px solid rgba(153,153,153,.5);
+    border-width: 1px;
+}
+
+.km-android .notes-text {
+    color: #a7a7a7;
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 15px;
+    margin: 5px 0;
+}
+
+.km-android .user-packet:before {
+    content: '\e904';
+    font-family: 'jugl-icons';
+    color: #e34a0e;
+    font-size: 16px;
+    position: absolute;
+    top: 3px;
+    left: 0;
+}
+
+/* Searches-search */
+
+.km-android .container-filter {
+    padding: .5em 1em;
+}
+
+
+.km-android .box-filter label {
+    font-size: 1.3em;
+    font-weight: 600;
+}
+
+.km-android .box-filter select {
+    font-size: 1em;
+    display: block;
+    width: 50%;
+    position: absolute;
+    right: 0;
+    line-height: normal;
+    top: 50%;
+    margin-top: -1.05em;
+}
+
+.km-android .found-interests-list {
+   margin-top: 5px;
+}
+
+
+/* DETAILS */
+
+.km-android .details-title {
+    font-size: 1.5em;
+    line-height: normal;
+    font-weight: 600;
+}
+
+.km-android .details-price,
+.km-android .details-bonus {
+    margin-top: 7px;
+}
+
+.km-android .details-price, .km-android .details-bonus {
+    font-size: 1.3em;
+    font-weight: 400;
+}
+
+.km-android .details-price>span, .km-android .details-bonus>span {
+    font-size: 1em;
+    font-weight: 600;
+}
+
+.km-android .details-price {
+    margin-bottom: 7px;
+}
+
+.km-android .details-param-list.km-list>li {
+    display: table;
+    width: 100%;
+    position: relative;
+}
+
+.km-android .details-param-list.km-list>li.active-status:after,
+.km-android .details-param-list.km-list>li.inactive-status:after,
+.km-android .details-params-box .details-payment-methods-list li.active-status:after,
+.km-android .details-params-box .details-payment-methods-list li.inactive-status:after,
+.km-android .active-status:after, .km-android .inactive-status:after {
+    display: block;
+    font-family: 'jugl-icons';
+    font-size: .8em;
+    content: '\e62d';
+    color: #21ce99;
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    margin-top: -.4em;
+    z-index: 1;
+}
+
+.km-android .details-param-list.km-list>li.inactive-status:after,
+.km-android .details-params-box .details-payment-methods-list li.inactive-status:after,
+.km-android .inactive-status:after {
+    content: '\e62b';
+    color: #d82349;
+    font-size: .7em;
+}
+
+.km-android .details-params-box .details-payment-methods-list li.active-status:after,
+.km-android .details-params-box .details-payment-methods-list li.inactive-status:after,
+.km-android .active-status:after, .km-android .inactive-status:after{
+    top: 50%;
+    margin-top: -5px;
+    right: 0;
+    line-height: normal;
+}
+
+.km-android .details-param-list>li .details-param {
+    width: 60%;
+    display: table-cell;
+    padding: 7px 0 6px 0;
+    vertical-align: middle;
+    font-weight: 600;
+}
+
+.km-android .details-param-list>li .details-value {
+    display: table-cell;
+    min-height: 34px;
+    width: 40%;
+    vertical-align: middle;
+}
+
+.km-android .offer-user-relevance {
+    right: 0;
+}
+
+
+.km-android .offer-box-status-and-link a.completing-rate-link {
+    margin-right: 10px;
+}
+
+.km-android .btn-del-offer {
+    right: -4px;
+    top: -3px;
+}
+
+.km-android .btn-del-favorite {
+    right: -6px;
+    top: -3px;
+}
+
+.km-android .offer-user-box .offer-user-name {
+    margin-top: 3px;
+}
+
+
+.km-android .details-offer-add-list .km-listview-wrapper {
+    padding: 0;
+}
+
+.km-android .details-list .box-details-gallery {
+    padding: 10px 0 0 0;
+}
+
+
+
+/* DETAILS OFFER */
+
+.km-android .details-offer-param-list li {
+    padding: 0;
+}
+
+.km-android .details-offer-param-list li label {
+    display: table;
+    width: 100%;
+    padding: .5em .7em;
+    margin: 0;
+}
+
+.km-android .details-offer-param-list .details-offer-param {
+    width: 60%;
+    display: table-cell;
+    font-weight: 600;
+    line-height: normal;
+    padding: 7px 0 6px 0;
+}
+
+.km-android .details-offer-param-list .details-offer-value {
+    width: 40%;
+    display: table-cell;
+    font-weight: 400;
+    line-height: normal;
+    padding: 7px 37px 6px 0;
+}
+
+
+/*.km-android .details-offer-list .details-offer-param-list.km-list input[type=checkbox] {*/
+    /*right: 5px;*/
+/*}*/
+
+.km-android .details-offer-list .currency {
+    position: absolute;
+    top: 14px;
+    right: 8px;
+    z-index: 99999;
+    font-weight: 400;
+}
+
+.km-android .details-offer-list .details-offer-description {
+    padding-right: 0;
+    padding-left: 0;
+    padding-bottom: 0;
+}
+
+.km-android .details-offer-list.km-widget .km-list textarea {
+    float: none;
+    position: relative;
+    width: 100%;
+    border: 1px solid rgba(153, 153, 153, 0.498039);
+    height: 97px;
+}
+
+
+.km-android .profile-feedback-list-box .km-list {
+    margin-bottom: 0;
+}
+
+.km-android .feedback-group-title {
+    padding: 0 1em;
+}
+
+.km-android .feedback-box {
+    padding: 1em 1em 0;
+}
+
+.km-android .feedback-box label {
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    display: block;
+}
+
+.km-android .feedback-box label>span {
+    font-size: 16px;
+    display: block;
+    margin-top: 7px;
+}
+
+.km-android .feedback-box textarea {
+    margin-top: 10px;
+    position: relative;
+    width: 100%;
+    resize: none;
+    border: 1px solid rgba(153,153,153,.5);
+    outline: none;
+}
+
+
+.km-android .user-profile-feedback-box .km-listview-wrapper {
+    padding: 0;
+}
+
+.km-android .user-profile-feedback-box .load-btn-box {
+    margin-bottom: 0;
+}
+
+
+.km-android .list-deals-completed {
+    margin: 0 -1em !important;
+}
+
+.km-android .list-deals-completed>li {
+    box-shadow: none;
+    border-top: 1px solid rgba(34,34,34,.135);
+    border-bottom: 1px solid rgba(34,34,34,.135);
+}
+
+.km-android .list-deals-completed>li:first-child,
+.km-android .list-deals-completed>li:last-child {
+    border-top: 1px solid rgba(34,34,34,.135);
+    border-bottom: 1px solid rgba(34,34,34,.135);
+}
+
+
+.km-android .offer-type {
+    margin: -.5em -.7em;
+    padding: .5em .7em;
+}
+
+
+.km-android .box-details-gallery>li {
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    padding: 0;
+}
+
+
+
+/* all functions */
+
+.km-android .list-all-functions li a {
+    color: #0092df;
+    font-weight: bold;
+}
+
+.km-android .list-all-functions.km-widget .km-listview-link:before {
+    content: '\e0e2';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    top: 50%;
+    right: 0;
+    margin-top: -10px;
+    font-family: 'Kendo UI';
+    color: #cacaca;
+    font-weight: 400;
+}
+
+.km-android .list-all-functions.km-widget .km-state-active .km-listview-link:before {
+    color: #ffffff;
+}
+
+
+/* earn-money */
+
+.km-android .earn-money-content {
+    padding: 0 1em;
+}
+
+
+.km-android .earn-money-box {
+    border-top: 1px solid #a7a7a7;
+    padding: 18px 0 9px;
+}
+
+.km-android .earn-money-box:first-child {
+    border-top: none;
+}
+
+.km-android .earn-money-box h3 {
+    font-size: 1.4em;
+    margin: 0;
+    line-height: 1.4em;
+}
+
+.km-android .earn-money-box p {
+    margin: 0;
+    font-size: 1.3em;
+    font-weight: normal;
+    line-height: 1.4em;
+}
+
+.km-android .earn-money-box .btn-box {
+    margin-left: -1em;
+    margin-right: -1em;
+}
+
+
+
+/* help view */
+
+.km-android .info-icon-box {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    z-index: 10;
+}
+
+.km-android .icon-info-android {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    border-radius: 50%;
+    color: rgba(34,34,34,.4);
+}
+
+.km-android .icon-info-android:before {
+    content: '\e61e';
+    font-family: 'jugl-icons';
+    font-size: 20px;
+}
+
+.km-android .icon-info-android:active {
+    color: rgb(51, 181, 229);
+}
+
+.km-android .icon-info-android.blink:before {
+    animation: blinker 1s step-start 0s infinite;
+    -webkit-animation: blinker 1s step-start 0s infinite;
+    -moz-animation: blinker 1s step-start 0s infinite;
+    -ms-animation: blinker 1s step-start 0s infinite;
+    -o-animation: blinker 1s step-start 0s infinite;
+}
+
+.km-android .icon-info-android-white {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    border-radius: 50%;
+}
+
+.km-android .icon-info-android-white:before {
+    content: '\e61e';
+    font-family: 'jugl-icons';
+    font-size: 20px;
+}
+
+.km-android .icon-info-android-white:before {
+    content: '\e61e';
+    font-family: 'jugl-icons';
+    font-size: 20px;
+}
+
+.km-android .icon-info-android-white:active {
+    color: rgb(51, 181, 229);
+}
+
+.km-android .icon-info-android-white.blink:before {
+    animation: blinkerwhite 1s step-start 0s infinite;
+    -webkit-animation: blinkerwhite 1s step-start 0s infinite;
+    -moz-animation: blinkerwhite 1s step-start 0s infinite;
+    -ms-animation: blinkerwhite 1s step-start 0s infinite;
+    -o-animation: blinkerwhite 1s step-start 0s infinite;
+}
+
+
+@keyframes blinker {
+    50% {color: #000000;}
+}
+
+@-webkit-keyframes blinker {
+    50% {color: #000000;}
+}
+
+@-moz-keyframes blinker {
+    50% {color: #000000;}
+}
+
+
+
+@keyframes blinkerwhite {
+	0%, 49% {
+	    color:rgba(34,34,34,.4);
+	}
+    50%, 100% {
+        color:#fff;
+    }
+}
+
+@-webkit-keyframes blinkerwhite {
+    0%, 49% {
+	    color:rgba(34,34,34,.4);
+	}
+    50%, 100% {
+        color:#fff;
+    }
+}
+
+@-moz-keyframes blinkerwhite {
+    0%, 49% {
+        color:rgba(34,34,34,.4);
+    }
+    50%, 100% {
+        color:#fff;
+    }
+}
+
+
+
+
+.info-popup-box {
+    position: relative;
+    padding-top: 0;
+}
+
+.km-android .info-box {
+    padding: 1em 1em 0 1em;
+    text-align: center;
+    font-size: 1em;
+    font-weight: 400;
+    line-height: 18px;
+}
+
+.km-android .info-box h1 {
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px;
+    margin: 0;
+}
+
+.km-android .info-box-text h3 {
+    font-size: 14px;
+    font-weight: bold;
+    padding: 0;
+    margin: 10px 0;
+}
+
+.km-android .info-box .info-box-text p {
+    font-size: 1em;
+    font-weight: 400;
+    line-height: 18px !important;
+    margin: 0 0 10px 0;
+}
+
+.km-android .info-box .info-box-text img {
+    max-width: 100%;
+}
+
+
+
+/* reject popup */
+
+.km-android .reject-box {
+    padding: 1em 1em 0;
+}
+
+.km-android .reject-box .km-listview-wrapper {
+    padding: 0;
+}
+
+.km-android .reject-title {
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.km-android .reject-list.km-list {
+    margin-top: 5px;
+}
+
+.km-android .reject-list.km-list>li {
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    padding: 7px 0;
+}
+
+.km-android .reject-list.km-list>li label {
+    margin: 0;
+    padding: 0 0 0 30px;
+    font-size: 14px;
+    line-height: 16px;
+}
+
+.km-android .reject-list.km-list input[type=radio] {
+    left: 7px;
+}
+
+.km-android .reject-comment textarea {
+    position: relative;
+    width: 100%;
+    height: 110px;
+    resize: none;
+    border: 1px solid rgba(153,153,153,.5);
+    outline: none;
+}
+
+
+
+/* Restrict form */
+
+
+.km-android .show-more-btn-box {
+    text-align: center;
+    padding: 20px 0;
+}
+
+.km-android .show-more-btn {
+    background: none;
+    border: none;
+    font-size: 1.3em;
+    color: #0092df;
+    line-height: 28px;
+}
+
+.km-android .show-more-btn:before {
+    content: '\e623';
+    font-family: 'jugl-icons';
+    margin-right: 10px;
+    font-size: 28px;
+    position: relative;
+    top: 6px;
+}
+
+.km-android .show-more-btn-open:before {
+    content: '\e62e';
+    font-family: 'jugl-icons';
+    margin-right: 10px;
+    font-size: 28px;
+    position: relative;
+    top: 6px;
+}
+
+
+.km-android .similar-interests {
+    color: #0092df;
+    font-weight: bold;
+}
+
+
+.km-android .similar-interests>span {
+    float: right;
+    font-weight: bold !important;
+}
+
+
+/* offer-pay */
+
+
+.km-android .offer-pay-title {
+    margin-top: 15px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #222222;
+    line-height: normal;
+}
+
+.km-android .offer-pay-price {
+    font-size: 15px;
+    font-weight: bold;
+    color: #222222;
+    line-height: normal;
+    margin-top: 4px;
+}
+
+.km-android .offer-pay-title-text {
+    margin-top: 10px;
+    font-size: 1em;
+    padding: .8em 0 .5em;
+    line-height: normal;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: rgba(34, 34, 34, 0.4);
+}
+
+.km-android .offer-pay-usage {
+    font-size: 15px;
+    text-transform: none;
+    line-height: normal;
+    font-weight: bold;
+    color: rgba(34, 34, 34, 0.4);
+}
+
+.km-android .offer-pay-usage>span {
+    font-size: 22px;
+}
+
+.km-android .bank-datas-box.active .offer-pay-radio label,
+.km-android .bank-datas-box.active .bank-datas-list>li {
+    color: #000000;
+}
+
+
+.km-android .bank-datas-list>li.offer-pay-data-text {
+    padding-top: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.km-android .offer-pay-data-text p {
+    margin: 0 0 7px 0;
+    font-size: 12px;
+}
+
+.km-android .offer-pay-data-text a {
+    font-size: 12px;
+}
+
+.km-android .bank-datas-box.active .offer-pay-data-text a {
+    color: #0092df;
+}
+
+
+.km-android .km-list.offer-pay-radio,
+.km-android .bank-datas-list {
+    margin-bottom: 0;
+}
+
+.km-android .km-list.offer-pay-radio>li {
+    box-shadow: none;
+    border-top: 1px solid rgba(34, 34, 34, 0.298039);
+    padding: 0;
+}
+
+.km-android .bank-datas-box .offer-pay-radio label {
+    font-size: 15px;
+    font-weight: bold;
+    color: #a7a7a7;
+    margin: 0;
+    line-height: normal;
+    padding: 15px .7em;
+}
+
+.km-android .bank-datas-box .bank-datas-list>li {
+    font-size: 15px;
+    color: #a7a7a7;
+}
+
+.km-android .bank-datas-list>li:first-child {
+    box-shadow:none;
+}
+
+.km-android .bank-datas-list>li {
+    display: table;
+    width: 100%;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.km-android .bank-data-email-box {
+    display: table;
+    width: 100%;
+}
+
+.km-android .bank-datas-list>li>label,
+.km-android .bank-data-email-box label {
+    font-weight: bold;
+    color: inherit;
+    display: table-cell;
+    vertical-align: middle;
+    width: 45%;
+}
+
+.km-android .bank-datas-list>li>span,
+.km-android .bank-data-email-box>span {
+    font-weight: 400;
+    display: table-cell;
+    width: 55%;
+    vertical-align: middle;
+    -moz-user-select: auto !important;
+    user-select: auto !important;
+    -webkit-user-select: auto !important;
+}
+
+.km-android .btn-copy-email {
+    display: block;
+    padding: .4em .7em;
+    margin-top: 15px;
+}
+
+.km-android .btn-copy-email .km-text {
+    font-size: 12px;
+}
+
+
+.km-android .show-bank-datas-btn-box {
+    border-top: 1px solid rgba(34,34,34,.135);
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+
+.km-android .show-bank-datas-btn-box>button {
+    background: none;
+    border: none;
+    font-size: 15px;
+    font-weight: 400;
+    color: #0092df;
+    padding: 0 0 0 50px;
+    margin: 0;
+    position: relative;
+}
+
+.km-android .show-bank-datas-btn-box>button:before {
+    content: '\e623';
+    font-family: 'jugl-icons';
+    font-size: 28px;
+    width: 28px;
+    height: 28px;
+    padding: 2px;
+    line-height: normal;
+    position: absolute;
+    left: 7px;
+    top: 50%;
+    margin-top: -16px;
+}
+
+.km-android .show-bank-datas-btn-box>button.open:before {
+    content: '\e62e';
+}
+
+
+/* PROFILE UPDATE */
+
+.km-android .list-personal-data.group {
+    margin: 20px 0 0 0;
+    border: 1px solid rgba(34,34,34,.3);
+    padding: 0 .7em;
+}
+
+.km-android .list-personal-data.group:last-child {
+    margin-bottom: 20px;
+}
+
+.km-android .list-personal-data.group>li {
+    padding-left: 5px;
+}
+
+
+
+.km-android .list-personal-data .your-personal-data {
+    box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    border: 0 !important;
+}
+
+.km-android .list-personal-data>li {
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    border-bottom: 1px solid rgba(34,34,34,.135);
+}
+
+.km-android .list-personal-data>li.label-title {
+    border-bottom: 0;
+}
+.km-android .list-personal-data>li.label-title>label {
+    width: auto;
+}
+
+.km-android .list-personal-data>li.add-bank-details {
+    width: auto;
+    border-top: 1px solid rgba(34,34,34,.135);
+    border-bottom: 1px solid rgba(34,34,34,.135);
+    text-align: center;
+}
+
+.km-android .list-personal-data>li.add-bank-details>button {
+    background: none;
+    border: none;
+    font-size: 15px;
+    color: #0092df;
+    position: relative;
+    padding-left: 30px;
+    text-align: left;
+}
+
+.km-android .list-personal-data>li.add-bank-details>button:before {
+    content: '\e623';
+    font-family: 'jugl-icons';
+    font-size: 22px;
+    width: 22px;
+    height: 22px;
+    position: absolute;
+    top: 50%;
+    margin-top: -11px;
+    left: 0;
+}
+
+.km-android .list-personal-data.km-list textarea {
+    position: relative;
+    width: 100%;
+    float: none;
+    height: 100px;
+    resize: none;
+    border: 1px solid rgba(153,153,153,.5);
+    outline: none;
+}
+
+
+
+/*send-contact-details*/
+
+.km-android .send-contact-details-user {
+    margin: 20px 0;
+    padding: 0 1em;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: normal;
+}
+
+.km-android .send-contact-details-list {
+    margin-bottom: 0;
+}
+
+.km-android .send-contact-details-list .icon-contact-phone,
+.km-android .send-contact-details-list .icon-contact-email,
+.km-android .send-contact-details-list .icon-contact-address,
+.km-android .send-contact-details-list .icon-contact-birthday {
+    position: absolute;
+    left: -20px;
+    font-size: 18px;
+}
+
+.km-android .icon-contact-phone:before {
+    content: '\e801';
+    font-family: 'jugl-icons';
+}
+
+.km-android .icon-contact-email:before {
+    content: '\e60e';
+    font-family: 'jugl-icons';
+}
+
+.km-android .icon-contact-address:before {
+    content: '\e804';
+    font-family: 'jugl-icons';
+}
+
+.km-android .icon-contact-birthday:before {
+    content: '\e805';
+    font-family: 'jugl-icons';
+}
+
+.km-android .send-contact-details-list>li {
+    padding-left: 40px;
+}
+
+.km-android .send-contact-details-list .user-profile {
+    margin: 15px 0;
+}
+
+.km-android .send-contact-details-list .contact-send-value {
+    line-height: normal;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.km-android .send-contact-details-list .contact-send-type {
+    font-size: 12px;
+    color: #8e8e93;
+    font-weight: 400;
+    line-height: normal;
+    margin-top: 4px;
+    text-transform: capitalize;
+}
+
+.km-android .send-contact-details-list .km-state-active .contact-send-type {
+    color: #ffffff;
+}
+
+
+/*record*/
+
+.km-android .record-status {
+    bottom: 5px;
+}
+
+.km-android .record-status-container {
+    padding: 0 52px 0 15px;
+}
+
+.km-android .record-status-box {
+    padding: 15px;
+}
+
+
+
+/*chat delete box*/
+
+
+.km-android .messenger-del-back {
+    margin-left: 16px;
+}
+
+.km-android .messenger-del-back:before {
+    top: 3px;
+}
+
+.km-android .count-message-selected {
+    top: -2px;
+}
+
+.km-android .messenger-del-forward {
+    margin-right: 20px;
+}
+
+.km-android .messenger-del-forward:before {
+    top: 4px;
+}
+
+.km-android .messenger-del-delete {
+    margin-right: 20px;
+}
+
+.km-android .messenger-del-delete:before {
+    top: 4px;
+}
+
+
+/* offer-update-popup */
+
+.km-android .offer-update-popup {
+    padding-top: 1em;
+}
+
+.km-android .offer-update-popup .searches-add-list li {
+    font-size: 14px;
+}
+
+/*photoswipe*/
+
+
+.km-android #view-photoswipe .km-header,
+.km-android #view-photoswipe .km-footer,
+.km-android #view-photoswipe .photoswipe-buttons-top-box .photoswipe-back {
+    display: none;
+}
+
+
+.km-android #view-photoswipe .photoswipe-buttons-top-box {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    z-index: 2000;
+}
+
+.km-android #view-photoswipe .photoswipe-sharing {
+    color: #ffffff;
+    text-decoration: none;
+    position: absolute;
+    padding: 7px;
+    right: 0;
+    border: none;
+    background: none;
+}
+
+.km-android .icon-sharing:before {
+    content: '\e903';
+    font-size: 18px;
+    font-family: 'jugl-icons';
+    line-height: normal;
+}
+
+
+.km-android .message-unread .message-unread-text {
+    line-height: 16px;
+}
+
+
+
+
+
+/*loader-chat*/
+
+.km-android #view-chat .chat-loader {
+    text-align: center;
+}
+
+
+.km-android #view-chat .chat-loader .km-loading {
+    position: relative;
+    margin: 0;
+    left: auto;
+    right: auto;
+    top: auto;
+    bottom: auto;
+}
+
+.km-android #view-chat .chat-loader h1 {
+    font-size: 14px;
+    color: #8d9ba8;
+    width: auto;
+    font-weight: 300;
+    position: relative;
+    display: inline-block;
+    margin: 0 0 0 5px;
+    left: auto;
+    right: auto;
+    top: auto;
+    bottom: auto;
+    padding: 0;
+}
+
+
+/*page-content*/
+
+.km-android .page-content {
+    padding: 0 1em 1em;
+}
+
+.km-android .page-content h3 {
+    margin: 10px 0 5px;
+    font-size: 1.4em;
+    font-weight: bold;
+    line-height: normal;
+}
+
+.km-android .page-content p {
+    margin: 5px 0;
+    font-size: 17px;
+    font-weight: normal;
+    line-height: 1.3em;
+}
+
+
+/* offers-bet */
+
+.km-android .offers-bet-list {
+    margin-bottom: 0;
+}
+
+.km-android .offers-bet-list li:first-child {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.km-android .offers-bet-list li label {
+    font-weight: bold;
+}
+
+.km-android .offers-bet-note {
+    padding: 0 15px;
+    font-size: 12px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.km-android .offers-bet-note-light {
+    padding: 10px 15px;
+    font-size: 11px;
+    font-weight: normal;
+    color: #737373;
+}
+
+.km-android .offers-bet-popup-box {
+    padding-top: 15px;
+}
+
+.km-android .offers-bet-popup-box p {
+    font-size: 13px;
+    font-weight: normal;
+    text-align: center;
+
+}
+
+.km-android .offers-bet-price-popup {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.km-android .offers-bet-note-popup {
+    font-size: 11px;
+    font-weight: normal;
+    color: #737373;
+    padding: 15px 15px 30px;
+}
+
+.km-android .sort-item-auction-box select:not([multiple]) {
+    border-top: 1px solid rgba(127,127,127,.5);
+}
+
+
+
+/*offers-my-requests*/
+
+.km-android .offers-my-requests-list {
+    margin: 0 -1em;
+}
+
+.km-android .offers-my-requests-list.km-list>li .found-offer {
+    padding: .7em .7em 1em .7em;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+.km-android .offers-my-requests-list.km-list>li:first-child {
+    box-shadow: none;
+    -webkit-box-shadow: none;
+}
+
+.km-android .offers-my-requests-list.km-list>li {
+    border-bottom: 1px solid rgba(34,34,34,.135);
+}
+
+
+
+/*drawer-badge*/
+
+.km-android .btn-box .km-text {
+    position: static;
+}
+
+.km-android .drawer-badge.badge {
+    position: absolute;
+    top: 50%;
+    right: -10px;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    z-index: 0;
+}
+
+.km-android .button-badge.badge {
+    top: -9px;
+    right: -9px;
+    position: absolute;
+}
+
+
+/*searches-my-offers-list-box*/
+
+.km-android .searches-my-offers-list-box {
+    margin: 0 -1em;
+}
+
+.km-android .searches-my-offers-list-box>li {
+    padding: 0;
+}
+
+.km-android .searches-my-offers-list-box .found-offer {
+    padding: .5em .7em;
+    width: auto;
+}
+
+.km-android .status-orange .icon-item-details-offer-status:after {
+    content: '\e906';
+    font-size: 12px;
+    top: 50%;
+    margin-left: -6px;
+    left: 50%;
+    margin-top: -6px;
+}
+
+.km-android .status-green .icon-item-details-offer-status:after {
+    content: '\e62d';
+    font-size: 10px;
+    top: 4px;
+    left: 4px;
+}
+
+.km-android .status-red .icon-item-details-offer-status:after {
+    content: '\e907';
+    font-size: 12px;
+    top: 50%;
+    margin-left: -6px;
+    left: 50%;
+    margin-top: -6px;
+}
+
+
+/*profile-feedback-list*/
+.km-android .profile-feedback-list-item {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+/*dashboard*/
+
+.km-android .dashboard-box-title {
+    font-weight: bold;
+}
+
+.km-android .icon-info-dashboard-btn {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    margin-top: -18px;
+    display: block;
+    color: rgba(34,34,34,.4);
+    padding: 7px;
+}
+.km-android .how-it-works-icon {
+	position: relative;
+    color: rgba(34,34,34,.4);
+    padding: 7px;
+    bottom: -3px;
+}
+.km-android .how-it-works-icon:after {
+    content: '\e61e';
+    font-family: 'jugl-icons';
+    font-size: 20px;
+}
+
+.km-android .icon-info-dashboard-btn:after {
+    content: '\e61e';
+    font-family: 'jugl-icons';
+    font-size: 20px;
+}
+
+.km-android .dashboard-settings-field {
+    position: relative;
+    padding-right: 120px;
+}
+
+.km-android .dashboard-settings-field .km-switch {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    margin-top: -13px;
+}
+
+.km-android .trollbox-list .km-button {
+    line-height: normal;
+    font-size: 13px;
+}
+
+
+.km-android .trollbox-list.km-list>li {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+
+
+
+
+
+/*registration-payment*/
+
+.km-android .payment-packet-box {
+    background: #e9e9e9;
+    border-color: rgba(204,204,204,.5) rgba(102,102,102,.5) rgba(102,102,102,.5) rgba(204,204,204,.5);
+    border-width: 1px;
+    border-style: solid;
+}
+
+.km-android .payment-packet-list>li:nth-child(2n+1) {
+    background: #dddddd;
+}
+
+
+.km-android .profile-fillup-list {
+    margin-top: 10px;
+    border-top: 1px solid rgba(34,34,34,.135);
+}
+
+.km-android .method-payment-list {
+    margin-bottom: 0;
+}
+
+
+.km-android .vip-list.km-list.offer-pay-radio>li {
+    padding: .5em .7em;
+}
+
+
+/*registration*/
+
+.km-android .registration-box .android-title {
+    padding: 0;
+}
+
+.km-android .registration-form-box .km-list input {
+    position: relative;
+    width: 100%;
+    left: 0;
+    right: 0;
+}
+
+/**/
+
+.km-android .icon-info-app {
+    display: inline-block;
+    color: rgba(34,34,34,.4);
+    position: relative;
+    bottom: -3px;
+}
+
+.km-android .icon-info-app:before {
+    content: '\e61e';
+    font-family: 'jugl-icons';
+    font-size: 18px;
+}
+
+.km-android .show-in-become-member-box {
+    position: relative;
+}
+
+.km-android .show-in-become-member {
+    font-size: 8px;
+    position: absolute;
+    top: 21px;
+    left: 0;
+    color: rgba(34,34,34,.4);
+}
+
+.km-android .li-registration-notes-text {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+/*offers-advanced-search*/
+
+.km-android .list-box-input-full-width.km-list {
+    margin-bottom: 0;
+}
+
+.km-android .list-box-input-full-width.km-list>li {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.km-android .advanced-search-interests-list.km-list>li {
+    padding-right: 0;
+
+}
+
+.km-android .km-list>li:first-child,
+.km-android .km-list>li:first-child {
+    box-shadow: none;
+}
+
+.km-android .list-box-input-full-width.km-list .search-input input {
+    padding-left: 30px;
+}
+
+.km-android  .search-input:before {
+    content: "\e0e9";
+    font: 1em/1em "Kendo UI";
+    font-size: 18px;
+    position: absolute;
+    color: rgba(153,153,153,.7);
+    top: 18px;
+    margin-left: 5px;
+}
+
+.km-android .search-prices-from>span {
+    position: absolute;
+    right: -10px;
+    height: 44px;
+    line-height: 44px;
+    bottom: 0;
+}
+
+.km-android .search-input-box.input-val>span {
+    position: absolute;
+    right: 0;
+    height: 33px;
+    line-height: 33px;
+}
+
+.km-android #view-offers-advanced-search .btn-box > .km-button.km-state-active span,
+.km-android #view-offers-advanced-search .btn-box > .km-button.km-state-active .btn-icon-search:before {
+    color: #ffffff;
+}
+
+.km-android .advanced-search-interests-list {
+    margin-top: 10px;
+}
+
+.km-android .advanced-search-interests-list.view-interests-list .interest-info-box {
+    padding-right: 35px;
+}
+
+
+.km-android .settings-list .setting-label {
+    display: inline-block;
+    margin-right: 110px;
+    line-height: 1.4em;
+}
+
+.km-android .km-list li.li-pictures {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+
+
+/*team-change*/
+
+.km-android .user-profile-change-network-list,
+.km-android .user-profile-change-network-list .km-list {
+    margin-bottom: 0;
+}
+
+.km-android .user-profile-change-network-list .km-list>li {
+    padding: 0;
+}
+
+.km-android .field-user-age-label label {
+    line-height: 2em;
+}
+
+.km-android .field-user-age-to input[type=number],
+.km-android .field-user-age-from input[type=number] {
+    position: static;
+    width: 100%;
+    line-height: normal;
+}
+
+.km-android .team-change-users-list.km-list>li {
+    padding-right: 0;
+    padding-left: 0;
+}
+
+.km-android .team-change-users-list.km-list>li:first-child {
+    -webkit-box-shadow: 0 1px 1px rgba(34,34,34,.135);
+    box-shadow: 0 -1px 0 rgba(34,34,34,.135);;
+}
+
+
+
+.km-android .details-description {
+    margin-bottom: 0;
+}
+
+
+/*info-wiki*/
+
+.km-android .info-wiki .load-btn-box,
+.km-android .votes-box .load-btn-box {
+    margin-bottom: 0;
+}
+
+.km-android .votes-box .km-list {
+    margin-bottom: 0;
+}
+
+.km-android .votes-box .km-list>li {
+    padding-left: 0;
+}
+
+.km-android .list-votes>li .vote {
+    position: absolute;
+    right: 5px;
+    top: 15px;
+}
+
+
+
+.km-android #view-searches-details .profile-feedback-list {
+    margin-bottom: 0;
+}
+
+.km-android .details-list .btn-box {
+    padding-right: 0;
+    padding-left: 0;
+}
+
+/*profile-update-validation-data*/
+
+.km-android .profile-update-validation-data .km-list>li {
+    box-shadow: none;
+    -webkit-box-shadow: none;
+}
+
+
+.km-android .profile-update-validation-data li input[type=text]:not(.k-input) {
+    width: 100%;
+    position: relative;
+    right: auto;
+}
+
+
+.km-android .jugl-forum-upload-preview-box .select-loader.km-loader {
+    position: absolute;
+    top: 50%;
+    margin: -13px 0 0 0;
+}
+
+.km-android .icollapse-box {
+    margin: 0 1em;
+    border-bottom: 1px solid rgba(34,34,34,.3);
+}
+
+.km-android .icollapse-header {
+    position: relative;
+    font-size: 1.3em;
+    font-weight: bold;
+    padding: 7px 5px 7px 25px;
+    line-height: 2em;
+}
+
+.km-android .km-state-active .custom-checkbox.km-listview-label {
+    background: transparent !important;
+}
+
+.km-android .km-state-active .custom-checkbox.km-listview-label input[type='checkbox'] {
+    color: #33b5e5 !important;
+    border-color: currentcolor;
+    box-shadow: 0 0 1px currentcolor;
+    -webkit-box-shadow: 0 0 1px currentcolor;
+}
+
+.km-android .user-profile-contacts-list .custom-checkbox input {
+    right: 0;
+    margin: -.5em 0 0 0;
+}
+
+.km-android .icollapse-body .my-profile-contact-list.km-list>li {
+    padding-right: 40px;
+}
+
+.km-android .user-profile-contacts-list .offer-user-box .flag-icon {
+    margin-top: 3px;
+}
+
+.km-android .user-profile-contacts-list .user-profile-contact-delete {
+    left: 15px;
+}
+
+.km-android .user-profile-contacts-list-header .btn-box {
+    padding: 0 0 1em 0;
+}
+
+.km-android .change-event-btn-box {
+    margin-top: 40px;
+    padding: 0 1em;
+}
+
+.km-android .trollbox-message-visibility-list.km-list {
+    margin-top: 5px;
+    margin-bottom: 0;
+}
+
+.km-android .user-select-destination-box {
+    padding: 0 15px 15px;
+}
+
+.km-android .user-select-destination-box .user-sd-right-box {
+    font-size: 14px;
+    font-weight: normal;
+}
+
+.km-android .user-select-destination-box {
+    padding: 0 15px 15px;
+}
+
+.km-android .icon-next:after {
+    content: '\e0e2';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    top: 50%;
+    right: 0;
+    margin-top: -10px;
+    font-family: 'Kendo UI';
+    color: #cacaca;
+    font-weight: 400;
+}
+
+.km-android .network-change-block-feedbacl-box .feedback-box {
+    padding-top: 5px;
+}
+
+.km-android .jugl-forum-send-box .smiles {
+   margin-top: 4px;
+}
+
+.km-android .messenger-conversation-form .smiles .emoticons-tooltip,
+.km-android .jugl-forum-send-box .smiles .emoticons-tooltip {
+    width: 228px;
+}
+
+.km-android .profile-update-btn-box {
+    padding-top: 40px;
+}
+
+.km-android .jugl-forum-upload-data-box .select-loader.km-loader {
+    position: absolute;
+    margin: 0;
+    top: 50%;
+    left: 50%;
+    -moz-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.km-android .dashboard-funds-btn .dashboard-button-icon:before {
+    position: relative;
+    top: 4px;
+}
+
+.km-android .user-profile-validation-status>li .km-button span {
+    font-weight: normal;
+}
+
+.km-android .trollbox-filters li {
+    padding: 7px 0;
+}
+
+.km-android .trollbox-filters li label {
+    font-weight: bold;
+    line-height: 31px;
+}
+
+.km-android .trollbox-message-update-visibility-list {
+    margin: 2px -1em 0;
+}
+
+.km-android .trollbox-message-update-visibility-list.km-list>li {
+    padding: 0;
+}
+
+.km-android .trollbox-message-update-box .trollbox-filters {
+    margin-top: 0;
+}
+
+.km-android .trollbox-message-update-box .trollbox-filters li label {
+    font-weight: 400;
+}
+
+
+.km-android .trollbox-message-visibility-box .trollbox-filters label {
+    font-weight: normal;
+}
+
+
+.km-android .dashboard-funds-btn.blink {
+    animation: blinkerbutton 0s infinite!important;
+    -webkit-animation: blinkerbutton 1s infinite!important;
+    -moz-animation: blinkerbutton 1s infinite!important;
+    -ms-animation: blinkerbutton 1s infinite!important;
+    -o-animation: blinkerbutton 1s infinite!important;
+}
+
+.km-android .dashboard-funds-btn .dashboard-button-icon {
+    margin-top: -7px;
+}
+
+@keyframes blinkerbutton {
+    0%, 49% {
+        background-color:rgba(153,153,153,.5);
+        color:#000;
+    }
+    50%, 100% {
+        background-color: #000;
+        color:#fff;
+    }
+}
+
+@-webkit-keyframes blinkerbutton {
+    0%, 49% {
+        background-color:rgba(153,153,153,.5);
+        color:#000;
+    }
+
+    50%, 100% {
+        background-color: #000;
+        color:#fff;
+    }
+}
+
+@-moz-keyframes blinkerbutton {
+    0%, 49% {
+        background-color:rgba(153,153,153,.5);
+        color:#000;
+    }
+    50%, 100% {
+        background-color: #000;
+        color:#fff;
+    }
+}
+
+.km-android .content-text-box {
+    padding: 1em;
+}
+
+.km-android .content-text-box h3 {
+    font-size: 1.3em;
+    font-weight: bold;
+    line-height: 1.4em;
+    margin: 30px 0 15px;
+}
+
+.km-android .content-text-box h3:first-child {
+    margin-top: 0;
+}
+
+.km-android .content-text-box p {
+    margin: 15px 0;
+    font-size: 1.3em;
+    font-weight: normal;
+    line-height: 1.4em;
+}
+
+.km-android .forum-filter-type .km-button {
+    min-width: 120px;
+}
+
+.km-android .funds-token-deposit-list.km-list>li {
+    padding-left: 5px;
+    padding-right: 5px;
+}

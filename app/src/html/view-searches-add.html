@@ -1,0 +1,190 @@
+<kendo-mobile-view
+        id="view-searches-add"
+        k-layout="'layout-main'"
+        ng-controller="SearchRequestAddCtrl"
+        k-on-show="data.onShow(kendoEvent)"
+		k-on-hide="data.onHide(kendoEvent)"
+        k-use-native-scrolling="config.views.useNativeScrolling"
+        fields-scroll ng-cloak>
+
+    <kendo-mobile-header>
+        <kendo-mobile-nav-bar>
+            <kendo-mobile-view-title ng-click="showInfoPopup('view-searches-add')"><div class="view-title-ios"><translate>Die menschliche Suchmaschine bei Jugl.net - Suche oder Auftrag erstellen</translate></div></kendo-mobile-view-title>
+            <kendo-mobile-button class="platform-ios" data-align="right" k-on-click="showInfoPopup('view-searches-add')"><span ng-class="{'blink': isOneShowInfoPopup('view-searches-add')}" class="icon-info-ios"></span></kendo-mobile-button>
+        </kendo-mobile-nav-bar>
+    </kendo-mobile-header>
+	<div class="view-searches-add">
+		<div class="info-icon-box">
+			<span ng-click="showInfoPopup('view-searches-add')" ng-class="{'blink': isOneShowInfoPopup('view-searches-add')}" class="platform-android icon-info-android"></span>
+		</div>
+
+		<div class="android-title">
+			<h1 ng-click="showInfoPopup('view-searches-add')"><translate>Die menschliche Suchmaschine bei Jugl.net<br />Suche oder Auftrag erstellen</translate></h1>
+		</div>
+
+		<p class="text"><translate>Dein Vorteil gegenüber digitalen Suchmaschinen? Maschinen folgen Algorythmen, Menschen ihrem Verstand!</translate></p>
+		<p class="text"><translate>Was können wir für Dich tun?</translate></p>
+		<p class="text"><translate>Was auch immer Du möchtest, ob Haus, Auto, Urlaub oder einfach Kleidung u.v.m., Dein Wunsch ist uns Befehl.</translate></p>
+		<p class="text"><translate>Der Sinn von Suchen oder Aufträgen besteht darin, dass sich die Jugler direkt über das Portal Jugl.net durch eine Recherche oder Dienstleistung Jugl-Punkte verdienen können. Recherchen werden in Jugl-Punkten vergütet, zum Beispiel für das Vermitteln einer Baufirma, die Deine Wohnung renovieren soll. Die Zahlung der Dienstleistung wird aber dann direkt an die Baufirma geleistet. Ist der Vermittler auch der Dienstleister, stehen ihm sowohl der Vermittlungsbonus als auch die Entlohnung der Dienstleistung zu.</translate></p>
+		<p class="text"><translate>Der Vermittlungsbonus sollte je nach Schwierigkeitsgrad im Verhältnis stehen. Der Vermittlungsbonus an Deinen Helfer wird erst nach der Angebotsannahme gebucht.</translate></p>
+		<p class="text"><translate>Klicke auf <span class="icon-info-app"></span> für weitere Informationen.</translate></p>
+
+		<div class="form-container">
+			<kendo-mobile-list-view class="searches-add-list" k-type="'group'" k-style="'inset'">
+				<li><translate>Kategorie</translate>
+					<ul>
+						<li class="category-list textarea-field col-1">
+							<div class="description">
+								<translate>Nutzer mit ähnlichen Interessen</translate> <span class="countRequests">{{data.countrequestinterests}}</span>
+								<br />
+								<div class="cat-message"><translate>Hier wird Dir stets die aktuelle Anzahl der Nutzer mit gleichen Interessen angezeigt</translate></div>
+							</div>
+							<div class="title-category"><translate>Kategorie</translate>*:</div>
+							<ul class="searches-add-category-list">
+																															
+								<li ng-if="data.searchRequest.searchRequestInterests[0].level1Interest.id" ng-bind="data.searchRequest.searchRequestInterests[0].level1Interest.title"></li>
+								<li ng-if="data.searchRequest.searchRequestInterests[0].level2Interest.id" ng-bind="data.searchRequest.searchRequestInterests[0].level2Interest.title"></li>
+								<li ng-if="data.searchRequest.searchRequestInterests[0].level3Interest.id" ><span ng-repeat="interest in data.searchRequest.searchRequestInterests">{{interest.level3Interest.title}}{{!$last ? ', ':''}}</span></li>
+							</ul>
+							<div class="cat-message"><translate>Beispielkategorie - Du kannst aus diversen Kategorien die passende für Dich wählen.</translate>
+							</div>
+							<kendo-mobile-button ng-click="data.addInterests()" class="link-update-category"><translate>Kategorie ändern</translate></kendo-mobile-button>
+						</li>
+
+					</ul>
+				</li>
+				<li><translate>Anzeigedetails</translate>
+					<ul>
+
+						<li class="textarea-field col-2">
+							<div class="description">
+								<translate>Datum der Veröffentlichung</translate>
+							</div>
+							<div class="col-switcher">
+								<label class="lbl-message"><translate>Ab sofort</translate>:</label>
+								<div out-focus-switch><kendo-mobile-switch ng-model="data.searchRequest.is_active_immediately" k-on-label="''" k-off-label="''" /></div>
+							</div>
+
+							<div ng-if="!data.searchRequest.is_active_immediately">
+								<label class="labelw100"><translate>Ab dem</translate>:</label>
+								<br />
+								<label><span><translate>Tag</translate>:</span></label>
+								<select ng-model="data.searchRequest.scheduled_dt_parts.day" ng-options="item.key as item.val for item in data.birthDayList">
+									<option value=""></option>
+								</select>
+								<label><span><translate>Monat</translate>:</span></label>
+								<select ng-model="data.searchRequest.scheduled_dt_parts.month" ng-options="item.key as item.val for item in data.birthMonthList">
+									<option value=""></option>
+								</select>
+								<label><span><translate>Jahr</translate>:</span></label>
+								<select ng-model="data.searchRequest.scheduled_dt_parts.year" ng-options="item.key as item.val for item in data.birthYearList">
+									<option value=""></option>
+								</select>
+								<label><span><translate>Stunde</translate>:</span></label>
+								<select ng-model="data.searchRequest.scheduled_dt_parts.hours" ng-options="item.key as item.val for item in data.hoursList">
+									<option value=""></option>
+								</select>
+								<label><span><translate>Minute</translate>:</span></label>
+								<select ng-model="data.searchRequest.scheduled_dt_parts.minutes" ng-options="item.key as item.val for item in data.minutesList">
+									<option value=""></option>
+								</select>
+							</div>
+						</li>
+
+						<li class="textarea-field" bs-has-classes>
+							<div class="description"><translate>Verleihe Deinem Auftrag einen aussagekräftigen Titel. Er ist das Erste, was Deine Helfer lesen.</translate></div>
+							<textarea rows="2" ng-model="data.searchRequest.title" maxlength="200" server-error="data.searchRequest.$errors.title" placeholder="Auftragstitel eingeben*"></textarea>
+						</li>
+
+						<li class="textarea-field" bs-has-classes>
+							<div class="description"><translate>Gib hier die Beschreibung Deiner Suche ein. Je detaillierter diese ist, umso genauer wissen Deine Helfer, wie und womit sie Dir zur Seite stehen können.</translate></div>
+							<textarea rows="4" ng-model="data.searchRequest.description" maxlength="4000" server-error="data.searchRequest.$errors.description" placeholder="Beschreibung eingeben*"></textarea>
+						</li>
+						
+						<li class="textarea-field li-pictures" bs-has-classes>
+							<div class="description"><translate>Du hast eine genaue Vorstellung, was Du suchst? Ein Bild sagt mehr als tausend Worte! Zudem machen Bilder Deinen Suchauftrag attraktiver.</translate></div>
+							<ul ng-if="data.searchRequest.files.length > 0" class="uploaded-pictures-box">
+								<li ng-repeat="file in data.searchRequest.files">
+									<img ng-src="{{file.thumbs.imageBig}}" />
+									<span class="delete" ng-click="data.deleteFile(file.id)"></span>
+								</li>
+							</ul>
+							<div ng-if="!data.fileUpload" class="km-loader km-widget select-loader" data-role="loader">
+								<span class="km-loading km-spin"></span>
+								<span class="km-loading-left"></span>
+								<span class="km-loading-right"></span>
+								<h1><translate>Loading</translate>...</h1>
+							</div>
+							<div ng-if="data.searchRequest.files.length != 30" class="upload-pictures-box" ng-click="data.uploadImage()">
+								<span class="icon-add-image"></span>
+							</div>
+						</li>
+						
+						<li class="textarea-field col-3" bs-has-classes>
+							<div class="description"><translate>Gib hier Deine preislichen Vorstellungen für das ein, was Du suchst, z.B. Was bist Du bereit für die Renovierung Deiner Wohnung zu zahlen? Dies dient Deinem Helfer als Orientierungshilfe. Suchst Du eine Dienstleistung, gibst du hier den Wert 0 ein.</translate></div>
+							<label><translate>Preis</translate>*:</label>
+							<input style="width:30% !important;" type="number" ng-model="data.searchRequest.price_from" class="input-price" server-error="data.searchRequest.$errors.price_from" placeholder="{{ 'von' | translate }}" /><span class="currency">&euro;</span>
+							<input style="width:30% !important;" type="number" ng-model="data.searchRequest.price_to" class="input-price" server-error="data.searchRequest.$errors.price_to" placeholder="{{ 'bis' | translate }}" /><span class="currency">&euro;</span>
+						</li>
+						
+						<li class="textarea-field col-1" bs-has-classes>
+							<div class="description"><translate>Lege fest, wie viel Vermittlungsbonus Du Deinen Helfern für die Vermittlung eines passenden Angebots zahlst. Bitte beachte, dass Du bei der Annahme eines Angebots nicht den darin enthaltenen Artikel kaufst, sondern lediglich für die Recherche zahlst. Der Vermittlungsbonus wird nur fällig, wenn Du das Angebot annimmst.</translate></div>
+							<input type="number" ng-model="data.searchRequest.bonus" server-error="data.searchRequest.$errors.bonus" placeholder="Vermittlungsbonus (mind. {{data.searchRequest.searchRequestInterests[0].level1Interest.search_request_bonus}} Jugl)*" />
+						</li>
+					</ul>
+				</li>
+				<li><translate>Ort</translate>
+					<ul>
+						<li bs-has-classes class="textarea-field col-2">
+						<div class="description"><translate>Gib an, wo Du etwas suchst, z.B. Wo befindet sich die Wohnung, die renoviert werden soll?</translate></div>
+						
+							<label><translate>Land</translate>*:
+								
+							</label>
+							<select ng-model="data.searchRequest.country_id" ng-options="item.id as item.country for item in data.countries">
+								</select>
+							<label><translate>PLZ</translate>*:</label><input type="text" ng-model="data.searchRequest.zip" server-error="data.searchRequest.$errors.zip" />
+							<label><translate>Ort</translate>:</label><input type="text" ng-model="data.searchRequest.city" server-error="data.searchRequest.$errors.city" />
+							<label><translate>Straße/Nr.</translate>:</label><input type="text" ng-model="data.searchRequest.address" server-error="data.searchRequest.$errors.address" />
+						</li>
+					</ul>
+				</li>
+				<li><translate>Dauer der Veröffentlichung</translate>
+					<ul>
+						<li ng-repeat="srpv in data.searchRequest.searchRequestParamValues">
+							<div class="description"><translate>Lege fest, wie lange Dein Suchauftrag bei Jugl.net zu sehen sein soll. Bei fehlender Eingabe ist Dein Auftrag automatisch 6 Monate aktiv. Es sei denn, Du deaktivierst sie vorher.</translate></div>
+
+							<label>{{srpv.param.title}}<span ng-if="srpv.param.required">*</span>:
+								<select ng-if="srpv.param.type==='LIST'" ng-model="srpv.param_value_id" ng-options="value.id as value.title for value in srpv.param.values"></select>
+								<input ng-if="srpv.param.type!=='LIST'" type="text" ng-model="srpv.param_value" />
+							</label>
+						</li>
+
+						<li class="textarea-field col-2">
+						<div class="description"><translate>Lege fest, wie lange Dein Suchauftrag bei Jugl.net zu sehen sein soll. Bei fehlender Eingabe ist Dein Auftrag automatisch 6 Monate aktiv. Es sei denn, Du deaktivierst sie vorher.</translate></div>
+							<label class="labelw100"><translate>Anzeige aktiv bis</translate>:</label>
+							<br />
+							<label><span><translate>Tag</translate>:</span></label>
+							<select ng-model="data.searchRequest.active_till_parts.day" ng-options="item.key as item.val for item in data.birthDayList">
+									<option value=""></option>
+							</select>
+							<label><span><translate>Monat</translate>:</span></label>
+							<select ng-model="data.searchRequest.active_till_parts.month" ng-options="item.key as item.val for item in data.birthMonthList">
+								<option value=""></option>
+							</select>
+							<label><span><translate>Jahr</translate>:</span></label>
+							<select ng-model="data.searchRequest.active_till_parts.year" ng-options="item.key as item.val for item in data.birthYearList">
+									<option value=""></option>
+							</select>
+							<div class="notes-text"><translate>Bei fehlender Eingabe bleibt Deine Anzeige 6 Monate aktiv.</translate></div>
+						</li>
+					</ul>
+				</li>
+				
+		</div>
+		</kendo-mobile-list-view>
+		<div class="btn-box primar-btn">
+			<kendo-mobile-button k-on-click="data.save()" ng-disabled="data.searchRequest.saving"><translate>Veröffentlichen</translate></kendo-mobile-button>
+		</div>
+	</div>
+</kendo-mobile-view>

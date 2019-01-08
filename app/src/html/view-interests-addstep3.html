@@ -1,0 +1,49 @@
+<kendo-mobile-view
+        k-title="'Meine Interessen'"
+        id="view-interests-addstep3"
+        k-layout="'layout-main'"
+        ng-controller="InterestsAddStep3Ctrl as interestsAddStep3Ctrl"
+        k-on-show="data.onShow(kendoEvent)"
+        k-use-native-scrolling="config.views.useNativeScrolling"
+        ng-cloak>
+
+    <kendo-mobile-header>
+        <kendo-mobile-nav-bar>
+            <kendo-mobile-view-title><translate>Meine Interessen</translate></kendo-mobile-view-title>
+        </kendo-mobile-nav-bar>
+    </kendo-mobile-header>
+
+    <div class="interest-step-title">
+        3.&nbsp;<translate>Wähle Themenfilter</translate>
+    </div>
+
+    <div class="interest-btn-box">
+        <kendo-mobile-button ng-if="data.type=='addInterest'" k-on-click="data.save()"><translate>Fertig</translate></kendo-mobile-button>
+        <kendo-mobile-button ng-if="data.type!='addInterest'" k-on-click="data.saveSearchAndOffer()"><translate>Fertig</translate></kendo-mobile-button>
+        <kendo-mobile-back-button k-on-click="onClickBack()" data-align="left"><translate>Zurück</translate></kendo-mobile-back-button>
+    </div>
+
+    <script id="template-level3-interests" type="text/x-kendo-template">
+        <label class="label-checkbox"><input type="checkbox" value="{{::dataItem.interest_id}}" ng-model="data.level3Interests[dataItem.interest_id]" />{{::dataItem.interest_title}}</label>
+    </script>
+
+    <kendo-mobile-list-view k-options="data.listViewOptions" class="view-interests-list" k-style="'inset'" >
+    </kendo-mobile-list-view>
+
+
+    <div class="interest-btn-box" ng-if="data.type=='addInterest' && data.listViewOptions.dataSource._data.length > 0">
+        <kendo-mobile-button k-on-click="data.save()"><translate>Fertig</translate></kendo-mobile-button>
+    </div>
+    <div class="or-text" ng-if="data.type=='addInterest'">
+        <translate>Oder</translate>
+    </div>
+
+
+    <div class="btn-box" ng-if="data.type=='addInterest'">
+        <kendo-mobile-button k-on-click="data.saveAndCreateSearchRequest()"><translate>Suchanzeige aufgeben</translate></kendo-mobile-button>
+    </div>
+
+
+
+
+</kendo-mobile-view>

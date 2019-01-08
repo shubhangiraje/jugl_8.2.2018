@@ -1,0 +1,317 @@
+<kendo-mobile-view
+        id="view-trollbox-list"
+        k-layout="'layout-main'"
+        k-use-native-scrolling="config.views.useNativeScrolling"
+        ng-controller="TrollboxCtrl as trollboxCtrl"
+        k-on-show="data.onShow(kendoEvent)"
+        k-on-hide="data.onHide(kendoEvent)"
+        ng-class="{'forum-container': data.typeFilterOptions.index==0, 'video-identification-container': data.typeFilterOptions.index==1}"
+        ng-cloak>
+
+    <kendo-mobile-header>
+        <kendo-mobile-nav-bar>
+            <kendo-mobile-button class="platform-ios" data-align="right" k-on-click="showInfoPopup('view-forum')"><span ng-class="{'blink': isOneShowInfoPopup('view-forum')}" class="icon-info-ios"></span></kendo-mobile-button>
+            <kendo-mobile-view-title ng-click="showInfoPopup('view-forum')"><translate>Jugl Forum</translate></kendo-mobile-view-title>
+            <kendo-mobile-back-button href="view-dashboard.html" data-align="left"><span class="platform-android"><translate>Zurück</translate></span></kendo-mobile-back-button>
+        </kendo-mobile-nav-bar>
+    </kendo-mobile-header>
+
+    <div class="info-icon-box">
+        <span ng-click="showInfoPopup('view-forum')" ng-class="{'blink': isOneShowInfoPopup('view-forum')}" class="platform-android icon-info-android"></span>
+    </div>
+
+    <div class="android-title">
+        <h1 ng-click="showInfoPopup('view-forum')"><translate>Jugl Forum</translate></h1>
+    </div>
+
+    <kendo-mobile-button-group ng-if="data.isShowFilterType" k-options="data.typeFilterOptions" class="forum-filter-type">
+        <li><translate>Forum</translate></li>
+        <li><span><translate>Verifizierungsvideos</translate></span><span ng-if="status.user.id==68 && data.count_video_identification>0" class="badge button-group-badge">{{data.count_video_identification>99 ? '99+':data.count_video_identification}}</span></li>
+    </kendo-mobile-button-group>
+
+    <div ng-if="data.typeFilterOptions.index==1 && (status.user.video_identification_status!='ACCEPTED_AUTO' && status.user.video_identification_status!='ACCEPTED_MANUAL')" class="btn-box">
+        <kendo-mobile-button href="view-add-video-identification.html"><translate>Videoident starten</translate></kendo-mobile-button>
+    </div>
+
+    <ul class="trollbox-filters">
+        <li ng-if="data.typeFilterOptions.index==0" class="clearfix">
+            <div><label><translate>Anzeigen</translate>:</label></div>
+            <div>
+                <select ng-model="data.filter.visibility">
+                    <option value="" translate>Alle</option>
+                    <option value="MAIN" translate>Meine</option>
+                    <option value="CONTACTS" translate>Kontakten</option>
+                    <option value="FOLLOWING" translate>Abos</option>
+                </select>
+            </div>
+        </li>
+
+        <li ng-if="data.typeFilterOptions.index==0" class="clearfix">
+            <div><label><translate>Kategorien</translate>:</label></div>
+            <div>
+                <select ng-model="data.filter.category" ng-options="category.id as category.title for category in data.categorySelectList">
+                    <option value="" translate>Alle</option>
+                </select>
+            </div>
+        </li>
+        <li class="clearfix">
+            <div><label><translate>Zeitraum wählen</translate>:</label></div>
+            <div>
+                <select ng-model="data.filter.period">
+                    <option value="" translate>Alle</option>
+                    <option value="TODAY" translate>Heute</option>
+                    <option value="WEEK" translate>Woche</option>
+                    <option value="MONTH" translate>Monat</option>
+                </select>
+            </div>
+        </li>
+        <li class="clearfix">
+            <div><label><translate>Sortieren</translate>:</label></div>
+            <div>
+                <select ng-model="data.filter.sort">
+                    <option value="dt" translate>Datum</option>
+                    <option value="votes_up" translate>Beliebteste</option>
+                </select>
+            </div>
+        </li>
+    </ul>
+
+    <div class="trollbox-filter-country">
+        <div class="blue-multiselect">
+            <multiselect ng-if="data.isShowSelectForumCountry" ng-model="data.forumCountry" labels="labels"
+                 search-limit="20" options="data.countryList" id-prop="id" display-prop="name" show-select-all="true" show-unselect-all="true" show-search="true"
+            ></multiselect>
+        </div>
+    </div>
+
+    <div class="btn-box">
+        <kendo-mobile-button k-on-click="data.resetFilter()"><translate>Filter zurücksetzen</translate></kendo-mobile-button>
+    </div>
+
+
+    <div class="jugl-forum-box">
+
+        <div ng-if="data.typeFilterOptions.index==0" class="jugl-forum-text" ng-bind-html="data.dashboardForumText" open-link></div>
+
+        <div class="jugl-forum-send-box" ng-if="data.typeFilterOptions.index==0">
+            <div class="jugl-forum-upload-box clearfix">
+
+                <div ng-click="data.sendSomething()" class="jugl-forum-upload-data-box">
+                    <span ng-if="!data.trollbox.newMessage.image && !data.fileUpload" class="jugl-forum-upload-icon"></span>
+                    <img ng-if="data.trollbox.newMessage.image" ng-src="{{data.trollbox.newMessage.image}}">
+                    <div ng-if="data.fileUpload" class="km-loader km-widget select-loader" data-role="loader">
+                        <span class="km-loading km-spin"></span>
+                        <span class="km-loading-left"></span>
+                        <span class="km-loading-right"></span>
+                    </div>
+                </div>
+
+                <div class="jugl-forum-upload-btn-box">
+                    <div>
+                        <div class="smiles" emoticons-tooltip emoticons-forum="true" emoticons-list="trollboxCtrl.emoticonsList" message-text="data.trollbox.newMessage.text">
+                            <div class="emoticons-tooltip"></div>
+                        </div>
+                        <kendo-mobile-button data-rel="modalview"
+                                             data-trollbox-message-text={{data.trollbox.newMessage}}
+                                             data-trollbox-country-ids={{data.countryIds}}
+                                             data-trollbox-category-list={{data.trollboxCategoryList}}
+                                             href="#view-trollbox-message-visibility-popup">
+                            <translate>Absenden</translate>
+                        </kendo-mobile-button>
+                    </div>
+                </div>
+            </div>
+            <div class="jugl-forum-send-textarea textarea-field">
+                <textarea maxlength="2500" placeholder="{{'Text eingeben'|translate}}" ng-model="data.trollbox.newMessage.text"></textarea>
+            </div>
+        </div>
+
+        <div class="btn-box forum-update-btn-box">
+            <kendo-mobile-button ng-click="data.updateTrollbox()"><translate>Chats aktualisieren</translate></kendo-mobile-button>
+        </div>
+
+        <div ng-if="data.state.loading && !data.log.hasMore" class="km-loader km-widget select-loader" data-role="loader" style="">
+            <span class="km-loading km-spin"></span>
+            <span class="km-loading-left"></span>
+            <span class="km-loading-right"></span>
+            <h1><translate>Loading</translate>...</h1>
+        </div>
+
+        <div class="jugl-forum-list-box">
+
+            <div ng-repeat="message in data.log.items" class="jugl-forum-item-box clearfix">
+
+
+                <!--DEFAULT POST-->
+                <div ng-if="message.type=='FORUM'" class="trollbox-type-forum">
+                    <div class="jugl-forum-header-box clearfix">
+                        <div class="jugl-forum-user-box" ng-click="navigate('view-user-profile.html?id='+message.user.id)">
+                            <div class="jugl-forum-user-avatar">
+                                <img once-src="message.user.avatar">
+                            </div>
+                            <div class="trollbox-messsage-username">
+                                <span ng-if="!message.user.is_company_name">{{::message.user|userName}}</span>
+                                <span ng-if="message.user.is_company_name">{{::message.user.company_name}}</span>
+                                <div ng-click="updateCountry(message.user.id, data.log.items); $event.stopPropagation();" id="{{::message.user.flag}}" class="flag flag-32 flag-{{message.user.flag}}"></div>
+                            </div>
+                        </div>
+                        <div class="jugl-forum-header-left-box">
+                            <div class="jugl-forum-message-dt">{{::message.dt|date : 'dd.MM.yyyy HH:mm'}}</div>
+                        </div>
+                    </div>
+
+                    <div set-if="message.file.image" class="trollbox-messsage-item-picture">
+                        <div ng-if="message.file.ext!='mp4'" class="trollbox-messsage-picture">
+                            <a href="#view-photo-swipe-popup" data-url="{{::message.file.image_medium}}" data-rel="modalview" data-role="button">
+                                <img once-src="message.file.image_medium">
+                            </a>
+                        </div>
+                        <!--
+                        <div ng-if="message.file.ext=='mp4'" ng-click="data.showVideo(message)" class="trollbox-messsage-picture trollbox-messsage-video">
+                            <img once-src="message.file.image_medium">
+                        </div>
+                        <div ng-if="message.file.downloading" class="file-progress">{{message.file.progress}}</div>
+                        -->
+
+                        <div ng-if="message.file.ext=='mp4'" class="video-box">
+                            <video video ng-attr-poster="{{message.file.image_medium}}" playsinline webkit-playsinline loop muted preload="none">
+                                <source ng-src="{{message.file.url|trustResourceUrl}}" type="video/mp4">
+                            </video>
+                        </div>
+
+                    </div>
+
+                    <div class="jugl-forum-item-text" ng-bind-html="message.text|emoticonFixMobile:true" open-link></div>
+
+                    <div class="jugl-forum-like-box clearfix">
+                        <div ng-click="data.trollboxVoteDown(message.id)" class="dislike-btn">{{::message.votes_down}}</div>
+                        <div ng-if="message.votes_down+message.votes_up>0" ng-click="data.viewVotes(message.id)" class="votes-view">&nbsp;</div>
+                        <div ng-click="data.trollboxVoteUp(message.id)" class="like-btn">{{::message.votes_up}}</div>
+                    </div>
+
+
+                    <div ng-if="status.user.is_moderator" class="message-actions-box clearfix box-sizing">
+                        <div class="message-actions-left" ng-class="{'message-actions-only-btn': message.status=='AWAITING_ACTIVATION' || message.status=='AWAITING_ACTIVATION'}">
+                            <div><kendo-mobile-button set-if="message.status=='ACTIVE' || message.status=='AWAITING_ACTIVATION'" k-on-click="data.trollboxRejectMessage(message)" class="btn-reject-message"><translate set-if="message.status=='AWAITING_ACTIVATION'">Ablehnen</translate><translate set-if="message.status=='ACTIVE'">Blockieren</translate></kendo-mobile-button></div>
+                            <div><kendo-mobile-button set-if="message.status=='REJECTED' || message.status=='AWAITING_ACTIVATION'" k-on-click="data.trollboxAcceptMessage(message)" class="btn-accept-message"><translate set-if="message.status=='AWAITING_ACTIVATION'">Freigeben</translate><translate set-if="message.status=='REJECTED'">Entblocken</translate></kendo-mobile-button></div>
+                        </div>
+
+                        <div class="message-actions-right">
+                            <div set-if="message.status=='REJECTED' && message.status_changed_dt" class="message-reject">
+                                <div class="dt-message-reject">{{::message.status_changed_dt|date : 'dd.MM.yyyy - HH:mm'}} <translate>Uhr</translate> <translate ng-if="message.user.id==message.status_changed_user_id">Nutzer</translate><translate ng-if="message.user.id!=message.status_changed_user_id">Moderator</translate></div>
+                                <div class="user-message-reject">{{::message.statusChangedUser}}</div>
+                            </div>
+                            <div set-if="message.status=='ACTIVE' && message.status_changed_dt" class="message-accept">
+                                <div class="dt-message-accept">{{::message.status_changed_dt|date : 'dd.MM.yyyy - HH:mm'}} <translate>Uhr</translate> <translate ng-if="message.user.id==message.status_changed_user_id">Nutzer</translate><translate ng-if="message.user.id!=message.status_changed_user_id">Moderator</translate></div>
+                                <div class="user-message-accept">{{::message.statusChangedUser}}</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div ng-if="status.user.is_moderator" class="trollbox-message-actions-btn-box">
+                        <kendo-mobile-button ng-click="data.trollboxBlockUser(message)" ng-if="!message.user.is_blocked_in_trollbox"><translate>Für alle Foren sperren</translate></kendo-mobile-button>
+                        <kendo-mobile-button ng-click="data.trollboxUnblockUser(message)" ng-if="message.user.is_blocked_in_trollbox"><translate>Für alle Foren entsperren</translate></kendo-mobile-button>
+                        <kendo-mobile-button ng-click="data.trollboxSetStickyTrollboxMessage(message)" set-if="!message.is_sticky"><translate>Beitrag anpinnen</translate></kendo-mobile-button>
+                        <kendo-mobile-button ng-click="data.trollboxUnsetStickyTrollboxMessage(message)" set-if="message.is_sticky"><translate>Beitrag entpinnen</translate></kendo-mobile-button>
+                    </div>
+
+                    <div ng-if="message.trollbox_category_id" class="trollbox-message-category">{{message.trollbox_category}}</div>
+                </div>
+
+                <!--VIDEO VERIFICATION POST-->
+                <div ng-if="message.type == 'VIDEO_IDENTIFICATION'" class="trollbox-type-video-verification clearfix">
+                    <div class="jugl-forum-header-box clearfix">
+                        <div class="jugl-forum-user-box" ng-click="navigate('view-user-profile.html?id='+message.user.id)">
+                            <div class="jugl-forum-user-avatar">
+                                <img once-src="message.user.avatar">
+                            </div>
+                            <div class="trollbox-messsage-username">
+                                <span ng-if="!message.user.is_company_name">{{::message.user|userName}}</span>
+                                <span ng-if="message.user.is_company_name">{{::message.user.company_name}}</span>
+                                <div ng-click="updateCountry(message.user.id, data.log.items); $event.stopPropagation();" id="{{::message.user.flag}}" class="flag flag-32 flag-{{message.user.flag}}"></div>
+                            </div>
+                        </div>
+                        <div class="jugl-forum-header-left-box">
+                            <div class="jugl-forum-message-dt">{{::message.dt|date : 'dd.MM.yyyy HH:mm'}}</div>
+                        </div>
+                    </div>
+                    <div class="video-box">
+                        <video video ng-attr-poster="{{message.file.image_medium}}" playsinline webkit-playsinline loop muted preload="none">
+                            <source ng-src="{{message.file.url|trustResourceUrl}}" type="video/mp4">
+                        </video>
+                    </div>
+
+                    <div ng-if="message.voted" class="video-verification-votes-text"><translate>Vielen Dank für Deine Abstimmung</translate></div>
+                    <div ng-if="!message.voted && status.user.id!=message.user.id" class="video-verification-votes-box clearfix">
+                        <kendo-mobile-button k-on-click="data.trollboxVoteDown(message.id)"><translate>nicht echt</translate></kendo-mobile-button>
+                        <kendo-mobile-button k-on-click="data.trollboxVoteUp(message.id)"><translate>echt</translate></kendo-mobile-button>
+                    </div>
+                    <div ng-if="status.user.is_moderator && !message.voted" class="video-verification-votes-view-box clearfix">
+                        <div ng-if="message.votes_down>0" ng-click="data.viewVotesVideo(message.id, 'down')"><i class="votes-view"></i><span>{{message.votes_down}}</span></div>
+                        <div ng-if="message.votes_up>0" ng-click="data.viewVotesVideo(message.id, 'up')"><i class="votes-view"></i><span>{{message.votes_up}}</span></div>
+                    </div>
+                    <div class="count-votes"><translate>Stimmen</translate>: {{message.count_votes}}</div>
+                </div>
+
+                <div ng-if="message.messages.length>0" class="trollbox-message-box">
+                    <div class="trollbox-message-item" ng-repeat="itemMessage in message.messages">
+                        <div class="trollbox-message-box-info" ng-click="data.enterGroupChat(message.id)">
+                            <div class="trollbox-message-data clearfix">
+                                <div class="trollbox-message-user-data">
+                                    <div class="jugl-forum-user-avatar" ng-click="navigate('view-user-profile.html?id='+itemMessage.user.id)">
+                                        <img once-src="itemMessage.user.avatar" />
+                                    </div>
+                                    <div class="trollbox-message-user">{{::itemMessage.user|userName}}</div>
+                                    <div ng-click="updateCountry(itemMessage.user.id, data.log.items); $event.stopPropagation();" id="{{::itemMessage.user.flag}}" class="flag flag-32 flag-{{itemMessage.user.flag}}"></div>
+                                </div>
+                                <div class="trollbox-message-dt-data">
+                                    <div class="trollbox-message-dt">{{::itemMessage.dt|date:"dd.MM.yyyy HH:mm"}}</div>
+                                </div>
+                            </div>
+
+                            <div ng-if="itemMessage.content_type!='IMAGE' || itemMessage.content_type!='VIDEO'" class="trollbox-message-message" ng-bind-html="itemMessage.text|emoticonFixMobile:true" open-link></div>
+
+                            <div ng-if="itemMessage.content_type=='IMAGE'" class="trollbox-message-message-picture">
+                                <img once-src="itemMessage.file.thumb_url">
+                            </div>
+
+                            <div ng-if="itemMessage.content_type=='VIDEO'" class="trollbox-message-message-picture trollbox-messsage-video">
+                                <img once-src="itemMessage.file.thumb_url">
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="box-sizing message-comment-btn-box">
+                    <kendo-mobile-button ng-click="data.enterGroupChat(message.id)"><translate>Kommentieren</translate></kendo-mobile-button>
+                </div>
+
+                <div class="trollbox-message-total-box">
+                    <div ng-click="data.enterGroupChat(message.id)" class="trollbox-message-total-info"><span>{{::message.messagesCount|default:0}}</span><translate>Kommentare insgesamt</translate></div>
+                </div>
+
+            </div>
+        </div>
+
+        <div ng-show="data.log.items.length < 1" class="results-empty-text">
+            <translate>Leider haben wir keine Forumsbeiträge für die ausgewählten Länder gefunden.</translate>
+		</div>
+
+    </div>
+
+    <div class="load-btn-box" ng-show="data.log.hasMore">
+        <kendo-mobile-button k-on-click="data.loadMore()">
+            <span ng-if="!data.state.loading"><translate>Load More</translate></span>
+            <span ng-if="data.state.loading" class="km-loader km-widget select-loader" data-role="loader" style="">
+                <span class="km-loading km-spin"></span>
+                <span class="km-loading-left"></span>
+                <span class="km-loading-right"></span>
+                <h1><translate>Loading</translate>...</h1>
+                <span class="btn-text-android"><translate>Loading</translate></span>
+            </span>
+        </kendo-mobile-button>
+    </div>
+
+</kendo-mobile-view>
+

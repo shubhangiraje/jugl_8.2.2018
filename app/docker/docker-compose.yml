@@ -1,0 +1,7 @@
+version: "3"
+services:
+  cordova:
+    build: ./cordova
+    volumes:
+      - ..:/var/www/jugl_app
+

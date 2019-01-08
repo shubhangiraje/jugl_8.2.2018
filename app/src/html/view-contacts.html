@@ -1,0 +1,74 @@
+<kendo-mobile-view
+        id="view-contacts"
+        k-layout="'layout-main'"
+        ng-controller="ContactsCtrl as contactsCtrl"
+        k-on-show="data.onShow(kendoEvent)"
+        k-on-hide="data.onHide(kendoEvent)"
+        k-use-native-scrolling="config.views.useNativeScrolling"
+        ng-cloak
+        >
+    <kendo-mobile-header>
+        <kendo-mobile-nav-bar>
+            <!--<kendo-mobile-button k-rel="'drawer'" href="#drawer-main" k-icon="'icon-drawer'" k-align="'left'"></kendo-mobile-button>-->
+            <kendo-mobile-view-title><translate>Freunde Online</translate></kendo-mobile-view-title>
+            <kendo-mobile-button data-align="left" k-on-click="data.toggleGrouped()">
+                <span class="km-icon km-icon-group" ng-if="!data.grouped"></span>
+                <span class="km-icon km-icon-ungroup" ng-if="data.grouped"></span>
+                {{data.grouped ? 'Z-A':'A-Z'}}
+            </kendo-mobile-button>
+            <kendo-mobile-button class="platform-ios" data-align="right" k-on-click="showInfoPopup('view-contact')"><span ng-class="{'blink': isOneShowInfoPopup('view-contact')}" class="icon-info-ios"></span></kendo-mobile-button>
+        </kendo-mobile-nav-bar>
+    </kendo-mobile-header>
+
+    <div class="info-icon-box">
+        <span ng-click="showInfoPopup('view-contact')" class="platform-android icon-info-android" ng-class="{'blink': isOneShowInfoPopup('view-contact')}"></span>
+    </div>
+
+    <kendo-mobile-button-group k-options="data.displayContactsOptions" class="chats-btn-box">
+        <li><span><translate>Chats</translate></span><span ng-if="messenger.user.unreaded_chat_messages>0" class="badge button-group-badge">{{messenger.user.unreaded_chat_messages>99 ? '99+':messenger.user.unreaded_chat_messages}}</span></li>
+        <li><span><translate>Forumchats</translate></span><span ng-if="messenger.user.unreaded_group_chat_messages>0" class="badge button-group-badge">{{messenger.user.unreaded_group_chat_messages>99 ? '99+':messenger.user.unreaded_group_chat_messages}}</span></li>
+    </kendo-mobile-button-group>
+
+
+    <div class="btn-box btn-user-search">
+        <kendo-mobile-button href="view-user-search.html"><translate>Erweiterte Suche</translate></kendo-mobile-button>
+    </div>
+
+    <script id="template-contacts-item" type="text/x-kendo-template">
+
+        <div ng-click="!dataItem.is_group_chat ? navigate('view-user-profile.html?id='+dataItem.id): null" class="avatar-link contact-box-item-img" long-tap="data.contactPopup(dataItem.id)">
+            <div class="user-avatar">
+                <img src="{{::dataItem.userAvatar}}" />
+                <span set-if="dataItem.unreadedMessages>0" class="badge-message badge">{{::dataItem.unreadedMessages}}</span>
+            </div>
+        </div>
+
+        <div class="details-link contact-box-item-info"
+             ng-init="user=messenger.users[dataItem.id] ? messenger.users[dataItem.id]:dataItem"
+             once-class="{'has-conversation-message':lastMessages[dataItem.id]}"
+             ng-click="navigate('view-chat.html?id='+dataItem.id)"
+             long-tap="data.contactPopup(dataItem.id)"
+        >
+
+            <div class="username clip"><span once-html="dataItem.userName|emoticonFixMobile"></span> <div id="{{::dataItem.flag}}" class="img-thumbnail flag flag-icon no-float flag-icon-{{::dataItem.flag}}"></div></div>
+
+            <div set-if="lastMessages[dataItem.id]" class="message">
+                <span class="time">{{::dataItem.dt | date : 'HH:mm'}}</span>
+                <span class="body clip" once-html="lastMessages[dataItem.id].text | emoticonFixMobile"></span>
+            </div>
+            <div class="status-box" ng-if="user.status">
+                <span class="chat-status chat-status-online">{{user.status==1 ? 'online':'mobile'}}</span>
+                <!--<span ng-if="user.status==2" class="chat-status chat-status-online"><translate>online</translate></span>-->
+                <!--<span ng-if="user.status!=1 && user.status!=2" class="chat-status chat-status-offline">offline</span>-->
+            </div>
+        </div>
+
+    </script>
+
+    <kendo-mobile-list-view k-options="data.listViewOptions" class="list-box-user" k-style="'inset'">
+    </kendo-mobile-list-view>
+
+
+
+
+</kendo-mobile-view>

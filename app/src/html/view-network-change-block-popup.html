@@ -1,0 +1,21 @@
+<kendo-mobile-modal-view
+        id="view-network-change-block-popup"
+        k-on-open="data.onOpen(kendoEvent)"
+        ng-controller="NetworkChangeBlockPopupCtrl as networkChangeBlockPopupCtrl"
+        class="modal" style="width: 90%;" modal ng-cloak>
+
+
+    <div class="network-change-block-feedbacl-box">
+        <h3><translate>Bitte Grund eingeben</translate></h3>
+
+        <div class="feedback-box">
+            <textarea name="feedback" ng-model="data.stickUserRequest.text" rows="6"></textarea>
+        </div>
+    </div>
+
+    <div class="btn-box">
+        <kendo-mobile-button k-on-click="data.send()"><translate>Absenden</translate></kendo-mobile-button>
+        <kendo-mobile-button class="closeModalBtn"><translate>Cancel</translate></kendo-mobile-button>
+    </div>
+
+</kendo-mobile-modal-view>

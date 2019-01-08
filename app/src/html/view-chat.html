@@ -1,0 +1,371 @@
+<kendo-mobile-view  id="view-chat"
+    k-layout="'layout-main'"
+    ng-controller="ChatCtrl as chatCtrl"
+    k-on-after-show="data.onShow(kendoEvent)"
+    k-on-hide="data.onHide(kendoEvent)"
+    k-stretch="true"
+    k-use-native-scrolling="config.views.useNativeScrolling"
+    ng-cloak>
+
+    <kendo-mobile-header>
+        <kendo-mobile-nav-bar>
+            <kendo-view-title>
+                <div class="clip" ng-click="data.gotoProfile(messenger.conversation.user_id)" ng-bind-html="(messenger.users[messenger.conversation.user_id] | default : messenger.conversation.user) | userName | emoticonFixMobile"></div>
+            </kendo-view-title>
+            <kendo-mobile-back-button k-on-click="onClickBack()" data-align="left"><span class="platform-android"><translate>Zurück</translate></span></kendo-mobile-back-button>
+            <kendo-mobile-button class="platform-ios" data-align="right" k-on-click="showInfoPopup('view-contact')"><span ng-class="{'blink': isOneShowInfoPopup('view-contact')}" class="icon-info-ios"></span></kendo-mobile-button>
+            <kendo-mobile-button class="android-call" k-on-click="dialNumber(messenger.users[messenger.conversation.user_id].phone)" data-align="right"><translate>Anrufen</translate></kendo-mobile-button>
+        </kendo-mobile-nav-bar>
+    </kendo-mobile-header>
+
+    <div set-if="config.views.useNativeScrolling" chat-messages-size chat-scroller-native="data.getMoreHistory()" class="messenger-conversation-wrapper">
+        <div class="km-view-title">
+            <div class="clip" ng-click="data.gotoProfile(messenger.conversation.user_id)" ng-bind-html="(messenger.users[messenger.conversation.user_id] | default : messenger.conversation.user) | userName | emoticonFixMobile"></div>
+            <span ng-click="showInfoPopup('view-contact')" class="platform-android icon-info-android" ng-class="{'blink': isOneShowInfoPopup('view-contact')}"></span>
+        </div>
+        <div class="messenger-conversation" style="overflow-y: auto;">
+            <div ng-if="messenger.conversation.loadingMoreHistory" class="km-loader chat-loader km-widget select-loader" data-role="loader" style="">
+                <span class="km-loading km-spin"></span>
+                <span class="km-loading-left"></span>
+                <span class="km-loading-right"></span>
+                <h1><translate>Nachrichten werden geladen</translate>...</h1>
+            </div>
+
+            <div ng-repeat="message in log=(messenger.conversation.log | orderBy:['type===\'OUTGOING_SENDING\' ? 1:0','dt','id'])"
+                 class="messenger-conversation-message"
+                 ng-init="isOutgoing = message.type.indexOf('OUTGOING')==0"
+                 once-class="{'visible-only-for-moderator': message.visible_only_for_moderator, out: isOutgoing, in: !isOutgoing, 'new-day': ( message.dt && log[ $index - 1 ].dt && (message.dt | date : 'dd.MM.yyyy') != (log[ $index - 1 ].dt | date : 'dd.MM.yyyy'))}"
+                 data-message-date="{{::message.dt | date : 'EEEE, d MMMM yyyy'}}"
+                 scroll-down="$last"
+                >
+
+                <div set-if="message.type!='SYSTEM'" class="body" long-tap="data.selectionStart(message)" ng-class="{sending:message.type=='OUTGOING_SENDING', 'upload-failed':message.uploadFailed, 'message-unread': message.type=='INCOMING_UNREADED' }">
+
+                    <div once-if="message.type=='INCOMING_UNREADED'" class="message-unread-text"><translate>Neu</translate></div>
+
+                    <div set-if="!isOutgoing && message.user" class="message-user-name">{{::message.user | userName}}</div>
+
+                    <a class="avatar" ng-click="data.gotoProfile(messenger.user.id)" set-if="isOutgoing">
+                        <img src="{{::messenger.user.avatar_mobile_url}}" />
+                        <span set-if="messenger.users[messenger.conversation.user_id].is_group_chat && status.user.is_moderator" class="type-moderator"><translate>Moderator</translate></span>
+                        <span set-if="messenger.users[messenger.conversation.user_id].is_group_chat && status.user.is_moderator" class="type-moderator-icon"></span>
+                    </a>
+                    <a class="avatar" ng-click="data.gotoProfile(message.user ? message.user.id:messenger.users[messenger.conversation.user_id].id)" set-if="!isOutgoing">
+                        <img src="{{::message.user ? message.user.avatar_mobile_url:messenger.users[messenger.conversation.user_id].avatar_mobile_url}}" />
+                        <span set-if="messenger.users[messenger.conversation.user_id].is_group_chat && message.user.is_moderator" class="type-moderator"><translate>Moderator</translate></span>
+                        <span set-if="messenger.users[messenger.conversation.user_id].is_group_chat && message.user.is_moderator" class="type-moderator-icon"></span>
+                    </a>
+                    <div fix-width fix-width-type="text" open-link set-if="message.content_type=='TEXT'" class="body-text" once-html="message.text | emoticonFixMobile:true"></div>
+                    <a set-if="message.content_type=='IMAGE'" class="image">
+                        <img set-if="message.type!='OUTGOING_SENDING'" fix-width src="{{::message.file.thumbUrl}}" ng-click="data.showGallery(message)" />
+                        <img set-if="message.type=='OUTGOING_SENDING'" fix-width src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" ng-style="{background:'url('+message.uri+') 50% 50%','background-size':'cover'}" class="ng-class:message.rotationClass" />
+                        <button ng-if="message.uploadFailed" ng-click="messenger.retryUploadFile(message)" class="btn-retry"></button>
+                    </a>
+                    <div set-if="message.content_type=='GEOLOCATION'"><translate>Ich bin gerade hier:</translate><br/><img src="img/map.jpg" width="110" height="110" style="margin-top: 5px;" ng-click="data.showGeoposition(message)"/></div>
+
+                    <a set-if="message.content_type=='VIDEO'" class="image">
+                        <img set-if="message.type=='OUTGOING_SENDING'" fix-width="200" src="img/video.png" ng-click="messenger.showMedia(message)" />
+                        <div set-if="message.type!='OUTGOING_SENDING'" ng-click="messenger.showMedia(message)" fix-width="200" ng-style="{'background':'url('+message.file.thumbUrl+') 50% 50%','background-size':'cover'}" class="btn-play"></div>
+                        <button ng-if="message.uploadFailed" ng-click="messenger.retryUploadFile(message)" class="btn-retry"></button>
+                    </a>
+
+                    <div set-if="message.content_type=='AUDIO'">
+                        <div audio-player="message" fix-width fix-width-type="audio">
+                            <div class="audio-player-box">
+                                <div class="audio-player-controls clearfix">
+                                    <div class="audio-player-button-box">
+                                        <button class="audio-player-button play"></button>
+                                    </div>
+                                    <div class="audio-player-progress-box">
+                                        <div class="audio-player-time-line">
+                                            <div class="audio-player-play-head"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="audio-player-time">&nbsp;</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div set-if="message.content_type=='CONTACT'">
+                        <div ng-click="data.importContactFromMessage(message)">
+                            <div fix-width fix-width-type="contact" class="message-contact-box">
+                                <div class="message-contact-user">
+                                    {{::message.extra.contact.name.formatted}}
+                                </div>
+                                <ul class="message-contact-list" >
+                                    <li ng-repeat="item in message.extra.contact.phoneNumbers" class="icon-contact-phone">
+                                        <div class="message-contact-list-value">{{::item.value}}</div>
+                                        <div class="message-contact-list-type">{{::item.type}}</div>
+                                    </li>
+                                    <li ng-repeat="item in message.extra.contact.emails" class="icon-contact-email">
+                                        <div class="message-contact-list-value break">{{::item.value}}</div>
+                                        <div class="message-contact-list-type">{{::item.type}}</div>
+                                    </li>
+                                    <li ng-repeat="item in message.extra.contact.addresses" class="icon-contact-address">
+                                        <div class="message-contact-list-value">{{::item.formatted}}</div>
+                                        <div class="message-contact-list-type">{{::item.type}}</div>
+                                    </li>
+
+                                    <li ng-if="message.extra.contact.birthday" class="icon-contact-birthday">
+                                        <div class="message-contact-list-value">{{::message.extra.contact.birthday | birthdayFormat}}</div>
+                                        <div class="message-contact-list-type"><translate>Geburtstag</translate></div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="uploading" ng-if="message.uploading">{{message.progress}}</div>
+                    <div class="downloading" ng-if="message.downloading">{{message.progress}}</div>
+
+                    <div class="message-status-info clearfix">
+                        <div class="deliveried" set-if="message.type=='OUTGOING_UNDELIVERED'"><span class="icon-undelivered"></span></div>
+                        <div class="deliveried" set-if="message.type=='OUTGOING_UNREADED'"><span class="icon-unreaded"></span></div>
+                        <div class="readed" set-if="message.type=='OUTGOING_READED'"><span class="icon-readed"></span></div>
+                        <div class="time">{{::message.dt | date : 'HH:mm'}}</div>
+                    </div>
+
+                    <div set-if="!isOutgoing && messenger.users[messenger.conversation.user_id].is_group_chat && status.user.is_moderator" class="message-groupchat-actions clearfix">
+                        <div ng-click="messenger.moderatorDeleteMessage(message.id)" set-if="!message.visible_only_for_moderator" class="groupchat-delete-message"><translate>Nachricht entfernen</translate></div>
+                        <div ng-click="messenger.moderatorBlockUser(message.user.id)" set-if="!message.user.is_blocked_in_trollbox && !message.user.is_blocked_in_this_chat" class="groupchat-block-user"><translate>Benutzer sperren</translate></div>
+                        <div ng-click="messenger.moderatorUnblockUser(message.user.id)" set-if="!message.user.is_blocked_in_trollbox && message.user.is_blocked_in_this_chat" class="groupchat-unblock-user"><translate>Benutzer entsperren</translate></div>
+                        <div ng-click="messenger.moderatorBlockUserInTrollbox(message.user.id)" set-if="!message.user.is_blocked_in_trollbox" class="groupchat-block-user"><translate>Für alle Foren sperren</translate></div>
+                        <div ng-click="messenger.moderatorUnblockUserInTrollbox(message.user.id)" set-if="message.user.is_blocked_in_trollbox" class="groupchat-unblock-user"><translate>Für alle Foren entsperren</translate></div>
+                    </div>
+
+                </div>
+
+                <div set-if="message.content_type=='TEXT' && message.type=='SYSTEM'" class="system-message">
+                    <div class="system-message-body">{{::message.text}}</div>
+                </div>
+
+                <div ng-if="data.selection.enabled && message.type!='SYSTEM'" class="selection-message" ng-class="{'selected-message':data.selection.messages[message.id]}" ng-click="data.selectionChange(message)"></div>
+            </div>
+
+            <div ng-if="messenger.conversation.loadingHistory && !messenger.conversation.loadingMoreHistory" class="km-loader chat-loader km-widget select-loader" data-role="loader" style="">
+                <span class="km-loading km-spin"></span>
+                <span class="km-loading-left"></span>
+                <span class="km-loading-right"></span>
+                <h1><translate>Nachrichten werden geladen</translate>...</h1>
+            </div>
+
+            <div ng-if="messenger.decision_needed_ids.indexOf(messenger.conversation.user_id)!==-1" class="decision-needed-box">
+                <div class="decision-needed-text"><translate>Der Absender ist nicht in deiner Kontaktliste</translate></div>
+                <div class="decision-needed-buttons">
+                    <kendo-mobile-button k-on-click="messenger.decisionAddToFriends()"><translate>Kontakt annehmen</translate></kendo-mobile-button>
+                    <!--<kendo-mobile-button k-on-click="messenger.decisionSkip()"><translate>Kontakt ablehnen</translate></kendo-mobile-button>-->
+                    <kendo-mobile-button k-on-click="messenger.decisionSpam()"><translate>Spam melden</translate></kendo-mobile-button>
+                </div>
+            </div>
+            <div class="chat-bottom-spacer"></div>
+        </div>
+
+        <div class="messenger-conversation-form clearfix">
+            <div class="border-top"></div>
+            <div ng-if="data.selection.enabled" class="messenger-del-btn-dox clearfix">
+                <a ng-click="data.selectionDone()" class="messenger-del-back"></a>
+                <span class="count-message-selected" ng-bind="data.selection.count"></span>
+                <a ng-click="data.selectionDelete()" class="messenger-del-delete"></a>
+                <a ng-click="data.selectionForward()" class="messenger-del-forward"></a>
+            </div>
+            <div ng-show="!data.selection.enabled" class="messenger-conversation-form-inner">
+                <div ng-if="data.useFileInput" class="upload-image">
+                    <input nv-file-select filters="imageFilter" uploader="chatUploader" options="chatUploadOptions" type="file" />
+                </div>
+                <div ng-if="!data.useFileInput" class="upload-image" ng-click="data.sendSomething()">
+                </div>
+                <div class="smiles" emoticons-tooltip emoticons-list="chatCtrl.emoticonsList" message-text="messenger.conversation.message.text">
+                    <div class="emoticons-tooltip"></div>
+                </div>
+
+                <button ng-if="data.sendBtn=='TEXT'"  class="btn-send-message send-text" ng-click="chatCtrl.sendMessage()"><translate>Send</translate></button>
+                <button ng-if="data.sendBtn=='AUDIO'" class="btn-send-message send-audio" touch touch-start="chatCtrl.startAudioCapture()" touch-end="chatCtrl.endAudioCapture()"></button>
+
+                <label><textarea dont-lose-focus="data.isRecording" class="field-text-message" on-change="data.messageTextChanged(val)" msd-elastic ng-model="messenger.conversation.message.text" ng-model-options="{ updateOn: 'blur' }" rows="2" ng-readonly="messenger.conversation.message.sending || chatUploader.isUploading" placeholder="{{'Nachricht eintippen'|translate}}" maxlength="2000"></textarea></label>
+            </div>
+        </div>
+    </div>
+
+    <div set-if="!config.views.useNativeScrolling" chat-messages-size chat-scroller="data.getMoreHistory()" class="messenger-conversation-wrapper">
+        <!--<div class="km-view-title"><div class="clip" ng-click="data.gotoProfile(messenger.conversation.user_id)" ng-bind="(messenger.users[messenger.conversation.user_id] | default : messenger.conversation.user) | userName"></div></div>-->
+
+        <kendo-mobile-scroller class="messenger-conversation" k-use-native="config.views.useNativeScrolling">
+            <div ng-if="messenger.conversation.loadingMoreHistory" class="km-loader chat-loader km-widget select-loader" data-role="loader" style="">
+                <span class="km-loading km-spin"></span>
+                <span class="km-loading-left"></span>
+                <span class="km-loading-right"></span>
+                <h1><translate>Nachrichten werden geladen</translate>...</h1>
+            </div>
+
+            <div ng-repeat="message in log=(messenger.conversation.log | orderBy:['type===\'OUTGOING_SENDING\' ? 1:0','dt','id'])"
+                 class="messenger-conversation-message"
+                 ng-init="isOutgoing = message.type.indexOf('OUTGOING')==0;"
+                 once-class="{'visible-only-for-moderator': message.visible_only_for_moderator, out: isOutgoing, in: !isOutgoing, 'new-day': ( message.dt && log[ $index - 1 ].dt && (message.dt | date : 'dd.MM.yyyy') != (log[ $index - 1 ].dt | date : 'dd.MM.yyyy'))}"
+                 data-message-date="{{::message.dt | date : 'EEEE, d MMMM yyyy'}}"
+                 scroll-down="$last"
+                >
+
+                <div set-if="message.type!='SYSTEM'" class="body" long-tap="data.selectionStart(message)" ng-class="{sending:message.type=='OUTGOING_SENDING', 'upload-failed':message.uploadFailed, 'message-unread': message.type=='INCOMING_UNREADED' }">
+
+                    <div once-if="message.type=='INCOMING_UNREADED'" class="message-unread-text"><translate>Neu</translate></div>
+
+                    <div set-if="!isOutgoing && message.user" class="message-user-name">{{::message.user | userName}}</div>
+
+                    <a class="avatar" ng-click="data.gotoProfile(messenger.user.id)" set-if="isOutgoing">
+                        <span set-if="messenger.users[messenger.conversation.user_id].is_group_chat && status.user.is_moderator" class="type-moderator"><translate>Moderator</translate></span>
+                        <span set-if="messenger.users[messenger.conversation.user_id].is_group_chat && status.user.is_moderator" class="type-moderator-icon"></span>
+                        <img src="{{::messenger.user.avatar_mobile_url}}" />
+                    </a>
+                    <a class="avatar" ng-click="data.gotoProfile(message.user ? message.user.id:messenger.users[messenger.conversation.user_id].id)" set-if="!isOutgoing">
+                        <img src="{{::message.user ? message.user.avatar_mobile_url:messenger.users[messenger.conversation.user_id].avatar_mobile_url}}" />
+                        <span set-if="messenger.users[messenger.conversation.user_id].is_group_chat && message.user.is_moderator" class="type-moderator"><translate>Moderator</translate></span>
+                        <span set-if="messenger.users[messenger.conversation.user_id].is_group_chat && message.user.is_moderator" class="type-moderator-icon"></span>
+                    </a>
+                    <div fix-width fix-width-type="text" open-link set-if="message.content_type=='TEXT'" class="body-text" once-html="message.text | emoticonFixMobile:true"></div>
+                    <a set-if="message.content_type=='IMAGE'" class="image">
+                        <img set-if="message.type!='OUTGOING_SENDING'" fix-width src="{{::message.file.thumbUrl}}" ng-click="data.showGallery(message)" />
+                        <img set-if="message.type=='OUTGOING_SENDING'" fix-width src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" ng-style="{background:'url('+message.uri+') 50% 50%','background-size':'cover'}" class="ng-class:message.rotationClass" />
+                        <button ng-if="message.uploadFailed" ng-click="messenger.retryUploadFile(message)" class="btn-retry"></button>
+                    </a>
+                    <div set-if="message.content_type=='GEOLOCATION'"><translate>Ich bin gerade hier:</translate><br/><img src="img/map.jpg" width="110" height="110" style="margin-top: 5px;" ng-click="data.showGeoposition(message)"/></div>
+                    <a set-if="message.content_type=='VIDEO'" class="image">
+                        <img set-if="message.type=='OUTGOING_SENDING'" fix-width="200" src="img/video.png" ng-click="messenger.showMedia(message)" />
+                        <div set-if="message.type!='OUTGOING_SENDING'" ng-click="messenger.showMedia(message)" fix-width="200" once-style="{'background':'url('+message.file.thumbUrl+') 50% 50%','background-size':'cover'}" class="btn-play"></div>
+                        <button ng-if="message.uploadFailed" ng-click="messenger.retryUploadFile(message)" class="btn-retry"></button>
+                    </a>
+
+                    <div set-if="message.content_type=='AUDIO'">
+                        <div audio-player="message" fix-width fix-width-type="audio">
+                            <div class="audio-player-box">
+                                <div class="audio-player-controls clearfix">
+                                    <div class="audio-player-button-box">
+                                        <button class="audio-player-button play"></button>
+                                    </div>
+                                    <div class="audio-player-progress-box">
+                                        <div class="audio-player-time-line">
+                                            <div class="audio-player-play-head"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="audio-player-time">&nbsp;</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div set-if="message.content_type=='CONTACT'">
+                        <div ng-click="data.importContactFromMessage(message)">
+                            <div fix-width fix-width-type="contact" class="message-contact-box">
+                                <div class="message-contact-user">
+                                    {{::message.extra.contact.name.formatted}}
+                                </div>
+                                <ul class="message-contact-list" >
+                                    <li ng-repeat="item in message.extra.contact.phoneNumbers" class="icon-contact-phone">
+                                        <div class="message-contact-list-value">{{::item.value}}</div>
+                                        <div class="message-contact-list-type">{{::item.type}}</div>
+                                    </li>
+                                    <li ng-repeat="item in message.extra.contact.emails" class="icon-contact-email">
+                                        <div class="message-contact-list-value break">{{::item.value}}</div>
+                                        <div class="message-contact-list-type">{{::item.type}}</div>
+                                    </li>
+                                    <li ng-repeat="item in message.extra.contact.addresses" class="icon-contact-address">
+                                        <div class="message-contact-list-value">{{::item.formatted}}</div>
+                                        <div class="message-contact-list-type">{{::item.type}}</div>
+                                    </li>
+
+                                    <li ng-if="message.extra.contact.birthday" class="icon-contact-birthday">
+                                        <div class="message-contact-list-value">{{::message.extra.contact.birthday | birthdayFormat}}</div>
+                                        <div class="message-contact-list-type"><translate>Geburtstag</translate></div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="uploading" ng-if="message.uploading">{{message.progress}}</div>
+                    <div class="downloading" ng-if="message.downloading">{{message.progress}}</div>
+
+                    <div class="message-status-info clearfix">
+                        <div class="deliveried" set-if="message.type=='OUTGOING_UNDELIVERED'"><span class="icon-undelivered"></span></div>
+                        <div class="deliveried" set-if="message.type=='OUTGOING_UNREADED'"><span class="icon-unreaded"></span></div>
+                        <div class="readed" set-if="message.type=='OUTGOING_READED'"><span class="icon-readed"></span></div>
+                        <div class="time">{{::message.dt | date : 'HH:mm'}}</div>
+                    </div>
+
+                    <div set-if="!isOutgoing && messenger.users[messenger.conversation.user_id].is_group_chat && status.user.is_moderator" class="message-groupchat-actions clearfix">
+                        <div ng-click="messenger.moderatorDeleteMessage(message.id)" set-if="!message.visible_only_for_moderator" class="groupchat-delete-message"><translate>Nachricht entfernen</translate></div>
+                        <div ng-click="messenger.moderatorBlockUser(message.user.id)" set-if="!message.user.is_blocked_in_trollbox && !message.user.is_blocked_in_this_chat" class="groupchat-block-user"><translate>Benutzer sperren</translate></div>
+                        <div ng-click="messenger.moderatorUnblockUser(message.user.id)" set-if="!message.user.is_blocked_in_trollbox && message.user.is_blocked_in_this_chat" class="groupchat-unblock-user"><translate>Benutzer entsperren</translate></div>
+                        <div ng-click="messenger.moderatorBlockUserInTrollbox(message.user.id)" set-if="!message.user.is_blocked_in_trollbox" class="groupchat-block-user"><translate>Für alle Foren sperren</translate></div>
+                        <div ng-click="messenger.moderatorUnblockUserInTrollbox(message.user.id)" set-if="message.user.is_blocked_in_trollbox" class="groupchat-unblock-user"><translate>Für alle Foren entsperren</translate></div>
+                    </div>
+                </div>
+
+                <div set-if="message.content_type=='TEXT' && message.type=='SYSTEM'" class="system-message">
+                    <div class="system-message-body">{{::message.text}}</div>
+                </div>
+
+                <div ng-if="data.selection.enabled && message.type!='SYSTEM'" class="selection-message" ng-class="{'selected-message':data.selection.messages[message.id]}" ng-click="data.selectionChange(message)"></div>
+            </div>
+
+            <div ng-if="!messenger.conversation.loadingMoreHistory && messenger.conversation.loadingHistory" class="km-loader chat-loader km-widget select-loader" data-role="loader" style="">
+                <span class="km-loading km-spin"></span>
+                <span class="km-loading-left"></span>
+                <span class="km-loading-right"></span>
+                <h1><translate>Nachrichten werden geladen</translate>...</h1>
+            </div>
+
+            <div ng-if="messenger.decision_needed_ids.indexOf(messenger.conversation.user_id)!==-1" class="decision-needed-box">
+                <div class="decision-needed-text"><translate>Der Absender ist nicht in deiner Kontaktliste</translate></div>
+                <div class="decision-needed-buttons">
+                    <kendo-mobile-button k-on-click="messenger.decisionAddToFriends()"><translate>Kontakt annehmen</translate></kendo-mobile-button>
+                    <!--<kendo-mobile-button k-on-click="messenger.decisionSkip()"><translate>Kontakt ablehnen</translate></kendo-mobile-button>-->
+                    <kendo-mobile-button k-on-click="messenger.decisionSpam()"><translate>Spam melden</translate></kendo-mobile-button>
+                </div>
+            </div>
+
+            <div class="chat-bottom-spacer"></div>
+        </kendo-mobile-scroller>
+
+        <div class="messenger-conversation-form clearfix">
+            <div class="border-top"></div>
+            <div ng-if="data.selection.enabled" class="messenger-del-btn-dox clearfix">
+                <a ng-click="data.selectionDone()" class="messenger-del-back"></a>
+                <span class="count-message-selected" ng-bind="data.selection.count"></span>
+                <a ng-click="data.selectionDelete()" class="messenger-del-delete"></a>
+                <a ng-click="data.selectionForward()" class="messenger-del-forward"></a>
+            </div>
+            <div ng-show="!data.selection.enabled" class="messenger-conversation-form-inner">
+                <div ng-if="data.useFileInput" class="upload-image">
+                    <input nv-file-select filters="imageFilter" uploader="chatUploader" options="chatUploadOptions" type="file" />
+                </div>
+                <div ng-if="!data.useFileInput" class="upload-image" ng-click="data.sendSomething()">
+                </div>
+                <div class="ios-call" ng-click="dialNumber(messenger.users[messenger.conversation.user_id].phone)"></div>
+                <div class="smiles" emoticons-tooltip emoticons-list="chatCtrl.emoticonsList" message-text="messenger.conversation.message.text">
+                    <div class="emoticons-tooltip"></div>
+                </div>
+
+                <button ng-if="data.sendBtn=='TEXT'" class="btn-send-message send-text" ng-click="chatCtrl.sendMessage()"><translate>Send</translate></button>
+                <button ng-if="data.sendBtn=='AUDIO'" class="btn-send-message send-audio no-touch-callout" touch touch-start="chatCtrl.startAudioCapture()" touch-end="chatCtrl.endAudioCapture()"></button>
+
+                <label><textarea dont-lose-focus="data.isRecording" on-change="data.messageTextChanged(val)" msd-elastic ng-model="messenger.conversation.message.text" ng-model-options="{ updateOn: 'blur' }" rows="2" ng-readonly="messenger.conversation.message.sending || chatUploader.isUploading" placeholder="{{'Nachricht eintippen'|translate}}" maxlength="2000"></textarea></label>
+            </div>
+        </div>
+    </div>
+
+    <div ng-if="data.recordStatus" class="record-status">
+        <div class="record-status-container">
+            <div class="record-status-box clearfix">
+                <div class="record-icon">
+                    <div class="animated pulse"></div>
+                </div>
+                <div class="record-status-text">
+                    <translate>Nachricht wird aufgenommen</translate>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</kendo-mobile-view>

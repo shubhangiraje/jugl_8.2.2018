@@ -1,0 +1,12 @@
+<kendo-mobile-layout k-id="'layout-main'" ng-controller="LayoutMainCtrl" ng-cloak>
+
+    <kendo-mobile-footer>
+        <kendo-mobile-tab-strip id="layout-main-tabstrip" k-options="data.tabStripOptions">
+            <a k-icon="'icon-drawer'" k-rel="'drawer'" id="layout-main-drawer" href="#drawer-main" ng-class="{'badge-more':status.user.stat_new_offers + status.user.stat_new_offers_requests + status.user.stat_new_search_requests + status.user.stat_new_search_requests_offers+status.user.stat_awaiting_feedbacks>99}"  kendo-mobile-tab-strip-badge="status.user.stat_new_offers + status.user.stat_new_offers_requests + status.user.stat_new_search_requests + status.user.stat_new_search_requests_offers+status.user.stat_awaiting_feedbacks>99 ? 99:status.user.stat_new_offers + status.user.stat_new_offers_requests + status.user.stat_new_search_requests + status.user.stat_new_search_requests_offers+status.user.stat_awaiting_feedbacks"><translate>Menu</translate></a>
+            <a k-icon="'icon-message'" class="badge-contacts" href="#view-contacts.html" ng-class="{'badge-more':messenger.user.unreaded_chat_messages>99}" kendo-mobile-tab-strip-badge="messenger.user.unreaded_chat_messages>99 ? 99:messenger.user.unreaded_chat_messages"><translate>Nachrichten</translate></a>
+            <a k-icon="'icon-megaphone'" class="badge-active" href="#view-activities.html" ng-class="{'badge-more':status.user.new_events+status.user.new_follower_events>99}" kendo-mobile-tab-strip-badge="status.user.new_events+status.user.new_follower_events>99 ? 99 : status.user.new_events+status.user.new_follower_events"><translate>Aktivitäten</translate></a>
+            <a k-icon="'icon-coins'" class="badge-funds" href="#view-funds.html"><translate>Kontostand</translate></a>
+        </kendo-mobile-tab-strip>
+    </kendo-mobile-footer>
+
+</kendo-mobile-layout>

@@ -1,0 +1,77 @@
+<kendo-mobile-view
+        k-title="'Meine Interessen'"
+        id="view-interests-update"
+        k-layout="'layout-main'"
+        ng-controller="UserInterestsUpdateCtrl as userInterestsUpdateCtrl"
+        k-on-show="data.onShow(kendoEvent)"
+        k-use-native-scrolling="config.views.useNativeScrolling"
+        ng-cloak>
+
+    <kendo-mobile-header>
+        <kendo-mobile-nav-bar>
+            <kendo-mobile-view-title><translate>Meine Interessen</translate></kendo-mobile-view-title>
+            <kendo-mobile-back-button k-on-click="onClickBack()" data-align="left"><span class="platform-android"><translate>Zurück</translate></span></kendo-mobile-back-button>
+        </kendo-mobile-nav-bar>
+    </kendo-mobile-header>
+
+    <script id="template-user-interests-update" type="text/x-kendo-template">
+        <a once-if="dataItem.hasChildren" href="view-interests-update.html?id={{dataItem.interest_id}}&parent={{data.interest.interest_id}}">
+            <div class="interest-img-box">
+                <div class="interest-img">
+                    <img ng-src="{{::dataItem.interest_img}}">
+                </div>
+            </div>
+            <div class="interest-info-box">
+                <div class="interest-title">{{::dataItem.interest_title}}</div>
+            </div>
+        </a>
+        <div long-tap="data.actionLevel2Interests(data.interest.interest_id, dataItem.interest_id)" once-if="!dataItem.hasChildren && !data.parent">
+            <div class="interest-img-box">
+                <div class="interest-img">
+                    <img ng-src="{{::dataItem.interest_img}}">
+                </div>
+            </div>
+            <div class="interest-info-box">
+                <div class="interest-title">{{::dataItem.interest_title}}</div>
+                <!--<kendo-mobile-button ng-click="deleteFromLevel2Interest(data.interest.interest_id, dataItem.interest_id)">Delete</kendo-mobile-button>-->
+                <!--<kendo-mobile-button href="view-interests-addstep3?type=addInterest&id={{dataItem.interest_id}}">Add</kendo-mobile-button>-->
+            </div>
+
+        </div>
+        <span long-tap="data.actionLevel3Interests(data.parent,data.interest.interest_id,dataItem.interest_id)" once-if="data.parent" class="level3Interests">
+            {{::dataItem.interest_title}}
+            <!--<kendo-mobile-button ng-click="deleteFromLevel3Interest(data.parent,data.interest.interest_id,dataItem.interest_id)">Delete</kendo-mobile-button>-->
+        </span>
+
+    </script>
+
+    <kendo-mobile-list-view class="view-interests-list interests-add-btn">
+        <li>
+            <a ng-if="!data.parent" ng-click="navigate('view-interests-addstep2.html?type=addInterest&id='+data.interest.interest_id)" class="km-listview-link">
+                <div class="interest-img-box">
+                    <div class="interest-add-icon"></div>
+                </div>
+                <div class="interest-info-box">
+                    <div class="interest-add-title"><translate>Neues Interesse hinzufügen</translate></div>
+                </div>
+            </a>
+            <a ng-if="data.parent" ng-click="navigate('view-interests-addstep3.html?type=addInterest&id='+data.interest.interest_id)" class="km-listview-link">
+                <div class="interest-img-box">
+                    <div class="interest-add-icon"></div>
+                </div>
+                <div class="interest-info-box">
+                    <div class="interest-add-title"><translate>Neues Interesse hinzufügen</translate></div>
+                </div>
+            </a>
+        </li>
+    </kendo-mobile-list-view>
+
+
+    <kendo-mobile-list-view k-options="data.listViewOptions" class="view-interests-list my-interests-list" k-style="'inset'" >
+    </kendo-mobile-list-view>
+
+
+
+
+
+</kendo-mobile-view>

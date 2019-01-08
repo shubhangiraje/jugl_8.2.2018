@@ -1,0 +1,44 @@
+<kendo-mobile-drawer id="drawer-main" ng-cloak>
+    <kendo-mobile-list-view k-type="'group'" class="left-menu">
+        <li><translate>Navigation</translate>
+            <ul>
+                <li k-icon="'icon-dashboard'"><a ng-click="refreshList(); navigate('view-dashboard.html');" data-transition="none"><translate>Startseite</translate></a></li>
+				<li k-icon="'icon-info'"><a ng-click="showInfoPopup('view-earn-money')" data-transition="none"><translate>Wie funktioniert Jugl.net?</translate></a></li>
+                <li k-icon="'icon-forum'"><a ng-click="refreshList(); navigate('view-trollbox-list.html');" data-transition="none"><translate>Jugl Forum</translate></a></li>
+                <li k-icon="'icon-earn-money'"><a href="view-earn-money.html" data-transition="none"><translate>Geld verdienen</translate></a></li>
+                <li k-icon="'icon-user-add'"><a href="view-invite.html" data-transition="none"><translate>Freunde einladen / Netzwerk aufbauen</translate></a></li>
+                <li k-icon="'icon-offers-add'">
+                    <a href="view-offers-index.html" data-transition="none">
+                        <translate>Kaufen / verkaufen, Interessen angeben</translate>
+                        <span class="drawer-badge badge" ng-if="status.user.stat_new_offers>0 || status.user.stat_new_offers_requests>0">
+                            {{status.user.stat_new_offers + status.user.stat_new_offers_requests>99 ? '99+':status.user.stat_new_offers + status.user.stat_new_offers_requests}}
+                        </span>
+                    </a>
+                </li>
+                <li k-icon="'icon-search-interest'">
+                    <a href="view-searches-index.html" data-transition="none">
+                        <translate>Suchauftrag erstellen / recherchieren / vermitteln / Interessen angeben</translate>
+                        <span class="drawer-badge badge" ng-if="status.user.stat_new_search_requests>0 || status.user.stat_new_search_requests_offers>0">
+                            {{status.user.stat_new_search_requests + status.user.stat_new_search_requests_offers>99 ? '99+':status.user.stat_new_search_requests + status.user.stat_new_search_requests_offers}}
+                        </span>
+                    </a>
+                </li>
+                <li k-icon="'icon-all-functions'"><a href="view-all-functions.html" data-transition="none"><translate>Alle Funktionen</translate></a></li>
+                <li k-icon="'icon-deals-completed'"><a ng-click="refreshList(); navigate('view-deals-completed.html');" data-transition="none">
+                    {{"Geschäfte & Bewertungen"|translate}}
+                    <span class="drawer-badge badge" ng-if="status.user.stat_awaiting_feedbacks>0">
+                            {{status.user.stat_awaiting_feedbacks>99 ? '99+':status.user.stat_awaiting_feedbacks}}
+                    </span>
+                </a></li>
+                <li k-icon="'icon-favorites'"><a href="view-favorites.html" data-transition="none"><translate>Mein Merkzettel</translate></a></li>
+                <li k-icon="'icon-search'"><a href="view-user-search.html" data-transition="none"><translate>Mitglieder suchen</translate></a></li>
+                <li k-icon="'icon-setting'"><a href="view-settings.html" data-transition="none"><translate>Einstellungen</translate></a></li>
+                <li k-icon="'icon-user'"><a ng-click="mainProfile()" data-transition="none"><translate>Mein Profil / Meine Daten</translate></a></li>
+                <li ng-show="status.user.packet=='VIP_PLUS'" k-icon="'icon-manage-network'"><a href="view-manage-network.html" data-transition="none"><translate>Netzwerk verwalten</translate></a></li>
+                <li k-icon="'icon-impressum'"><a ng-click="openUrlInBrowser(config.urls.impressum)" data-transition="none"><translate>Impressum</translate></a></li>
+                <li k-icon="'icon-data-protection'"><a href="view-data-protection.html" data-transition="none"><translate>Datenschutz</translate></a></li>
+                <li k-icon="'icon-logout'"><a ng-click="auth.logout()" data-transition="none"><translate>Abmelden</translate></a></li>
+            </ul>
+        </li>
+    </kendo-mobile-list-view>
+</kendo-mobile-drawer>

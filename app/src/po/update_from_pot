@@ -1,0 +1,6 @@
+#!/bin/bash
+
+for file in  `ls *.po`
+do
+ msgmerge -N -o $file $file app.pot
+done

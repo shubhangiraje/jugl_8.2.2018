@@ -1,0 +1,120 @@
+<kendo-mobile-view
+        id="view-offers-advanced-search"
+        k-layout="'layout-main'"
+        ng-controller="OfferAdvancedSearchCtrl as offerAdvancedSearchCtrl"
+        k-on-show="data.onShow(kendoEvent)"
+        k-use-native-scrolling="config.views.useNativeScrolling"
+        fields-scroll ng-cloak>
+
+    <kendo-mobile-header>
+        <kendo-mobile-nav-bar>
+            <kendo-mobile-view-title><translate>Inserate durchsuchen</translate></kendo-mobile-view-title>
+            <kendo-mobile-back-button k-on-click="onClickBack()" data-align="left"><span class="platform-android"><translate>Zurück</translate></span></kendo-mobile-back-button>
+        </kendo-mobile-nav-bar>
+    </kendo-mobile-header>
+
+    <div class="android-title">
+        <h1><translate>Inserate durchsuchen</translate></h1>
+    </div>
+
+    <p class="text">
+        <translate>Hier kannst Du alle Inserate, die es bei Jugl.net gibt, durchsuchen. Hier bekommst Du jedoch keinen Werbebonus für das Ansehen der Anzeigen.</translate>
+    </p>
+
+    <kendo-mobile-list-view class="list-box-input-full-width">
+        <li class="search-input"><input type="text" ng-model="data.filter.text" placeholder="{{'Inserate durchsuchen'|translate}}" /></li>
+    </kendo-mobile-list-view>
+
+    <div class="btn-box">
+        <kendo-mobile-button k-on-click="data.search()"><span class="btn-icon-search"></span><translate>Suchen</translate></kendo-mobile-button>
+        <kendo-mobile-button k-on-click="data.filter.advancedEnabled=!data.filter.advancedEnabled"><translate>Erweiterte Suche</translate></kendo-mobile-button>
+    </div>
+
+    <kendo-mobile-list-view ng-if="data.filter.advancedEnabled" class="list-box-advanced-search">
+        <li class="search-prices-wrap">
+            <div class="search-prices-label">
+                <label><translate>Preis</translate>:</label>
+            </div>
+            <div class="search-prices-box">
+                <div class="search-prices-from">
+                    <input ng-model="data.filter.advanced.price_from" type="number" />
+                    <span><translate>bis:</translate></span>
+                </div>
+                <div class="search-prices-to">
+                    <input ng-model="data.filter.advanced.price_to" type="number" />
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="search-prices-label">
+                <label><translate>Land</translate>:</label>
+            </div>
+            <div class="search-select-box">
+                <select ng-model="data.filter.advanced.country_id" ng-options="item.id as item.country for item in data.countries">
+                    <option></option>
+                </select>
+            </div>
+        </li>
+        <li>
+            <div class="search-prices-label">
+                <label><translate>Ort</translate>:</label>
+            </div>
+            <div class="search-input-box">
+                <input ng-model="data.filter.advanced.city" type="text">
+            </div>
+        </li>
+
+        <li>
+            <div class="search-prices-label" style="width: 120px">
+                <label><translate>Umkreissuche</translate>:</label>
+            </div>
+            <div class="search-input-box input-val">
+                <input ng-model="data.filter.advanced.distance" type="number"><span><translate>km</translate></span>
+            </div>
+        </li>
+    </kendo-mobile-list-view>
+<!--
+    <div class="advanced-search-map-box">
+        <div class="advanced-search-map">
+
+        </div>
+    </div>
+-->
+<!--
+    <kendo-mobile-list-view class="list-box-advanced-search-checkbox">
+        <li><translate>privat</translate><kendo-mobile-switch k-on-label="''" k-off-label="''"/></li>
+        <li><translate>gewerblich</translate><kendo-mobile-switch k-on-label="''" k-off-label="''"/></li>
+    </kendo-mobile-list-view>
+-->
+    <div class="btn-box">
+        <kendo-mobile-button k-on-click="data.filter={advanced:{}}"><span class="btn-icon-search"></span><translate>Filter zurücksetzen</translate></kendo-mobile-button>
+    </div>
+
+    <kendo-mobile-list-view class="advanced-search-interests-list view-interests-list">
+        <li ng-repeat="interest in data.interests | orderBy:interest_sort">
+            <label class="label-checkbox km-listview-label">
+                <div class="interest-img-box">
+                    <div class="interest-img">
+                        <img ng-src="{{::interest.interest_img}}">
+                    </div>
+                </div>
+                <div class="interest-info-box">
+                    <div class="interest-title">{{::interest.interest_title}}</div>
+                    <div class="interest-count-offers-box">
+                        <div ng-if="interest.count_offers>0" class="interest-count-offers">{{::interest.count_offers}}</div>
+                    </div>
+                </div>
+                <input type="checkbox" ng-model="data.interestsChecks[interest.interest_id]" value="1" class="km-widget km-icon km-check">
+            </label>
+        </li>
+    </kendo-mobile-list-view>
+
+    <div class="btn-box">
+        <kendo-mobile-button href="view-offers-add.html"><translate>Verkaufen / Inserat schalten</translate></kendo-mobile-button>
+        <kendo-mobile-button href="view-offers-my.html"><translate>Meine Anzeigen / Inserat verwalten</translate></kendo-mobile-button>
+    </div>
+
+
+
+
+</kendo-mobile-view>

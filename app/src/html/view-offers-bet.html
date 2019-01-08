@@ -1,0 +1,52 @@
+<kendo-mobile-view
+        id="view-offers-bet"
+        k-layout="'layout-main'"
+        ng-controller="OfferBetCtrl as offerBetCtrl"
+        k-on-show="data.onShow(kendoEvent)"
+        k-use-native-scrolling="config.views.useNativeScrolling"
+        fields-scroll ng-cloak>
+
+    <kendo-mobile-header>
+        <kendo-mobile-nav-bar>
+            <kendo-mobile-view-title><translate>Gebot abgeben</translate></kendo-mobile-view-title>
+            <kendo-mobile-back-button k-on-click="onClickBack()" data-align="left"><span class="platform-android"><translate>Zurück</translate></span></kendo-mobile-back-button>
+        </kendo-mobile-nav-bar>
+    </kendo-mobile-header>
+
+    <div class="android-title">
+        <h1><translate>Gebot abgeben</translate></h1>
+    </div>
+
+    <kendo-mobile-list-view class="offers-bet-list">
+        <li bs-has-classes>
+            <label><translate>Dein Gebot</translate>*:</label>
+            <input price-validator ng-model="data.offerBet.price" type="number" server-error="data.offerBet.$errors.price" /><span class="currency">&euro;</span>
+        </li>
+        <li bs-has-classes>
+            <label><translate>Dein Gebot ist gültig</translate>*:</label>
+            <select ng-model="data.offerBet.period" server-error="data.offerBet.$errors.period">
+                <option value="1 hour">1 {{"Std."|translate}}</option>
+                <option value="3 hour">3 {{"Std."|translate}}</option>
+                <option value="6 hour">6 {{"Std."|translate}}</option>
+                <option value="12 hour">12 {{"Std."|translate}}</option>
+                <option value="24 hour">24 {{"Std."|translate}}</option>
+                <option value="3 day">3 {{"Tage"|translate}}</option>
+                <option value="1 week">1 {{"Woche"|translate}}</option>
+                <option value="4 week">4 {{"Woche"|translate}}</option>
+                <option value="3 month">3 {{"Monate"|translate}}</option>
+                <option value="6 month">6 {{"Monate"|translate}}</option>
+            </select>
+        </li>
+        <li class="textarea-field" bs-has-classes>
+            <label class="label-title"><translate>Nachricht an den Verkäufer</translate>:</label>
+            <textarea ng-model="data.offerBet.description" rows="6" maxlength="1000" server-error="data.offerBet.$errors.description"></textarea>
+        </li>
+    </kendo-mobile-list-view>
+
+    <div class="offers-bet-note"><translate>Es handelt sich um ein verbindliches Gebot. Wird dein Gebot akzeptiert, musst du es auch halten.</translate></div>
+    <div class="offers-bet-note-light"><translate>Der Verkäufer hat die Möglichkeit, sich unabhängig von der Höhe des Gebots einen Käufer auszusuchen.</translate></div>
+
+    <div class="btn-box">
+        <kendo-mobile-button k-on-click="data.bet()"><translate>Gebot abgeben</translate></kendo-mobile-button>
+    </div>
+</kendo-mobile-view>

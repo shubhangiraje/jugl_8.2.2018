@@ -1,0 +1,16 @@
+<kendo-mobile-modal-view
+    id="view-offers-bet-popup"
+    class="modal" style="width: 90%;" modal ng-controller="OfferBetPopupCtrl" ng-cloak>
+
+    <div class="offers-bet-popup-box">
+        <p><translate>Du bist mit <span class="offers-bet-price-popup">{{data.price|priceFormat}} €</span><br/> nicht der Höchstbietende.</translate></p>
+        <p><translate>Möchtest du dein Gebot erhöhen? </translate></p>
+        <p><translate><b>Aktuelles Höchstgebot:</b>&nbsp;<span class="offers-bet-price-popup">{{data.best_price|priceFormat}} €</span></translate></p>
+        <div class="btn-box">
+            <kendo-mobile-button k-on-click="data.cancel()"><translate>Gebot erhöhen</translate></kendo-mobile-button>
+            <kendo-mobile-button k-on-click="data.ok()"><translate>Gebot bestätigen {{data.price|priceFormat}} €</translate></kendo-mobile-button>
+        </div>
+        <div class="offers-bet-note-popup"><translate>Der Verkäufer hat die Möglichkeit, sich unabhängig von der Höhe des Gebots einen Käufer auszusuchen.</translate></div>
+    </div>
+
+</kendo-mobile-modal-view>

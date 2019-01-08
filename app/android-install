@@ -1,0 +1,5 @@
+#!/bin/bash
+
+docker/cordova-cli cordova build android
+APK=platforms/android/build/outputs/apk/debug/android-debug.apk
+adb install -r $APK

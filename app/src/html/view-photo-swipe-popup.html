@@ -1,0 +1,47 @@
+<kendo-mobile-modal-view
+    id="view-photo-swipe-popup"
+    k-on-close="data.onClose(kendoEvent)"
+    k-on-open="data.onOpen(kendoEvent)"
+    ng-controller="PhotoSwipePopupCtrl as photoSwipePopupCtrl"
+    k-use-native-scrolling="config.views.useNativeScrolling"
+    class="modal" style="width: 100%;" modal modal-photo-swipe="true" modal-top="true" ng-cloak>
+
+    <div class="photo-swipe-popup">
+        <div photo-swipes current-item="data.currentItem" ng-if="data.showGallery" id="photoswipe-box" slides="data.slides" options="data.opts">
+            <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="pswp__bg"></div>
+                <div class="pswp__scroll-wrap">
+                    <div class="pswp__container">
+                        <div class="pswp__item"></div>
+                        <div class="pswp__item"></div>
+                        <div class="pswp__item"></div>
+                    </div>
+                    <div class="pswp__ui">
+                        <div class="pswp__top-bar">
+                            <div class="pswp__counter"></div>
+                            <div class="pswp__preloader">
+                                <div class="pswp__preloader__icn">
+                                    <div class="pswp__preloader__cut">
+                                        <div class="pswp__preloader__donut"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="pswp__caption">
+                            <div class="pswp__caption__center"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="photo-swipe-popup-buttons-box">
+            <div class="close-photo-swipe-btn" ng-click="data.close()"></div>
+            <div class="sharing-btn" ng-click="data.sharing()"><span class="icon-sharing"></span></div>
+        </div>
+
+
+    </div>
+
+</kendo-mobile-modal-view>

@@ -1,0 +1,612 @@
+<kendo-mobile-view
+        id="view-user-profile"
+        k-layout="'layout-main'"
+        ng-controller="UserProfileCtrl as userProfileCtrl"
+        k-on-show="data.onShow(kendoEvent)"
+        k-on-hide="data.onHide(kendoEvent)"
+        k-use-native-scrolling="config.views.useNativeScrolling"
+        ng-cloak>
+
+    <kendo-mobile-header>
+        <kendo-mobile-nav-bar>
+            <kendo-mobile-view-title ng-click="showInfoPopup('view-profile')"><translate>User Profil</translate></kendo-mobile-view-title>
+            <kendo-mobile-back-button data-align="left"><span class="platform-android"><translate>Zurück</translate></span></kendo-mobile-back-button>
+            <kendo-mobile-button class="platform-ios" data-align="right" k-on-click="showInfoPopup('view-profile')"><span ng-class="{'blink': isOneShowInfoPopup('view-profile')}" class="icon-info-ios"></span></kendo-mobile-button>
+        </kendo-mobile-nav-bar>
+    </kendo-mobile-header>
+
+    <div ng-if="data.isShowProfile">
+        <div class="info-icon-box">
+            <span ng-click="showInfoPopup('view-profile')" ng-class="{'blink': isOneShowInfoPopup('view-profile')}" class="platform-android icon-info-android"></span>
+        </div>
+
+        <div ng-if="status.user.id==data.userInfo.id" class="btn-box profile-update-btn-box">
+            <kendo-mobile-button href="view-profile-update.html"><translate>Profil / Daten / Kontodaten bearbeiten</translate></kendo-mobile-button>
+        </div>
+
+        <div ng-if="status.user.id!=data.userInfo.id" class="btn-box profile-update-btn-box">
+            <kendo-mobile-button ng-if="!data.userInfo.isMyFollow" k-on-click="data.subscribe()"><translate>Abonnieren</translate></kendo-mobile-button>
+            <kendo-mobile-button ng-if="data.userInfo.isMyFollow" k-on-click="data.unsubscribe()"><translate>Abonnement beenden</translate></kendo-mobile-button>
+        </div>
+
+        <div class="user-profile clearfix">
+            <div class="contact-box-img">
+                <div ng-if="(data.userInfo.video_identification_status!=='ACCEPTED_AUTO' && data.userInfo.video_identification_status!=='ACCEPTED_MANUAL') || !data.userInfo.force_show_video_ident_in_profile">
+                    <a ng-if="data.userInfo.photos" class="user-avatar" data-urls="{{data.userInfo.profileImages}}" href="#view-photo-swipe-popup" data-rel="modalview" data-role="button">
+                        <span class="count-user-photos">+{{data.userInfo.photos.length}}</span>
+                        <img ng-src="{{data.userInfo.avatar.image}}" />
+                    </a>
+
+                    <a ng-if="!data.userInfo.photos" class="user-avatar" data-url="{{data.userInfo.avatar.image_big}}" href="#view-photo-swipe-popup" data-rel="modalview" data-role="button">
+                        <img ng-src="{{data.userInfo.avatar.image}}" />
+                    </a>
+                </div>
+
+                <div ng-if="(data.userInfo.video_identification_status=='ACCEPTED_AUTO' || data.userInfo.video_identification_status=='ACCEPTED_MANUAL') && data.userInfo.force_show_video_ident_in_profile">
+                    <a ng-click="data.showVideoIdentification()" href="" class="user-avatar video-identification-avatar">
+                        <img ng-src="{{data.userInfo.avatar.image}}" />
+                    </a>
+                </div>
+
+                <div ng-if="data.userInfo.isMyFriend" class="friend-status"><translate>Mein Kontakt</translate></div>
+
+                <div class="user-profile-labels">
+                    <div ng-if="data.userInfo.packet=='VIP_PLUS'" class="user-profile-packet-vip-plus"></div>
+                    <div ng-if="data.userInfo.packet=='VIP'" class="user-profile-packet"><translit>Premium</translit></div>
+                    <div ng-if="data.userInfo.is_company_name" class="user-profile-company"><translit>Gewerblich</translit></div>
+                </div>
+
+            </div>
+            <div class="contact-box-info">
+                <span class="firstname">{{data.userInfo.first_name}}</span>
+                <span class="lastname">{{data.userInfo.last_name}}</span>
+                <div ng-click="updateCountry(data.userInfo.id, data.userInfo)" ng-if="data.userInfo.flag" id="{{data.userInfo.flag}}" class="flag flag-32 flag-{{data.userInfo.flag}}"></div>
+                <div class="status-box">
+                    <span ng-if="data.userInfo.isOnline==0" class="chat-status chat-status-offline"><translate>offline</translate></span>
+                    <span ng-if="data.userInfo.isOnline==1" class="chat-status chat-status-online"><translate>mobile</translate></span>
+                    <span ng-if="data.userInfo.isOnline==2" class="chat-status chat-status-online"><translate>online</translate></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="btn-box user-photo-btn-box" ng-if="(data.userInfo.video_identification_status=='ACCEPTED_AUTO' || data.userInfo.video_identification_status=='ACCEPTED_MANUAL') && data.userInfo.force_show_video_ident_in_profile">
+            <kendo-mobile-button data-urls="{{data.userInfo.profileImages}}" href="#view-photo-swipe-popup" data-rel="modalview"><translate>Galerie</translate></kendo-mobile-button>
+        </div>
+
+        <div class="last-logged-box">
+            <div ng-if="data.userInfo.company_name" class="last-logged"><translate>Firma</translate>:<span class="last-logged-date">{{data.userInfo.company_name}}</span></div>
+            <div class="last-logged"><translate>Zuletzt eingeloggt</translate>:<span class="last-logged-date">{{data.userInfo.lastTimeWasOnline}}</span></div>
+            <div class="last-logged"><translate>Erfolgreich eingeladen</translate>:<span class="last-logged-date">{{data.userInfo.invitations}}</span></div>
+            <div class="last-logged"><a ng-click="navigate('view-network.html?id='+data.userInfo.id)"><translate>Insgesamt im Netzwerk</translate>:<span class="last-logged-date">{{data.userInfo.network_size}} <span ng-if="data.userInfo.network_size>0" class="icon-eye"></span></span></a></div>
+            <div class="last-logged"><translate>Netzwerktiefe (Level)</translate>:<span class="last-logged-date">{{data.userInfo.network_levels}}</span></div>
+            <div class="last-logged"><translate> Mitglied seit</translate>:<span class="last-logged-date">{{data.userInfo.registration_dt|date:'dd.MM.yyyy'}}</span></div>
+        </div>
+
+        <div class="btn-box">
+            <kendo-mobile-button ng-if="data.userInfo.isMyFriend" k-on-click="data.deleteFriend()"><translate>Kontakt entfernen</translate></kendo-mobile-button>
+            <kendo-mobile-button ng-if="data.userInfo.id!=status.user.id && !data.userInfo.isMyFriendBlocked" k-on-click="data.goToChat()"><translate>Nachricht schreiben</translate></kendo-mobile-button>
+            <!--<kendo-mobile-button ng-if="!data.userInfo.isMyFriend && !data.userInfo.friendRequestSend" k-on-click="data.addFriend()"><translate>Kontaktanfrage</translate></kendo-mobile-button>-->
+            <kendo-mobile-button ng-if="data.userInfo.isMyFriendBlocked" disabled="disabled"><translate>Du wurdest gesperrt</translate></kendo-mobile-button>
+            <kendo-mobile-button ng-if="data.userInfo.friendRequestSend" k-on-click="data.addFriend()"><translate>Anfrage erneut senden</translate></kendo-mobile-button>
+            <kendo-mobile-button ng-if="!data.userInfo.ignored && status.user.id!=data.userInfo.id" k-on-click="data.addToIgnoreList()"><translate>Vorübergehend sperren</translate></kendo-mobile-button>
+            <kendo-mobile-button ng-if="data.userInfo.ignored" k-on-click="data.delFromIgnoreList()"><translate>Entsperren</translate></kendo-mobile-button>
+
+            <div ng-if="status.user.id!=data.userInfo.id">
+                <kendo-mobile-button ng-if="!data.userInfo.spamReported" k-on-click="data.spamReport({profile_user_id:data.userInfo.id})"><translate>Spam melden</translate></kendo-mobile-button>
+                <kendo-mobile-button ng-if="data.userInfo.spamReported" disabled="disabled"><translate>Spam gemeldet</translate></kendo-mobile-button>
+            </div>
+
+        </div>
+
+        <kendo-mobile-list-view k-style="'inset'" k-type="'group'" class="list-user-data">
+
+            <li class="user-profile-validation-title"><translate>Für <span class="uppercase">Identitätsprüfungen</span> Buttons klicken</translate>
+                <ul class="user-profile-validation-status">
+                    <li><span class="icon-checked"></span><translate>E-mail adresse</translate></li>
+                    <li ng-if="data.userInfo.validation_phone_status=='VALIDATED'"><span class="icon-checked"></span><translate>Telefonnummer</translate></li>
+                    <li ng-if="status.user.id!=data.userInfo.id && data.userInfo.validation_phone_status!='VALIDATED'"><span class="icon-no-checked"></span><translate>Telefonnummer</translate></li>
+                    <li ng-if="status.user.id==data.userInfo.id && data.userInfo.validation_phone_status!='VALIDATED'"><span class="icon-no-checked"></span>
+                        <kendo-mobile-button k-on-click="data.gotoValidationPhone()"><translate>Telefonnummer</translate></kendo-mobile-button>
+                    </li>
+
+                    <li ng-if="data.userInfo.validation_status=='SUCCESS'"><span class="icon-checked"></span><translate>Pass / Ausweis</translate></li>
+                    <li ng-if="status.user.id!=data.userInfo.id && data.userInfo.validation_status!='SUCCESS'"><span class="icon-no-checked"></span><translate>Pass / Ausweis</translate></li>
+                    <li ng-if="status.user.id==data.userInfo.id && data.userInfo.validation_status!='SUCCESS'"><span class="icon-no-checked"></span>
+                        <kendo-mobile-button k-on-click="data.gotoValidationPassport()"><translate>Pass / Ausweis</translate></kendo-mobile-button>
+                    </li>
+
+                    <li ng-if="data.userInfo.video_identification_status=='ACCEPTED_AUTO' || data.userInfo.video_identification_status=='ACCEPTED_MANUAL'"><span class="icon-checked"></span><translate>Video Ident.</translate></li>
+                    <li ng-if="status.user.id!=data.userInfo.id && (data.userInfo.video_identification_status!='ACCEPTED_AUTO' && data.userInfo.video_identification_status!='ACCEPTED_MANUAL')"><span class="icon-no-checked"></span><translate>Video Ident.</translate></li>
+                    <li ng-if="status.user.id==data.userInfo.id && (data.userInfo.video_identification_status!='ACCEPTED_AUTO' && data.userInfo.video_identification_status!='ACCEPTED_MANUAL')"><span class="icon-no-checked"></span>
+                        <kendo-mobile-button href="view-add-video-identification.html"><translate>Video Ident.</translate></kendo-mobile-button>
+                    </li>
+                    <li ng-if="status.user.id==data.userInfo.id && (data.userInfo.video_identification_status=='ACCEPTED_AUTO' || data.userInfo.video_identification_status=='ACCEPTED_MANUAL')">
+                        <div class="full-btn-box">
+                            <kendo-mobile-button k-on-click="data.resetVideoident()"><translate>Videoident zurücksetzen</translate></kendo-mobile-button>
+                        </div>
+                    </li>
+
+                </ul>
+            </li>
+
+            <li class="show-in-become-member-box"><translate>Persönliche Daten</translate>
+                <span class="show-in-become-member" ng-if="data.userInfo.status=='ACTIVE' && data.userInfo.show_in_become_member==1">W</span>
+                <ul>
+                    <li ng-if="data.userInfo.nick_name"><translate>Nickname</translate>:<span>{{data.userInfo.nick_name}}</span></li>
+                    <li ng-if="data.userInfo.company_name" class="company-name"><translate>Firmenname</translate>:<span>{{data.userInfo.company_name}}</span></li>
+                    <li ng-if="data.userInfo.sex"><translate>Geschlecht</translate>:<span>{{data.userInfo.sex}}</span></li>
+                    <li ng-if="data.userInfo.age"><translate>Alter</translate>:<span>{{data.userInfo.age}}</span></li>
+                    <li ng-if="data.userInfo.birthday"><translate>Geboren am</translate>:<span>{{data.userInfo.birthday}}</span></li>
+                    <li ng-if="data.userInfo.marital_status"><translate>Familienstand</translate>:<span>{{data.userInfo.marital_status}}</span></li>
+                    <li ng-if="data.userInfo.zip_city"><translate>PLZ / Ort</translate>:<span>{{data.userInfo.zip_city}}</span></li>
+                    <li ng-if="data.userInfo.street_house_number"><translate>Straße / Haus-Nr.</translate>:<span>{{data.userInfo.street_house_number}}</span></li>
+                    <li ng-if="data.userInfo.profession"><translate>Beruf</translate>:<span>{{data.userInfo.profession}}</span></li>
+                    <li ng-if="data.userInfo.about" class="user-about">
+                        <translate>über</translate> {{data.userInfo | userName}}:
+                        <div>{{data.userInfo.about}}</div>
+                    </li>
+                </ul>
+            </li>
+        </kendo-mobile-list-view>
+
+
+        <div ng-if="data.feedback.loading && !data.feedback.hasMore" class="km-loader km-widget select-loader" data-role="loader" style="">
+            <span class="km-loading km-spin"></span>
+            <span class="km-loading-left"></span>
+            <span class="km-loading-right"></span>
+            <h1><translate>Loading</translate>...</h1>
+        </div>
+
+
+
+        <div ng-if="data.feedback.items.length>0 || data.teamFeedback.items.length>0">
+            <div class="feedback-group-title">
+                <div class="km-group-title">
+                    <span class="km-text"><translate>Bewertungen</translate></span>
+                </div>
+            </div>
+
+            <div class="user-profile-feedback-box" id="team-feedbacks">
+                <div ng-if="data.teamFeedback.items.length>0" ng-click="data.feedbackUser=data.feedbackUser?0:1" ng-class="{'open':data.feedbackUser}" class="feedback-collapse-title">
+                    <span class="icon-collapse"></span>
+                    <translate>Teamleaderbewertungen anzeigen</translate>
+                    <div class="user-feedback-rating-box">
+                        <div class="star-rating">
+                            <span ng-style="{width:(+data.userInfo.team_rating)+'%'}"></span>
+                        </div>
+                        <div class="feedback-count">({{::data.userInfo.team_feedback_count}})</div>
+                    </div>
+                </div>
+
+                <div ng-show="data.feedbackUser" class="profile-feedback-list-box">
+                    <kendo-mobile-list-view k-style="'inset'" class="profile-feedback-list">
+                        <li ng-repeat="item in data.teamFeedback.items" class="profile-feedback-list-item">
+                            <div class="clearfix">
+                                <div class="feedback-date-and-rating">
+                                    <div class="feedback-date">{{item.create_dt|date:"dd.MM.yyyy"}}</div>
+                                    <div class="star-rating"><span once-style="{width:(+item.rating)+'%'}" style="width: 40%;"></span></div>
+                                </div>
+
+                                <div class="offer-user-box clearfix">
+                                    <div ng-click="navigate('view-user-profile.html?id='+item.user.id)" class="offer-user-avatar">
+                                        <img ng-src="{{item.user.avatarMobile}}" alt=""/>
+                                    </div>
+                                    <div class="offer-user-name">{{::item.user|userName}}</div>
+                                    <div class="offer-user-rating">
+                                        <div class="star-rating">
+                                            <span once-style="{width:(+item.user.rating)+'%'}"></span>
+                                        </div>
+                                        <div class="user-feedback-count">({{::item.user.feedback_count}})</div>
+                                        <div ng-if="item.user.packet=='VIP'" class="user-packet">&nbsp;</div>
+                                        <div ng-if="item.user.packet=='VIP_PLUS'" class="user-packet-vip-plus">&nbsp;</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="feedback-text" ng-bind-html="item.feedback|linky" open-link></div>
+                            <ul ng-if="item.response" class="feedback-response-box">
+                                <li>
+                                    <div class="offer-user-box clearfix">
+                                        <div ng-click="navigate('view-user-profile.html?id='+data.userInfo.id)" class="offer-user-avatar">
+                                            <img ng-src="{{data.userInfo.avatarUrl}}" alt=""/>
+                                        </div>
+                                        <div class="offer-user-name">{{::data.userInfo|userName}}</div>
+                                        <div class="offer-user-rating">
+                                            <div class="feedback-response-dt">{{item.response_dt|date:"dd.MM.yyyy"}}</div>
+                                        </div>
+                                    </div>
+                                    <div class="feedback-text" ng-bind-html="item.response|linky" open-link></div>
+                                </li>
+                            </ul>
+                            <div ng-if="status.user.id==data.userInfo.id" class="btn-box-line">
+                                <kendo-mobile-button data-rel="modalview" data-id="{{::item.id}}" href="#view-user-team-feedback-response-popup"><translate>Antworten</translate></kendo-mobile-button>
+                            </div>
+                        </li>
+                    </kendo-mobile-list-view>
+
+                    <div class="load-btn-box" ng-show="data.teamFeedback.hasMore">
+                        <kendo-mobile-button k-on-click="data.teamFeedbackloadMore()">
+                            <span ng-if="!data.teamFeedback.loading"><translate>Load More</translate></span>
+                            <span ng-if="data.teamFeedback.loading" class="km-loader km-widget select-loader" data-role="loader" style="">
+                        <span class="km-loading km-spin"></span>
+                        <span class="km-loading-left"></span>
+                        <span class="km-loading-right"></span>
+                        <h1><translate>Loading</translate>...</h1>
+                        <span class="btn-text-android"><translate>Loading</translate></span>
+                    </span>
+                        </kendo-mobile-button>
+                    </div>
+                </div>
+
+
+                <div ng-if="data.feedback.items.length > 0" ng-click="data.feedbackDeals=data.feedbackDeals?0:1" ng-class="{'open':data.feedbackDeals}" class="feedback-collapse-title">
+                    <span class="icon-collapse"></span>
+                    <translate>Handelsbewertung</translate>
+
+                    <div class="user-feedback-rating-box">
+                        <div class="star-rating">
+                            <span ng-style="{width:(+data.userInfo.rating)+'%'}"></span>
+                        </div>
+                        <div class="feedback-count">({{::data.userInfo.feedback_count}})</div>
+                    </div>
+
+                </div>
+
+                <div ng-show="data.feedbackDeals" class="profile-feedback-list-box">
+                    <kendo-mobile-list-view k-style="'inset'" class="profile-feedback-list">
+                        <li ng-repeat="item in data.feedback.items" class="profile-feedback-list-item">
+                            <div class="clearfix">
+                                <div class="feedback-date-and-rating">
+                                    <div class="feedback-date">{{item.create_dt|date:"dd.MM.yyyy"}}</div>
+                                    <div class="star-rating"><span once-style="{width:(+item.rating)+'%'}" style="width: 40%;"></span></div>
+                                </div>
+
+                                <div class="offer-user-box clearfix">
+                                    <div ng-click="navigate('view-user-profile.html?id='+item.user.id)" class="offer-user-avatar">
+                                        <img ng-src="{{item.user.avatarMobile}}" alt=""/>
+                                    </div>
+                                    <div class="offer-user-name">{{::item.user|userName}}</div>
+                                    <div class="offer-user-rating">
+                                        <div class="star-rating">
+                                            <span once-style="{width:(+item.user.rating)+'%'}"></span>
+                                        </div>
+                                        <div class="user-feedback-count">({{::item.user.feedback_count}})</div>
+                                        <div ng-if="item.user.packet=='VIP'" class="user-packet">&nbsp;</div>
+                                        <div ng-if="item.user.packet=='VIP_PLUS'" class="user-packet-vip-plus">&nbsp;</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="feedback-text" ng-bind-html="item.feedback|linky" open-link></div>
+                            <ul ng-if="item.response" class="feedback-response-box">
+                                <li>
+                                    <div class="offer-user-box clearfix">
+                                        <div ng-click="navigate('view-user-profile.html?id='+data.userInfo.id)" class="offer-user-avatar">
+                                            <img ng-src="{{data.userInfo.avatarUrl}}" alt=""/>
+                                        </div>
+                                        <div class="offer-user-name">{{::data.userInfo|userName}}</div>
+                                        <div class="offer-user-rating">
+                                            <div class="feedback-response-dt">{{item.response_dt|date:"dd.MM.yyyy"}}</div>
+                                        </div>
+                                    </div>
+                                    <div class="feedback-text" ng-bind-html="item.response|linky" open-link></div>
+                                </li>
+                            </ul>
+                            <div ng-if="status.user.id==data.userInfo.id" class="btn-box-line">
+                                <kendo-mobile-button data-rel="modalview" data-id="{{::item.id}}" href="#view-user-feedback-response-popup"><translate>Antworten</translate></kendo-mobile-button>
+                            </div>
+                        </li>
+                    </kendo-mobile-list-view>
+
+                    <div class="load-btn-box" ng-show="data.feedback.hasMore">
+                        <kendo-mobile-button k-on-click="data.loadMore()">
+                            <span ng-if="!data.feedback.loading"><translate>Load More</translate></span>
+                            <span ng-if="data.feedback.loading" class="km-loader km-widget select-loader" data-role="loader" style="">
+                        <span class="km-loading km-spin"></span>
+                        <span class="km-loading-left"></span>
+                        <span class="km-loading-right"></span>
+                        <h1><translate>Loading</translate>...</h1>
+                        <span class="btn-text-android"><translate>Loading</translate></span>
+                    </span>
+                        </kendo-mobile-button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+        <kendo-mobile-list-view k-style="'inset'" k-type="'group'" class="user-profile-change-network-list">
+            <li><span><translate ng-if="data.userInfo.teamChangeFinishTime">Teamwechsel</translate><translate ng-if="!data.userInfo.teamChangeFinishTime">Team</translate></span>
+                <ul>
+                    <li>
+                        <div class="user-profile-change-network-box">
+                            <div ng-if="data.userInfo.canCreateStickRequest && data.userInfo.teamChangeFinishTime && data.userInfo.registered_by_become_member" class="network-change-block-btn-box">
+                                <kendo-mobile-button href="#view-network-change-block-popup" data-user-id="{{data.userInfo.id}}" data-rel="modalview"><translate>Abwerben verhindern</translate></kendo-mobile-button>
+                            </div>
+
+                            <div ng-if="data.userInfo.teamChangeFinishTime" class="change-network-box clearfix">
+                                <span server-countdown="data.userInfo.teamChangeFinishTime" server-countdown-with-days="true" class="countdown-change-network"></span>
+
+                                <kendo-mobile-button ng-show="status.user.packet!='VIP' && status.user.packet!='VIP_PLUS'" k-on-click="data.teamChangeRequestPopup2()" ng-if="!data.userInfo.block_parent_team_requests && (!data.userInfo.parent || data.userInfo.parent.id!=status.user.id) && status.user.id!=data.userInfo.id && data.userInfo.teamChangeFinishTime && !data.userInfo.request_sent2"><translate>Abwerben</translate></kendo-mobile-button>
+                                <kendo-mobile-button ng-show="status.user.packet=='VIP' || status.user.packet=='VIP_PLUS'" data-rel="modalview" href="#team-change-request-popup2" data-user-id="{{data.userInfo.id}}" data-user-name="{{data.userInfo|userName}}" ng-if="!data.userInfo.block_parent_team_requests && (!data.userInfo.parent || data.userInfo.parent.id!=status.user.id) && status.user.id!=data.userInfo.id && data.userInfo.teamChangeFinishTime && !data.userInfo.request_sent2"><translate>Abwerben</translate></kendo-mobile-button>
+
+                                <kendo-mobile-button ng-if="!data.userInfo.block_parent_team_requests && (!data.userInfo.parent || data.userInfo.parent.id!=status.user.id) && status.user.id!=data.userInfo.id && data.userInfo.teamChangeFinishTime && data.userInfo.request_sent2"><translate>Bereits eingeladen</translate></kendo-mobile-button>
+                                <kendo-mobile-button href="view-team-change-user-search.html" ng-if="status.user.id==data.userInfo.id"><translate>Wechseln</translate></kendo-mobile-button>
+                            </div>
+
+                            <div ng-if="data.userInfo.parent">
+                                <div class="offer-user-box clearfix">
+                                    <div ng-click="navigate('view-user-profile.html?id='+data.userInfo.id)" class="offer-user-avatar">
+                                        <img ng-src="{{data.userInfo.avatar.image}}" alt=""/>
+                                    </div>
+                                    <div class="offer-user-name">{{data.userInfo|userName}}</div>
+                                    <div class="offer-user-rating">
+                                        <div class="star-rating">
+                                            <span ng-style="{width:(+data.userInfo.rating)+'%'}"></span>
+                                        </div>
+                                        <div class="user-feedback-count">({{data.userInfo.feedback_count}})</div>
+                                        <div ng-if="data.userInfo.packet=='VIP'" class="user-packet">&nbsp;</div>
+                                        <div ng-if="data.userInfo.packet=='VIP_PLUS'" class="user-packet-vip-plus">&nbsp;</div>
+                                    </div>
+                                </div>
+
+                                <div class="text-change-network"><translate>ist im Team von</translate></div>
+
+                                <div class="offer-user-box clearfix">
+                                    <div ng-click="navigate('view-user-profile.html?id='+data.userInfo.parent.id)" class="offer-user-avatar">
+                                        <img ng-src="{{data.userInfo.parent.avatarUrl}}" alt=""/>
+                                    </div>
+                                    <div class="offer-user-name">{{data.userInfo.parent|userName}} <div ng-click="updateCountry(data.userInfo.parent.id, data.userInfo.parent)" id="{{data.userInfo.parent.flag}}" class="flag flag-32 flag-{{data.userInfo.parent.flag}}"></div></div>
+                                    <div class="offer-user-rating">
+                                        <div class="star-rating">
+                                            <span ng-style="{width:(+data.userInfo.parent.rating)+'%'}"></span>
+                                        </div>
+                                        <div class="user-feedback-count">({{data.userInfo.parent.feedback_count}})</div>
+                                        <div ng-if="data.userInfo.parent.packet=='VIP'" class="user-packet">&nbsp;</div>
+                                        <div ng-if="data.userInfo.parent.packet=='VIP_PLUS'" class="user-packet-vip-plus">&nbsp;</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <kendo-mobile-button data-rel="modalview" href="#team-change-request-popup" data-user-id="{{data.userInfo.id}}" data-user-name="{{data.userInfo|userName}}" ng-if="!status.user.block_team_change && status.user.parent_id!=data.userInfo.id && status.user.teamChangeFinishTime && status.user.id!=data.userInfo.id && !data.userInfo.teamChangeFinishTime && !data.userInfo.request_sent"><translate>Komm in mein Team!</translate></kendo-mobile-button>
+                            <kendo-mobile-button k-on-click="data.blockTeamChange()" ng-if="status.user.block_team_change && status.user.parent_id!=data.userInfo.id && status.user.teamChangeFinishTime && status.user.id!=data.userInfo.id && !data.userInfo.teamChangeFinishTime && !data.userInfo.request_sent"><translate>Komm in mein Team!</translate></kendo-mobile-button>
+
+
+                            <kendo-mobile-button ng-if="status.user.parent_id!=data.userInfo.id && status.user.teamChangeFinishTime && status.user.id!=data.userInfo.id && !data.userInfo.teamChangeFinishTime && data.userInfo.request_sent"><translate>Teamwechsel bereits beantragt</translate></kendo-mobile-button>
+
+                            <div id="teamleader-feedback" class="btn-box" ng-if="status.user.id==data.userInfo.id && !data.userInfo.teamChangeFinishTime">
+                                <kendo-mobile-button data-rel="modalview" href="#view-user-team-feedback-popup"><translate>Teamleading bewerten</translate></kendo-mobile-button>
+                            </div>
+
+                        </div>
+                    </li>
+                </ul>
+            </li>
+        </kendo-mobile-list-view>
+
+
+        <div>
+            <div class="feedback-group-title">
+                <div class="km-group-title">
+                    <span class="km-text"><translate>Kontakte & Abonnenten von {{data.userInfo.first_name}} {{data.userInfo.last_name}}</translate></span>
+                </div>
+            </div>
+
+            <div class="icollapse-box icollapse-contacts-list-box" ng-if="data.friends.users.length>0">
+                <div class="icollapse-header" ng-click="data.friendsShow=data.friendsShow?0:1" ng-class="{'open':data.friendsShow}">
+                    <span class="icon-collapse"></span><translate>Kontakte</translate>
+                    <div class="icollapse-header-count-elem">{{data.friends.count}}</div>
+                </div>
+                <div class="icollapse-body" ng-if="data.friendsShow">
+                    <div ng-if="status.user.id==data.userInfo.id" class="user-profile-contacts-list-header">
+                        <div class="btn-box">
+                            <kendo-mobile-button href="view-trollbox-list.html"><translate>Beitrag an meine Kontakte senden</translate></kendo-mobile-button>
+                        </div>
+                        <div class="list-header-col2-text clearfix">
+                            <div ng-click="data.sortFriends('contact')" ng-class="{'sort-asc': data.friends.sort=='contact', 'sort-desc': data.friends.sort=='-contact'}"><translate>Kontakt</translate></div>
+                            <div ng-click="data.sortFriends('follower')" ng-class="{'sort-asc': data.friends.sort=='follower', 'sort-desc': data.friends.sort=='-follower'}"><translate>Abonniert</translate></div>
+                        </div>
+                    </div>
+
+                    <kendo-mobile-list-view k-style="'inset'" class="user-profile-contacts-list" ng-class="{'my-profile-contact-list': status.user.id==data.userInfo.id}">
+                        <li ng-repeat="item in data.friends.users">
+                            <div ng-if="status.user.id==data.userInfo.id" class="user-profile-contact-delete">
+                                <div class="km-listview-label custom-checkbox">
+                                    <input ng-click="data.changeFriend(item)" type="checkbox" ng-true-value="true" ng-false-value="false" ng-model="item.isFriend" class="km-widget km-icon km-check" />
+                                </div>
+                            </div>
+                            <div class="offer-user-box clearfix">
+                                <div ng-click="navigate('view-user-profile.html?id='+item.id)" class="offer-user-avatar">
+                                    <img ng-src="{{item.avatarMobile}}" alt=""/>
+                                </div>
+                                <div class="offer-user-name">{{item|userName}} <div id="{{item.flag}}" class="img-thumbnail flag flag-icon flag-icon-{{item.flag}}"></div></div>
+                                <div class="offer-user-rating">
+                                    <div class="star-rating">
+                                        <span ng-style="{width:(+item.rating)+'%'}"></span>
+                                    </div>
+                                    <div class="user-feedback-count">({{item.feedback_count}})</div>
+                                    <div ng-if="item.packet=='VIP'" class="user-packet">&nbsp;</div>
+                                    <div ng-if="item.packet=='VIP_PLUS'" class="user-packet-vip-plus">&nbsp;</div>
+                                </div>
+                            </div>
+
+                            <div ng-if="status.user.id==data.userInfo.id" class="user-profile-follower-delete">
+                                <div class="km-listview-label custom-checkbox">
+                                    <input ng-click="data.changeSubscribe(item)" type="checkbox" ng-true-value="true" ng-false-value="false" ng-model="item.isFollow" class="km-widget km-icon km-check" />
+                                </div>
+                            </div>
+                        </li>
+                    </kendo-mobile-list-view>
+
+                    <div class="load-btn-box" ng-show="data.friends.hasMore">
+                        <kendo-mobile-button k-on-click="data.friendsLoadMore()">
+                            <span ng-if="!data.friends.loading"><translate>Load More</translate></span>
+                            <span ng-if="data.friends.loading" class="km-loader km-widget select-loader" data-role="loader" style="">
+                <span class="km-loading km-spin"></span>
+                <span class="km-loading-left"></span>
+                <span class="km-loading-right"></span>
+                <h1><translate>Loading</translate>...</h1>
+                <span class="btn-text-android"><translate>Loading</translate></span>
+            </span>
+                        </kendo-mobile-button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="icollapse-box" ng-if="data.followers.users.length>0">
+                <div class="icollapse-header" ng-click="data.followersShow=data.followersShow?0:1" ng-class="{'open':data.followersShow}">
+                    <span class="icon-collapse"></span><translate>Abonnenten</translate>
+                    <div class="icollapse-header-count-elem">{{data.followers.count}}</div>
+                </div>
+                <div class="icollapse-body" ng-if="data.followersShow">
+                    <kendo-mobile-list-view k-style="'inset'">
+                        <li ng-repeat="item in data.followers.users">
+                            <div class="offer-user-box clearfix">
+                                <div ng-click="navigate('view-user-profile.html?id='+item.id)" class="offer-user-avatar">
+                                    <img ng-src="{{item.avatarMobile}}" alt=""/>
+                                </div>
+                                <div class="offer-user-name">{{item|userName}}</div>
+                                <div class="offer-user-rating">
+                                    <div class="star-rating">
+                                        <span ng-style="{width:(+item.rating)+'%'}"></span>
+                                    </div>
+                                    <div class="user-feedback-count">({{item.feedback_count}})</div>
+                                    <div ng-if="item.packet=='VIP'" class="user-packet">&nbsp;</div>
+                                    <div ng-if="item.packet=='VIP_PLUS'" class="user-packet-vip-plus">&nbsp;</div>
+                                </div>
+                            </div>
+                        </li>
+                    </kendo-mobile-list-view>
+
+                    <div class="load-btn-box" ng-show="data.followers.hasMore">
+                        <kendo-mobile-button k-on-click="data.followersLoadMore()">
+                            <span ng-if="!data.followers.loading"><translate>Load More</translate></span>
+                            <span ng-if="data.followers.loading" class="km-loader km-widget select-loader" data-role="loader" style="">
+                        <span class="km-loading km-spin"></span>
+                        <span class="km-loading-left"></span>
+                        <span class="km-loading-right"></span>
+                        <h1><translate>Loading</translate>...</h1>
+                        <span class="btn-text-android"><translate>Loading</translate></span>
+                    </span>
+                        </kendo-mobile-button>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="icollapse-box" ng-if="data.trollboxMessages.items.length>0" id="main-trollbox-messages">
+                <div class="icollapse-header" ng-click="data.trollboxMessagesShow=data.trollboxMessagesShow?0:1" ng-class="{'open':data.trollboxMessagesShow}">
+                    <span class="icon-collapse"></span><translate>Forumsbeiträge</translate>
+                    <div class="icollapse-header-count-elem">{{data.trollboxMessages.count}}</div>
+                </div>
+                <div class="icollapse-body" ng-if="data.trollboxMessagesShow">
+
+                    <div ng-repeat="message in data.trollboxMessages.items" class="jugl-forum-item-box clearfix" ng-class="{'trollbox-message-deleted-box':message.status=='DELETED' || message.status=='REJECTED'}">
+
+                        <div class="trollbox-message-status" ng-if="message.status=='DELETED' || message.status=='REJECTED'">
+                            <span ng-if="message.status=='DELETED'" class="trollbox-message-status-deleted"><translate>Gelöscht</translate></span>
+                            <span ng-if="message.status=='REJECTED'" class="trollbox-message-status-rejected"><translate>Blockiert</translate></span>
+                        </div>
+
+                        <div class="jugl-forum-header-box clearfix">
+                            <div class="jugl-forum-user-box" ng-click="navigate('view-user-profile.html?id='+message.user.id)">
+                                <div class="jugl-forum-user-avatar">
+                                    <img once-src="message.user.avatar">
+                                </div>
+                                <div class="trollbox-messsage-username">
+                                    <span ng-if="!message.user.is_company_name">{{::message.user|userName}}</span>
+                                    <span ng-if="message.user.is_company_name">{{::message.user.company_name}}</span>
+                                </div>
+                            </div>
+                            <div class="jugl-forum-header-left-box">
+                                <div class="jugl-forum-message-dt">{{::message.dt|date : 'dd.MM.yyyy HH:mm'}}</div>
+                                <div id="{{::message.user.flag}}" class="img-thumbnail flag forum-flag flag-icon flag-icon-{{::message.user.flag}}"></div>
+                            </div>
+                        </div>
+
+                        <div set-if="message.file.image" class="trollbox-messsage-item-picture">
+                            <div ng-if="message.file.ext!='mp4'" class="trollbox-messsage-picture">
+                                <a href="#view-photo-swipe-popup" data-url="{{::message.file.image_medium}}" data-rel="modalview" data-role="button">
+                                    <img once-src="message.file.image_medium">
+                                </a>
+                            </div>
+
+                            <div ng-if="message.file.ext=='mp4'" class="video-box">
+                                <video video ng-attr-poster="{{message.file.image_medium}}" playsinline webkit-playsinline loop muted preload="none">
+                                    <source ng-src="{{message.file.url|trustResourceUrl}}" type="video/mp4">
+                                </video>
+                            </div>
+
+                        </div>
+
+                        <div class="jugl-forum-item-text" ng-bind-html="message.text|emoticonFixMobile:true" open-link></div>
+
+                        <div class="jugl-forum-like-box clearfix">
+                            <div ng-click="data.trollboxVoteDown(message)" class="dislike-btn">{{::message.votes_down}}</div>
+                            <div ng-if="message.votes_down+message.votes_up>0" ng-click="data.viewVotes(message.id)" class="votes-view">&nbsp;</div>
+                            <div ng-click="data.trollboxVoteUp(message)" class="like-btn">{{::message.votes_up}}</div>
+                        </div>
+
+                        <div ng-if="message.trollbox_category_id" class="trollbox-message-category">{{message.trollbox_category}}</div>
+
+                        <div ng-if="status.user.is_moderator && message.status!='DELETED'" class="message-actions-box clearfix box-sizing">
+                            <div class="message-actions-left" ng-class="{'message-actions-only-btn': message.status=='AWAITING_ACTIVATION' || message.status=='AWAITING_ACTIVATION'}">
+                                <div><kendo-mobile-button set-if="message.status=='ACTIVE' || message.status=='AWAITING_ACTIVATION'" k-on-click="data.trollboxRejectMessage(message)" class="btn-reject-message"><translate set-if="message.status=='AWAITING_ACTIVATION'">Ablehnen</translate><translate set-if="message.status=='ACTIVE'">Blockieren</translate></kendo-mobile-button></div>
+                                <div><kendo-mobile-button set-if="message.status=='REJECTED' || message.status=='AWAITING_ACTIVATION'" k-on-click="data.trollboxAcceptMessage(message)" class="btn-accept-message"><translate set-if="message.status=='AWAITING_ACTIVATION'">Freigeben</translate><translate set-if="message.status=='REJECTED'">Entblocken</translate></kendo-mobile-button></div>
+                            </div>
+
+                            <div class="message-actions-right">
+                                <div set-if="message.status=='REJECTED' && message.status_changed_dt" class="message-reject">
+                                    <div class="dt-message-reject">{{::message.status_changed_dt|date : 'dd.MM.yyyy - HH:mm'}} <translate>Uhr</translate> <translate ng-if="message.user.id==message.status_changed_user_id">Nutzer</translate><translate ng-if="message.user.id!=message.status_changed_user_id">Moderator</translate></div>
+                                    <div class="user-message-reject">{{::message.statusChangedUser}}</div>
+                                </div>
+                                <div set-if="message.status=='ACTIVE' && message.status_changed_dt" class="message-accept">
+                                    <div class="dt-message-accept">{{::message.status_changed_dt|date : 'dd.MM.yyyy - HH:mm'}} <translate>Uhr</translate> <translate ng-if="message.user.id==message.status_changed_user_id">Nutzer</translate><translate ng-if="message.user.id!=message.status_changed_user_id">Moderator</translate></div>
+                                    <div class="user-message-accept">{{::message.statusChangedUser}}</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div ng-if="status.user.is_moderator && message.status!='DELETED'" class="trollbox-message-actions-btn-box">
+                            <kendo-mobile-button ng-click="data.trollboxBlockUser(message)" ng-if="!message.user.is_blocked_in_trollbox"><translate>Für alle Foren sperren</translate></kendo-mobile-button>
+                            <kendo-mobile-button ng-click="data.trollboxUnblockUser(message)" ng-if="message.user.is_blocked_in_trollbox"><translate>Für alle Foren entsperren</translate></kendo-mobile-button>
+                            <kendo-mobile-button ng-click="data.trollboxSetStickyTrollboxMessage(message)" set-if="!message.is_sticky"><translate>Beitrag anpinnen</translate></kendo-mobile-button>
+                            <kendo-mobile-button ng-click="data.trollboxUnsetStickyTrollboxMessage(message)" set-if="message.is_sticky"><translate>Beitrag entpinnen</translate></kendo-mobile-button>
+                        </div>
+
+                        <div ng-if="message.status!='DELETED'" class="box-sizing message-comment-btn-box">
+                            <kendo-mobile-button ng-click="data.enterGroupChat(message.id)"><translate>Kommentieren</translate></kendo-mobile-button>
+                        </div>
+
+                        <div class="trollbox-message-total-box">
+                            <div class="trollbox-message-total-info"><span>{{::message.messagesCount|default:0}}</span><translate>Kommentare insgesamt</translate></div>
+                        </div>
+
+                        <div ng-if="status.user.id==data.userInfo.id && message.status!='DELETED'" class="trollbox-main-btn-box">
+                            <kendo-mobile-button data-rel="modalview" data-id="{{message.id}}" href="#view-trollbox-message-update-popup"><translate>Bearbeiten</translate></kendo-mobile-button>
+                            <kendo-mobile-button ng-click="data.trollboxMessageDelete(message.id)"><translate>Löschen</translate></kendo-mobile-button>
+                        </div>
+
+                    </div>
+
+                    <div class="load-btn-box" ng-show="data.trollboxMessages.hasMore">
+                        <kendo-mobile-button k-on-click="data.trollboxMessagesLoadMore()">
+                            <span ng-if="!data.trollboxMessages.loading"><translate>Load More</translate></span>
+                            <span ng-if="data.trollboxMessages.loading" class="km-loader km-widget select-loader" data-role="loader" style="">
+                            <span class="km-loading km-spin"></span>
+                            <span class="km-loading-left"></span>
+                            <span class="km-loading-right"></span>
+                            <h1><translate>Loading</translate>...</h1>
+                            <span class="btn-text-android"><translate>Loading</translate></span>
+                        </span>
+                        </kendo-mobile-button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <br><br>
+
+</kendo-mobile-view>

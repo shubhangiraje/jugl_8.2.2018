@@ -1,0 +1,16 @@
+<kendo-mobile-modal-view
+        k-on-open="data.onOpen(kendoEvent)"
+        ng-controller="SpamReportPopupCtrl as spamReportPopupCtrl"
+        id="view-spam-report-popup"
+        class="modal" style="width: 90%;" modal ng-cloak>
+
+    <div class="feedback-box">
+        <label><translate>Grund:</translate></label>
+        <textarea name="spamReport" rows="6" ng-model="data.spamReport.comment"></textarea>
+    </div>
+
+    <div class="btn-box">
+        <kendo-mobile-button k-on-click="data.save()"><translate>Absenden</translate></kendo-mobile-button>
+        <kendo-mobile-button class="closeModalBtn"><translate>Cancel</translate></kendo-mobile-button>
+    </div>
+</kendo-mobile-modal-view>

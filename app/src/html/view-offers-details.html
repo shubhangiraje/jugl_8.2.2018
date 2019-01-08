@@ -1,0 +1,161 @@
+<kendo-mobile-view
+        k-title="'Angebote Details'"
+        id="view-offers-details"
+        k-layout="'layout-main'"
+        ng-controller="OfferDetailCtrl as offerDetailCtrl"
+        k-on-show="data.onShow(kendoEvent)"
+        k-on-hide="data.onHide(kendoEvent)"
+        k-use-native-scrolling="config.views.useNativeScrolling"
+        ng-cloak>
+
+    <kendo-mobile-header>
+        <kendo-mobile-nav-bar>
+            <kendo-mobile-view-title>&nbsp;</kendo-mobile-view-title>
+            <kendo-mobile-back-button k-on-click="onClickBack()" data-align="left"><span class="platform-android"><translate>Zurück</translate></span></kendo-mobile-back-button>
+        </kendo-mobile-nav-bar>
+    </kendo-mobile-header>
+
+    <div ng-if="!data.offer.preview" class="offer-details-bonus-views">
+        <translate>Views</translate>: <span>{{data.offer.count_offer_view}}</span>
+    </div>
+
+    <div class="box-details-info">
+
+        <div class="found-favorite-details">
+            <div ng-if="!data.offer.favorite" ng-click="data.addFavorite(data.offer.id)" ng-class="{'favorite-false': !data.offer.favorite}" class="favorite"><translate>Merken</translate></div>
+            <div ng-if="data.offer.favorite" ng-class="{'favorite-true': data.offer.favorite}" class="favorite"><translate>Gemerkt</translate></div>
+        </div>
+
+        <div class="offer-type-details" ng-if="data.offer.type == 'AUCTION'"><translate>Bieterverfahren</translate></div>
+        <div class="offer-type-details" ng-if="data.offer.type == 'AD' && marketingEnabled"><translate>Keine Kaufmöglichkeit</translate></div>
+        <div class="offer-type-details" ng-if="data.offer.type == 'AUTOSELL'"><translate>Sofortkauf</translate></div>
+
+        <div class="details-title allow-clipboard">{{data.offer.title}}</div>
+        <div class="details-category clearfix">
+            <span>{{data.offer.level1Interest}}</span>
+            <span ng-if="data.offer.level2Interest">{{data.offer.level2Interest}}</span>
+            <span ng-if="data.offer.level3Interests">{{data.offer.level3Interests}}</span>
+        </div>
+
+        <div class="details-relevance-date clearfix">
+            <div class="details-offer-relevance"><translate>Relevanz</translate><span class="relevance-percent">{{data.offer.relevancy}}%</span></div>
+            <div class="details-offer-date">{{data.offer.create_dt|date:"dd.MM.yyyy"}}</div>
+        </div>
+
+        <div class="offer-user-box clearfix">
+            <a href="" ng-click="navigate('view-user-profile.html?id='+data.offer.user.id)">
+                <div class="offer-user-avatar">
+                    <img ng-src="{{data.offer.user.avatarMobile}}" alt=""/>
+                </div>
+            </a>
+            <div class="offer-user-name">{{data.offer.user|userName}}</div>
+            <div class="offer-user-rating">
+                <div class="star-rating">
+                    <span ng-style="{width:(+data.offer.user.rating)+'%'}"></span>
+                </div>
+                <div class="user-feedback-count">({{::data.offer.user.feedback_count}})</div>
+                <div ng-if="data.offer.user.packet=='VIP'" class="user-packet">&nbsp;</div>
+                <div ng-if="data.offer.user.packet=='VIP_PLUS'" class="user-packet-vip-plus">&nbsp;</div>
+            </div>
+        </div>
+
+        <div ng-if="data.offer.type == 'AUCTION'" class="details-offer-price"><translate>Preisvorstellung</translate>: <span class="details-price-value">{{data.offer.price|priceFormat}} &euro;</span></div>
+        <div ng-if="data.offer.type == 'AUTOSELL'" class="details-offer-price"><translate>Preis</translate>: <span class="details-price-value">{{data.offer.price|priceFormat}} &euro;</span></div>
+        <div class="details-offer-place">{{data.offer.zip}} {{data.offer.city}}</div>
+        <div class="details-offer-place">{{data.offer.country|translate}}</div>
+
+        <div class="details-offer-bonus-box">
+            <div ng-if="data.offer.view_bonus && marketingEnabled" class="details-offer-bonus promotion-bonus"><translate>Werbebonus</translate>:&nbsp;<span>{{data.offer.view_bonus|priceFormat}}<span class="icon-jugl green"></span></span></div>
+            <div ng-if="data.offer.buy_bonus" class="details-offer-bonus buy-bonus"><translate>Kaufbonus</translate>:&nbsp;<span>{{data.offer.buy_bonus|priceFormat}}<span class="icon-jugl blue"></span></span></div>
+        </div>
+
+    </div>
+
+    <ul class="box-details-gallery">
+        <li ng-if="data.offer.bigImages" ng-repeat="image in data.offer.images" >
+            <a data-urls="{{data.offer.bigImages}}" data-index="{{$index}}" href="#view-photo-swipe-popup" data-rel="modalview" data-role="button">
+                <img ng-src="{{image}}" />
+            </a>
+        </li>
+        <!--<li ng-if="data.offer.bigImages" ng-repeat="image in data.offer.images" ng-click="data.showGallery($index, data.offer.bigImages)">
+            <img ng-src="{{image}}" />
+        </li>-->
+        <li ng-if="!data.offer.bigImages">
+            <img ng-src="{{data.offer.images[0]}}" />
+        </li>
+    </ul>
+
+    <kendo-mobile-list-view k-type="'group'" k-style="'inset'">
+        <li><translate>Details</translate>
+            <ul class="details-description allow-clipboard">
+                <li>
+                    <div ng-if="data.offer.show_amount==1 || data.offer.delivery_days>0 || data.offer.delivery_cost>0" class="details-params-box">
+                        <div ng-if="data.offer.show_amount==1" class="details-params-param"><translate>Stückzahl</translate>:&nbsp;<b>{{data.offer.amount}}</b></div>
+                        <div ng-if="data.offer.delivery_days>0" class="details-params-param"><translate>Lieferzeit</translate>:&nbsp;<b>{{data.offer.delivery_days}} <translate>Tage</translate></b></div>
+                        <div ng-if="data.offer.delivery_cost>0" class="details-params-param"><translate>Versandkosten</translate>:&nbsp;<b>{{data.offer.delivery_cost|priceFormat}} &euro; </b> (<translate>innerhalb von</translate> {{data.offer.country|translate}})</div>
+                    </div>
+
+                    <div ng-if="data.offer.type!='AD'" class="details-params-box">
+                        <h3><translate>Zahlungarten</translate>:</h3>
+                        <ul class="details-payment-methods-list">
+                            <li ng-class="{'active-status': data.offer.pay_allow_bank, 'inactive-status': !data.offer.pay_allow_bank}"><translate>Zahlung per Banküberweisung</translate></li>
+                            <li ng-class="{'active-status': data.offer.pay_allow_paypal, 'inactive-status': !data.offer.pay_allow_paypal}"><translate>Zahlung per Paypal</translate></li>
+                            <li ng-class="{'active-status': data.offer.pay_allow_jugl, 'inactive-status': !data.offer.pay_allow_jugl}"><translate>Zahlung mit Jugls</translate></li>
+                            <li ng-class="{'active-status': data.offer.pay_allow_pod, 'inactive-status': !data.offer.pay_allow_pod}"><translate>Barzahlung bei Abholung</translate></li>
+                        </ul>
+                    </div>
+
+                    <div class="details-params-box">
+                        <div class="details-params-param"><translate>Aktiv bis</translate>:&nbsp;<b>{{data.offer.active_till|date:"dd.MM.yyyy"}}</b></div>
+                    </div>
+
+                    <div class="details-params-box">
+                        <div class="details-params-param"><translate>Typ der Inserat</translate>:&nbsp;
+                            <b ng-if="data.offer.type == 'AUCTION'"><translate>Bieterverfahren</translate></b>
+                            <b ng-if="data.offer.type == 'AD' && marketingEnabled"><translate>Keine Kaufmöglichkeit</translate></b>
+                            <b ng-if="data.offer.type == 'AUTOSELL'"><translate>Sofortkauf</translate></b>
+                        </div>
+                    </div>
+
+                    <div class="details-params-box">
+                        <div class="details-params-param"><translate>Beschreibung</translate>:&nbsp;<div><b class="description-text" ng-bind-html="data.offer.description | linky" open-link></b></div></div>
+                    </div>
+
+                    <div ng-if="data.offer.paramValues.length>0" class="details-params-box">
+                        <div ng-if="pv.value" ng-repeat="pv in data.offer.paramValues" class="details-params-param">
+                            {{pv.title}}: <b>{{pv.value}}</b>
+                        </div>
+                    </div>
+
+                    <div ng-if="data.offer.comment" class="details-params-box">
+                        <div class="details-params-param"><translate>Kommentar</translate>:&nbsp;<div><b class="description-text" ng-bind-html="data.offer.comment | linky" open-link></b></div></div>
+                    </div>
+
+                </li>
+            </ul>
+        </li>
+        <li ng-show="data.offer.user.is_company_name"><translate>Impressum</translate>
+            <ul class="details-description allow-clipboard">
+                <li>
+                    <div class="description-text" ng-bind-html="data.offer.user.impressum | linky" open-link></div>
+                    <a class="link-blue" href="" ng-click="data.openAgb()"><translate>AGB des Anbieters lesen</translate></a>
+                </li>
+            </ul>
+        </li>
+    </kendo-mobile-list-view>
+
+    <div class="btn-box" ng-if="status.user.id!=data.offer.user.id && data.offer.status=='ACTIVE'">
+        <kendo-mobile-button ng-if="data.offer.allow_contact" k-on-click="data.openChat()"><translate>Nachricht schreiben</translate></kendo-mobile-button>
+        <kendo-mobile-button ng-if="data.offer.type!='AD' && data.offer.canAccept" k-on-click="data.request()">
+            <span ng-if="data.offer.type=='AUTOSELL'"><translate>Kaufen</translate></span>
+            <span ng-if="data.offer.type=='AUCTION'"><translate>Verbindlich bieten</translate></span>
+        </kendo-mobile-button>
+        <kendo-mobile-button href="view-offers-search-by-user.html?id={{data.offer.user.id}}"><translate>Weitere Angebote des Anbieters anzeigen</translate></kendo-mobile-button>
+        <kendo-mobile-button disabled="disabled" ng-if="!data.offer.canAccept && data.offer.type!='AD'"><translate>Gebot bereits abgegeben</translate></kendo-mobile-button>
+        <kendo-mobile-button ng-if="!data.offer.spamReported" k-on-click="data.spamReport({offer_id:data.offer.id})"><translate>Spam melden</translate></kendo-mobile-button>
+        <kendo-mobile-button ng-if="data.offer.spamReported" k-on-click=""><translate>Spam gemeldet</translate></kendo-mobile-button>
+    </div>
+
+</kendo-mobile-view>
+
+

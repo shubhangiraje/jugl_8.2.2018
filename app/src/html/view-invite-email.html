@@ -1,0 +1,51 @@
+<kendo-mobile-view
+        ng-controller="InviteEmailCtrl"
+        id="view-invite-email"
+        k-layout="'layout-main'"
+        class="appearance"
+        k-on-show="data.onShow(kendoEvent)"
+        k-use-native-scrolling="config.views.useNativeScrolling"
+        fields-scroll ng-cloak>
+
+    <kendo-mobile-header>
+        <kendo-mobile-nav-bar>
+            <kendo-mobile-view-title><translate>Einladen per Email</translate></kendo-mobile-view-title>
+            <kendo-mobile-back-button k-on-click="onClickBack()" data-align="left"><span class="platform-android"><translate>Zurück</translate></span></kendo-mobile-back-button>
+        </kendo-mobile-nav-bar>
+    </kendo-mobile-header>
+
+    <kendo-mobile-scroller class="box-view-invite-email">
+        <h3><translate>Per E-Mail einladen</translate></h3>
+        <h3><translate>Bitte E-Mail-Adressen hier eingeben</translate></h3>
+        <ul class="ul-email-list">
+            <li><translate>Kommagetrennt, z.B.</translate></li>
+            <li><translate>mustermann@domain1.com,</translate></li>
+            <li><translate>musterfrau@domain2.com usw.</translate></li>
+        </ul>
+
+        <kendo-mobile-list-view class="list-textarea">
+            <li class="textarea-field"><label><textarea ng-model="data.emails" style="resize: none" placeholder="{{'E-Mail-Adresses'|translate}}"></textarea></label></li>
+            <li class="textarea-field"><label><translate>Nachricht</translate><textarea rows="5" ng-model="data.text" style="resize: none" placeholder="{{'Text'|translate}}"></textarea></label></li>
+        </kendo-mobile-list-view>
+
+        <ul class="friends-invite-result" ng-if="data.result">
+            <li ng-repeat="(address,result) in data.result" ng-class="{error: result!==true}">
+                <div ng-if="result===true">{{address}}: <span><translate>Gesendet</translate></span></div>
+                <div ng-if="result!==true">{{address}}: <span>{{result}}</span></div>
+            </li>
+        </ul>
+
+
+        <div class="btn-box">
+            <kendo-mobile-button k-on-click="data.send()"><translate>Einladung verschicken</translate></kendo-mobile-button>
+        </div>
+    </kendo-mobile-scroller>
+
+
+
+</kendo-mobile-view>
+
+
+
+
+

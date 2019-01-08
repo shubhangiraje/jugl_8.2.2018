@@ -1,0 +1,34 @@
+<kendo-mobile-view
+    ng-controller="InviteSmsSendCtrl"
+    id="view-invite-sms-send"
+    k-layout="'layout-main'"
+    class="appearance" ng-cloak>
+
+    <kendo-mobile-header>
+        <kendo-mobile-nav-bar>
+            <kendo-mobile-view-title><translate>Per SMS einladen</translate></kendo-mobile-view-title>
+            <kendo-mobile-button href="view-invite.html" data-align="left"><span class="platform-android"><translate>Zurück</translate></span></kendo-mobile-button>
+            <kendo-mobile-button href="view-invite-log.html" data-align="right"><translate>History</translate></kendo-mobile-button>
+        </kendo-mobile-nav-bar>
+    </kendo-mobile-header>
+
+    <h3>Per SMS einladen *</h3>
+
+    <kendo-mobile-list-view class="list-textarea">
+        <li>
+            <label>
+                <textarea placeholder="{{'Text'|translate}}" ng-model="data.text" style="resize: none" rows="5" maxlength="250"></textarea>
+            </label>
+        </li>
+    </kendo-mobile-list-view>
+
+    <div class="btn-box">
+        <kendo-mobile-button k-on-click="data.send()"><translate>SMS verschicken</translate></kendo-mobile-button>
+    </div>
+
+    <div class="note">
+        *&nbsp;<translate>Wenn Sie keine SMS-Flatrate haben, kann der Versand von SMS Kosten bei Ihrem Mobilfunkanbieter verursachen</translate>
+    </div>
+
+
+</kendo-mobile-view>

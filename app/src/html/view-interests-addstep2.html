@@ -1,0 +1,52 @@
+<kendo-mobile-view
+        k-title="'Meine Interessen'"
+        id="view-interests-addstep2"
+        k-layout="'layout-main'"
+        ng-controller="InterestsAddStep2Ctrl as interestAddStep2Ctrl"
+        k-on-show="data.onShow(kendoEvent)"
+        k-use-native-scrolling="config.views.useNativeScrolling"
+        ng-cloak>
+
+    <kendo-mobile-header>
+        <kendo-mobile-nav-bar>
+            <kendo-mobile-view-title><translate>Meine Interessen</translate></kendo-mobile-view-title>
+        </kendo-mobile-nav-bar>
+    </kendo-mobile-header>
+
+    <div class="interest-step-title">
+        2.&nbsp;<translate>Wähle Unterkategorie</translate>
+    </div>
+
+    <div class="interest-btn-box">
+        <kendo-mobile-button  k-on-click="data.save(data.level_interests.level1_id)"><translate>Fertig</translate></kendo-mobile-button>
+        <kendo-mobile-back-button k-on-click="onClickBack()" data-align="left"><translate>Zurück</translate></kendo-mobile-back-button>
+    </div>
+
+    <script id="template-level2-interests" type="text/x-kendo-template">
+        <a once-if="dataItem.isChildInterests" ng-click="data.nextLevelInterest(dataItem.interest_id)">
+            <div class="interest-img-box">
+                <div class="interest-img">
+                    <img ng-src="{{::dataItem.interest_img}}">
+                </div>
+            </div>
+            <div class="interest-info-box">
+                <div class="interest-title">{{::dataItem.interest_title}}</div>
+            </div>
+        </a>
+        <a once-if="!dataItem.isChildInterests" ng-click="data.saveInterest(data.level_interests.level1_id, dataItem.interest_id)">
+            <div class="interest-img-box">
+                <div class="interest-img">
+                    <img ng-src="{{::dataItem.interest_img}}">
+                </div>
+            </div>
+            <div class="interest-info-box">
+                <div class="interest-title">{{::dataItem.interest_title}}</div>
+            </div>
+        </a>
+    </script>
+
+    <kendo-mobile-list-view k-options="data.listViewOptions" class="view-interests-list" k-style="'inset'" >
+    </kendo-mobile-list-view>
+
+
+</kendo-mobile-view>

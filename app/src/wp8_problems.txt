@@ -1,0 +1,20 @@
+WORKS ====================
+make photo & send
+send geolocation
+send image from gallery
+make video & send
+
+NOT WORK =================
+push:
+    - disable sound
+    - custom sound
+    - do action when application is started by pressing toast
+
+media download & view doesn't work
+
+send video from gallery
+
+send audio: setting audio length
+play audio: display length & progress
+
+

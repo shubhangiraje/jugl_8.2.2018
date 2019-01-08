@@ -1,0 +1,38 @@
+<kendo-mobile-modal-view
+    id="view-trollbox-message-visibility-popup"
+    k-on-open="data.onOpen(kendoEvent)"
+    ng-controller="TrollboxMessageVisibilityCtrl as trollboxMessageVisibilityCtrl"
+    class="modal" style="width: 90%;" modal ng-cloak>
+
+    <div class="trollbox-message-visibility-box">
+        <kendo-mobile-list-view class="trollbox-message-visibility-list">
+            <li><label class="label-checkbox"><input type="checkbox" ng-model="data.trollboxMessage.visible_for_followers" ng-true-value="1" ng-false-value="0" /><translate>An Abonnenten</translate></label></li>
+            <li><label class="label-checkbox"><input type="checkbox" ng-model="data.trollboxMessage.visible_for_contacts" ng-true-value="1" ng-false-value="0" /><translate>An Kontakte</translate></label></li>
+            <li><label class="label-checkbox"><input type="checkbox" ng-model="data.trollboxMessage.visible_for_all" ng-true-value="1" ng-false-value="0" /><translate>An Alle</translate></label></li>
+        </kendo-mobile-list-view>
+
+        <ul class="trollbox-filters">
+            <li class="clearfix">
+                <div><label><translate>Kategorien</translate>:</label></div>
+                <div>
+                    <select ng-model="data.trollboxMessage.trollbox_category_id" ng-options="category.id as category.title for category in data.trollboxCategoryList">
+                        <option value="" translate>Alle</option>
+                    </select>
+                </div>
+            </li>
+        </ul>
+
+        <kendo-mobile-list-view ng-if="status.user.video_identification_status=='NONE'" class="is-video-identification-checkbox-box">
+            <li><label class="label-checkbox km-listview-label"><input type="checkbox" ng-model="data.trollboxMessage.is_video_identification" ng-true-value="1" ng-false-value="0" /><translate>Ich möchte für meinen Post vergütet werden</translate></label></li>
+        </kendo-mobile-list-view>
+        <p ng-if="status.user.video_identification_status=='AWAITING'"><translate>Dein Ident Video wird gerade geprüft</translate></p>
+
+        <p><translate>Mit dem Absenden Deines Posts stimmst Du unseren Forumsregeln zu.</translate></p>
+    </div>
+
+    <div class="btn-box">
+        <kendo-mobile-button k-on-click="data.send()" ng-disabled="data.trollboxMessage.saving"><translate>Absenden</translate></kendo-mobile-button>
+        <kendo-mobile-button class="closeModalBtn"><translate>Cancel</translate></kendo-mobile-button>
+    </div>
+
+</kendo-mobile-modal-view>

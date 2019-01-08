@@ -1,0 +1,115 @@
+<kendo-mobile-view
+        id="view-searches-offer-add"
+        k-layout="'layout-main'"
+        ng-controller="SearchRequestOfferAddCtrl"
+        k-on-show="data.onShow(kendoEvent)"
+        k-use-native-scrolling="config.views.useNativeScrolling"
+        fields-scroll ng-cloak>
+
+    <kendo-mobile-header>
+        <kendo-mobile-nav-bar>
+            <kendo-mobile-view-title ng-click="showInfoPopup('view-searches-offer-add')"><translate>Angebot abgeben</translate></kendo-mobile-view-title>
+            <kendo-mobile-button class="platform-ios" data-align="right" k-on-click="showInfoPopup('view-searches-offer-add')"><span ng-class="{'blink': isOneShowInfoPopup('view-searches-offer-add')}" class="icon-info-ios"></span></kendo-mobile-button>
+            <kendo-mobile-button href="view-searches-details.html?id={{data.searchRequestOffer.search_request_id}}" data-align="left" data-role="backbutton"><translate>Zurück</translate></kendo-mobile-button>
+        </kendo-mobile-nav-bar>
+    </kendo-mobile-header>
+
+    <div class="info-icon-box">
+        <span ng-click="showInfoPopup('view-searches-offer-add')" ng-class="{'blink': isOneShowInfoPopup('view-searches-offer-add')}" class="platform-android icon-info-android"></span>
+    </div>
+
+    <div class="android-title">
+        <h1 ng-click="showInfoPopup('view-searches-offer-add')"><translate>Angebot abgeben</translate></h1>
+    </div>
+
+    <p class="text">Gib hier Dein Angebot ab. Klicke auf <span class="icon-info-app"></span> für weitere Informationen.</p>
+
+    <script id="template-offer-param-list" type="text/x-kendo-template">
+        <label ng-init="$index=data.getParamIndex(dataItem.id);" class="clearfix">
+            <input type="checkbox" ng-model="data.searchRequestOffer.searchRequestOfferParamValues[$index].match" />
+            <span class="details-offer-param">{{dataItem.title}}:</span>
+            <span class="details-offer-value">{{dataItem.value}}</span>
+        </label>
+    </script>
+
+    <kendo-mobile-list-view class="details-offer-list" k-type="'group'" k-style="'inset'">
+        <li class="details-offer-add-list"><translate>Details</translate>
+            <kendo-mobile-list-view k-options="data.offerParamValuesListViewOptions" class="details-offer-param-list km-list" data-role="list" k-style="'inset'" >
+            </kendo-mobile-list-view>
+        </li>
+        <li><translate>Beschreibe Dein Angebot</translate>
+            <ul>
+                <li class="details-offer-description">
+                    <textarea ng-model="data.searchRequestOffer.description" placeholder="{{'Beschreibe Dein Angebot'|translate}}"><translate>Beschreibe Dein Angebot</translate></textarea>
+                </li>
+            </ul>
+        </li>
+        <li><translate>Fotos</translate>
+            <ul>
+                <li class="li-pictures">
+                    <ul ng-if="data.searchRequestOffer.files.length > 0" class="uploaded-pictures-box">
+                        <li ng-repeat="file in data.searchRequestOffer.files">
+                            <img ng-src="{{file.thumbs.imageBig}}" />
+                            <span class="delete" ng-click="data.deleteFile(file.id)"></span>
+                        </li>
+                    </ul>
+                    <div ng-if="!data.fileUpload" class="km-loader km-widget select-loader" data-role="loader">
+                        <span class="km-loading km-spin"></span>
+                        <span class="km-loading-left"></span>
+                        <span class="km-loading-right"></span>
+                        <h1><translate>Loading</translate>...</h1>
+                    </div>
+                    <div ng-if="data.searchRequestOffer.files.length != 30" class="upload-pictures-box" ng-click="data.uploadImage()">
+                        <span class="icon-add-image"></span>
+                    </div>
+
+                </li>
+            </ul>
+        </li>
+        <li><translate>Preis</translate>
+            <ul>
+                <li><label><translate>ab</translate>:<input type="number" ng-model="data.searchRequestOffer.price_from" /><span class="currency">&euro;</span></label></li>
+                <li><label><translate>bis</translate>:<input type="number" ng-model="data.searchRequestOffer.price_to" /><span class="currency">&euro;</span></label></li>
+                <li><div class="notes-text"><translate>Nun hast Du die Möglichkeit, weitere Bilder und Informationen anzuhängen, die dem Suchenden zunächst unleserlich angezeigt werden. Wenn er dein Angebot annimmt, erhältst du Deinen Vermittlungsbonus und er kann alles sehen.</translate></div></li>
+            </ul>
+        </li>
+
+        <li><translate>Weitere details (wird eingeblendet, sobald dein Angebot akzeptiert wird)</translate>
+            <ul>
+                <li class="details-offer-description">
+                    <textarea ng-model="data.searchRequestOffer.details" placeholder="{{'Beschreibe Dein Angebot'|translate}}"><translate>Beschreibe Dein Angebot</translate></textarea>
+                </li>
+            </ul>
+        </li>
+        <li><translate>Weitere bilder (werden eingeblendet, sobald dein Angebot akzeptiert wird)</translate>
+            <ul>
+                <li class="li-pictures">
+                    <ul ng-if="data.searchRequestOffer.details_files.length > 0" class="uploaded-pictures-box">
+                        <li ng-repeat="file in data.searchRequestOffer.details_files">
+                            <img ng-src="{{file.thumbs.imageBig}}" />
+                            <span class="delete" ng-click="data.detailsDeleteFile(file.id)"></span>
+                        </li>
+                    </ul>
+                    <div ng-if="!data.fileUpload" class="km-loader km-widget select-loader" data-role="loader">
+                        <span class="km-loading km-spin"></span>
+                        <span class="km-loading-left"></span>
+                        <span class="km-loading-right"></span>
+                        <h1><translate>Loading</translate>...</h1>
+                    </div>
+                    <div ng-if="data.searchRequestOffer.details_files.length != 30" class="upload-pictures-box" ng-click="data.detailsUploadImage()">
+                        <span class="icon-add-image"></span>
+                    </div>
+                </li>
+            </ul>
+        </li>
+
+    </kendo-mobile-list-view>
+
+
+    <div class="btn-box">
+        <kendo-mobile-button ng-disabled="data.searchRequestOffer.saving" k-on-click="data.saveOffer()"><translate>Angebot senden</translate></kendo-mobile-button>
+    </div>
+
+
+
+</kendo-mobile-view>

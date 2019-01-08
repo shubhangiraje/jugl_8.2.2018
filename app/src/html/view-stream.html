@@ -1,0 +1,48 @@
+<kendo-mobile-view
+        id="view-stream"
+        k-layout="'layout-main'"
+        ng-controller="StreamVideoCtrl as streamVideoCtrl"
+        k-on-show="data.onShow(kendoEvent)"
+        k-use-native-scrolling="config.views.useNativeScrolling"
+        ng-cloak
+>
+
+
+    <kendo-mobile-header>
+        <kendo-mobile-nav-bar>
+            <kendo-mobile-view-title><div class="view-title-ios"><translate>Stream</translate></div></kendo-mobile-view-title>
+            <kendo-mobile-back-button k-on-click="onClickBack()" data-align="left"><span class="platform-android"><translate>Zurück</translate></span></kendo-mobile-back-button>
+        </kendo-mobile-nav-bar>
+    </kendo-mobile-header>
+
+    <div class="android-title">
+        <h1><translate>Stream</translate></h1>
+    </div>
+<!--
+    <h1><translate>Publish</translate></h1>
+
+    <div class="stream-box" stream-publish-video>
+        <video id="publishVideo" autoplay muted playsinline webkit-playsinline controls></video>
+        <div class="btn-box">
+            <kendo-mobile-button id="start-publishing">Publish</kendo-mobile-button>
+            <kendo-mobile-button id="stop-publishing">Stop</kendo-mobile-button>
+        </div>
+    </div>
+-->
+    <h1><translate>Play</translate></h1>
+
+    <div class="stream-box" stream-play-video style="position:relative">
+        <video id="playVideo" autoplay playsinline webkit-playsinline controls></video>
+        <div style="position: absolute;left:20px;top:20px;width:300px;height:200px;overflow:scroll;color:red;">
+            1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8<br/>9<br/>10<br/>
+            1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8<br/>9<br/>10<br/>
+            1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8<br/>9<br/>10<br/>
+            1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8<br/>9<br/>10<br/>
+        </div>
+        <div class="btn-box">
+            <kendo-mobile-button id="start-playing">Play</kendo-mobile-button>
+            <kendo-mobile-button id="stop-playing">Stop</kendo-mobile-button>
+        </div>
+    </div>
+
+</kendo-mobile-view>

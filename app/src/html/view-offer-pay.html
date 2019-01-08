@@ -1,0 +1,137 @@
+<kendo-mobile-view
+        id="view-offer-pay"
+        k-layout="'layout-main'"
+        ng-controller="OfferPayCtrl as offerPayCtrl"
+        k-on-show="data.onShow(kendoEvent)"
+        k-use-native-scrolling="config.views.useNativeScrolling"
+        fields-scroll ng-cloak>
+
+
+    <kendo-mobile-header>
+        <kendo-mobile-nav-bar>
+            <kendo-view-title><translate>Angebot bezahlen</translate></kendo-view-title>
+            <kendo-mobile-back-button k-on-click="onClickBack()" data-align="left"><span class="platform-android"><translate>Zurück</translate></span></kendo-mobile-back-button>
+        </kendo-mobile-nav-bar>
+    </kendo-mobile-header>
+
+    <div class="km-listview-wrapper ">
+        <div class="offer-pay-box">
+            <div class="offer-pay-title">{{data.offer.title}}</div>
+            <div class="offer-pay-price"><translate>Preis</translate>: &euro;{{data.offerRequest.bet_price|priceFormat}}</div>
+            <div ng-if="offer.delivery_days" class="offer-pay-price">
+                <translate>Lieferzeit</translate>>: {{data.offer.delivery_days}} <translate>Tage</translate>
+            </div>
+        </div>
+
+        <div class="offer-pay-title-text">
+            <translate>Bitte bezahle das  angenommene Angebot wie folgt</translate>:
+            <div class="offer-pay-usage">
+                <translate>Verwendungszweck</translate>: <span>{{data.offer.request.pay_tx_id}}</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="bank-datas-box" ng-repeat="bankData in data.bankDatas" ng-if="data.offer.pay_allow_bank && (data.showAllBankDatas || $index==0)" ng-class="{'active':data.pay.payment_method=='bank_data_'+$index}">
+        <kendo-mobile-list-view class="offer-pay-radio">
+            <li><label class="label-checkbox"><translate>Per Banküberweisung an</translate><input type="radio" name="payment_method" ng-model='data.pay.payment_method' value="bank_data_{{$index}}"/></label></li>
+        </kendo-mobile-list-view>
+
+        <kendo-mobile-list-view  class="bank-datas-list">
+            <li><label><translate>IBAN</translate>:</label><span>{{bankData.iban}}</span></li>
+            <li><label><translate>BIC</translate>:</label><span>{{bankData.bic}}</span></li>
+            <li><label><translate>Kontoinhaber</translate>:</label><span>{{bankData.owner}}</span></li>
+        </kendo-mobile-list-view>
+    </div>
+
+    <div ng-if="data.bankDatas.length>1" class="km-listview-wrapper ">
+        <div class="show-bank-datas-btn-box">
+            <button ng-click="data.showAllBankDatas=!data.showAllBankDatas" ng-class="{'open':data.showAllBankDatas}"><translate>Weitere Bankverbindingen zeigen</translate></button>
+        </div>
+    </div>
+
+    <div ng-if="data.offer.pay_allow_paypal && data.paypal_email!='' && data.paypal_email!==null" class="bank-datas-box" ng-class="{'active':data.pay.payment_method=='PAYPAL'}">
+        <kendo-mobile-list-view class="offer-pay-radio">
+            <li><label class="label-checkbox"><translate>per PayPal an</translate><input type="radio" name="payment_method" ng-model='data.pay.payment_method' value="PAYPAL"/></label></li>
+        </kendo-mobile-list-view>
+
+        <kendo-mobile-list-view  class="bank-datas-list">
+            <li>
+                <div class="bank-data-email-box">
+                    <label><translate>E-mail</translate>:</label><span>{{data.paypal_email}}</span>
+                </div>
+                <kendo-mobile-button ng-if="data.pay.payment_method=='PAYPAL'" class="btn-copy-email" clipboard-pay-pal="{{data.paypal_email}}"><translate>E-Mail des Empfängers kopieren</translate></kendo-mobile-button>
+            </li>
+            <li class="offer-pay-data-text">
+                <p><translate>Bitte logge Dich bei PayPal ein und wähle "Geld senden" aus. Dort klickst du auf "Waren oder Dienstleistungen bezahlen" und gibst {{data.paypal_email}} als Empfänger ein. Du profitierst so automatisch vom Käuferschutz von PayPal.</translate></p>
+                <div class="text-right">
+                    <a href="" ng-click="openUrlInBrowser('https://www.paypal.com/signin/')"><translate>Jetzt mit PayPal verbinden</translate></a>
+                </div>
+            </li>
+        </kendo-mobile-list-view>
+    </div>
+
+    <div ng-if="data.offer.pay_allow_jugl" class="bank-datas-box" ng-class="{'active':data.pay.payment_method=='JUGLS'}">
+        <kendo-mobile-list-view class="offer-pay-radio">
+            <li><label class="label-checkbox"><translate>per Jugls</translate><input type="radio" name="payment_method" ng-model='data.pay.payment_method' value="JUGLS"/></label></li>
+        </kendo-mobile-list-view>
+
+        <kendo-mobile-list-view  class="bank-datas-list">
+            <li><label><translate>Jugls</translate>:</label><span>{{data.offer.price_jugls|priceFormat}} <i class="icon-jugl-light"></i></span></li>
+        </kendo-mobile-list-view>
+    </div>
+
+    <div ng-if="data.offer.pay_allow_pod" class="bank-datas-box" ng-class="{'active':data.pay.payment_method=='POD'}">
+        <kendo-mobile-list-view class="offer-pay-radio">
+            <li><label class="label-checkbox"><translate>Barzahlung bei Abholung</translate><input type="radio" name="payment_method" ng-model='data.pay.payment_method' value="POD"/></label></li>
+        </kendo-mobile-list-view>
+    </div>
+
+    <div ng-if="data.pay.payment_method!='POD'">
+
+        <div class="km-listview-wrapper">
+            <div class="offer-pay-title-text">
+                <translate>Deine Lieferadresse</translate>
+            </div>
+        </div>
+
+        <div class="bank-datas-box" ng-class="{'active':data.pay.delivery_address=='address'}">
+            <kendo-mobile-list-view class="offer-pay-radio">
+                <li><label class="label-checkbox"><translate>Lieferadresse 1:</translate><input type="radio" name="delivery_address" ng-model='data.pay.delivery_address' value="address"/></label></li>
+            </kendo-mobile-list-view>
+
+            <kendo-mobile-list-view  class="bank-datas-list">
+                <li><label><translate>Strasse</translate>:</label><span><input type="text" ng-model="data.pay.address_street"/></span></li>
+                <li><label><translate>Hausnummer</translate>:</label><span><input type="text" ng-model="data.pay.address_house_number"/></span></li>
+                <li><label><translate>Plz</translate>:</label><span><input type="text" ng-model="data.pay.address_zip"/></span></li>
+                <li><label><translate>Ort</translate>:</label><span><input type="text" ng-model="data.pay.address_city"/></span></li>
+            </kendo-mobile-list-view>
+        </div>
+
+        <div ng-if="data.showAllDeliveryAddresses" ng-repeat="address in data.deliveryAddresses" class="bank-datas-box" ng-class="{'active':data.pay.delivery_address=='delivery_address_'+$index}">
+            <kendo-mobile-list-view class="offer-pay-radio">
+                <li><label class="label-checkbox"><translate>Lieferadresse {{$index+2}}:</translate><input type="radio" name="delivery_address" ng-model='data.pay.delivery_address' value="delivery_address_{{$index}}"/></label></li>
+            </kendo-mobile-list-view>
+
+            <kendo-mobile-list-view class="bank-datas-list">
+                <li><label><translate>Strasse</translate>:</label><span>{{address.street}}</span></li>
+                <li><label><translate>Hausnummer</translate>:</label><span>{{address.house_number}}</span></li>
+                <li><label><translate>Plz</translate>:</label><span>{{address.zip}}</span></li>
+                <li><label><translate>Ort</translate>:</label><span>{{address.city}}</span></li>
+            </kendo-mobile-list-view>
+        </div>
+
+        <div class="km-listview-wrapper">
+            <div class="show-bank-datas-btn-box">
+                <button ng-if="data.deliveryAddresses.length>0" ng-click="data.showAllDeliveryAddresses=!data.showAllDeliveryAddresses" ng-class="{'open':data.showAllDeliveryAddresses}"><translate>Weitere Liferadressen zeigen</translate></button>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="btn-box">
+        <kendo-mobile-button ng-if="data.pay.payment_method!='POD'" k-on-click="data.paySave()"><translate>Als Bezahlt markieren</translate></kendo-mobile-button>
+        <kendo-mobile-button ng-if="data.pay.payment_method=='POD'" k-on-click="data.paySave()"><translate>Händler benachrichtigen</translate></kendo-mobile-button>
+    </div>
+
+
+</kendo-mobile-view>

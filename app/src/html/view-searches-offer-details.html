@@ -1,0 +1,100 @@
+<kendo-mobile-view
+        id="view-searches-offer-details"
+        k-layout="'layout-main'"
+        ng-controller="SearchRequestOfferDetailsCtrl"
+        k-on-show="data.onShow(kendoEvent)"
+        k-use-native-scrolling="config.views.useNativeScrolling" ng-cloak>
+
+    <kendo-mobile-header>
+        <kendo-mobile-nav-bar>
+            <kendo-mobile-view-title>{{data.searchRequest.title}}&nbsp;</kendo-mobile-view-title>
+            <kendo-mobile-back-button k-on-click="onClickBack()" data-align="left"><span class="platform-android"><translate>Zurück</translate></span></kendo-mobile-back-button>
+        </kendo-mobile-nav-bar>
+    </kendo-mobile-header>
+
+    <kendo-mobile-list-view class="details-list" k-type="'group'" k-style="'inset'">
+        <li><translate>Details</translate>
+            <ul class="details-param-list allow-clipboard">
+                <li ng-if="pv.value" ng-class="{'active-status': pv.match, 'inactive-status': !pv.match}" ng-repeat="pv in data.searchRequestOffer.paramValues"><span class="details-param">{{pv.title}}:</span><span class="details-value">{{pv.value}}</span></li>
+            </ul>
+        </li>
+        <li><translate>Anbieter</translate>
+            <ul class="details-description">
+                <li>
+                    <div class="offer-user-box clearfix">
+                        <a href="" ng-click="navigate('view-user-profile.html?id='+data.searchRequestOffer.user.id)">
+                            <div class="offer-user-avatar">
+                                <img ng-src="{{data.searchRequestOffer.user.avatarMobile}}" alt=""/>
+                            </div>
+                        </a>
+                        <div class="offer-user-name">{{data.searchRequestOffer.user|userName}}</div>
+                        <div class="offer-user-rating">
+                            <div class="star-rating">
+                                <span ng-style="{width:(+data.searchRequestOffer.user.rating)+'%'}"></span>
+                            </div>
+                            <div class="user-feedback-count">({{::data.searchRequestOffer.user.feedback_count}})</div>
+                            <div ng-if="data.searchRequestOffer.user.packet=='VIP'" class="user-packet">&nbsp;</div>
+                            <div ng-if="data.searchRequestOffer.user.packet=='VIP_PLUS'" class="user-packet-vip-plus">&nbsp;</div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </li>
+        <li><translate>Fotos (FALLS VORHANDEN; WERDEN EINGEBLENDET SOBALD DEIN ANGEBOT AKZEPTIERT WIRD):</translate>
+            <ul class="box-details-gallery">
+                <li ng-if="data.searchRequestOffer.bigImages" ng-repeat="image in data.searchRequestOffer.images" >
+                    <a data-urls="{{data.searchRequestOffer.bigImages}}" data-index="{{$index}}" href="#view-photo-swipe-popup" data-rel="modalview" data-role="button">
+                        <img ng-src="{{image}}" />
+                    </a>
+                </li>
+
+                <!--<li ng-if="data.searchRequestOffer.bigImages" ng-repeat="image in data.searchRequestOffer.images" ng-click="data.showGallery($index, data.searchRequestOffer.bigImages)"><img ng-src="{{image}}" /></li>-->
+                <li ng-if="!data.searchRequestOffer.bigImages"><img ng-src="{{data.searchRequestOffer.images[0]}}" /></li>
+            </ul>
+        </li>
+        <li><translate>Preis</translate>
+            <div ng-if="data.searchRequestOffer.price_to" class="details-price offer-details"><span>{{data.searchRequestOffer.price_from|priceFormat}} - {{data.searchRequestOffer.price_to|priceFormat}} &euro;</span></div>
+            <div ng-if="!data.searchRequestOffer.price_to" class="details-price offer-details"><span>{{data.searchRequestOffer.price_from|priceFormat}} &euro;</span></div>
+        </li>
+        <li><translate>Nachricht</translate>
+            <ul class="details-description">
+                <li>
+                    <div class="details-params-box">
+                        <div class="details-params-box">
+                            <div ng-bind-html="data.searchRequestOffer.description | linky" open-link class="details-params-param description-text allow-clipboard"></div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </li>
+        <li><translate>Angebotdetails (wird eingeblendet sobald du das angebot akzeptiert)</translate>
+            <ul class="details-description">
+                <li>
+                    <div class="details-params-box">
+                        <div class="details-params-box">
+                            <div ng-class="{blurDetails:data.searchRequestOffer.blurDetails}" ng-bind-html="data.searchRequestOffer.details | linky" open-link class="details-params-param description-text"></div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <ul ng-if="data.searchRequestOffer.details_images.length > 0" class="box-details-gallery box-blur">
+                <li ng-repeat="image in data.searchRequestOffer.details_images"><img ng-src="{{image.small}}" /></li>
+            </ul>
+        </li>
+
+    </kendo-mobile-list-view>
+
+    <div class="btn-box offer-details" ng-if="(data.searchRequestOffer.status == 'NEW' || data.searchRequestOffer.status == 'CONTACTED') && data.searchRequestOffer.forMe ">
+        <kendo-mobile-button k-on-click="data.contact()"><translate>Nachricht schreiben</translate></kendo-mobile-button>
+        <kendo-mobile-button k-on-click="data.accept()"><translate>Akzeptieren</translate></kendo-mobile-button>
+        <kendo-mobile-button data-rel="modalview" data-id={{::data.searchRequestOffer.id}} href="#search-request-offer-reject-popup"><translate>Ablehnen</translate></kendo-mobile-button>
+        <!--<kendo-mobile-button ng-click="data.reject()"><translate>Ablehnen</translate></kendo-mobile-button>-->
+    </div>
+
+    <div class="btn-box offer-details" ng-if="data.searchRequestOffer.status == 'ACCEPTED' && data.searchRequestOffer.forMe ">
+        <kendo-mobile-button data-rel="modalview" data-search-request-offer-id={{::data.searchRequestOffer.id}} href="#deals-completed-update-user-feedback-popup"><translate>Bewerten</translate></kendo-mobile-button>
+        <!--<kendo-mobile-button ng-click="data.reject()"><translate>Ablehnen</translate></kendo-mobile-button>-->
+    </div>
+
+
+</kendo-mobile-view>

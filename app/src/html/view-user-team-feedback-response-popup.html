@@ -1,0 +1,18 @@
+<kendo-mobile-modal-view
+        k-on-open="data.onOpen(kendoEvent)"
+        ng-controller="UserTeamFeedbackResponseUpdateCtrl as userTeamFeedbackResponseUpdateCtrl"
+        id="view-user-team-feedback-response-popup"
+        class="modal" style="width: 90%;" modal
+        ng-cloak>
+
+    <div class="feedback-box">
+        <label><translate>Ihr Antwort:</translate></label>
+        <textarea name="feedback" rows="6" ng-model="data.feedback.response"></textarea>
+    </div>
+
+    <div class="btn-box">
+        <kendo-mobile-button k-on-click="data.save()"><translate>Antworten</translate></kendo-mobile-button>
+        <kendo-mobile-button class="closeModalBtn"><translate>Cancel</translate></kendo-mobile-button>
+    </div>
+
+</kendo-mobile-modal-view>

@@ -1,0 +1,44 @@
+<kendo-mobile-view
+    id="view-offers-index"
+    k-layout="'layout-main'"
+    k-use-native-scrolling="config.views.useNativeScrolling" ng-cloak>
+
+    <kendo-mobile-header>
+        <kendo-mobile-nav-bar>
+            <kendo-mobile-view-title ng-click="showInfoPopup('view-offers-index')"><div class="view-title-ios"><translate>Kaufen / verkaufen, Interessen angeben</translate></div></kendo-mobile-view-title>
+            <kendo-mobile-back-button k-on-click="onClickBack()" data-align="left"><span class="platform-android"><translate>Zurück</translate></span></kendo-mobile-back-button>
+            <kendo-mobile-button class="platform-ios" data-align="right" k-on-click="showInfoPopup('view-offers-index')"><span ng-class="{'blink': isOneShowInfoPopup('view-offers-index')}" class="icon-info-ios"></span></kendo-mobile-button>
+        </kendo-mobile-nav-bar>
+    </kendo-mobile-header>
+
+
+    <div class="info-icon-box">
+        <span ng-click="showInfoPopup('view-offers-index')" ng-class="{'blink': isOneShowInfoPopup('view-offers-index')}" class="platform-android icon-info-android"></span>
+    </div>
+
+    <div class="android-title">
+        <h1 ng-click="showInfoPopup('view-offers-index')"><translate>Kaufen / verkaufen, Interessen angeben</translate></h1>
+    </div>
+
+    <p class="text"><translate>Ich gebe meine Interessen an (von der Zahnbürste bis zum Luxus Auto), bleibe dabei anonym und bekomme vorwiegend von Händlern, aber auch von Privatpersonen auf meinen Interessen basierende Produktangebote (Inserat). Für jede gelesene Inserat verdienst Du Jugls</translate> (<span class="icon-jugl-light"></span>).</p>
+
+    <div class="btn-box">
+        <kendo-mobile-button href="view-interests.html?type=OFFER"><translate>Suchen / Interessen angeben</translate></kendo-mobile-button>
+        <kendo-mobile-button href="view-offers-search.html" k-on-click="refreshList()" >
+            <translate>Kaufen / Suchergebnisse / Inserat lesen</translate>
+            <span class="button-badge badge" ng-if="status.user.stat_new_offers>0">{{status.user.stat_new_offers>99 ? '99+':status.user.stat_new_offers}}</span>
+        </kendo-mobile-button>
+        <kendo-mobile-button href="view-offers-add.html"><translate>Verkaufen / Inserat schalten</translate></kendo-mobile-button>
+        <kendo-mobile-button href="view-offers-draft.html"><translate>Entwürfe</translate></kendo-mobile-button>
+
+        <kendo-mobile-button href="view-offers-my-requests.html" k-on-click="refreshList()" ><translate>Ich habe geboten / gekauft</translate></kendo-mobile-button>
+
+        <kendo-mobile-button href="view-offers-my.html" k-on-click="refreshList()" >
+            <translate>Meine Anzeigen / Inserat verwalten</translate>
+            <span class="button-badge badge" ng-if="status.user.stat_new_offers_requests>0">{{status.user.stat_new_offers_requests>99 ? '99+':status.user.stat_new_offers_requests}}</span>
+        </kendo-mobile-button>
+
+        <kendo-mobile-button k-on-click="openUrlInBrowser(config.urls.payin)"><translate>Jugls aufladen</translate></kendo-mobile-button>
+    </div>
+
+</kendo-mobile-view>

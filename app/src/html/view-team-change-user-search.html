@@ -1,0 +1,122 @@
+<kendo-mobile-view
+        id="view-team-change-user-serach"
+        k-layout="'layout-main'"
+        k-use-native-scrolling="config.views.useNativeScrolling"
+        ng-controller="TeamChangeUserSearchCtrl as teamChangeUserSearchCtrl"
+        k-on-show="data.onShow(kendoEvent)"
+        ng-cloak>
+
+    <kendo-mobile-header>
+        <kendo-mobile-nav-bar>
+            <kendo-mobile-view-title><translate>Team wechseln</translate></kendo-mobile-view-title>
+        </kendo-mobile-nav-bar>
+    </kendo-mobile-header>
+
+    <div class="android-title">
+        <h1><translate>Team wechseln</translate></h1>
+    </div>
+
+    <div class="team-change-top">
+        <p><translate>Hier hast Du die Möglichkeit, innerhalb von noch</translate></p>
+        <div class="team-change-countdown" server-countdown="status.user.teamChangeFinishTime" server-countdown-with-days="true"></div>
+        <p><translate>Dein Team zu wechseln</translate></p>
+        <p><translate>In wessen Team möchtest Du wechseln?</translate></p>
+    </div>
+
+
+    <kendo-mobile-list-view class="team-change-list-params">
+        <li><label><translate>Nutzername</translate>:<input type="text" ng-model="data.users.filter.name" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" /></label></li>
+        <li><label><translate>PLZ / Ort</translate>:<input type="text" ng-model="data.users.filter.zipcity" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" /></label></li>
+        <li class="field-user-age box-sizing">
+            <div class="field-user-age-label">
+                <label><translate>Alter</translate>:</label>
+            </div>
+            <div class="field-user-age-input-box">
+                <div class="field-user-age-from">
+                    <input type="number" ng-model="data.users.filter.ageFrom" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" />
+                    <span><translate>bis</translate>:</span>
+                </div>
+                <div class="field-user-age-to">
+                    <input type="number" ng-model="data.users.filter.ageTo" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" />
+                </div>
+            </div>
+        </li>
+        <li>
+            <label><translate>Geschlecht</translate>:
+                <select ng-model="data.users.filter.sex">
+                    <option value="" translate>Alle</option>
+                    <option value="F" translate>weiblich</option>
+                    <option value="M" translate>männlich</option>
+                </select>
+            </label>
+        </li>
+        <li>
+            <label class="label-checkbox"><translate>Single</translate>:<input ng-model="data.users.filter.single" type="checkbox" class="km-widget km-icon km-check"></label>
+        </li>
+        <li>
+            <label class="label-checkbox"><span><translate>Beste Bewertungen zuerst anzeigen</translate>:</span><input ng-model="data.users.filter.rating" type="checkbox" class="km-widget km-icon km-check"></label>
+        </li>
+    </kendo-mobile-list-view>
+
+    <div class="btn-box">
+        <kendo-mobile-button k-on-click="data.userSearch()" ><translate>Suchen</translate></kendo-mobile-button>
+    </div>
+
+    <div ng-if="data.users.loading && !data.users.hasMore" class="km-loader km-widget select-loader" data-role="loader" style="">
+        <span class="km-loading km-spin"></span>
+        <span class="km-loading-left"></span>
+        <span class="km-loading-right"></span>
+        <h1><translate>Loading</translate>...</h1>
+    </div>
+
+    <div ng-if="data.users.showResults" class="user-search-count"><translate>Gefunden</translate>: {{data.users.searchUserCount}}</div>
+
+
+    <kendo-mobile-list-view ng-if="data.users.showResults" class="team-change-users-list">
+        <li ng-repeat="item in data.users.items" class="box-sizing">
+            <div class="offer-user-box clearfix">
+                <a href="" ng-click="navigate('view-user-profile.html?id='+item.id)">
+                    <div class="offer-user-avatar">
+                        <img ng-src="{{item.avatarMobile}}" alt=""/>
+                    </div>
+                </a>
+                <div class="offer-user-name">{{::item|userName}}</div>
+                <div class="offer-user-rating">
+                    <span class="dt"><translate>Mitglied seit</translate> {{::item.registration_dt|date:'dd.MM.yyyy'}}</span>
+                </div>
+            </div>
+
+            <div class="team-change-user-rating-box">
+                <div class="team-change-rating">
+                    <div class="star-rating">
+                        <span ng-style="{width:(+item.team_rating)+'%'}"></span>
+                    </div>
+                    <a><translate>Teamleaderbewertungen ansehen</translate></a>
+                </div>
+                <div class="team-change-rating">
+                    <div class="star-rating">
+                        <span ng-style="{width:(+item.rating)+'%'}"></span>
+                    </div>
+                    <a><translate>Kaufbewertungen ansehen</translate></a>
+                </div>
+            </div>
+
+            <kendo-mobile-button set-if="item.invitation_sent"><translate>Teamwechsel bereits angefragt</translate></kendo-mobile-button>
+            <kendo-mobile-button data-rel="modalview" set-if="!item.invitation_sent" href="#team-change-request-popup" data-user-id="{{::item.id}}" data-user-name="{{::item|userName}}"><translate>Teamwechsel anfragen</translate></kendo-mobile-button>
+        </li>
+    </kendo-mobile-list-view>
+
+    <div ng-if="data.users.showResults" class="load-btn-box" ng-show="data.users.hasMore">
+        <kendo-mobile-button k-on-click="data.users.loadMore()">
+            <span ng-if="!data.users.loading"><translate>Load More</translate></span>
+            <span ng-if="data.users.loading" class="km-loader km-widget select-loader" data-role="loader" style="">
+                <span class="km-loading km-spin"></span>
+                <span class="km-loading-left"></span>
+                <span class="km-loading-right"></span>
+                <h1><translate>Loading</translate>...</h1>
+                <span class="btn-text-android"><translate>Loading</translate></span>
+            </span>
+        </kendo-mobile-button>
+    </div>
+
+</kendo-mobile-view>

@@ -1,0 +1,60 @@
+<kendo-mobile-modal-view
+        id="view-trollbox-message-update-popup"
+        k-on-open="data.onOpen(kendoEvent)"
+        ng-controller="TrollboxMessageUpdateCtrl as trollboxMessageUpdateCtrl"
+        class="modal" style="width: 90%;" modal modal-trollbox-message-update="true" ng-cloak
+    >
+
+    <div class="trollbox-message-update-box">
+        <div class="jugl-forum-send-box">
+            <div class="jugl-forum-upload-box clearfix">
+                <div ng-click="data.sendSomething()" class="jugl-forum-upload-data-box">
+                    <span ng-if="!data.trollboxMessage.image && !data.fileUpload" class="jugl-forum-upload-icon"></span>
+                    <img ng-if="data.trollboxMessage.image" ng-src="{{data.trollboxMessage.image}}">
+                    <div ng-if="data.fileUpload" class="km-loader km-widget select-loader" data-role="loader">
+                        <span class="km-loading km-spin"></span>
+                        <span class="km-loading-left"></span>
+                        <span class="km-loading-right"></span>
+                    </div>
+                </div>
+
+                <div class="jugl-forum-upload-btn-box">
+                    <div>
+                        <div class="smiles" emoticons-tooltip emoticons-forum="true" emoticons-list="trollboxMessageUpdateCtrl.emoticonsList" message-text="data.trollboxMessage.text">
+                            <div class="emoticons-tooltip"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="jugl-forum-send-textarea textarea-field">
+                <textarea placeholder="{{'Text eingeben'|translate}}" ng-model="data.trollboxMessage.text"></textarea>
+            </div>
+
+            <kendo-mobile-list-view class="trollbox-message-update-visibility-list">
+                <li><label><input type="checkbox" ng-model="data.trollboxMessage.visible_for_followers" ng-true-value="1" ng-false-value="0" />An Abonnenten</label></li>
+                <li><label><input type="checkbox" ng-model="data.trollboxMessage.visible_for_contacts" ng-true-value="1" ng-false-value="0" />An Kontakte</label></li>
+                <li><label><input type="checkbox" ng-model="data.trollboxMessage.visible_for_all" ng-true-value="1" ng-false-value="0" />An Alle</label></li>
+            </kendo-mobile-list-view>
+
+            <ul class="trollbox-filters">
+                <li class="clearfix">
+                    <div><label><translate>Kategorien</translate>:</label></div>
+                    <div>
+                        <select ng-model="data.trollboxMessage.trollbox_category_id" ng-options="category.id as category.title for category in data.trollboxCategoryList">
+                            <option value="" translate>Alle</option>
+                        </select>
+                    </div>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+
+
+
+    <div class="btn-box">
+        <kendo-mobile-button k-on-click="data.save()"><translate>Speichern</translate></kendo-mobile-button>
+        <kendo-mobile-button class="closeModalBtn"><translate>Cancel</translate></kendo-mobile-button>
+    </div>
+
+</kendo-mobile-modal-view>

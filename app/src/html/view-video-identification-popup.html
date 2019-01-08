@@ -1,0 +1,83 @@
+<kendo-mobile-modal-view
+        ng-if="infoPopup.showVideoIdentification"
+        ng-controller="ViewVideoIdentificationPopupCtrl as viewVideoIdentificationPopupCtrl"
+        k-on-close="data.onClose(kendoEvent)"
+        id="view-video-identification-popup"
+        class="modal" style="width: 96%;" modal modal-top="true"
+        ng-cloak>
+
+    <div class="modal-resize-box">
+
+        <div class="view-video-identification-box">
+
+            <div class="trollbox-type-video-verification clearfix">
+
+                <div class="video-box">
+                    <video video ng-attr-poster="{{data.trollboxMessage.file.image_medium}}" playsinline webkit-playsinline loop muted preload="none">
+                        <source ng-src="{{data.trollboxMessage.file.url|trustResourceUrl}}" type="video/mp4">
+                    </video>
+                </div>
+
+                <div ng-if="data.trollboxMessage.user.video_identification_status=='AWAITING'">
+                    <div ng-if="data.trollboxMessage.voted" class="video-verification-votes-text"><translate>Vielen Dank für Deine Abstimmung</translate></div>
+                    <div ng-if="!data.trollboxMessage.voted && status.user.id!=data.trollboxMessage.user.id" class="video-verification-votes-box clearfix">
+                        <kendo-mobile-button k-on-click="data.trollboxVoteDown(data.trollboxMessage.id)"><translate>nicht echt</translate></kendo-mobile-button>
+                        <kendo-mobile-button k-on-click="data.trollboxVoteUp(data.trollboxMessage.id)"><translate>echt</translate></kendo-mobile-button>
+                    </div>
+                    <div ng-if="status.user.is_moderator && !data.trollboxMessage.voted" class="video-verification-votes-view-box clearfix">
+                        <div ng-if="data.trollboxMessage.votes_down>0" ng-click="data.viewVotesVideo(data.trollboxMessage.id, 'down')"><i class="votes-view"></i><span>{{data.trollboxMessage.votes_down}}</span></div>
+                        <div ng-if="data.trollboxMessage.votes_up>0" ng-click="data.viewVotesVideo(data.trollboxMessage.id, 'up')"><i class="votes-view"></i><span>{{data.trollboxMessage.votes_up}}</span></div>
+                    </div>
+                    <div class="count-votes"><translate>Stimmen</translate>: {{data.trollboxMessage.count_votes}}</div>
+                </div>
+
+            </div>
+
+            <div ng-if="data.trollboxMessage.messages.length>0" class="trollbox-message-box">
+                <div class="trollbox-message-item" ng-repeat="itemMessage in data.trollboxMessage.messages">
+                    <div class="trollbox-message-box-info" ng-click="data.enterGroupChat(data.trollboxMessage.id)">
+                        <div class="trollbox-message-data clearfix">
+                            <div class="trollbox-message-user-data">
+                                <div class="jugl-forum-user-avatar" ng-click="navigate('view-user-profile.html?id='+itemMessage.user.id)">
+                                    <img once-src="itemMessage.user.avatar" />
+                                </div>
+                                <div class="trollbox-message-user">{{::itemMessage.user|userName}}</div>
+                                <div ng-click="updateCountry(itemMessage.user.id, data.log.items); $event.stopPropagation();" id="{{::itemMessage.user.flag}}" class="flag flag-32 flag-{{itemMessage.user.flag}}"></div>
+                            </div>
+                            <div class="trollbox-message-dt-data">
+                                <div class="trollbox-message-dt">{{::itemMessage.dt|date:"dd.MM.yyyy HH:mm"}}</div>
+                            </div>
+                        </div>
+
+                        <div ng-if="itemMessage.content_type!='IMAGE' || itemMessage.content_type!='VIDEO'" class="trollbox-message-message" ng-bind-html="itemMessage.text|emoticonFixMobile:true" open-link></div>
+
+                        <div ng-if="itemMessage.content_type=='IMAGE'" class="trollbox-message-message-picture">
+                            <img once-src="itemMessage.file.thumb_url">
+                        </div>
+
+                        <div ng-if="itemMessage.content_type=='VIDEO'" class="trollbox-message-message-picture trollbox-messsage-video">
+                            <img once-src="itemMessage.file.thumb_url">
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="box-sizing message-comment-btn-box">
+                <kendo-mobile-button ng-click="data.enterGroupChat(data.trollboxMessage.id)"><translate>Kommentieren</translate></kendo-mobile-button>
+            </div>
+
+            <div class="trollbox-message-total-box">
+                <div ng-click="data.enterGroupChat(data.trollboxMessage.id)" class="trollbox-message-total-info"><span>{{::data.trollboxMessage.messagesCount|default:0}}</span><translate>Kommentare insgesamt</translate></div>
+            </div>
+
+
+        </div>
+
+        <div class="btn-box">
+            <kendo-mobile-button class="closeModalBtn"><translate>Schließen</translate></kendo-mobile-button>
+        </div>
+    </div>
+
+
+</kendo-mobile-modal-view>

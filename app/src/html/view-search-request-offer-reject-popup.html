@@ -1,0 +1,47 @@
+<kendo-mobile-modal-view
+    id="search-request-offer-reject-popup"
+    k-on-open="data.onOpen(kendoEvent)"
+    ng-controller="SearchRequestOfferDetailsRejectCtrl as searchRequestOfferDetailsRejectCtrl"
+    class="modal" style="width: 90%;" modal ng-cloak>
+
+    <div class="reject-box">
+        <div class="reject-title"><translate>Ablehnungsgrund</translate></div>
+        <kendo-mobile-list-view class="reject-list">
+            <li>
+                <label>
+                    <input value="OFFER_NOT_FIT" type="radio" ng-model="data.reject.reject_reason" />
+                    <translate>Das Angebot passt nicht</translate>
+                </label>
+            </li>
+            <li>
+                <label>
+                    <input value="CHANGED_MY_MIND" type="radio" ng-model="data.reject.reject_reason" />
+                    <translate>Ich habe mich anders entschieden</translate>
+                </label>
+            </li>
+            <li>
+                <label>
+                    <input value="OFFER_IS_EXPENSIVE" type="radio" ng-model="data.reject.reject_reason" />
+                    <translate>Das Angebot ist zu teuer</translate>
+                </label>
+            </li>
+            <li>
+                <label>
+                    <input value="OTHERS" type="radio" ng-model="data.reject.reject_reason" />
+                    <translate>Sonstiges</translate>
+                </label>
+            </li>
+        </kendo-mobile-list-view>
+
+        <div class="reject-comment">
+            <textarea name="comment" ng-model="data.reject.reject_comment"></textarea>
+        </div>
+
+    </div>
+
+    <div class="btn-box">
+        <kendo-mobile-button k-on-click="data.save()"><translate>Absenden</translate></kendo-mobile-button>
+        <kendo-mobile-button class="closeModalBtn"><translate>Cancel</translate></kendo-mobile-button>
+    </div>
+
+</kendo-mobile-modal-view>

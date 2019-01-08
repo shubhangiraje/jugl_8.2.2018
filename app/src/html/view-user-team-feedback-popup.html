@@ -1,0 +1,30 @@
+<kendo-mobile-modal-view
+        k-on-open="data.onOpen(kendoEvent)"
+        ng-controller="UserTeamFeedbackUpdateCtrl as userTeamFeedbackUpdateCtrl"
+        id="view-user-team-feedback-popup"
+        class="modal" style="width: 90%;" modal
+        ng-cloak>
+
+    <div class="evaluation-box">
+        <label ng-if="!data.feedback.isNotification"><translate>Bewerten:</translate></label>
+        <label ng-if="data.feedback.isNotification"><translate>Bitte bewerte Deinen Teamleader</translate></label>
+
+        <div class="evaluation">
+            <input type="radio" name="evaluation" value="20" ng-model="data.feedback.rating" class="ng-pristine ng-untouched ng-valid"><i></i>
+            <input type="radio" name="evaluation" value="40" ng-model="data.feedback.rating" class="ng-pristine ng-untouched ng-valid"><i></i>
+            <input type="radio" name="evaluation" value="60" ng-model="data.feedback.rating" class="ng-pristine ng-untouched ng-valid"><i></i>
+            <input type="radio" name="evaluation" value="80" ng-model="data.feedback.rating" class="ng-pristine ng-untouched ng-valid"><i></i>
+            <input type="radio" name="evaluation" value="100" ng-model="data.feedback.rating" class="ng-pristine ng-untouched ng-valid"><i></i>
+        </div></div>
+
+    <div class="feedback-box">
+        <label><translate>Ihr Feedback:</translate></label>
+        <textarea name="feedback" rows="6" ng-model="data.feedback.feedback"></textarea>
+    </div>
+
+    <div class="btn-box">
+        <kendo-mobile-button k-on-click="data.save()"><translate>Bewerten</translate></kendo-mobile-button>
+        <kendo-mobile-button ng-if="!data.feedback.isNotification" k-on-click="data.close()"><translate>Cancel</translate></kendo-mobile-button>
+        <kendo-mobile-button ng-if="data.feedback.isNotification" k-on-click="data.close()"><translate>Jetzt nicht</translate></kendo-mobile-button>
+    </div>
+</kendo-mobile-modal-view>

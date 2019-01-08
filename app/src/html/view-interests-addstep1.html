@@ -1,0 +1,53 @@
+jsonPostDataPromise('/ext-api-base/is-device-used-for-registration').then(function (res) {
+            if (res.error) {
+                $scope.data.registerError=res.error;
+            }
+        });<kendo-mobile-view
+        k-title="'Meine Interessen'"
+        id="view-interests-addstep1"
+        k-layout="'layout-main'"
+        ng-controller="InterestsAddStep1Ctrl as interestsAddStep1Ctrl"
+        k-on-show="data.onShow(kendoEvent)"
+        k-use-native-scrolling="config.views.useNativeScrolling"
+        ng-cloak>
+
+    <kendo-mobile-header>
+        <kendo-mobile-nav-bar>
+            <kendo-mobile-view-title><translate>Meine Interessen</translate></kendo-mobile-view-title>
+        </kendo-mobile-nav-bar>
+    </kendo-mobile-header>
+
+    <div class="interest-step-title">
+        1.&nbsp;<translate>Wähle allgemeine Interessen kategorie</translate>
+    </div>
+
+    <script id="template-level1-interests" type="text/x-kendo-template">
+        <a ng-click="data.nextLevelInterest(dataItem.interest_id)" once-if="dataItem.isChildInterests">
+            <div class="interest-img-box">
+                <div class="interest-img">
+                    <img ng-src="{{::dataItem.interest_img}}">
+                </div>
+            </div>
+            <div class="interest-info-box">
+                <div class="interest-title">{{::dataItem.interest_title}}</div>
+            </div>
+        </a>
+
+        <a ng-click="data.saveInterest(dataItem.interest_id)" once-if="!dataItem.isChildInterests">
+            <div class="interest-img-box">
+                <div class="interest-img">
+                    <img ng-src="{{::dataItem.interest_img}}">
+                </div>
+            </div>
+            <div class="interest-info-box">
+                <div class="interest-title">{{::dataItem.interest_title}}</div>
+            </div>
+        </a>
+
+    </script>
+
+    <kendo-mobile-list-view k-options="data.listViewOptions" class="view-interests-list" k-style="'inset'" >
+    </kendo-mobile-list-view>
+
+
+</kendo-mobile-view>

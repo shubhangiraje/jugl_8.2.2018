@@ -1,0 +1,84 @@
+<kendo-mobile-view
+        k-title="'Video Details'"
+        id="view-videos-details"
+        k-layout="'layout-main'"
+        ng-controller="VideoDetailCtrl as videoDetailCtrl"
+        k-on-show="data.onShow(kendoEvent)"
+        k-on-hide="data.onHide(kendoEvent)"
+        k-use-native-scrolling="config.views.useNativeScrolling"
+        ng-cloak>
+
+    <kendo-mobile-header>
+        <kendo-mobile-nav-bar>
+            <kendo-mobile-view-title>&nbsp;</kendo-mobile-view-title>
+            <kendo-mobile-back-button k-on-click="onClickBack()" data-align="left"><span class="platform-android"><translate>Zurück</translate></span></kendo-mobile-back-button>
+        </kendo-mobile-nav-bar>
+    </kendo-mobile-header>
+
+    
+    <div class="box-details-info">
+
+     <div class="videos-details">
+    <div class="container">
+		<div class="videos-content">
+			<div class="videos-column cnt-3">
+				<div class="details-title allow-clipboard">{{data.video.name}}</div>
+				 <ul class="found-category">
+					<li class="ng-binding"><translate>Videos</translate></li>
+					<li class="ng-binding">{{data.video.cat_name}}</li>
+				</ul>
+				<div class="videos-info mobile">
+					<div class="videos-info-item">
+						<p class="info-title"><translate>Werbebonus</translate></p>
+						<p class="info-content details-video-bonus">{{data.video.bonus|priceFormat}} <jugl-currency></jugl-currency></p>
+					</div>
+					<div class="videos-info-item">
+						<p class="info-title"><translate> Videos heute </translate></p>
+						<p class="info-content details-video-bonus">{{data.video_state.video_total_view}}</p>
+					</div>
+					<div class="videos-info-item">
+						<p class="info-title"><translate>Heute Gesamt</translate></p>
+						<p class="info-content details-video-bonus">{{data.video_state.video_total_bonus}} <jugl-currency></jugl-currency></p>
+					</div>
+					
+				</div>
+				
+				<div init-onload="true" data="data.video" data_user="data.video_user" id="videosplayer" class="videos-player">
+				</div>
+				<p read-more init-onload="true" data="data.video.description" class="videos-description">
+				</p>
+
+				<div class="videos-tags">
+					<p ng-if="videoTags" ng-repeat="videoTags in data.video.video_tags">
+						<a href="">#{{videoTags}}</a>
+					</p>
+				</div>
+				
+			</div>
+			<div class="videos-column cnt-1">
+				<div class="videos-playlist">
+					<h3><translate>Nächstes Video:</translate></h3>
+					<div class="videos-playlist-container">
+						<div ng-repeat="itemPlaylistVideos in data.video_list" class="videos-playlist-items">
+							<a  ng-click="navigate('view-videos-details.html?id='+itemPlaylistVideos.video_id)" class="dashboard-videos-image" style="background:url('{{itemPlaylistVideos.image}}')">
+							</a>
+							<div class="videos-playlist-content">
+								<h4>{{itemPlaylistVideos.name}}</h4>
+								<p class="videos-categorie">{{itemPlaylistVideos.cat_name}}</p>
+								<p class="videos-tag" ng-if="videoTags" ng-repeat="videoTags in itemPlaylistVideos.video_tags">
+									<a href="#">#{{videoTags}}</a>
+								</p>
+							</div>
+							<div class="clearfix"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+    </div>
+</div>
+    </div>
+
+</kendo-mobile-view>
+
+

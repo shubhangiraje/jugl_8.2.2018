@@ -1,0 +1,17 @@
+#!/bin/bash
+
+set -e
+
+cd "$(dirname "$0")"
+source common.sh
+
+CONTAINER_ID=`get_container_id cordova`
+CONTAINER_ENV=`get_container_env $CONTAINER_ID`
+eval "$CONTAINER_ENV"
+
+if [ $# -eq 0 ]; then
+    docker exec --user user -ti $CONTAINER_ID /bin/bash -c "${CONTAINER_ENV} cd /var/www/${COMPOSE_PROJECT_NAME};bash -i"
+else
+    args="$@"
+    docker exec --user user $CONTAINER_ID /bin/bash -c "${CONTAINER_ENV} cd /var/www/${COMPOSE_PROJECT_NAME};$args"
+fi

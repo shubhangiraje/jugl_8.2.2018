@@ -1,0 +1,35 @@
+{
+  "name": "jugl",
+  "description": "Jugl",
+  "version": "1.0.0",
+  "homepage": "",
+  "license": "private",
+  "private": true,
+  "dependencies": {
+    "jquery": "2.1.4",
+    "angular": "1.3.20",
+    "angular-i18n": "1.3.20",
+    "angular-dynamic-locale": "0.1.29",
+    "angular-once": "0.1.9",
+    "ngstorage": "0.3.10",
+    "ngCordova": "0.1.23-alpha",
+    "angular-touch": "1.4.8",
+    "angular-file-upload": "2.2.0",
+    "socket.io-client": "1.3.7",
+    "exif-js": "2.1.1",
+    "angular-elastic": "2.5.1",
+    "angular-gettext": "2.2.1",
+    "angular-sanitize": "1.4.8",
+    "imgcache.js": "#6254cc168e27315d1e3018e2ae4a50b748095b0c",
+    "photoswipe": "4.1.0",
+    "slick-carousel": "1.4.1",
+    "angular-swiper": "^0.4.0"
+  },
+  "resolutions": {
+    "angular": "1.3.x",
+    "imgcache.js": "6254cc168e27315d1e3018e2ae4a50b748095b0c"
+  },
+  "devDependencies": {
+    "angular-bootstrap-multiselect": "https://github.com/bentorfs/angular-bootstrap-multiselect.git#^1.1.11"
+  }
+}

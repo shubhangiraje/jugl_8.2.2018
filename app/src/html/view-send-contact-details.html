@@ -1,0 +1,62 @@
+<kendo-mobile-view
+        k-title="'Ihre Kontakte'"
+        id="view-send-contact-details"
+        ng-controller="SendContactDetailsCtrl"
+        k-on-show="data.onShow(kendoEvent)"
+        k-on-hide="data.onHide(kendoEvent)"
+        k-layout="'layout-main'"
+        k-use-native-scrolling="config.views.useNativeScrolling"
+        ng-cloak>
+
+    <kendo-mobile-header>
+        <kendo-mobile-nav-bar>
+            <kendo-mobile-view-title><translate>Kontakt senden</translate></kendo-mobile-view-title>
+            <kendo-mobile-back-button k-on-click="onClickBack()" data-align="left"><span class="platform-android"><translate>Zurück</translate></span></kendo-mobile-back-button>
+        </kendo-mobile-nav-bar>
+    </kendo-mobile-header>
+
+
+    <div class="send-contact-details-user">{{data.contact.name.formatted}}</div>
+
+    <kendo-mobile-list-view ng-if="data.contact" class="send-contact-details-list">
+        <li ng-repeat="item in data.contact.phoneNumbers">
+            <label>
+                <span class="icon-contact-phone"></span>
+                <div class="contact-send-value">{{item.value}}</div>
+                <div class="contact-send-type">{{item.type}}</div>
+                <input type="checkbox" ng-model="data.sendPhoneNumbers[$index]"/>
+            </label>
+        </li>
+        <li ng-repeat="item in data.contact.emails">
+            <label>
+                <span class="icon-contact-email"></span>
+                <div class="contact-send-value">{{item.value}}</div>
+                <div class="contact-send-type">{{item.type}}</div>
+                <input type="checkbox"  ng-model="data.sendEmails[$index]"/>
+            </label>
+        </li>
+        <li ng-repeat="item in data.contact.addresses">
+            <label>
+                <span class="icon-contact-address"></span>
+                <div class="contact-send-value">{{item.formatted}}</div>
+                <div class="contact-send-type">{{item.type}}</div>
+                <input type="checkbox"  ng-model="data.sendAddresses[$index]"/>
+            </label>
+        </li>
+        <li ng-if="data.contact.birthday">
+            <label>
+                <span class="icon-contact-birthday"></span>
+                <div class="contact-send-value">{{data.contact.birthday | birthdayFormat}}</div>
+                <div class="contact-send-type"><translate>Geburtstag</translate></div>
+                <input type="checkbox" ng-model="data.sendBirthday" />
+            </label>
+        </li>
+    </kendo-mobile-list-view>
+
+    <div class="btn-box">
+        <kendo-mobile-back-button><translate>Abbrechen</translate></kendo-mobile-back-button>
+        <kendo-mobile-button k-on-click="data.send()"><translate>Senden</translate></kendo-mobile-button>
+    </div>
+
+
+</kendo-mobile-view>

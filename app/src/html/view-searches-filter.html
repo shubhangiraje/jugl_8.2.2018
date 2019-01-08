@@ -1,0 +1,110 @@
+<kendo-mobile-view
+        k-title="'Filtern'"
+        id="view-searches-filter"
+        k-layout="'layout-main'"
+        ng-controller="SearchFilterCtrl"
+        k-on-show="data.onShow(kendoEvent)"
+        k-use-native-scrolling="config.views.useNativeScrolling" ng-cloak>
+
+    <kendo-mobile-header>
+        <kendo-mobile-nav-bar>
+            <kendo-mobile-view-title><translate>Filtern</translate></kendo-mobile-view-title>
+            <kendo-mobile-back-button k-on-click="onClickBack()" data-align="left"><span class="platform-android"><translate>Zurück</translate></span></kendo-mobile-back-button>
+        </kendo-mobile-nav-bar>
+    </kendo-mobile-header>
+
+    <div ng-if="data.loading" class="km-loader km-widget select-loader" data-role="loader" style="">
+        <span class="km-loading km-spin"></span>
+        <span class="km-loading-left"></span>
+        <span class="km-loading-right"></span>
+        <h1><translate>Loading</translate>...</h1>
+    </div>
+
+    <kendo-mobile-list-view class="filter-interests-list">
+        <li>
+            <label><translate>Interessenkategorie</translate>:
+                <select ng-model="data.filter.level1_interest_id" ng-options="interest.id as interest.title for interest in data.filterData.interests | filter:{parent_id:null} | unshiftArray:data.emptyOption">
+                </select>
+            </label>
+        </li>
+
+        <li ng-if="data.filter.level1_interest_id && (data.filterData.interests | filter: {parent_id:data.filter.level1_interest_id}).length > 0">
+            <label><translate>Unterkategorie</translate>:
+                <select ng-model="data.filter.level2_interest_id" ng-options="interest.id as interest.title for interest in data.filterData.interests | filter: {parent_id:data.filter.level1_interest_id} : data.filterInterestComparator | unshiftArray:data.emptyOption">
+                </select>
+            </label>
+        </li>
+
+        <li ng-if="data.filter.level2_interest_id && (data.filterData.interests | filter: {parent_id:data.filter.level2_interest_id}).length > 0">
+            <label><translate>Themenfilter</translate>:
+                <select ng-model="data.filter.level3_interest_id" ng-options="interest.id as interest.title for interest in data.filterData.interests | filter: {parent_id:data.filter.level2_interest_id} : data.filterInterestComparator | unshiftArray:data.emptyOption">
+                </select>
+            </label>
+        </li>
+
+        <li ng-repeat="param in data.filterData.params | filter:data.paramFilter">
+            <label>{{param.title}}:
+                <select ng-model="data.filter.params[param.id]" ng-options="value.id as value.title for value in param.values">
+                </select>
+            </label>
+        </li>
+    </kendo-mobile-list-view>
+
+    <kendo-mobile-list-view ng-if="data.typeSearch == 'requestSearch' || data.typeSearch =='requestSearchByUser'" class="filter-interests-list">
+        <li>
+            <label><translate>Sortieren nach</translate>:
+                <select ng-model="data.filter.sort">
+                    <option value="create_dt" translate>Datum</option>
+                    <option value="relevancy" translate>Relevance</option>
+                    <option value="bonus" translate>Vermittlungsbonus</option>
+                    <option value="rating" translate>Rating</option>
+                </select>
+            </label>
+        </li>
+    </kendo-mobile-list-view>
+
+
+    <kendo-mobile-list-view ng-if="data.typeSearch == 'offerSearch' || data.typeSearch == 'offerSearchByUser'" class="filter-interests-list">
+        <li>
+            <label><translate>Filtern nach:</translate>
+                <select ng-model="data.filter.type">
+                    <option value="" translate>Alle</option>
+                    <option value="AUTOSELL" translate>Sofortkauf</option>
+                    <option value="AUCTION" translate>Bieterverfahren</option>
+                    <option value="AD" translate>Ohne Kaufmöglichkeit</option>
+                </select>
+            </label>
+        </li>
+    </kendo-mobile-list-view>
+
+    <kendo-mobile-list-view ng-if="data.typeSearch == 'offerSearch' || data.typeSearch == 'offerSearchByUser'" class="filter-interests-list">
+        <li>
+            <label><translate>Sortieren nach:</translate>
+                <select ng-model="data.filter.sort">
+                    <option value="create_dt" translate>Datum</option>
+                    <option value="relevancy" translate>Relevanz</option>
+                    <option value="view_bonus" translate>Werbebonus</option>
+                    <option value="buy_bonus" translate>Kaufbonus</option>
+                    <option value="rating" translate>Wertung</option>
+                </select>
+            </label>
+        </li>
+    </kendo-mobile-list-view><kendo-mobile-list-view ng-if="data.typeSearch == 'offerSearch' || data.typeSearch == 'requestSearch'" class="filter-interests-list">
+        <li>
+            <label><translate>Artikelstandort:</translate></label>
+			<div class="blue-multiselect search-filter">
+				<multiselect ng-model="data.filter.country" labels="labels"
+					search-limit="20" selection-limit="20" options="data.countryArrayOfferSearch" id-prop="id" display-prop="name" show-select-all="false" show-unselect-all="false" show-search="true" 
+				></multiselect>
+			</div>
+        </li>
+    </kendo-mobile-list-view>
+
+
+    <div class="btn-box">
+        <kendo-mobile-button k-on-click="data.filterSearchRequest(kendoEvent)"><translate>Suche</translate></kendo-mobile-button>
+    </div>
+
+
+
+</kendo-mobile-view>

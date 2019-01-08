@@ -1,0 +1,47 @@
+$smiles-sort-by : 'name';
+$smiles-layout: vertical;
+
+@import "smiles/*.png";
+
+$sprite-smile-height: image-height('../../www/img/sprite-smiles.png');
+
+.smile-sm {
+  width: 16px;
+  height: 16px;
+  position: relative;
+  top: 4px;
+  display: inline-block;
+  background-size: (128px/8) $sprite-smile-height/8;
+}
+
+.smile-lg {
+  width: 32px;
+  height: 32px;
+  position: relative;
+  top: 6px;
+  display: inline-block;
+  background-size: (128px/4) $sprite-smile-height/4;
+}
+
+.smile-xl {
+  width: 64px;
+  height: 64px;
+  display: inline-block;
+  background-size: (128px/2) $sprite-smile-height/2;
+}
+
+@for $i from 1 through 50 {
+
+  .smile-sm.smile-#{$i} {
+    background-position: 0px (-($i - 1)*128px/8);
+  }
+
+  .smile-lg.smile-#{$i} {
+    background-position: 0px (-($i - 1)*128px/4);
+  }
+
+  .smile-xl.smile-#{$i} {
+    background-position: 0px (-($i - 1)*128px/2);
+  }
+
+}

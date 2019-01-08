@@ -1,0 +1,19 @@
+<kendo-mobile-modal-view
+    ng-controller="UserCountryUpdatePopupCtrl as userCountryUpdatePopupCtrl"
+    id="view-user-country-update-popup"
+    class="modal" style="width: 90%;" modal
+    ng-cloak>
+
+    <div class="user-country-update-box">
+        <kendo-mobile-list-view k-style="'inset'">
+            <li>
+                <label><translate>Land</translate>:</label>
+                <select ng-model="data.userCountryUpdateForm.country_id" ng-options="item.id as item.country for item in data.countries"></select>
+            </li>
+        </kendo-mobile-list-view>
+        <div class="btn-box">
+            <kendo-mobile-button k-on-click="data.save()"><translate>Speichern</translate></kendo-mobile-button>
+            <kendo-mobile-button class="closeModalBtn"><translate>Cancel</translate></kendo-mobile-button>
+        </div>
+    </div>
+</kendo-mobile-modal-view>

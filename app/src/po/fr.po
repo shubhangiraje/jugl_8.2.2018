@@ -1,0 +1,6311 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"PO-Revision-Date: 2018-05-28 22:26+0000\n"
+"Last-Translator: Meyer.sabrina2015 <meyer.sabrina2015@gmail.com>\n"
+"Language-Team: French <http://jugl.pimentagroup.de/projects/jugl-website/"
+"jugl-website/fr/>\n"
+"Language: fr\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 2.20-dev\n"
+
+#: view-profile-update.html:105 view-profile-update.html:117
+#: view-profile-update.html:135 view-profile-update.html:146
+#: view-profile-update.html:160 view-profile-update.html:174
+msgid "&nbsp;"
+msgstr "&nbsp;"
+
+#: view-searches-my-offers.html:92
+msgid "...folgende Angebote abgegeben:"
+msgstr "...déposer des offres suivante :"
+
+#: view-earn-money.html:24 view-how-it-works.html:19
+msgid "1. Ich lade meine Freunde ein und baue mir damit mein Netzwerk auf."
+msgstr "1.J'invite mes amis et je me construit ainsi un réseau."
+
+#: view-earn-money.html:31
+msgid ""
+"2. Ich gebe meine Interessen an (von der Zahnbürste bis zum Luxus Auto) und "
+"bleibe dabei anonym und bekomme vorwiegend von Händlern aber auch von "
+"Privatpersonen, auf meinen Interessen basierende Produktangebote (Inserat). "
+"Für jede gelesene Inserat verdienst Du Jugls"
+msgstr ""
+"2.J'indique mes intérêts (de la brosse à dents à la voiture de luxe) et "
+"reste anonyme et je reçois principalement  des détaillants mais aussi des "
+"particuliers, en fonction de mes intérêts produits (publicité)indiquer. Vous "
+"gagnez Jugls pour chaque publicité que vous lisez"
+
+#: view-how-it-works.html:20
+msgid ""
+"2. Ich gebe meine Interessen an (von der Zahnbürste bis zum Luxus Auto) und "
+"bliebe dabei anonym und bekomme vorwiegend von Händlern aber auch von "
+"Privatpersonen, auf meinen Interessen basierende Produktangebote (Inserat)."
+msgstr ""
+"2.J'indique mes intérêts( de ma brosse à dents à la voiture de luxe) et "
+"reste anonyme et je réçois principalement des détaillants et aussi des "
+"particuliers, en fonction de mes intérêts produits( publicité) indiquer."
+
+#: view-how-it-works.html:21
+msgid ""
+"3. Assistenz, Recherche, Vermittlung… egal ob günstigste Reise, schönste "
+"Veranstaltung oder Traumwohnung. Hierbei ist mein Profil zu sehen und ich "
+"erhalte ein individuell auf mich zugeschnittenes Angebot."
+msgstr ""
+"3.Assistance, recherche, placement ... peu importe si voyage moins cher, "
+"plus bel événement ou appartement de rêve. En ce conteste, mon profil est à "
+"voir et individuellement je reçois une offre adaptée."
+
+#: view-earn-money.html:38
+msgid ""
+"3. Vermittlung, Recherche, Assistenz. Egal was Du oder andere suchen. Du "
+"bekommst dafür Vermittlungsprovision oder profitierst von den Angeboten."
+msgstr ""
+"3.Médiation, recherche, assistance. Peu importe ce que vous ou d'autres "
+"personnes recherchez. Vous recevez une commission ou bénéficiez des offres."
+
+#: view-how-it-works.html:22
+msgid "4. Du verdienst immer an allen Aktivitäten in Deinem Netzwerk mit."
+msgstr "4.Vous gagnez toujours sur toutes les activités de votre réseau."
+
+#: view-earn-money.html:45
+msgid ""
+"4. ExtraCash - der Name ist Programm. Sammle noch mehr Jugls bei unseren "
+"Partnern und verschaffe Dir so einen waschechten Booster für Dein Konto."
+msgstr ""
+
+#: view-offers-bet-popup.html:8
+msgid ""
+"<b>Aktuelles Höchstgebot:</b>&nbsp;<span class=\"offers-bet-price-popup"
+"\">{{data.best_price|priceFormat}} €</span>"
+msgstr ""
+"<b>Enchère la plus élevée:</b>&nbsp;<span class=\"offers-bet-price-popup"
+"\">{{data.best_price|priceFormat}} €</span>"
+
+#: view-manage-network-confirm-popup.html:9
+msgid ""
+"<b>{{data.users.src_name}}</b>in die Struktur von<b>{{data.users.dst_name}}</"
+"b>verschieben?"
+msgstr ""
+"<b>{{data.users.src_name}}</b>dans la structure de<b>{{data.users.dst_name}}"
+"</b>déplacer ?"
+
+#: view-registration-payment.html:77
+msgid ""
+"<span class=\"text-red\">PREMIUM Mitglieder</span> sind die interessanteren "
+"Geschäftspartner für Unternehmen und private Nutzer im Netzwerk. <span class="
+"\"text-red\">10% MEHR GEWINN!</span>"
+msgstr ""
+"<span class=\"text-red\">Membres PREMIUM</span>sont les partenaires "
+"d'affaires les plus intéressants pour les entreprises et les utilisateurs "
+"privés du réseau.<span class=\"text-red\">10% PLUS DE PROFIT!</span>"
+
+#: view-registration-payment.html:71
+msgid ""
+"<span class=\"text-red\">PREMIUM</span> Gewinnaufteilung: Du bekommst von "
+"jedem verdienten Jugl 70 %. 1 % gehen an JuglApp und 29 % gehen an den, der "
+"Dich in das Netzwerk eingeladen hat."
+msgstr ""
+"<span class=\"text-red\">PREMIUM</span>Répartition des bénéfices: Vous "
+"obtenez 70% de chaque Jugl gagné. 1% va à JuglApp et 29% à celui qui vous a "
+"invité au réseau."
+
+#: view-registration-payment.html:49
+msgid ""
+"<span class=\"text-red\">PREMIUMPLUS Mitglieder</span> sind die "
+"interessantesten Geschäftspartner für Unternehmen und private Nutzer im "
+"Netzwerk."
+msgstr ""
+"<span class=\"text-red\">Membres PREMIUMPLUS</span>sont les partenaires "
+"commerciaux les plus intéressants pour les entreprises et les utilisateurs "
+"privés du réseau."
+
+#: view-registration-payment.html:37
+msgid ""
+"<span class=\"text-red\">PREMIUMPLUS</span> Gewinnaufteilung: Du bekommst "
+"von jedem verdienten Jugl 70%. 1% geht an JuglApp und 29% gehen an den, der "
+"Dich in das Netzwerk eingeladen hat."
+msgstr ""
+"<span class=\"text-red\">PREMIUMPLUS</span>Répartition des bénéfices: Vous "
+"obtenez 70% de chaque Jugl gagné. 1% va à JuglApp et 29% à celui qui vous a "
+"invité au réseau."
+
+#: view-searches-my-list.html:98 view-searches-offers-list.html:53
+msgid "ABGELEHNT"
+msgstr "REJETER"
+
+#: view-registration-payment.html:120
+msgid "ACHTUNG: Ein späteres Upgrade zu diesem Preis ist nicht mehr möglich!"
+msgstr "ATTENTION: Une mise à niveau ultérieure à ce prix n'est pas possible !"
+
+#: controllers/OfferDetailCtrl.js:145 controllers/OfferPreviewCtrl.js:33
+msgid "AGB"
+msgstr "Conditions générales"
+
+#: view-offers-details.html:141 view-offers-preview.html:123
+msgid "AGB des Anbieters lesen"
+msgstr "Lire les conditions générales du fournisseur"
+
+#: view-profile-fillup.html:51 view-profile-update.html:76
+msgid "AGBs"
+msgstr "Les conditions générales"
+
+#: view-searches-my-list.html:100 view-searches-offers-list.html:55
+msgid "ANGENOMMEN"
+msgstr "Supposer"
+
+#: view-offers-add.html:92 view-searches-add.html:69
+msgid "Ab dem"
+msgstr ""
+
+#: view-offers-add.html:87 view-searches-add.html:64
+msgid "Ab sofort"
+msgstr ""
+
+#: controllers/ChatCtrl.js:220 controllers/ChatCtrl.js:348
+#: controllers/ChatCtrl.js:471 controllers/ChatCtrl.js:583
+#: controllers/ContactsCtrl.js:412 controllers/DashboardCtrl.js:225
+#: controllers/DashboardCtrl.js:783 controllers/DashboardCtrl.js:867
+#: controllers/InfoPopupCtrl.js:84 controllers/InfoPopupOldCtrl.js:81
+#: controllers/TrollBoxCtrl.js:291 controllers/TrollBoxCtrl.js:411
+#: controllers/TrollBoxCtrl.js:495 controllers/TrollboxMessageUpdateCtrl.js:163
+#: controllers/TrollboxMessageUpdateCtrl.js:80
+#: controllers/UserInterestsUpdateCtrl.js:123
+#: controllers/UserInterestsUpdateCtrl.js:99 services/MessengerService.js:1277
+#: view-send-contact-details.html:57 view-team-change-request-popup.html:15
+#: view-team-change-request-popup2.html:15
+msgid "Abbrechen"
+msgstr "Interromper"
+
+#: view-is-working.html:21
+msgid "Aber wo kommt das Geld überhaupt her?"
+msgstr "D'où vient l'argent ?"
+
+#: view-offers-my-requests.html:232 view-offers-my.html:30
+#: view-offers-my.html:86
+msgid "Abgelaufen"
+msgstr "Perimé"
+
+#: view-dashboard.html:394 view-offers-my.html:90
+#: view-searches-my-offers.html:116 view-searches-search.html:129
+msgid "Abgelehnt"
+msgstr "Rejéter"
+
+#: view-searches-my-offers.html:32
+msgid "Abgelehnte Angebote"
+msgstr "Offre rejétée"
+
+#: view-offers-my.html:87
+msgid "Abgeschlossen"
+msgstr "Terminer"
+
+#: view-deals-completed.html:11 view-deals-completed.html:21
+msgid "Abgeschlossene Geschäfte & Bewertungen"
+msgstr "Affaires terminées & avis"
+
+#: directives/eventText.js:30 directives/eventText.js:82
+#: view-dashboard.html:603 view-searches-offer-details.html:90
+#: view-trollbox-list.html:195 view-user-profile.html:540
+msgid "Ablehnen"
+msgstr "Refuser"
+
+#: view-search-request-offer-reject-popup.html:8
+msgid "Ablehnungsgrund"
+msgstr "Motif de rejet"
+
+#: directives/eventText.js:64
+msgid "Abmahnen"
+msgstr "Rappeler à l'ordre"
+
+#: drawer-main.html:40 view-all-functions.html:15
+msgid "Abmelden"
+msgstr "Déconnecter"
+
+#: view-user-profile.html:29
+msgid "Abonnement beenden"
+msgstr "Résilier l'abonnement"
+
+#: view-user-profile.html:444
+msgid "Abonnenten"
+msgstr "Abonnement"
+
+#: view-user-profile.html:28
+msgid "Abonnieren"
+msgstr "Abonner"
+
+#: view-user-profile.html:393
+msgid "Abonniert"
+msgstr "Souscrit"
+
+#: view-dashboard.html:485 view-trollbox-list.html:44
+msgid "Abos"
+msgstr "Abonnement"
+
+#: view-activities.html:14 view-activities.html:30 view-activities.html:38
+msgid "Abos Aktivitäten"
+msgstr "Les activités de l'abonnement"
+
+#: view-searches-my-list.html:63
+msgid "Abschalten"
+msgstr "Eteindre"
+
+#: view-offers-details-request-popup.html:13
+msgid "Abschicken"
+msgstr "Envoyer"
+
+#: view-become-member.html:58 view-dashboard.html:520 view-info-popup.html:34
+#: view-network-change-block-popup.html:17
+#: view-offer-request-payment-complaint-popup.html:14
+#: view-profile-update.html:224 view-registration-data-old.html:33
+#: view-registration-data.html:27 view-registration-index.html:26
+#: view-search-request-comment-popup.html:14
+#: view-search-request-offer-reject-popup.html:43
+#: view-spam-report-popup.html:13 view-team-change-request-popup.html:14
+#: view-team-change-request-popup2.html:14 view-trollbox-list.html:119
+#: view-trollbox-message-visibility-popup.html:34
+msgid "Absenden"
+msgstr "Expedier"
+
+#: view-user-profile.html:316 view-user-profile.html:317
+msgid "Abwerben"
+msgstr "Détourner"
+
+#: view-user-profile.html:310
+msgid "Abwerben verhindern"
+msgstr "Empêcher de détourner"
+
+#: view-add-video-identification.html:23
+msgid ""
+"Achte aber bitte darauf, dass dein Video nicht länger als 60 Sekunden wird."
+msgstr ""
+
+#: controllers/EventCtrl.js:207
+msgid ""
+"Achtung! Durch die Annahme dieser Teamanfrage verlässt Du Dein aktuelles "
+"Team. Tu dies nur, wenn Du mit Deinem aktuellen Teamleiter unzufrieden bist."
+msgstr ""
+"Attention! En acceptant cette demande de changement de réseau, vous quittez "
+"votre équipe actuelle. Faites-le simplement que si vous n'êtes pas satisfait "
+"de votre chef d'équipe actuel."
+
+#: country.html:4
+msgid "Afghanistan"
+msgstr "Afghanistan"
+
+#: controllers/ContactsCtrl.js:411 controllers/UserInterestsUpdateCtrl.js:122
+#: controllers/UserInterestsUpdateCtrl.js:98 services/MessengerService.js:1276
+msgid "Aktionen"
+msgstr "Action"
+
+#: view-dashboard.html:280 view-offers-advanced-search-results.html:121
+#: view-offers-details.html:109 view-offers-draft.html:69
+#: view-offers-my.html:105 view-offers-preview.html:94
+#: view-offers-search-by-user.html:160 view-offers-search.html:129
+msgid "Aktiv bis"
+msgstr "Actif jusque"
+
+#: layout-main.html:7
+msgid "Aktivitäten"
+msgstr "activités"
+
+#: view-invite-my-list.html:35
+msgid "Aktualisieren"
+msgstr "actualiser"
+
+#: view-funds.html:36
+msgid "Aktueller Kontostand"
+msgstr "compte actuel"
+
+#: view-offers-my.html:182
+msgid "Aktuelles Gebot"
+msgstr "La nécessité actuelle"
+
+#: view-offers-my-requests.html:224 view-offers-my-requests.html:77
+msgid "Aktuelles Höchstgebot"
+msgstr "Offre maximale"
+
+#: view-offers-my.html:156 view-searches-offer-details.html:89
+msgid "Akzeptieren"
+msgstr "Accepter"
+
+#: country.html:5
+msgid "Albania"
+msgstr "Albanie"
+
+#: country.html:6
+msgid "Algeria"
+msgstr "Algérie"
+
+#: view-dashboard.html:483 view-offers-add.html:330 view-offers-add.html:336
+#: view-offers-draft-update.html:297 view-offers-draft-update.html:303
+#: view-offers-search-by-user.html:42 view-offers-search.html:42
+#: view-searches-filter.html:71 view-team-change-user-search.html:47
+#: view-trollbox-list.html:41 view-trollbox-list.html:53
+#: view-trollbox-list.html:61 view-trollbox-message-update-popup.html:44
+#: view-trollbox-message-visibility-popup.html:19 view-user-search.html:78
+msgid "Alle"
+msgstr "Tous"
+
+#: view-activities.html:45 view-activities.html:71
+msgid "Alle Aktivitäten"
+msgstr "Toutes les activités"
+
+#: view-settings.html:26
+msgid "Alle Benachrichtigungen"
+msgstr "Tous les messages"
+
+#: drawer-main.html:26 view-all-functions.html:10
+msgid "Alle Funktionen"
+msgstr "Toutes les fonctions"
+
+#: view-dashboard.html:681
+msgid "Alle Gruppenchats anzeigen"
+msgstr "afficher tous les discussions du groupe"
+
+#: view-dashboard.html:333
+msgid "Alle Suchaufträge anzeigen"
+msgstr "Afficher tous les demandes de recherche"
+
+#: view-settings.html:42
+msgid "Alle Töne"
+msgstr "Tous les sons"
+
+#: view-dashboard.html:230
+msgid "Alle Werbebonusanzeigen"
+msgstr "Tous les tarifs d'annonces"
+
+#: view-searches-my-offers.html:30
+msgid "Alle anzeigen"
+msgstr "Afficher tous"
+
+#: view-dashboard.html:166 view-dashboard.html:738 view-dashboard.html:763
+msgid "Alle zeigen"
+msgstr "Montrer tous"
+
+#: view-favorites.html:27 view-funds.html:139 view-funds.html:67
+#: view-offers-my-requests.html:29
+msgid "Alles zeigen"
+msgstr "Montrer tous"
+
+#: view-offer-pay.html:132
+msgid "Als Bezahlt markieren"
+msgstr "Marquer comme payé"
+
+#: view-registration-payment.html:73
+msgid ""
+"Als Händler oder Privatperson hast Du mehr Möglichkeiten Deine Zielgruppe "
+"präzise nach Interessen zu definieren."
+msgstr ""
+"En tant que détaillant ou particulier, vous avez plus d'options pour définir "
+"votre groupe cible en fonction de vos intérêts."
+
+#: view-offers-my.html:160
+msgid "Als bezahlt markiert"
+msgstr "Marquer comme payé"
+
+#: view-offers-add.html:339 view-offers-draft-update.html:306
+#: view-team-change-user-search.html:32 view-user-profile.html:125
+#: view-user-search.html:63
+msgid "Alter"
+msgstr "Âge"
+
+#: view-trollbox-message-visibility-popup.html:9
+msgid "An Abonnenten"
+msgstr ""
+
+#: view-trollbox-message-visibility-popup.html:11
+msgid "An Alle"
+msgstr ""
+
+#: view-trollbox-message-visibility-popup.html:10
+msgid "An Kontakte"
+msgstr ""
+
+#: controllers/ChatCtrl.js:553
+msgid "An error occurred while importing contact"
+msgstr "Une erreur s'est produite lors de l'importation du contact"
+
+#: view-searches-details.html:145
+msgid "Anbieten"
+msgstr "Offrir"
+
+#: view-searches-offer-details.html:21
+msgid "Anbieter"
+msgstr "Offreur"
+
+#: country.html:7
+msgid "Andorra"
+msgstr "Andorra"
+
+#: view-user-profile.html:87
+msgid "Anfrage erneut senden"
+msgstr "Renvoyer la demande"
+
+#: view-favorites.html:100
+msgid "Angebot"
+msgstr "Offre"
+
+#: view-searches-offer-add.html:11 view-searches-offer-add.html:22
+msgid "Angebot abgeben"
+msgstr "Soumissionner"
+
+#: view-activities.html:76
+msgid "Angebot auf einen Suchauftrag"
+msgstr "Offre sur une demande de recherche"
+
+#: view-offer-pay.html:12
+msgid "Angebot bezahlen"
+msgstr "Payer l'offre"
+
+#: view-searches-offer-add.html:110
+msgid "Angebot senden"
+msgstr "Envoyer une offre"
+
+#: view-searches-offer-details.html:70
+msgid "Angebotdetails (wird eingeblendet sobald du das angebot akzeptiert)"
+msgstr "Détails de l'offre (sera affiché dès que vous acceptez l'offre)"
+
+#: view-dashboard.html:390 view-searches-my-list.html:46
+#: view-searches-offers-list.html:24 view-searches-search.html:122
+msgid "Angebote"
+msgstr "Offre"
+
+#: view-searches-my-offers.html:102
+msgid "Angebotspreis"
+msgstr "L'offre de prix"
+
+#: view-dashboard.html:398 view-searches-search.html:136
+msgid "Angenommen"
+msgstr "Supposer"
+
+#: view-searches-my-offers.html:31
+msgid "Angenommene Angebote"
+msgstr "Offres acceptées"
+
+#: country.html:8
+msgid "Angola"
+msgstr "Angola"
+
+#: directives/eventText.js:80
+msgid "Annehmen"
+msgstr "Accepter"
+
+#: view-offers-add.html:278 view-offers-draft-update.html:245
+msgid "Annonce auf Startseite anzeigen (kostenpflichtig)"
+msgstr "Afficher l'annonce sur la page d'accueil (frais requis)"
+
+#: view-chat.html:17
+msgid "Anrufen"
+msgstr "Téléphoner"
+
+#: country.html:9
+msgid "Antigua & Deps"
+msgstr "Antigua et Deps"
+
+#: view-search-request-comment-response-popup.html:14
+#: view-searches-details.html:125 view-user-feedback-response-popup.html:14
+#: view-user-profile.html:208 view-user-profile.html:281
+#: view-user-team-feedback-response-popup.html:14
+msgid "Antworten"
+msgstr "Répondre"
+
+#: view-offers-add.html:371 view-offers-draft-update.html:338
+msgid "Anzahl aktiver Suchaufträge bei Jugl.net"
+msgstr "Nombre de recherches actives sur Jugl.net"
+
+#: view-profile.html:44
+msgid "Anzahl der Mitglieder, die vom Abwerben verhindert werden können"
+msgstr "Nombre de membres pouvant être empêchés de solliciter"
+
+#: view-offers-my.html:223
+msgid "Anzahl der User"
+msgstr "Nombre d'utilisateur"
+
+#: view-searches-add.html:165 view-searches-draft-update.html:131
+msgid "Anzeige aktiv bis"
+msgstr "Annonce active jusque"
+
+#: view-offers-add.html:231 view-offers-draft-update.html:199
+#: view-offers-update-popup.html:12
+msgid "Anzeige aktiv bis:"
+msgstr "Annonce active jusqu'au :"
+
+#: view-dashboard.html:311
+msgid "Anzeige aufgeben"
+msgstr "Placez une annonce"
+
+#: view-offers-add.html:327 view-offers-add.html:333
+#: view-offers-draft-update.html:294 view-offers-draft-update.html:300
+msgid "Anzeige sichbar für:"
+msgstr "Annonce visible pour:"
+
+#: view-offers-add.html:80 view-offers-draft-update.html:81
+#: view-searches-add.html:56 view-searches-draft-update.html:58
+msgid "Anzeigedetails"
+msgstr "Le détails d'annonce"
+
+#: view-trollbox-list.html:38
+msgid "Anzeigen"
+msgstr "Annonces"
+
+#: view-dashboard.html:770
+msgid "Anzeigen mit Werbebonus"
+msgstr "Annonce avec bonus"
+
+#: country.html:10
+msgid "Argentina"
+msgstr "Argentine"
+
+#: country.html:11
+msgid "Armenia"
+msgstr "Arménie"
+
+#: view-searches-filter.html:94
+msgid "Artikelstandort:"
+msgstr "emplacement de l'article:"
+
+#: view-is-working.html:24
+msgid "Assistenz, Recherche, Vermittlung"
+msgstr "Assistance, recherche, médiation"
+
+#: view-searches-my-list.html:11 view-searches-my-list.html:22
+msgid "Auftrag annehmen"
+msgstr "Accepte la commande"
+
+#: view-dashboard.html:418
+msgid "Auftrag erstellen"
+msgstr "Créer une commande"
+
+#: view-dashboard.html:315
+msgid "Aufträge"
+msgstr "contrats"
+
+#: view-dashboard.html:419
+msgid "Aufträge durchsuchen"
+msgstr "Parcourir les commandes"
+
+#: view-funds.html:141 view-funds.html:69
+msgid "Ausgang"
+msgstr "Sortie"
+
+#: view-searches-my-offers.html:110 view-searches-my-offers.html:33
+msgid "Ausstehend"
+msgstr "Attendu"
+
+#: country.html:12
+msgid "Australia"
+msgstr "Australie"
+
+#: country.html:2
+msgid "Austria"
+msgstr "Autriche"
+
+#: controllers/FundsCtrl.js:279
+msgid "Auszahlung wurde zu"
+msgstr ""
+
+#: view-settings.html:53
+msgid "Autom. Einloggen"
+msgstr "se connecter automatiquement"
+
+#: view-is-working.html:27
+msgid ""
+"Außerdem ist jede erdenkliche Dienstleistung und Vergabe von Aufträgen "
+"möglich."
+msgstr ""
+"En outre, tous les services et attribution de commandes sont possibles."
+
+#: country.html:13
+msgid "Azerbaijan"
+msgstr "Azerbaïdjan"
+
+#: view-offer-pay.html:41 view-profile-update.html:198 view-profile.html:121
+msgid "BIC"
+msgstr "Code BIC"
+
+#: country.html:14
+msgid "Bahamas"
+msgstr "Bahamas"
+
+#: country.html:15
+msgid "Bahrain"
+msgstr "Bahreïn"
+
+#: country.html:16
+msgid "Bangladesh"
+msgstr "Bangladesh"
+
+#: view-offers-add.html:196 view-offers-draft-update.html:162
+#: view-registration-payment.html:99
+msgid "Banküberweisung"
+msgstr "Virement bancaire"
+
+#: country.html:17
+msgid "Barbados"
+msgstr "Barbade"
+
+#: view-offers-add.html:206 view-offers-draft-update.html:173
+msgid "Barzahlung"
+msgstr "Paiement en espèces"
+
+#: view-offer-pay.html:85 view-offers-details.html:104 view-offers-my.html:161
+#: view-offers-my.html:35 view-offers-preview.html:89
+msgid "Barzahlung bei Abholung"
+msgstr "À l'énlevement paiement en espèces"
+
+#: view-offers-add.html:329 view-offers-draft-update.html:296
+msgid "Basis-Mitglieder"
+msgstr "Membre de base"
+
+#: view-add-video-identification.html:47
+msgid "Beachte: Das Video ist für alle im Forum sichtbar!"
+msgstr ""
+
+#: view-user-profile.html:572
+msgid "Bearbeiten"
+msgstr "Éditer"
+
+#: view-add-video-identification.html:19
+msgid "Bedingung"
+msgstr ""
+
+#: view-settings.html:32
+msgid "Bei Likes"
+msgstr "Des goûts"
+
+#: view-offers-add.html:248 view-offers-draft-update.html:216
+#: view-searches-add.html:179 view-searches-draft-update.html:145
+msgid "Bei fehlender Eingabe bleibt Deine Anzeige 6 Monate aktiv."
+msgstr ""
+"Chez une introduction manquante, votre annonce restera active pendant 6 mois."
+
+#: view-offers-add.html:307 view-offers-draft-update.html:274
+msgid ""
+"Bei jedem Klick gehen vom Werbebonus zusätzlich<br>+ 10% an Jugl.net und<br>"
+"+ 10% an den, der Dich zu Jugl.net eingeladen hat."
+msgstr ""
+"Pour chaque clic, le bonus d'annonce inclut également<br>+ 10% sur Jugl.net "
+"et<br>10% sur celui qui vous a invité sur Jugl.net."
+
+#: view-settings.html:28 view-settings.html:44
+msgid "Bei neuen Aktivitäten"
+msgstr "Chez les nouvelles activités"
+
+#: view-settings.html:29 view-settings.html:45
+msgid "Beim Jugls-Eingang"
+msgstr "À l'entrée de Jugl"
+
+#: view-settings.html:27 view-settings.html:43
+msgid "Beim Nachrichteneingang"
+msgstr "Au reçu de message"
+
+#: view-settings.html:31 view-settings.html:47
+msgid "Beim Suchauftrag"
+msgstr "Lors de la recherche"
+
+#: view-settings.html:30 view-settings.html:46
+msgid "Beim Verkauf/Inserat"
+msgstr "Lors de la vente / publicité"
+
+#: view-searches-add.html:49 view-searches-draft-update.html:51
+msgid ""
+"Beispielkategorie - Du kannst aus diversen Kategorien die passende für Dich "
+"wählen."
+msgstr ""
+"Exemple de catégorie - À partir de diverses catégories vous pouvez choisir "
+"la bonne pour vous."
+
+#: view-user-profile.html:389
+msgid "Beitrag an meine Kontakte senden"
+msgstr "Envoyer un message à mes contacts"
+
+#: view-dashboard.html:622 view-trollbox-list.html:214
+#: view-user-profile.html:559
+msgid "Beitrag anpinnen"
+msgstr "Punaiser l'article"
+
+#: view-dashboard.html:623 view-trollbox-list.html:215
+#: view-user-profile.html:560
+msgid "Beitrag entpinnen"
+msgstr "Dèspunaiser l'article"
+
+#: country.html:18
+msgid "Belarus"
+msgstr "Bélarus"
+
+#: country.html:19
+msgid "Belgium"
+msgstr "Belgique"
+
+#: view-trollbox-list.html:73
+msgid "Beliebteste"
+msgstr "Le plus apprécier"
+
+#: country.html:20
+msgid "Belize"
+msgstr "Bélize"
+
+#: view-offers-details-view-bonus-popup.html:24
+#: view-videos-details-view-bonus-popup.html:26
+msgid "Belohnung abholen"
+msgstr "Ramassez la récompense"
+
+#: view-settings.html:24
+msgid "Benachrichtigungen"
+msgstr "Messages"
+
+#: country.html:21
+msgid "Benin"
+msgstr "Bénin"
+
+#: services/MessengerService.js:73 view-chat.html:132 view-chat.html:298
+msgid "Benutzer entsperren"
+msgstr "Déverrouiller l'utilisateur"
+
+#: services/MessengerService.js:114
+msgid "Benutzer für alle Foren entsperren"
+msgstr "Débloquer des utilisateurs pour tous les forums"
+
+#: services/MessengerService.js:93
+msgid "Benutzer für alle Foren sperren"
+msgstr "Verrouiller les utilisateurs pour tous les forums"
+
+#: services/MessengerService.js:52 view-chat.html:131 view-chat.html:297
+msgid "Benutzer sperren"
+msgstr "Verrouiller l'utilisateur"
+
+#: view-become-member-facebook-linking.html:16 view-become-member.html:17
+msgid "Bereits Mitglied?"
+msgstr "Déjà membre ?"
+
+#: view-user-profile.html:319
+msgid "Bereits eingeladen"
+msgstr "Déjà invité"
+
+#: view-profile-update.html:144 view-profile.html:91 view-user-profile.html:130
+msgid "Beruf"
+msgstr "profession"
+
+#: view-searches-offer-add.html:40 view-searches-offer-add.html:43
+#: view-searches-offer-add.html:80
+msgid "Beschreibe Dein Angebot"
+msgstr "Décrivez votre offre"
+
+#: view-offers-details.html:121 view-offers-preview.html:106
+#: view-searches-details.html:66
+msgid "Beschreibung"
+msgstr "Description"
+
+#: view-offers-add.html:125 view-offers-draft-update.html:91
+msgid "Beschreibung eingeben*"
+msgstr "Entrez la description *"
+
+#: view-info-popup.html:45
+msgid "Best"
+msgstr "Meilleur"
+
+#: view-team-change-user-search.html:57
+msgid "Beste Bewertungen zuerst anzeigen"
+msgstr "Afficher les meilleures critiques en premier"
+
+#: view-activities.html:55
+msgid "Bestätigter Geldeingang"
+msgstr "Récépissé confirmé"
+
+#: directives/eventText.js:40 directives/eventText.js:42
+#: directives/eventText.js:44 directives/eventText.js:46
+#: directives/eventText.js:52 directives/eventText.js:54
+#: view-deals-completed-update-counter-user-feedback-popup.html:24
+#: view-deals-completed-update-user-feedback-popup.html:24
+#: view-searches-offer-details.html:95 view-user-team-feedback-popup.html:26
+msgid "Bewerten"
+msgstr "Evaluer"
+
+#: view-deals-completed-update-counter-user-feedback-popup.html:9
+#: view-deals-completed-update-user-feedback-popup.html:9
+#: view-user-team-feedback-popup.html:9
+msgid "Bewerten:"
+msgstr "Evaluer :"
+
+#: view-user-profile.html:152
+msgid "Bewertungen"
+msgstr "Evaluation"
+
+#: view-offers-my.html:34
+msgid "Bezahlt"
+msgstr "Payé"
+
+#: country.html:22
+msgid "Bhutan"
+msgstr "Bhutan"
+
+#: view-dashboard.html:260 view-offers-advanced-search-results.html:101
+#: view-offers-details.html:114 view-offers-details.html:29
+#: view-offers-draft.html:45 view-offers-my.html:37 view-offers-my.html:71
+#: view-offers-preview.html:17 view-offers-preview.html:99
+#: view-offers-search-by-user.html:140 view-offers-search-by-user.html:44
+#: view-offers-search.html:109 view-offers-search.html:44
+#: view-searches-filter.html:73
+msgid "Bieterverfahren"
+msgstr "Processus d'appel d'offres"
+
+#: view-offers-add.html:52 view-offers-draft-update.html:53
+msgid "Bieterverfahren (mit Kaufbonus und Provision)"
+msgstr "Procédure d'appel d'offres (avec bonus d'achat et commission)"
+
+#: view-offers-my-requests.html:33
+msgid "Bieterverfahren abgelaufen"
+msgstr "La procédure d'appel d'offres a expiré"
+
+#: view-info-popup.html:32
+msgid "Bild hochladen"
+msgstr "Importer une photo"
+
+#: app.js:122 controllers/ChatCtrl.js:350 controllers/DashboardCtrl.js:227
+#: controllers/DashboardCtrl.js:785 controllers/InfoPopupCtrl.js:86
+#: controllers/InfoPopupOldCtrl.js:83 controllers/TrollBoxCtrl.js:293
+#: controllers/TrollBoxCtrl.js:413 controllers/TrollboxMessageUpdateCtrl.js:82
+msgid "Bilder"
+msgstr "Images"
+
+#: app.js:124
+msgid "Bilder auswählen"
+msgstr "Sélectionnez des photos"
+
+#: app.js:119
+msgid "Bilder werden verarbeitet"
+msgstr "Les images sont traitées"
+
+#: view-invite-email.html:19
+msgid "Bitte E-Mail-Adressen hier eingeben"
+msgstr "S'il vous plaît entrer les adresses e-mail ici"
+
+#: view-network-change-block-popup.html:9
+msgid "Bitte Grund eingeben"
+msgstr "Merci d'entrer la raison"
+
+#: view-profile-update.html:230
+msgid "Bitte Warte {{data.new_code_interval}} Sek."
+msgstr "Veuillez patienter {{data.new_code_interval}} secondes."
+
+#: view-offers-add.html:23 view-offers-draft-update.html:24
+msgid ""
+"Bitte beachten: Eine Mehrfachschaltung kostenloser Anzeigen mit identischem "
+"Inhalt im gleichen Zeitraum ist nicht möglich."
+msgstr ""
+"Veuillez noter: Il n'est pas possible de diffuser des annonces gratuites "
+"avec un contenu identique pendant la même période."
+
+#: view-user-team-feedback-popup.html:10
+msgid "Bitte bewerte Deinen Teamleader"
+msgstr "S'il vous plaît noter votre chef d'équipe"
+
+#: view-offer-pay.html:27
+msgid "Bitte bezahle das  angenommene Angebot wie folgt"
+msgstr "S'il vous plaît payer l'offre acceptée comme suit"
+
+#: view-validation-phone-popup.html:8
+msgid "Bitte eins noch!"
+msgstr "Encore une chose !"
+
+#: controllers/InviteWhatsappCtrl.js:11
+msgid "Bitte geben Sie den Text ein"
+msgstr "Merci d'entrer le texte"
+
+#: view-add-video-identification.html:20
+msgid ""
+"Bitte halte zur korrekten Legitimation einen Zettel mit deinem Vor- und "
+"Nachnamen und der Aufschrift „Jugl.net“ in die Kamera. Sag dazu in deiner "
+"Landessprache deinen Vor-und nachnamen, sowie Jugl.net."
+msgstr ""
+
+#: view-offer-pay.html:65
+msgid ""
+"Bitte logge Dich bei PayPal ein und wähle \"Geld senden\" aus. Dort klickst "
+"du auf \"Waren oder Dienstleistungen bezahlen\" und gibst {{data."
+"paypal_email}} als Empfänger ein. Du profitierst so automatisch vom "
+"Käuferschutz von PayPal."
+msgstr ""
+"Veuillez vous connecter à PayPal et sélectionner \"envoyer de l'argent\". "
+"Là, vous cliquez sur \"Payer des biens ou des services\" et entrez {{data."
+"paypal_email}} en tant que destinataire. Vous bénéficiez automatiquement de "
+"la protection de l'acheteur PayPal."
+
+#: controllers/TrollboxMessageVisibilityCtrl.js:40
+msgid "Bitte mindestens eine Option wählen."
+msgstr "Veuillez choisir au moins une option."
+
+#: app.js:120
+msgid "Bitte warten..."
+msgstr "Veuillez patienter ..."
+
+#: view-dashboard.html:603 view-info-popup.html:105 view-trollbox-list.html:195
+#: view-user-profile.html:540
+msgid "Blockieren"
+msgstr "Bloquer"
+
+#: view-user-profile.html:494
+msgid "Blockiert"
+msgstr ""
+
+#: country.html:23
+msgid "Bolivia"
+msgstr "Bolivie"
+
+#: view-offers-add.html:257 view-offers-draft-update.html:224
+msgid "Boni festlegen"
+msgstr "Définir les bonus"
+
+#: view-dashboard.html:201
+msgid "Bonus"
+msgstr "Bonus"
+
+#: country.html:24
+msgid "Bosnia Herzegovina"
+msgstr "Bosnie-Herzégovine"
+
+#: country.html:25
+msgid "Botswana"
+msgstr "Botswana"
+
+#: country.html:26
+msgid "Brazil"
+msgstr "Brésil"
+
+#: country.html:27
+msgid "Brunei"
+msgstr "Brunei"
+
+#: view-offers-draft.html:64 view-offers-my.html:100
+msgid "Budget"
+msgstr "Budget"
+
+#: view-offers-draft.html:67 view-offers-my.html:103
+msgid "Budget verbraucht"
+msgstr "Budget consommé"
+
+#: country.html:28
+msgid "Bulgaria"
+msgstr "Bulgarie"
+
+#: country.html:29
+msgid "Burkina"
+msgstr "Burkina"
+
+#: country.html:30
+msgid "Burundi"
+msgstr "Burundi"
+
+#: country.html:31
+msgid "Cambodia"
+msgstr "Cambodge"
+
+#: country.html:32
+msgid "Cameroon"
+msgstr "Cameroun"
+
+#: services/ModalService.js:124
+msgid "Can't connect to server. Check your internet connection"
+msgstr ""
+"Impossible de se connecter au serveur. Vérifiez votre connection internet"
+
+#: controllers/InviteSmsContactsCtrl.js:90
+msgid "Can't get phone contacts"
+msgstr "Impossible d'obtenir des contacts téléphoniques"
+
+#: services/MessengerService.js:351
+msgid "Can't open  media path"
+msgstr "Impossible d'ouvrir le chemin du média"
+
+#: services/MessengerService.js:346
+msgid "Can't read  media path"
+msgstr "Impossible d'ouvrir le chemin du média"
+
+#: controllers/ChatCtrl.js:204 controllers/DashboardCtrl.js:858
+#: controllers/OfferAdvancedSearchCtrl.js:33 controllers/TrollBoxCtrl.js:486
+#: controllers/TrollboxMessageUpdateCtrl.js:154
+msgid "Can't retrieve geolocation:"
+msgstr "Impossible de récupérer la géolocalisation :"
+
+#: country.html:33
+msgid "Canada"
+msgstr "Canada"
+
+#: app.js:336 controllers/TrollboxMessageVisibilityCtrl.js:28
+#: services/InviteService.js:15 services/ModalService.js:40
+#: services/ModalService.js:57
+#: view-deals-completed-update-counter-user-feedback-popup.html:25
+#: view-deals-completed-update-user-feedback-popup.html:25
+#: view-network-change-block-popup.html:18
+#: view-offer-history-view-popup.html:40
+#: view-offer-request-payment-complaint-popup.html:13
+#: view-offers-details-request-popup.html:14 view-offers-update-popup.html:45
+#: view-search-request-comment-popup.html:15
+#: view-search-request-comment-response-popup.html:15
+#: view-search-request-offer-reject-popup.html:44
+#: view-spam-report-popup.html:14 view-trollbox-message-update-popup.html:57
+#: view-trollbox-message-visibility-popup.html:35
+#: view-user-country-update-popup.html:16
+#: view-user-feedback-response-popup.html:15
+#: view-user-team-feedback-popup.html:27
+#: view-user-team-feedback-response-popup.html:15
+msgid "Cancel"
+msgstr "Annuler"
+
+#: country.html:34
+msgid "Cape Verde"
+msgstr "Cap-Vert"
+
+#: country.html:35
+msgid "Central African Rep"
+msgstr "République centrafricaine"
+
+#: country.html:36
+#, fuzzy
+msgid "Chad"
+msgstr "Chad"
+
+#: controllers/ContactsCtrl.js:414
+msgid "Chat löschen"
+msgstr "Supprimer le chat"
+
+#: view-contacts.html:28
+#, fuzzy
+msgid "Chats"
+msgstr "Chats"
+
+#: view-dashboard.html:533 view-trollbox-list.html:130
+msgid "Chats aktualisieren"
+msgstr "Mettre à jour"
+
+#: country.html:37
+msgid "Chile"
+msgstr "Chili"
+
+#: country.html:38
+msgid "China"
+msgstr "Chine"
+
+#: view-profile-update.html:237
+msgid "Code absenden"
+msgstr "Envoyer le code"
+
+#: country.html:39
+msgid "Colombia"
+msgstr "La Colombie"
+
+#: country.html:40
+msgid "Comoros"
+msgstr "Comores"
+
+#: services/ModalService.js:34 services/ModalService.js:51
+#: services/ModalService.js:68
+msgid "Confirm"
+msgstr "Confirmer"
+
+#: country.html:41
+#, fuzzy
+msgid "Congo"
+msgstr "Congo"
+
+#: country.html:42
+msgid "Congo {Democratic Rep}"
+msgstr "Congo {Rép. Démocratique}"
+
+#: controllers/InviteEmailCtrl.js:17 controllers/InviteLogCtrl.js:72
+#: controllers/InviteMeByEmailCtrl.js:14 controllers/InviteMeBySmsCtrl.js:14
+#: controllers/InviteSmsSendCtrl.js:23 controllers/UserProfileCtrl.js:256
+#: controllers/UserProfileCtrl.js:270 controllers/UserProfileCtrl.js:282
+#: controllers/UserProfileCtrl.js:294
+msgid "Contacting server"
+msgstr "Contacter le serveur"
+
+#: country.html:43
+#, fuzzy
+msgid "Costa Rica"
+msgstr "Costa Rica"
+
+#: country.html:44
+msgid "Croatia"
+msgstr "Croatie"
+
+#: country.html:45
+msgid "Cuba"
+msgstr "Cuba"
+
+#: country.html:46
+msgid "Cyprus"
+msgstr "Chypre"
+
+#: country.html:47
+msgid "Czech Republic"
+msgstr "République Tchèque"
+
+#: view-start-popup.html:16
+msgid ""
+"Damit der, der Dich eingeladen hat, seine Punkte erhält, musst Du in der App "
+"aktiv werden, eine Mitgliedschaft auswählen und Dich per SMS verifizieren."
+msgstr ""
+"Pour que la personne qui vous a invité à recevoir ses points, vous devez "
+"devenir actif dans l'application, sélectionner un abonnement et vous "
+"confirmer par SMS."
+
+#: view-profile-update.html:216
+msgid ""
+"Damit derjenige, der Dich zu Jugl.net eingeladen hat, seinen Einladungsbonus "
+"erhält, gib hier Deine Handynummer an. Wir senden Dir einen Bestätigungscode "
+"per SMS zu, den Du unten in das Feld einträgst."
+msgstr ""
+"Pour celui qui vous a invité à Jugl.net pour recevoir son bonus "
+"d'invitation, entrez votre numéro de portable ici. Nous vous enverrons un "
+"code de confirmation par SMS, que vous entrez dans le champ ci-dessous."
+
+#: view-invite-friends-popup.html:12
+msgid ""
+"Damit unsere Gemeinschaft groß und erfolgreich wird, lade möglichst viele "
+"Freunde und Bekannte ein, egal ob 5, 50 oder 500. Gemeinsam erreichen wir "
+"unser Ziel, passiv und mit viel Spaß Geld zu verdienen."
+msgstr ""
+"Alors que notre communauté se développer et prospérer, inviter autant d'amis "
+"et de connaissances, que ce soit 5, 50 ou 500. Ensemble, nous pouvons "
+"atteindre notre objectif de faire de l'argent passivement et avec beaucoup "
+"de plaisir."
+
+#: view-search-request-offer-reject-popup.html:25
+msgid "Das Angebot ist zu teuer"
+msgstr "L'offre est trop chère"
+
+#: view-search-request-offer-reject-popup.html:13
+msgid "Das Angebot passt nicht"
+msgstr "L'offre ne correspond pas"
+
+#: view-is-working.html:25
+msgid ""
+"Das Highlight ist jedoch die menschliche Suchmaschine. Mit ihr kannst Du für "
+"andere Mitglieder suchen oder recherchieren, oder Aufträge vergeben."
+msgstr ""
+"Le point fort, cependant, est le moteur de recherche humain. Avec elle, vous "
+"pouvez rechercher ou rechercher d'autres membres, ou passer des commandes."
+
+#: view-become-member.html:38 view-registration-data-old.html:24
+#: view-registration-data.html:24
+msgid ""
+"Das Passwort muss folgende Voraussetzungen haben: mind. 6 Zeichen, davon "
+"mind. einen Buchstaben und eine Ziffer."
+msgstr ""
+"Le mot de passe doit avoir les exigences suivantes: au moins 6 caractères, "
+"dont au moins une lettre et un chiffre."
+
+#: view-is-working.html:30
+msgid ""
+"Das hast Du jetzt nicht alles verstanden? Und es wird Dir alles zu viel? "
+"Kein Problem - einfach nur Deine Freunde einladen und damit bringst Du den "
+"Stein ins Rollen."
+msgstr ""
+"Vous n'avez pas tout compris maintenant? Et tout est trop pour toi? Pas de "
+"problème - invitez simplement vos amis et vous aurez la chance de démarrer."
+
+#: view-profile-update.html:214
+msgid "Daten Bestätigen"
+msgstr "Confirmer les données"
+
+#: drawer-main.html:39
+msgid "Datenschutz"
+msgstr ""
+
+#: view-data-protection-not-login.html:14 view-data-protection-not-login.html:8
+#: view-data-protection.html:15 view-data-protection.html:9
+msgid "Datenschutzerklärung mobile App"
+msgstr ""
+
+#: view-funds.html:147 view-funds.html:75 view-offers-search-by-user.html:51
+#: view-offers-search.html:51 view-searches-filter.html:57
+#: view-searches-filter.html:84 view-searches-search-by-user.html:42
+#: view-searches-search.html:42 view-trollbox-list.html:72
+msgid "Datum"
+msgstr "Date"
+
+#: view-offers-add.html:84 view-searches-add.html:61
+msgid "Datum der Veröffentlichung"
+msgstr ""
+
+#: view-offers-add.html:227 view-offers-draft-update.html:195
+#: view-searches-add.html:152 view-searches-draft-update.html:118
+msgid "Dauer der Veröffentlichung"
+msgstr "Durée de la publication"
+
+#: view-offers-add.html:323 view-offers-draft-update.html:290
+msgid "Definiere genau, wer Deine Inserat mit Werbebonus sehen kann."
+msgstr ""
+"Définissez exactement qui peut voir votre publicité avec un bonus "
+"publicitaire."
+
+#: view-deals-completed.html:193
+msgid "Dein Angebot"
+msgstr "Votre offre"
+
+#: view-deals-completed.html:159
+msgid "Dein Angebot auf den Suchauftrag"
+msgstr "Votre offre sur la requête de recherche"
+
+#: view-offers-bet.html:22 view-offers-my-requests.html:127
+#: view-offers-my-requests.html:174 view-offers-my-requests.html:225
+#: view-offers-my-requests.html:78
+msgid "Dein Gebot"
+msgstr "Votre enchère"
+
+#: view-offers-bet.html:26
+msgid "Dein Gebot ist gültig"
+msgstr "Votre enchère est valide"
+
+#: view-trollbox-message-visibility-popup.html:28
+msgid "Dein Ident Video wird gerade geprüft"
+msgstr ""
+
+#: view-deals-completed.html:364
+msgid "Dein Kommentar"
+msgstr "Votre commentaire"
+
+#: view-dashboard.html:46
+msgid "Dein Kontostand"
+msgstr "Le solde de votre compte"
+
+#: view-registration-payment.html:43
+msgid "Dein Profil wirkt seriöser auf andere Nutzer."
+msgstr "Votre profil est plus sérieux pour les autres utilisateurs."
+
+#: view-deals-completed.html:73
+msgid "Dein Suchauftrag"
+msgstr "Votre demande de recherche"
+
+#: controllers/SearchRequestAddCtrl.js:199
+#: controllers/SearchRequestDraftUpdateCtrl.js:184
+msgid ""
+"Dein Suchauftrag wurde gespeichert und wird nun durch unser Team geprüft. "
+"Wenn Dein Suchauftrag angenommen oder abgelehnt wird, erhälst Du eine "
+"Benachrichtigung"
+msgstr ""
+"Votre recherche a été sauvegardée et est en cours de révision par notre "
+"équipe. Si votre demande de recherche est acceptée ou refusée, vous recevrez "
+"une notification"
+
+#: view-team-change-user-search.html:22
+msgid "Dein Team zu wechseln"
+msgstr "Pour changer d'équipe"
+
+#: view-add-video-identification.html:52
+msgid "Dein Video wurde erfolgreich hochgeladen"
+msgstr ""
+
+#: controllers/AddVideoIdentificationCtrl.js:88
+msgid ""
+"Dein Video wurde in einem fehlerhaften Format aufgenommen und wird deswegen "
+"nicht veröffentlicht. Bitte erneut versuchen"
+msgstr ""
+
+#: view-searches-add.html:25 view-searches-draft-update.html:27
+msgid ""
+"Dein Vorteil gegenüber digitalen Suchmaschinen? Maschinen folgen "
+"Algorythmen, Menschen ihrem Verstand!"
+msgstr ""
+"Votre avantage sur les moteurs de recherche numériques? Les machines suivent "
+"les algorythmes, les gens pensent !"
+
+#: view-deals-completed.html:29
+msgid "Deine Angebote auf Suchaufträge"
+msgstr "Vos offres sur les demandes"
+
+#: view-offer-pay.html:93
+msgid "Deine Lieferadresse"
+msgstr "Votre adresse de livraison"
+
+#: view-deals-completed.html:28
+msgid "Deine Suchaufträge"
+msgstr "Vos commandes de recherche"
+
+#: controllers/OfferPreviewCtrl.js:56
+msgid ""
+"Deine Inserat wurde gespeichert und wird nun durch unser Team geprüft. Wenn "
+"Deine Inserat angenommen oder abgelehnt wird, erhälst Du eine "
+"Benachrichtigung"
+msgstr ""
+"Votre annonce a été enregistrée et est en cours de révision par notre "
+"équipe. Si votre annonce est acceptée ou refusée, vous recevrez une "
+"notification"
+
+#: controllers/FavoritesCtrl.js:21
+msgid "Delete favorite?"
+msgstr "Supprimer le favori ?"
+
+#: country.html:48
+msgid "Denmark"
+msgstr "Danemark"
+
+#: view-chat.html:154 view-chat.html:319
+msgid "Der Absender ist nicht in deiner Kontaktliste"
+msgstr "L'expéditeur ne figure pas dans votre liste de contacts"
+
+#: view-searches-add.html:28 view-searches-draft-update.html:30
+msgid ""
+"Der Sinn von Suchen oder Aufträgen besteht darin, dass sich die Jugler "
+"direkt über das Portal Jugl.net durch eine Recherche oder Dienstleistung "
+"Jugl-Punkte verdienen können. Recherchen werden in Jugl-Punkten vergütet, "
+"zum Beispiel für das Vermitteln einer Baufirma, die Deine Wohnung renovieren "
+"soll. Die Zahlung der Dienstleistung wird aber dann direkt an die Baufirma "
+"geleistet. Ist der Vermittler auch der Dienstleister, stehen ihm sowohl der "
+"Vermittlungsbonus als auch die Entlohnung der Dienstleistung zu."
+msgstr ""
+"Le but des recherches ou des missions est que le Jugler peut gagner des "
+"points Jugl directement via le portail Jugl.net grâce à une recherche ou un "
+"service. La recherche est payée dans les points de Jugl, par exemple, pour "
+"le courtage d'une entreprise de construction, qui est de rénover votre "
+"appartement. Le paiement du service est ensuite effectué directement à "
+"l'entreprise de construction. Si l'intermédiaire est également le "
+"prestataire, il a droit à la fois au bonus de placement et à la rémunération "
+"du service."
+
+#: app.js:313
+msgid "Der User hat seine Telefonnummer noch nicht angegeben."
+msgstr "L'utilisateur n'a pas encore spécifié son numéro de téléphone."
+
+#: view-offers-bet-popup.html:13 view-offers-bet.html:47
+msgid ""
+"Der Verkäufer hat die Möglichkeit, sich unabhängig von der Höhe des Gebots "
+"einen Käufer auszusuchen."
+msgstr ""
+"Le vendeur a la possibilité de choisir un acheteur quel que soit le montant "
+"de l'offre."
+
+#: view-searches-add.html:29 view-searches-draft-update.html:31
+msgid ""
+"Der Vermittlungsbonus sollte je nach Schwierigkeitsgrad im Verhältnis "
+"stehen. Der Vermittlungsbonus an Deinen Helfer wird erst nach der "
+"Angebotsannahme gebucht."
+msgstr ""
+"Le bonus de médiation devrait être proportionnel au niveau de difficulté. Le "
+"bonus de placement à votre assistant sera réservé après l'acceptation de "
+"l'offre."
+
+#: view-offers-details-view-bonus-popup.html:17
+#: view-videos-details-view-bonus-popup.html:17
+msgid "Der Werbebonus wird ausgezahlt, wenn Du innerhalb von"
+msgstr ""
+"Le bonus publicitaire sera payé si vous vous inscrivez dans les délais "
+"suivants"
+
+#: view-add-video-identification.html:62
+msgid "Der nächste Videoupload ist erst wieder in 24 Stunden möglich!"
+msgstr ""
+
+#: view-offers-details.html:89 view-offers-preview.html:74
+#: view-searches-details.html:61 view-searches-my-offers.html:120
+#: view-searches-offer-add.html:36 view-searches-offer-details.html:16
+msgid "Details"
+msgstr "Détails"
+
+#: view-searches-my-list.html:96
+msgid "Details anzeigen"
+msgstr "Afficher les détails"
+
+#: view-start-popup.html:11
+msgid ""
+"Die <span class=\"icon-info-app\"></span> - Symbole blinken so lange,<br>\n"
+"\t\t\t\tbis Du sie Dir angesehen hast.<br>\n"
+"\t\t\t\tSo kannst du Dir sicher sein,<br>\n"
+"\t\t\t\talle Tipps gelesen zu haben!"
+msgstr ""
+"Les icônes <span class = \"icon-info-app\"> </ span> clignotent si "
+"longtemps, <br>\n"
+"jusqu'à ce que vous les regardiez. <br>\n"
+"Donc, vous pouvez être sûr, <br>\n"
+"avoir lu tous les conseils !"
+
+#: view-registration-payment.html:50
+msgid ""
+"Die <span class=\"text-red\">PREMIUMPLUS-Mitgliedschaft</span> läuft "
+"automatisch nach 12 Monaten aus und kann von Dir dann jederzeit verlängert "
+"werden.<br>\n"
+"                        Kein Abo!"
+msgstr ""
+"Le <span class = \"text-red\"> adhésion PREMIUMPLUS </ span> expirera "
+"automatiquement après 12 mois et vous pouvez le renouveler à tout moment. "
+"<br>\n"
+"Pas d'abonnement !"
+
+#: view-registration-payment.html:101
+msgid ""
+"Die Belastung Ihres Kreditkartenkontos erfolgt i.d.R. 2-3 Werktage nach "
+"Abschluss der Bestellung. Ihre Kreditkartendaten können Sie auf der nächsten "
+"Seite eingeben. Bitte weiter klicken."
+msgstr ""
+"Le débit de votre compte de carte de crédit est i.d.R. 2-3 jours ouvrables "
+"après l'achèvement de la commande. Vous pouvez entrer les détails de votre "
+"carte de crédit sur la page suivante. Veuillez cliquer plus loin ."
+
+#: view-profile-update.html:242
+msgid "Die Bestätigung wurde erfolgreich abgeschlossen"
+msgstr "La confirmation a été complétée avec succès"
+
+#: services/ChatUploader.js:36
+msgid "Die Datei darf nicht größer als 50Mb sein"
+msgstr "Le fichier ne peut pas être plus grand que 50Mb"
+
+#: services/MessengerService.js:597
+msgid "Die Datei darf nicht größer als 50Mb sein!"
+msgstr "Le fichier ne doit pas être plus grand que 50Mb !"
+
+#: view-offers-my.html:235
+msgid "Die Inserat wurde noch von keinem Benutzer angeschaut"
+msgstr "La publicité n'a pas encore été regardée par un utilisateur"
+
+#: view-offers-add.html:45 view-offers-draft-update.html:46
+msgid ""
+"Die klassische Form der Inserat - Gewinne neue Kunden, mach auf Dich "
+"aufmerksam. Informiere potentielle Interessenten über Deine Ware und "
+"Angebote. (Inserat für konkurrierende Unternehmen ist nicht kostenfrei.)"
+msgstr ""
+"La forme classique de la publicité - Gagnez de nouveaux clients, attirer "
+"l'attention sur vous-même. Informez les parties intéressées potentielles de "
+"vos produits et de vos offres. (La publicité pour les entreprises "
+"concurrentes n'est pas gratuite.)"
+
+#: view-searches-add.html:12 view-searches-draft-update.html:12
+msgid ""
+"Die menschliche Suchmaschine bei Jugl.net - Suche oder Auftrag erstellen"
+msgstr ""
+"Le moteur de recherche humain sur Jugl.net - créer une recherche ou commander"
+
+#: view-searches-add.html:22 view-searches-draft-update.html:24
+msgid ""
+"Die menschliche Suchmaschine bei Jugl.net<br>Suche oder Auftrag erstellen"
+msgstr ""
+"Le moteur de recherche humain sur Jugl.net <br> Recherche ou créer un achat"
+
+#: services/InviteService.js:44
+msgid "Diese Funktion ist nur für Premium-Mitglieder."
+msgstr "Cette fonctionnalité est réservée aux membres premium ."
+
+#: controllers/UserProfileCtrl.js:333
+msgid "Diese Funktion steht nur Premium MItgliedern zur Verfügung."
+msgstr "Cette fonction est uniquement disponible pour les membres premium ."
+
+#: view-error404.html:16
+msgid "Diese Seite ist leider nicht mehr vorhanden."
+msgstr "Malheureusement, cette page n'est plus disponible."
+
+#: view-advertising-view-bonus-popup.html:10
+msgid ""
+"Dieser Countdown läuft runter, sobald der Inhalt des Banners geladen wurde "
+"und Du Dir diesen vollständig angesehen hast (Bildergalerien, Videos, etc.). "
+"<br>Das Popup schließt sich automatisch nach"
+msgstr ""
+"Ce compte à rebours descend dès que le contenu de la bannière a été chargé "
+"et que vous l'avez complètement regardé (galeries de photos, vidéos, etc.). "
+"<br> Le popup se ferme automatiquement"
+
+#: country.html:49
+msgid "Djibouti"
+msgstr "Djibouti"
+
+#: country.html:50
+msgid "Dominica"
+msgstr "Dominica"
+
+#: country.html:51
+msgid "Dominican Republic"
+msgstr "République dominicaine"
+
+#: view-invite-friends-popup.html:13
+msgid ""
+"Du baust Dir jetzt Dein Netzwerk auf und bist zukünftig an allen Umsätzen "
+"und Gewinnen beteiligt. Je größer und stärker Dein Netzwerk ist, desto mehr "
+"Gewinn und Spaß wirst Du haben."
+msgstr ""
+"Vous construisez votre réseau maintenant et vous serez impliqué dans toutes "
+"les ventes et les bénéfices futurs. Plus votre réseau est grand et fort, "
+"plus vous aurez de profit et de plaisir."
+
+#: view-registration-payment.html:118
+msgid ""
+"Du bekommst von jedem verdienten Jugl 60 %. 11 % gehen an JuglApp und 29 % "
+"gehen an den, der Dich in das Netzwerk eingeladen hat."
+msgstr ""
+"Vous obtenez 60% de chaque Jugl gagné. 11% vont à JuglApp et 29% vont à "
+"celui qui vous a invité au réseau"
+
+#: view-offers-add.html:47 view-offers-draft-update.html:48
+msgid ""
+"Du bietest etwas an und erhältst Gebote in unterschiedlicher Höhe auf Deine "
+"Ware. Du kannst Dir, unabhängig von der Höhe des Gebots, einen Käufer "
+"aussuchen. Falls Du Dich entscheiden solltest, Deine Ware doch nicht zu "
+"verkaufen, bist Du nicht verpflichtet ein Gebot anzunehmen. (z.B. wenn die "
+"Gebote nicht Deinen Vorstellungen entsprechen). Du kannst auch mehrere "
+"Gebote in unterschiedlicher Höhe annehmen und somit in einem Bieterverfahren "
+"mehrere Stücke einer Ware verkaufen."
+msgstr ""
+"Vous offrez quelque chose et recevez des offres en différents montants sur "
+"vos biens. Vous pouvez choisir un acheteur, quelle que soit la taille de "
+"l'enchère. Si vous décidez de ne pas vendre vos produits, vous n'êtes pas "
+"obligé d'accepter une offre. (par exemple, si les offres ne répondent pas à "
+"vos attentes). Vous pouvez également accepter plusieurs offres dans des "
+"quantités différentes et ainsi vendre plusieurs articles dans le cadre d'un "
+"processus d'enchères."
+
+#: view-offers-add.html:46 view-offers-draft-update.html:47
+msgid ""
+"Du bietest etwas an und wenn der Interessent auf den \"Kaufen\"-Button "
+"klickt, kommt der Handel sofort zustande."
+msgstr ""
+"Vous offrez quelque chose et si la partie intéressée clique sur le bouton "
+"\"acheter\", le commerce se fait immédiatement."
+
+#: view-offers-my-requests.html:108
+msgid "Du bist der Käufer!"
+msgstr "Vous êtes l'acheteur !"
+
+#: view-offers-bet-popup.html:6
+msgid ""
+"Du bist mit <span class=\"offers-bet-price-popup\">{{data.price|"
+"priceFormat}} €</span><br> nicht der Höchstbietende."
+msgstr ""
+"Êtes-vous avec <span class = \"offre-bet prix-popup\"> {{data.price | format "
+"prix}} € </ span> <br> pas le meilleur enchérisseur ."
+
+#: view-registration-payment.html:47
+msgid "Du erhältst fünfmal so viel Geld für Deine Likes."
+msgstr "Vous obtenez cinq fois plus d'argent pour vos j'aimes."
+
+#: view-registration-payment.html:42
+msgid ""
+"Du erhältst höhere Boni für das Einladen neuer Mitglieder per Link (bis zu "
+"30€) und aus dem Netzwerkaufbau (bis zu 20€)."
+msgstr ""
+"Vous obtenez des bonus plus élevés pour l'invitation de nouveaux membres via "
+"le lien (jusqu'à 30 €) et de la configuration du réseau (jusqu'à 20 €)."
+
+#: view-deals-completed.html:133 view-deals-completed.html:305
+msgid ""
+"Du hast <a href=\"\" ng-click=\"navigate('view-user-profile.html?"
+"id='+dealOffer.user.id)\">{{::dealOffer.user|userName}}</a> dafür bewertet "
+"mit"
+msgstr ""
+"Vous avez <a href=\"\" ng-click=\"navigate('view-user-profile.html?"
+"id='+dealOffer.user.id)\"> {{:: dealOffer.user | nom d'utilisateur}} </ "
+"a>évalué avec"
+
+#: view-deals-completed.html:217 view-deals-completed.html:382
+msgid ""
+"Du hast <a href=\"\" ng-click=\"navigate('view-user-profile.html?id='+item."
+"deal.user.id)\">{{::item.deal.user|userName}}</a> dafür bewertet mit"
+msgstr ""
+"Vous avez <a href=\"\" ng-click=\"navigate('view-user-profile.html?id='+item."
+"deal.user.id)\">{{:: item.deal.user | nom d'utilisateur }}</a> pour la "
+"vitesse nominale"
+
+#: controllers/SearchRequestAddCtrl.js:201
+#: controllers/SearchRequestDraftUpdateCtrl.js:186
+msgid ""
+"Du hast Deine Suchanzeige erfolgreich erstellt. Du findest Deine Anzeige "
+"unter \"Suchauftrag -> Was wird mir angeboten\""
+msgstr ""
+"Vous avez créé votre annonce de recherche avec succès. Vous trouverez votre "
+"annonce sous \"Search Order -> Ce qui m'est offert\""
+
+#: controllers/OfferPreviewCtrl.js:58
+msgid ""
+"Du hast Deine Inserat erfolgreich geschaltet. Du findest Deine Inserat unter "
+"\"Inserat schalten - Inserat verwalten\""
+msgstr ""
+"Vous avez placé votre annonce avec succès. Vous pouvez trouver votre annonce "
+"sous \"Publicité - Gestion des annonces\""
+
+#: view-searches-my-offers.html:47
+msgid "Du hast auf diesen Suchauftrag..."
+msgstr "Vous avez sur cette requête de recherche ..."
+
+#: controllers/OfferDetailCtrl.js:81
+msgid ""
+"Du hast bereits auf diesen Artikel geboten, bist du dir sicher, dass du ein "
+"weiteres Gebot abgeben möchtest?"
+msgstr ""
+"Vous avez déjà misé sur cet article, vous êtes sûr de vouloir enchérir à "
+"nouveau ."
+
+#: view-registration-payment.html:46
+msgid ""
+"Du hast die Möglichkeit unbegrenzt private und gewerbliche Anzeigen zu "
+"schalten (Ausnahmen: Online Geld verdienen, konkurrierende Unternehmen)"
+msgstr ""
+"Vous avez la possibilité de diffuser des annonces privées et commerciales "
+"illimitées (exceptions: gagner de l'argent en ligne, entreprises "
+"concurrentes)"
+
+#: controllers/SearchRequestOfferAddCtrl.js:243
+msgid "Du hast ein Angebot auf diese Suchanzeige erfolgreich abgegeben!"
+msgstr ""
+"Vous avez soumis une offre pour cette annonce de recherche avec succès !"
+
+#: view-searches-add.html:105 view-searches-draft-update.html:71
+msgid ""
+"Du hast eine genaue Vorstellung, was Du suchst? Ein Bild sagt mehr als "
+"tausend Worte! Zudem machen Bilder Deinen Suchauftrag attraktiver."
+msgstr ""
+"Vous avez une idée exacte de ce que vous cherchez? Une image vaut mille "
+"mots! En outre, les photos rendent votre requête de recherche plus "
+"attrayant ."
+
+#: controllers/OfferMyListCtrl.js:68
+msgid ""
+"Du hast erfolgreich einen Kaufinteressenten akzeptiert. Er wurde "
+"benachrichtigt"
+msgstr "Vous avez accepté avec succès un acheteur potentiel. Il a été averti"
+
+#: controllers/InterestsAddStep1Ctrl.js:72
+#: controllers/InterestsAddStep2Ctrl.js:111
+#: controllers/InterestsAddStep2Ctrl.js:53
+#: controllers/InterestsAddStep3Ctrl.js:33 controllers/UserInterestsCtrl.js:36
+msgid "Du hast erfolgreich neue Interessen hinzugefügt."
+msgstr "Vous avez ajouté de nouveaux intérêts avec succès ."
+
+#: view-deals-completed.html:331
+msgid "Du hast folgenden Artikel gekauft"
+msgstr "Vous avez acheté l'article suivant"
+
+#: view-deals-completed.html:248
+msgid "Du hast folgenden Artikel verkauft"
+msgstr "Vous avez vendu l'article suivant"
+
+#: view-deals-completed.html:90
+msgid "Du hast folgendes Angebot erhalten"
+msgstr "Vous avez reçu l'offre suivante"
+
+#: view-offers-my-requests.html:118 view-offers-my-requests.html:165
+#: view-offers-my-requests.html:215 view-offers-my-requests.html:68
+msgid "Du hast geboten auf"
+msgstr "Vous enchérissez sur"
+
+#: view-profile-fillup.html:20
+msgid ""
+"Du hast jetzt die Gelegenheit, einmalig Deinen Namen und Deine Daten zu "
+"ändern. Es ist wichtig, dass Du den richtigen Namen in Deinem Profil "
+"angegeben hast, sonst kannst Du Deine Jugl-Punkte nicht einlösen. Jugl.net "
+"verkauft keine Daten oder Email-Adressen an Dritte. Keine lästige Inserat "
+"per Email."
+msgstr ""
+"Vous avez maintenant la possibilité de changer votre nom et vos coordonnées "
+"une fois. Il est important que vous ayez entré le bon nom dans votre profil, "
+"sinon vous ne pourrez pas échanger vos points Jugl. Jugl.net ne vend aucune "
+"donnée ou adresse email à des tiers. Pas de publicité ennuyeuse par email ."
+
+#: services/ModalService.js:14
+msgid "Du hast leider nicht genug Jugls auf Deinem Konto."
+msgstr "Malheureusement, vous n'avez pas assez de jugls sur votre compte ."
+
+#: view-registration-payment.html:39
+msgid ""
+"Du hast mehr Möglichkeiten Deine Zielgruppe präzise nach Interessen zu "
+"definieren."
+msgstr ""
+"Vous avez plus d'options pour définir votre public cible précisément en "
+"fonction des intérêts ."
+
+#: view-offers-my-requests.html:48
+msgid "Du hast noch keine Gebote abgegeben oder etwas gekauft."
+msgstr "Vous n'avez fait aucune offre ou acheté quelque chose ."
+
+#: view-favorites.html:43
+msgid "Du hast noch nichts in Deinem Merkzettel abgespeichert."
+msgstr "Vous n'avez encore rien enregistré dans votre bloc-notes ."
+
+#: view-offers-add.html:289 view-offers-draft-update.html:256
+msgid ""
+"Du kannst Deine Annonce auf der Startseite anzeigen lassen. Dabei erhält "
+"jeder, der Deine Anzeige ansieht (mind. 30 Sekunden), eine von Dir "
+"festgelegte Anzahl von Jugl-Punkten (Werbebonus)."
+msgstr ""
+"Vous pouvez afficher votre annonce sur la page d'accueil. Toute personne qui "
+"regarde votre annonce (au moins 30 secondes) recevra un nombre défini de "
+"points Jugl (bonus publicitaire) ."
+
+#: view-registration-payment.html:41
+msgid ""
+"Du kannst Mitglieder in Dein Netzwerk aufnehmen, die direkt über jugl.net "
+"kommen (Netzwerk aufbauen)."
+msgstr ""
+"Vous pouvez ajouter des membres à votre réseau qui viennent directement via "
+"jugl.net (Construire un réseau) ."
+
+#: view-registration-payment.html:45
+msgid ""
+"Du kannst Nutzer aus Level 1 anderen Teamleadern Deines Netzwerks zur "
+"Betreuung zuordnen."
+msgstr ""
+"Vous pouvez affecter des utilisateurs de niveau 1 à d'autres chefs d'équipe "
+"de votre réseau pour obtenir de l'aide ."
+
+#: view-invite-me-by-sms.html:20
+msgid "Du kannst den untenstehenden Text bearbeiten"
+msgstr "Vous pouvez éditer le texte ci-dessous"
+
+#: view-invite-me-by-email.html:21
+msgid ""
+"Du kannst den untenstehenden Text bearbeiten und das neue Mitglied davon "
+"überzeugen, DEINE Einladung zu wählen und nicht die eines anderen."
+msgstr ""
+"Vous pouvez éditer le texte ci-dessous et convaincre le nouveau membre de "
+"choisir VOTRE invitation, pas celle de quelqu'un d'autre ."
+
+#: view-registration-payment.html:44
+msgid ""
+"Du kannst einen Abwerbestopp für Mitglieder aus dem Netzwerkaufbau festlegen "
+"(mit deren Zustimmung)."
+msgstr ""
+"Vous pouvez choisir de vous désinscrire des membres du réseau (avec leur "
+"permission) ."
+
+#: app.js:123
+msgid "Du kannst maximal"
+msgstr "Vous pouvez maximum"
+
+#: view-registration-payment.html:40
+msgid ""
+"Du kannst unbegrenzt viele Mitglieder für Level 1 werben. (Freigabe nach "
+"Prüfung)"
+msgstr ""
+"Vous pouvez recruter des membres illimités pour le niveau 1. (Libération "
+"après examen)"
+
+#: view-deals-completed.html:294 view-deals-completed.html:371
+msgid "Du wurdest bewertet von"
+msgstr ""
+
+#: view-deals-completed.html:122 view-deals-completed.html:206
+msgid "Du wurdest dafür bewertet mit"
+msgstr "Vous avez été noté pour cela"
+
+#: controllers/TrollboxMessageVisibilityCtrl.js:12
+msgid "Du wurdest für alle Foren von einem Moderator gesperrt"
+msgstr ""
+
+#: view-user-profile.html:86
+msgid "Du wurdest gesperrt"
+msgstr "Tu étais bloqué"
+
+#: view-offers-add.html:386 view-offers-draft-update.html:353
+msgid "Durchschnittlicher Umsatz in"
+msgstr "Chiffre d'affaires moyen en"
+
+#: view-offers-add.html:374 view-offers-draft-update.html:341
+msgid "Durchschnittswert Nachrichten User pro 24Std.:"
+msgstr "Moyenne de messages utilisateur par 24hrs: ."
+
+#: view-login.html:20
+#, fuzzy
+msgid "E-Mail"
+msgstr "E-Mail"
+
+#: view-offer-pay.html:62
+msgid "E-Mail des Empfängers kopieren"
+msgstr "Copier l'adresse e-mail du destinataire"
+
+#: view-invite-email.html:27
+msgid "E-Mail-Adresses"
+msgstr "Adresses e-mail"
+
+#: view-settings.html:36
+msgid "E-Mails an mich versenden"
+msgstr "Envoyer des emails à moi"
+
+#: view-offer-pay.html:60 view-profile-update.html:209
+#: view-profile-update.html:80 view-profile.html:126 view-profile.html:55
+#, fuzzy
+msgid "E-mail"
+msgstr "E-mail"
+
+#: view-user-profile.html:96
+msgid "E-mail adresse"
+msgstr "Adresse e-mail"
+
+#: country.html:52
+msgid "East Timor"
+msgstr "Timor oriental"
+
+#: country.html:53
+msgid "Ecuador"
+msgstr "Equateur"
+
+#: view-is-working.html:26
+msgid ""
+"Egal was es auch ist, ob der günstigste Flug, die schönste Party oder der "
+"spezielle Arzt – andere helfen Dir und Du kannst anderen helfen."
+msgstr ""
+"Peu importe ce que, le vol le moins cher, la meilleure fête ou le médecin "
+"spécial - d'autres vous aident et vous pouvez aider les autres ."
+
+#: country.html:54
+msgid "Egypt"
+msgstr "Egypte"
+
+#: view-registration-payment.html:23
+msgid "Ein späteres Upgrade zu diesem Preis ist nicht mehr möglich."
+msgstr "Une mise à niveau ultérieure à ce prix n'est plus possible."
+
+#: view-funds.html:140 view-funds.html:68
+msgid "Eingang"
+msgstr "Entrée"
+
+#: view-dashboard.html:109 view-dashboard.html:140 view-invite-my-list.html:49
+#: view-invite-my-list.html:56 view-invite-sms-contacts.html:13
+#: view-invite-whatsapp.html:25
+msgid "Einladen"
+msgstr "Inviter"
+
+#: view-invite-email.html:12 view-invite-me-by-email.html:12
+msgid "Einladen per Email"
+msgstr "Inviter par email"
+
+#: view-invite-whatsapp.html:12
+msgid "Einladen per Whatsapp"
+msgstr ""
+
+#: controllers/InviteEmailCtrl.js:17 controllers/InviteLogCtrl.js:72
+#: controllers/InviteLogCtrl.js:79 controllers/InviteMeByEmailCtrl.js:14
+#: controllers/InviteMeBySmsCtrl.js:14 controllers/InviteMeBySmsCtrl.js:21
+#: controllers/InviteSmsSendCtrl.js:23 controllers/InviteSmsSendCtrl.js:32
+msgid "Einladung Verschiken"
+msgstr ""
+
+#: view-invite-email.html:40 view-invite-me-by-email.html:25
+msgid "Einladung verschicken"
+msgstr ""
+
+#: controllers/InviteLogCtrl.js:95
+msgid "Einladung wurde erfolgreich erneut versendet."
+msgstr ""
+
+#: controllers/InviteMeByEmailCtrl.js:23 controllers/InviteMeBySmsCtrl.js:47
+msgid "Einladung wurde erfolgreich gesendet"
+msgstr ""
+
+#: controllers/InviteSmsSendCtrl.js:59
+msgid "Einladungen wurde erfolgreich gesendet"
+msgstr ""
+
+#: view-registration-data-old.html:29 view-registration-index.html:22
+msgid "Einladungscode"
+msgstr ""
+
+#: view-all-functions.html:16 view-invite-log.html:11 view-invite-log.html:22
+#: view-invite.html:26
+msgid "Einladungshistorie"
+msgstr ""
+
+#: view-invite.html:25
+msgid "Einladungslink auf Facebook & Co. posten"
+msgstr ""
+
+#: view-invite-social.html:11 view-invite-social.html:16
+msgid "Einladungslink teilen"
+msgstr ""
+
+#: view-login.html:24
+msgid "Einloggen"
+msgstr ""
+
+#: view-login.html:25
+msgid "Einloggen mit Facebook"
+msgstr ""
+
+#: view-offers-preview.html:131
+msgid "Einstellen"
+msgstr ""
+
+#: drawer-main.html:35 view-all-functions.html:17 view-settings.html:10
+#: view-settings.html:20
+msgid "Einstellungen"
+msgstr ""
+
+#: services/InviteService.js:14 view-payment-data-message-popup.html:15
+msgid "Einverstanden"
+msgstr ""
+
+#: country.html:55
+msgid "El Salvador"
+msgstr ""
+
+#: view-become-member-facebook-linking.html:36 view-become-member.html:36
+#: view-become-member.html:72 view-registration-data-old.html:20
+#: view-registration-data.html:20
+msgid "Email"
+msgstr ""
+
+#: view-offers-my-requests.html:213 view-offers-my-requests.html:66
+#: view-offers-my.html:195
+msgid "Ende"
+msgstr ""
+
+#: view-deals-completed.html:234 view-deals-completed.html:58
+msgid "Endgültig löschen"
+msgstr ""
+
+#: view-dashboard.html:604 view-info-popup.html:106 view-trollbox-list.html:196
+#: view-user-profile.html:541
+msgid "Entblocken"
+msgstr ""
+
+#: view-user-profile.html:89
+msgid "Entsperren"
+msgstr ""
+
+#: view-offers-draft.html:51 view-searches-draft.html:46
+msgid "Entwurf"
+msgstr ""
+
+#: view-offers-draft.html:12 view-offers-draft.html:18
+#: view-offers-index.html:32 view-searches-draft.html:11
+#: view-searches-draft.html:17 view-searches-index.html:26
+msgid "Entwürfe"
+msgstr ""
+
+#: country.html:56
+msgid "Equatorial Guinea"
+msgstr ""
+
+#: view-profile.html:42 view-user-profile.html:76
+msgid "Erfolgreich eingeladen"
+msgstr ""
+
+#: view-start-popup.html:9
+msgid ""
+"Ergänze Dein Profil und lade danach Deine Freunde ein.<br>Du bist zukünftig "
+"an allen Umsätzen in Deinem Netzwerk beteiligt."
+msgstr ""
+
+#: view-profile-update.html:89 view-profile.html:59
+msgid "Ergänzende Daten"
+msgstr ""
+
+#: country.html:57
+msgid "Eritrea"
+msgstr ""
+
+#: view-team-change-request-popup2.html:10
+msgid ""
+"Erkläre hier dem neuen Mitglied, warum Du der bessere Teamleader bist und "
+"warum es in Dein Team wechseln soll."
+msgstr ""
+
+#: view-offers-my-requests.html:250
+msgid "Erneut bieten"
+msgstr ""
+
+#: view-invite-log.html:52
+msgid "Erneut einladen"
+msgstr ""
+
+#: directives/eventText.js:50
+msgid "Erneut erwerben"
+msgstr ""
+
+#: view-profile-update.html:227
+msgid "Erneut zusenden"
+msgstr ""
+
+#: services/ModalService.js:114
+msgid "Error while performing server request (code {{status}})"
+msgstr ""
+
+#: controllers/InterestsAddStep1Ctrl.js:78
+#: controllers/InterestsAddStep2Ctrl.js:117
+#: controllers/InterestsAddStep2Ctrl.js:59
+#: controllers/InterestsAddStep3Ctrl.js:39
+#: controllers/InterestsAddStep3Ctrl.js:88
+msgid "Error!"
+msgstr ""
+
+#: controllers/UserInterestsUpdateCtrl.js:101
+msgid "Erstellen"
+msgstr ""
+
+#: view-funds.html:204
+msgid "Erstellt am"
+msgstr ""
+
+#: view-activities.html:54
+msgid "Erwarteter Geldeingang"
+msgstr ""
+
+#: view-contacts.html:34 view-offers-advanced-search.html:30
+msgid "Erweiterte Suche"
+msgstr ""
+
+#: view-is-working.html:22
+msgid ""
+"Es gibt noch weitere Möglichkeiten um Geld zu verdienen. Gib Deine "
+"Interessen an, Dinge des täglichen Bedarfs oder ausgefallene Hobbies, oder "
+"was auch immer Dich interessiert. Dazu einfach auf <b>„Interessen angeben“</"
+"b> klicken. Daraufhin erhältst Du auf Deinen Interessen basierende "
+"Produktangebote."
+msgstr ""
+
+#: view-offers-bet.html:46
+msgid ""
+"Es handelt sich um ein verbindliches Gebot. Wird dein Gebot akzeptiert, "
+"musst du es auch halten."
+msgstr ""
+
+#: view-invite-log.html:25
+msgid ""
+"Es werden nur Einladungen per SMS und per Email angezeigt, Einladungen per "
+"Link oder Whatsapp können nicht dargestellt werden."
+msgstr ""
+
+#: country.html:58
+msgid "Estonia"
+msgstr ""
+
+#: country.html:59
+msgid "Ethiopia"
+msgstr ""
+
+#: view-error404.html:20
+msgid "Evtl. wurde die Seite gelöscht oder ist nicht mehr aktiv."
+msgstr ""
+
+#: view-registration-payment.html:24
+msgid ""
+"Faire Konditionen: Einmalige Zahlung für 12 Monate, läuft automatisch aus, "
+"kann jederzeit von Dir verlängert werden."
+msgstr ""
+
+#: view-profile-update.html:156 view-profile.html:99 view-user-profile.html:127
+msgid "Familienstand"
+msgstr ""
+
+#: controllers/SearchRequestAddCtrl.js:210
+#: controllers/SearchRequestDraftUpdateCtrl.js:195
+#: controllers/SearchRequestOfferAddCtrl.js:250
+#: controllers/TrollboxMessageUpdateCtrl.js:33
+msgid "Fehler"
+msgstr ""
+
+#: services/MessengerService.js:511 services/UploadService.js:105
+msgid "Fehler beim Hochladen der Datei."
+msgstr ""
+
+#: services/ModalService.js:96
+msgid "Fehlermeldung!"
+msgstr ""
+
+#: view-interests-addstep2.html:21 view-interests-addstep3.html:21
+#: view-interests-addstep3.html:22 view-interests-addstep3.html:35
+#: view-interests.html:1
+msgid "Fertig"
+msgstr ""
+
+#: view-funds.html:207
+msgid "Festgelegte Tokens werden als"
+msgstr ""
+
+#: country.html:60
+msgid "Fiji"
+msgstr ""
+
+#: view-offers-advanced-search.html:90 view-offers-search-by-user.html:26
+#: view-offers-search.html:26 view-searches-search-by-user.html:26
+#: view-searches-search.html:26 view-trollbox-list.html:88
+msgid "Filter zurücksetzen"
+msgstr ""
+
+#: view-offers-search-by-user.html:25 view-offers-search.html:25
+#: view-searches-filter.html:11 view-searches-search-by-user.html:25
+#: view-searches-search.html:25
+msgid "Filtern"
+msgstr ""
+
+#: view-offers-my.html:122 view-offers-search-by-user.html:41
+#: view-offers-search.html:41
+msgid "Filtern nach"
+msgstr ""
+
+#: view-offers-search.html:61
+msgid "Filtern nach Artikelstandort"
+msgstr ""
+
+#: view-searches-search.html:50
+msgid "Filtern nach Land"
+msgstr ""
+
+#: view-searches-filter.html:69
+msgid "Filtern nach:"
+msgstr ""
+
+#: country.html:61
+msgid "Finland"
+msgstr ""
+
+#: view-profile-fillup.html:43 view-user-profile.html:74
+msgid "Firma"
+msgstr ""
+
+#: view-profile-update.html:70 view-profile.html:53 view-user-profile.html:123
+msgid "Firmenname"
+msgstr ""
+
+#: view-trollbox-list.html:28
+msgid "Forum"
+msgstr ""
+
+#: view-contacts.html:29
+msgid "Forumchats"
+msgstr ""
+
+#: view-user-profile.html:485
+msgid "Forumsbeiträge"
+msgstr ""
+
+#: view-searches-offer-add.html:47
+msgid "Fotos"
+msgstr ""
+
+#: view-searches-offer-details.html:43
+msgid ""
+"Fotos (FALLS VORHANDEN; WERDEN EINGEBLENDET SOBALD DEIN ANGEBOT AKZEPTIERT "
+"WIRD):"
+msgstr ""
+
+#: view-search-request-comment-popup.html:9 view-searches-details.html:84
+msgid "Frage hinzufügen"
+msgstr ""
+
+#: view-dashboard.html:743 view-faqs.html:11 view-faqs.html:17
+msgid "Fragen / Antworten"
+msgstr ""
+
+#: view-searches-details.html:82
+msgid "Fragen zum Auftrag / zum Produkt"
+msgstr ""
+
+#: country.html:62
+msgid "France"
+msgstr ""
+
+#: view-dashboard.html:604 view-trollbox-list.html:196
+#: view-user-profile.html:541
+msgid "Freigeben"
+msgstr ""
+
+#: view-add-video-identification.html:21
+msgid "Freiwillig"
+msgstr ""
+
+#: view-select-contact.html:11
+msgid "Freunde"
+msgstr ""
+
+#: view-contacts.html:13
+msgid "Freunde Online"
+msgstr ""
+
+#: view-all-functions.html:18 view-dashboard.html:50 view-invite.html:5
+msgid "Freunde einladen"
+msgstr ""
+
+#: drawer-main.html:9 view-earn-money.html:26 view-invite.html:16
+msgid "Freunde einladen / Netzwerk aufbauen"
+msgstr ""
+
+#: view-user-profile.html:94
+msgid ""
+"Für <span class=\"uppercase\">Identitätsprüfungen</span> Buttons klicken"
+msgstr ""
+
+#: view-chat.html:134 view-chat.html:300 view-dashboard.html:621
+#: view-trollbox-list.html:213 view-user-profile.html:558
+msgid "Für alle Foren entsperren"
+msgstr ""
+
+#: view-chat.html:133 view-chat.html:299 view-dashboard.html:620
+#: view-trollbox-list.html:212 view-user-profile.html:557
+msgid "Für alle Foren sperren"
+msgstr ""
+
+#: view-profile-update.html:107 view-profile-update.html:119
+#: view-profile-update.html:137 view-profile-update.html:148
+#: view-profile-update.html:162 view-profile-update.html:176
+#: view-profile.html:101 view-profile.html:109 view-profile.html:66
+#: view-profile.html:75 view-profile.html:85 view-profile.html:93
+msgid "Für alle sichtbar"
+msgstr ""
+
+#: view-dashboard.html:368 view-searches-my-offers.html:69
+#: view-searches-search-by-user.html:92 view-searches-search.html:93
+msgid "Für die Vermittlung eines passenden Angebots zahle ich:"
+msgstr ""
+
+#: view-registration-payment.html:70
+msgid ""
+"Für einmalig {{(data.registeredByCode ? 0:data.VIPPrice)|priceFormat}} € "
+"sicherst Du Dir großzügige Vorteile."
+msgstr ""
+
+#: view-is-working.html:20
+msgid ""
+"Für jeden Freund, der sich durch Deine Einladung registriert, bekommst Du "
+"100 Jugls (1€). Wenn Deine Freunde wiederum Freunde einladen, erhältst du "
+"jeweils 29% von deren Gewinn und wenn diese wiederum Freunde einladen, das "
+"Gleiche usw. usw. usw.. Es werden immer 30% nach oben im Netzwerk verteilt. "
+"1% erhält JuglApp. Dein Netzwerk kann unendlich aufgebaut werden. Dies "
+"funktioniert, indem Du in der App oder Website auf „Freunde einladen“ "
+"klickst. Ab jetzt rollt der Jugl."
+msgstr ""
+
+#: view-profile-update.html:109 view-profile-update.html:121
+#: view-profile-update.html:139 view-profile-update.html:150
+#: view-profile-update.html:164 view-profile-update.html:178
+#: view-profile.html:103 view-profile.html:111 view-profile.html:68
+#: view-profile.html:77 view-profile.html:87 view-profile.html:95
+msgid "Für niemanden sichtbar"
+msgstr ""
+
+#: view-registration-payment.html:36
+msgid ""
+"Für {{data.VIPPlusPrice|priceFormat}}€ im Jahr sicherst Du Dir enorme "
+"Vorteile."
+msgstr ""
+
+#: country.html:63
+msgid "Gabon"
+msgstr ""
+
+#: controllers/ChatCtrl.js:585 controllers/DashboardCtrl.js:869
+#: controllers/TrollBoxCtrl.js:497 controllers/TrollboxMessageUpdateCtrl.js:165
+msgid "Galerie"
+msgstr ""
+
+#: country.html:64
+msgid "Gambia"
+msgstr ""
+
+#: view-user-profile.html:126
+msgid "Geboren am"
+msgstr ""
+
+#: view-offers-bet.html:11 view-offers-bet.html:17 view-offers-bet.html:50
+msgid "Gebot abgeben"
+msgstr ""
+
+#: view-activities.html:75
+msgid "Gebot abgegeben"
+msgstr ""
+
+#: view-offers-my-requests.html:31
+msgid "Gebot abgelaufen"
+msgstr ""
+
+#: view-offers-my.html:198
+msgid "Gebot angenommen"
+msgstr ""
+
+#: view-offers-my.html:196
+msgid "Gebot annehmen"
+msgstr ""
+
+#: view-offers-details.html:154
+msgid "Gebot bereits abgegeben"
+msgstr ""
+
+#: view-offers-bet-popup.html:11
+msgid "Gebot bestätigen {{data.price|priceFormat}} €"
+msgstr ""
+
+#: view-offers-bet-popup.html:10
+msgid "Gebot erhöhen"
+msgstr ""
+
+#: view-offers-my.html:199
+msgid "Gebot geändert"
+msgstr ""
+
+#: view-offers-my-requests.html:32
+msgid "Gebot hat gewonnen"
+msgstr ""
+
+#: view-offers-my-requests.html:30
+msgid "Gebot ist aktiv"
+msgstr ""
+
+#: view-offers-my.html:108
+msgid "Gebote"
+msgstr ""
+
+#: view-activities.html:51
+msgid "Gebote, die ich auf meine Artikel erhalten habe"
+msgstr ""
+
+#: view-offers-add.html:164 view-offers-draft-update.html:130
+msgid "Gebots-Benachrichtigung erhalten ab*"
+msgstr ""
+
+#: view-offers-my.html:130
+msgid "Gebotshöhe"
+msgstr ""
+
+#: view-profile-fillup.html:38
+msgid "Geburtsdatum"
+msgstr ""
+
+#: view-chat.html:112 view-chat.html:278 view-profile-update.html:91
+#: view-profile.html:61 view-send-contact-details.html:50
+msgid "Geburtstag"
+msgstr ""
+
+#: view-team-change-user-search.html:72 view-user-search.html:102
+msgid "Gefunden"
+msgstr ""
+
+#: view-add-video-identification.html:43
+msgid ""
+"Gefällt Dir dein Video? Dann klicke auf „Video hochladen“. Um das Video "
+"erneut aufzunehmen klicke auf „Video neu aufnehmen“."
+msgstr ""
+
+#: view-activities.html:74 view-offers-my-requests.html:256
+#: view-offers-my-requests.html:34 view-offers-my.html:159
+#: view-offers-my.html:33
+msgid "Gekauft"
+msgstr ""
+
+#: drawer-main.html:8 view-all-functions.html:19 view-earn-money.html:10
+msgid "Geld verdienen"
+msgstr ""
+
+#: directives/eventText.js:62
+msgid "Geldeingang bestätigen"
+msgstr ""
+
+#: view-offers-my.html:162 view-offers-my.html:36
+msgid "Geldeingang bestätigt"
+msgstr ""
+
+#: view-deals-completed.html:34 view-user-profile.html:493
+msgid "Gelöscht"
+msgstr ""
+
+#: view-offers-advanced-search-results.html:95 view-offers-details.html:26
+#: view-offers-search-by-user.html:134 view-offers-search.html:100
+#: view-searches-details.html:18 view-searches-search-by-user.html:85
+#: view-searches-search.html:81
+msgid "Gemerkt"
+msgstr ""
+
+#: country.html:65
+msgid "Georgia"
+msgstr ""
+
+#: country.html:1
+msgid "Germany"
+msgstr ""
+
+#: view-offers-add.html:314 view-offers-draft-update.html:281
+msgid "Gesamtbudget für Werbeaktion festlegen*"
+msgstr ""
+
+#: view-become-member.html:44 view-profile.html:56
+#: view-team-change-user-search.html:45 view-user-profile.html:124
+#: view-user-search.html:76
+msgid "Geschlecht"
+msgstr ""
+
+#: drawer-main.html:28 view-dashboard.html:786
+msgid "Geschäfte & Bewertungen"
+msgstr ""
+
+#: view-all-functions.html:20
+msgid "Geschäfte und Bewertungen"
+msgstr ""
+
+#: view-profile-fillup.html:45 view-profile-update.html:68
+msgid "Geschäftsführer"
+msgstr ""
+
+#: view-invite-email.html:33
+msgid "Gesendet"
+msgstr ""
+
+#: view-offers-my.html:192 view-offers-my.html:31 view-offers-my.html:88
+msgid "Gestoppt"
+msgstr ""
+
+#: view-profile-fillup.html:42 view-profile-update.html:69
+msgid "Gewerblich"
+msgstr ""
+
+#: view-user-become-member-invitations.html:12
+#: view-user-become-member-invitations.html:19
+msgid "Gewinner"
+msgstr ""
+
+#: country.html:66
+msgid "Ghana"
+msgstr ""
+
+#: view-become-member.html:30
+msgid ""
+"Gib Deine Lieblings-E-Mail-Adresse und Dein Wunschpasswort an für deinen "
+"persönlichen Jugl Start."
+msgstr ""
+
+#: view-offers-add.html:292 view-offers-draft-update.html:259
+msgid ""
+"Gib an, wie viel Werbebonus der einzelne Interessent für das Lesen Deiner "
+"Inserat auf der Startseite in der Kategorie"
+msgstr ""
+
+#: view-searches-add.html:139 view-searches-draft-update.html:105
+msgid ""
+"Gib an, wo Du etwas suchst, z.B. Wo befindet sich die Wohnung, die renoviert "
+"werden soll?"
+msgstr ""
+
+#: view-interests.html:1
+msgid ""
+"Gib bitte Deine Interessen an, damit Dir auf Deinen Interessen basierende "
+"Angebote auf der Startseite mit Werbebonus angezeigt werden. Die Händler und "
+"Anbieter entscheiden selbst, wer ihre Inserat sehen kann. Also bekommst Du "
+"mehr Inserat mit Werbebonus angezeigt, je aktiver und länger Du Mitglied "
+"bist."
+msgstr ""
+
+#: view-offers-add.html:148 view-offers-draft-update.html:114
+msgid ""
+"Gib hier Deine Preisvorstellung ein. Bitte beachte, dass diese Angabe in "
+"Euro ist."
+msgstr ""
+
+#: view-offers-add.html:154 view-offers-draft-update.html:120
+msgid ""
+"Gib hier Deine Preisvorstellung ein. Diese dient als Richtwert für die "
+"Erstellung der Gebote Deiner Interessenten. Bitte beachte, dass diese Angabe "
+"in Euro ist."
+msgstr ""
+
+#: view-searches-add.html:124 view-searches-draft-update.html:90
+msgid ""
+"Gib hier Deine preislichen Vorstellungen für das ein, was Du suchst, z.B. "
+"Was bist Du bereit für die Renovierung Deiner Wohnung zu zahlen? Dies dient "
+"Deinem Helfer als Orientierungshilfe. Suchst Du eine Dienstleistung, gibst "
+"du hier den Wert 0 ein."
+msgstr ""
+
+#: view-registration-index.html:19
+msgid ""
+"Gib hier bitte Deinen Einladungsgutschein-Code zur Anmeldung als Premium-"
+"Mitglied ein."
+msgstr ""
+
+#: view-offers-add.html:260 view-offers-draft-update.html:227
+msgid ""
+"Gib hier den Kaufbonus für Deine/n Käufer an. Nachdem Du den Geldeingang "
+"bestätigt hast, erhält der Käufer den Kaufbonus. Der Kaufbonus sollte ca. "
+"1-5% des Kaufpreises sein."
+msgstr ""
+
+#: view-offers-add.html:216 view-offers-draft-update.html:184
+msgid ""
+"Gib hier den Ort an, an dem Deine Ware abgeholt werden kann. Wenn Deine Ware "
+"nicht zur Selbstabholung angeboten wird, gib hier Deinen Standort an."
+msgstr ""
+
+#: view-offers-add.html:118 view-offers-draft-update.html:84
+msgid ""
+"Gib hier den Titel Deiner Anzeige ein. Er ist das Erste, was ein "
+"potentieller Interessent liest."
+msgstr ""
+
+#: view-interests.html:1
+msgid ""
+"Gib hier die Bereiche an, in denen Du für andere Mitglieder Aufträge oder "
+"Recherchern ausführen möchtest."
+msgstr ""
+
+#: view-offers-add.html:123 view-offers-draft-update.html:89
+msgid ""
+"Gib hier die Beschreibung Deiner Anzeige ein. Je detaillierter diese ist, "
+"desto genauer wissen potentielle Interessenten, worum es bei Deiner Anzeige "
+"geht."
+msgstr ""
+
+#: view-searches-add.html:100 view-searches-draft-update.html:66
+msgid ""
+"Gib hier die Beschreibung Deiner Suche ein. Je detaillierter diese ist, umso "
+"genauer wissen Deine Helfer, wie und womit sie Dir zur Seite stehen können."
+msgstr ""
+
+#: view-offers-add.html:171 view-offers-draft-update.html:137
+msgid ""
+"Gib hier die Stückzahl ein. Wenn alle Waren verkauft sind, läuft die Anzeige "
+"automatisch aus."
+msgstr ""
+
+#: view-become-member-facebook-linking.html:17
+msgid ""
+"Gib hier einmalig dein Passwort für dein vorhandenes Jugl Konto ein, dass Du "
+"mit Facebook verknüpfen möchtest."
+msgstr ""
+
+#: view-registration-payment.html:93
+msgid "Giropay"
+msgstr ""
+
+#: country.html:67
+msgid "Greece"
+msgstr ""
+
+#: country.html:68
+msgid "Grenada"
+msgstr ""
+
+#: view-spam-report-popup.html:8
+msgid "Grund:"
+msgstr ""
+
+#: country.html:69
+msgid "Guatemala"
+msgstr ""
+
+#: country.html:70
+msgid "Guinea"
+msgstr ""
+
+#: country.html:71
+msgid "Guinea-Bissau"
+msgstr ""
+
+#: country.html:72
+msgid "Guyana"
+msgstr ""
+
+#: view-offers-my-requests.html:212 view-offers-my-requests.html:65
+#: view-offers-my.html:189
+msgid "Gültig"
+msgstr ""
+
+#: view-offers-my.html:131
+msgid "Gültigkeit"
+msgstr ""
+
+#: country.html:73
+msgid "Haiti"
+msgstr ""
+
+#: controllers/InviteEmailCtrl.js:12 controllers/InviteSmsSendCtrl.js:5
+#: controllers/InviteWhatsappCtrl.js:6
+msgid ""
+"Hallo, schau Dir diese neue App an und gib mir bitte ein Feedback. Liebe "
+"Grüße\n"
+"{link}\n"
+"\n"
+"\n"
+"Und hier noch das Video dazu:\n"
+"https://youtu.be/X5h0JSLQP-Y"
+msgstr ""
+
+#: view-deals-completed.html:140 view-deals-completed.html:224
+#: view-deals-completed.html:312 view-deals-completed.html:389
+msgid "Handel bewerten"
+msgstr ""
+
+#: view-user-profile.html:230
+msgid "Handelsbewertung"
+msgstr ""
+
+#: view-profile-update.html:115 view-profile.html:73
+msgid "Haus-Nr."
+msgstr ""
+
+#: view-offer-pay.html:104 view-offer-pay.html:117 view-profile-fillup.html:41
+msgid "Hausnummer"
+msgstr ""
+
+#: view-offers-add.html:129 view-offers-draft-update.html:95
+msgid ""
+"Hebe Deine Anzeige hervor, um Deine Anzeigen attraktiver zu gestalten. Lade "
+"Bilder Deiner Ware hoch. Steigere die Aufmerksamkeit der Jugler und Deine "
+"Erfolgsquote."
+msgstr ""
+
+#: view-start-popup.html:7
+msgid "Herzlich willkommen!"
+msgstr ""
+
+#: view-offers-my-requests.html:108
+msgid "Herzlichen Glückwunsch, der Verkäufer hat Dein Gebot angenommen!"
+msgstr ""
+
+#: view-registration-payment.html:20
+msgid ""
+"Herzlichen Glückwunsch, so einfach und schnell hast Du zum ersten Mal mit "
+"der JuglApp Geld verdient. Du hast jetzt die Möglichkeit, mit der Auswahl "
+"des PremiumPlus-Pakets (für <b>{{(data.registeredByCode ? 0:data."
+"VIPPlusPrice)|priceFormat}}€</b> für 12 Monate) zukünftig 10% mehr Gewinn zu "
+"machen, Dein Netzwerk leichter aufzubauen und zu strukturieren und Du "
+"erhältst fünfmal so viel für Deine Likes."
+msgstr ""
+
+#: view-trollbox-list.html:62
+msgid "Heute"
+msgstr ""
+
+#: view-videos-details.html:40
+msgid "Heute Gesamt"
+msgstr ""
+
+#: view-profile-update.html:234
+msgid "Hier Code eingeben"
+msgstr ""
+
+#: view-profile-update.html:219
+msgid "Hier Handynummer eingeben"
+msgstr ""
+
+#: view-team-change-user-search.html:20
+msgid "Hier hast Du die Möglichkeit, innerhalb von noch"
+msgstr ""
+
+#: view-offers-advanced-search.html:21
+msgid ""
+"Hier kannst Du alle Inserate, die es bei Jugl.net gibt, durchsuchen. Hier "
+"bekommst Du jedoch keinen Werbebonus für das Ansehen der Anzeigen."
+msgstr ""
+
+#: view-offers-add.html:369 view-offers-draft-update.html:336
+msgid ""
+"Hier kannst Du auswählen, ob nur Mitglieder, die schon einmal einen "
+"Suchauftrag bei Jugl.net erstellt haben, Deine Inserat sehen können."
+msgstr ""
+
+#: view-offers-add.html:385 view-offers-draft-update.html:352
+msgid ""
+"Hier kannst Du auswählen, wie viel Umsatz in Euro ein Mitglied "
+"durchschnittlich erzielt haben muss, um Deine Inserat sehen zu können."
+msgstr ""
+
+#: view-offers-add.html:39 view-offers-draft-update.html:40
+msgid ""
+"Hier kannst Du die Kategorie auswählen, unter der die Anzeige erscheinen "
+"soll."
+msgstr ""
+
+#: view-add-video-identification.html:39
+msgid "Hier kannst Du dir dein Video nochmal anschauen."
+msgstr ""
+
+#: view-offers-add.html:379 view-offers-draft-update.html:346
+msgid ""
+"Hier kannst Du eingeben, wie oft sich ein User Inserat ansieht, bevor dieser "
+"einen Artikel kauft. Gibst Du hier z.B. von 50 bis 100 ein, dann zeigst Du "
+"Deine Inserat nur Mitgliedern, die auf 50-100 gelesene Inseraten einen Kauf "
+"tätigen."
+msgstr ""
+
+#: view-offers-add.html:162 view-offers-draft-update.html:128
+msgid ""
+"Hier kannst Du einstellen, ab welcher Gebotshöhe Du eine Benachrichtigung "
+"von Jugl.net erhalten möchtest."
+msgstr ""
+
+#: view-offers-add.html:363 view-offers-draft-update.html:330
+msgid ""
+"Hier kannst Du zum Beispiel, wenn Du 0-3 eingibst, nur neuen Mitgliedern "
+"Deine Inserat zeigen. Gibst Du \"ab 25 Tage\" ein, handelt es sich eher um "
+"erfahrene Juglmitglieder"
+msgstr ""
+
+#: view-dashboard.html:72
+msgid "Hier klicken für Feineinstellungen"
+msgstr ""
+
+#: view-dashboard.html:327
+msgid ""
+"Hier stehen noch keine Suchaufträge, weil Du noch nicht ausgewählt hast, in "
+"welchen Interessenskategorien Du für andere Mitglieder recherchieren "
+"mochtest. Bitte klicke dazu auf den Button “Womit kennst Du Dich aus?”"
+msgstr ""
+
+#: view-dashboard.html:224
+msgid ""
+"Hier steht noch keine Inserat mit Werbebonus, weil Du noch keine "
+"Interessenskategorien ausgewählt hast. Bitte klicke dafür auf den Button "
+"\"Wofür interessierst Du Dich?\""
+msgstr ""
+
+#: view-searches-add.html:40 view-searches-draft-update.html:42
+msgid ""
+"Hier wird Dir stets die aktuelle Anzahl der Nutzer mit gleichen Interessen "
+"angezeigt"
+msgstr ""
+
+#: controllers/InviteMeByEmailCtrl.js:9 controllers/InviteMeBySmsCtrl.js:6
+msgid "Hiermit bist Du zu Jugl herzlich eingeladen!"
+msgstr ""
+
+#: services/ModalService.js:86
+msgid "Hinweis"
+msgstr ""
+
+#: controllers/OfferAddCtrl.js:112
+msgid ""
+"Hinweis für Händler! Bitte achte darauf, dass Du bei Jugl nichts teurer "
+"anbietest, als Du es auf anderen Websites tust."
+msgstr ""
+
+#: view-invite-me-by-sms.html:11 view-invite-sms-send.html:11
+#: view-invite.html:6
+msgid "History"
+msgstr ""
+
+#: country.html:74
+msgid "Honduras"
+msgstr ""
+
+#: country.html:75
+msgid "Hungary"
+msgstr ""
+
+#: view-offer-pay.html:133
+msgid "Händler benachrichtigen"
+msgstr ""
+
+#: view-offer-pay.html:40 view-profile-update.html:197 view-profile.html:120
+msgid "IBAN"
+msgstr ""
+
+#: country.html:76
+msgid "Iceland"
+msgstr ""
+
+#: view-chat.html:231 view-chat.html:64
+msgid "Ich bin gerade hier:"
+msgstr ""
+
+#: view-offers-index.html:23
+msgid ""
+"Ich gebe meine Interessen an (von der Zahnbürste bis zum Luxus Auto), bleibe "
+"dabei anonym und bekomme vorwiegend von Händlern, aber auch von "
+"Privatpersonen auf meinen Interessen basierende Produktangebote (Inserat). "
+"Für jede gelesene Inserat verdienst Du Jugls"
+msgstr ""
+
+#: view-all-functions.html:22
+msgid "Ich habe abgemahnt"
+msgstr ""
+
+#: view-activities.html:57
+msgid "Ich habe angeboten / vermittelt"
+msgstr ""
+
+#: view-activities.html:50
+msgid "Ich habe auf diese Artikel geboten"
+msgstr ""
+
+#: view-activities.html:60
+msgid "Ich habe bewertet"
+msgstr ""
+
+#: view-activities.html:48
+msgid "Ich habe diese Artikel gekauft"
+msgstr ""
+
+#: view-activities.html:49
+msgid "Ich habe diese Artikel verkauft"
+msgstr ""
+
+#: view-dashboard.html:772 view-offers-index.html:34
+msgid "Ich habe geboten / gekauft"
+msgstr ""
+
+#: view-search-request-offer-reject-popup.html:19
+msgid "Ich habe mich anders entschieden"
+msgstr ""
+
+#: view-activities.html:53
+msgid "Ich habe schon bezahlt"
+msgstr ""
+
+#: view-activities.html:52
+msgid "Ich muss noch bezahlen"
+msgstr ""
+
+#: view-trollbox-message-visibility-popup.html:26
+msgid "Ich möchte für meinen Post vergütet werden"
+msgstr ""
+
+#: view-add-video-identification.html:28
+msgid ""
+"Ich stimme den <a ng-click=\"openUrlInBrowser(config.urls."
+"nutzungsbedingungen)\">Nutzerbedingungen</a> und <a ng-click="
+"\"navigate('view-data-protection-not-login.html')\">Datenschutzrichtlinien</"
+"a> zu"
+msgstr ""
+
+#: view-searches-my-offers.html:59 view-searches-search-by-user.html:89
+#: view-searches-search.html:85
+msgid "Ich suche:"
+msgstr ""
+
+#: view-all-functions.html:23
+msgid "Ich wurde abgemahnt"
+msgstr ""
+
+#: view-activities.html:59
+msgid "Ich wurde bewertet"
+msgstr ""
+
+#: view-search-request-comment-response-popup.html:9
+msgid "Ihr Antwort"
+msgstr ""
+
+#: view-user-feedback-response-popup.html:9
+#: view-user-team-feedback-response-popup.html:9
+msgid "Ihr Antwort:"
+msgstr ""
+
+#: view-deals-completed-update-counter-user-feedback-popup.html:19
+#: view-deals-completed-update-user-feedback-popup.html:19
+#: view-user-team-feedback-popup.html:21
+msgid "Ihr Feedback:"
+msgstr ""
+
+#: view-invite-sms-contacts.html:11
+msgid "Ihre Kontakte"
+msgstr ""
+
+#: view-dashboard.html:19 view-profile-update.html:32
+msgid "Ihre Mitgliedschaft"
+msgstr ""
+
+#: services/StatusService.js:127
+msgid "Ihre Sprach- und Landeinstellungen wurden automatisch angepasst"
+msgstr ""
+
+#: services/ChatUploader.js:26 services/ChatUploader.js:35
+msgid "Image upload"
+msgstr ""
+
+#: drawer-main.html:38 view-offers-details.html:137
+#: view-offers-preview.html:119 view-profile-fillup.html:47
+#: view-profile-update.html:72
+msgid "Impressum"
+msgstr ""
+
+#: view-offers-add.html:324 view-offers-draft-update.html:291
+msgid ""
+"In den nachfolgenden Feldern kannst Du den Kreis derer einschränken, die "
+"Deine Inserat mit Werbebonus (Jugls for view) sehen können. Damit kannst Du "
+"Dein Werbebudget ganz gezielt einsetzen."
+msgstr ""
+
+#: view-team-change-user-search.html:23
+msgid "In wessen Team möchtest Du wechseln?"
+msgstr ""
+
+#: country.html:77
+msgid "India"
+msgstr ""
+
+#: country.html:78
+msgid "Indonesia"
+msgstr ""
+
+#: controllers/OfferAdvancedSearchCtrl.js:38
+#: view-offers-advanced-search-results.html:11
+#: view-offers-advanced-search-results.html:24
+#: view-offers-advanced-search.html:11 view-offers-advanced-search.html:17
+#: view-offers-advanced-search.html:25
+msgid "Inserate durchsuchen"
+msgstr ""
+
+#: view-dashboard.html:308
+msgid "Inserate insgesamt"
+msgstr ""
+
+#: view-dashboard.html:310
+msgid "Inserate mit Werbebonus"
+msgstr ""
+
+#: view-dashboard.html:307
+msgid "Inserate ohne Werbebonus durchsuchen"
+msgstr ""
+
+#: view-profile.html:43 view-user-profile.html:77
+msgid "Insgesamt im Netzwerk"
+msgstr ""
+
+#: view-searches-index.html:27
+msgid "Interessen angeben"
+msgstr ""
+
+#: view-offers-search-by-user.html:31 view-offers-search.html:31
+#: view-searches-filter.html:25 view-searches-search-by-user.html:31
+#: view-searches-search.html:31
+msgid "Interessenkategorie"
+msgstr ""
+
+#: view-offers-my.html:66
+msgid "Interessenten"
+msgstr ""
+
+#: view-offers-add.html:57 view-offers-draft-update.html:58
+msgid ""
+"Interessenten können Dir direkt über die Anzeige eine Nachricht senden. Im "
+"Messenger wird Dir diese Nachricht als zu der Inserat zugehörig angezeigt."
+msgstr ""
+
+#: view-offers-add.html:319 view-offers-draft-update.html:286
+msgid "Interessenten-/Kundenkreis einschränken"
+msgstr ""
+
+#: country.html:79
+msgid "Iran"
+msgstr ""
+
+#: country.html:80
+msgid "Iraq"
+msgstr ""
+
+#: country.html:81
+msgid "Ireland {Republic}"
+msgstr ""
+
+#: country.html:82
+msgid "Israel"
+msgstr ""
+
+#: country.html:83
+msgid "Italy"
+msgstr ""
+
+#: country.html:84
+msgid "Ivory Coast"
+msgstr ""
+
+#: directives/eventText.js:24 view-manage-network-confirm-popup.html:13
+msgid "Ja"
+msgstr ""
+
+#: services/ModalService.js:73
+msgid "Ja, Teamleiter wechseln"
+msgstr ""
+
+#: view-offers-add.html:102 view-offers-add.html:244
+#: view-offers-draft-update.html:212 view-offers-update-popup.html:28
+#: view-profile-update.html:101 view-profile.html:64 view-searches-add.html:175
+#: view-searches-add.html:79 view-searches-draft-update.html:141
+msgid "Jahr"
+msgstr ""
+
+#: view-funds.html:201
+msgid "Jahr(e)"
+msgstr ""
+
+#: country.html:85
+msgid "Jamaica"
+msgstr ""
+
+#: country.html:86
+msgid "Japan"
+msgstr ""
+
+#: view-dashboard.html:415
+msgid "Jede erdenkliche Dienstleistung und Hilfe ist möglich!"
+msgstr ""
+
+#: directives/eventText.js:60
+msgid "Jetzt Bezahlen"
+msgstr ""
+
+#: view-invite-friends-popup.html:18
+msgid "Jetzt Freunde & Bekannte einladen"
+msgstr ""
+
+#: controllers/UserProfileCtrl.js:335
+msgid "Jetzt Premium-Mitglied werden"
+msgstr ""
+
+#: directives/eventText.js:22
+msgid "Jetzt Premium/PremiumPlus Midglied werden"
+msgstr ""
+
+#: directives/eventText.js:21
+msgid "Jetzt PremiumPlus Midglied werden"
+msgstr ""
+
+#: services/InviteService.js:46
+msgid "Jetzt PremiumPlus-Mitglied werden"
+msgstr ""
+
+#: view-dashboard.html:26
+msgid "Jetzt Premiummitglied werden!"
+msgstr ""
+
+#: view-dashboard.html:25
+msgid "Jetzt Premiumplusmitglied werden!"
+msgstr ""
+
+#: controllers/TrollboxMessageVisibilityCtrl.js:27
+msgid "Jetzt Video Ident starten"
+msgstr ""
+
+#: view-add-video-identification.html:55
+msgid "Jetzt Video aufnehmen"
+msgstr ""
+
+#: view-offers-my-requests.html:149 view-offers-my-requests.html:295
+#: view-registration-payment.html:107
+msgid "Jetzt bezahlen"
+msgstr ""
+
+#: view-start-popup.html:21
+msgid "Jetzt kann's losgehen!"
+msgstr ""
+
+#: view-invite-friends-popup.html:10
+msgid "Jetzt kommt der spannende Teil!"
+msgstr ""
+
+#: view-offer-pay.html:67
+msgid "Jetzt mit PayPal verbinden"
+msgstr ""
+
+#: view-user-team-feedback-popup.html:28
+msgid "Jetzt nicht"
+msgstr ""
+
+#: view-validation-phone-popup.html:12
+msgid "Jetzt verifizieren"
+msgstr ""
+
+#: country.html:87
+msgid "Jordan"
+msgstr ""
+
+#: view-all-functions.html:25
+msgid "Jugl Account löschen"
+msgstr ""
+
+#: drawer-main.html:7 view-dashboard.html:479 view-trollbox-list.html:14
+#: view-trollbox-list.html:24
+msgid "Jugl Forum"
+msgstr ""
+
+#: view-dashboard.html:790
+msgid "Jugl aufladen"
+msgstr ""
+
+#: view-dashboard.html:791
+msgid "Jugl einlösen"
+msgstr ""
+
+#: view-all-functions.html:26
+msgid "Jugl-Punkte kaufen"
+msgstr ""
+
+#: view-all-functions.html:27
+msgid "Jugl-Punkte verkaufen"
+msgstr ""
+
+#: view-info-popup.html:19
+msgid "Jugl-Wiki"
+msgstr ""
+
+#: controllers/FundsCtrl.js:280 view-funds.html:209 view-offer-pay.html:79
+#: view-offers-add.html:203 view-offers-draft-update.html:169
+msgid "Jugls"
+msgstr ""
+
+#: controllers/SearchRequestOfferDetailsCtrl.js:33 view-funds.html:59
+#: view-offers-index.html:41
+msgid "Jugls aufladen"
+msgstr ""
+
+#: view-funds.html:58
+msgid "Jugls verkaufen"
+msgstr ""
+
+#: controllers/OfferMyListCtrl.js:54
+msgid ""
+"Kannst Du Dein Gebot für das Angebot \"{{title}}\" bitte noch einmal "
+"wiederholen? Ich würde es gerne annehmen."
+msgstr ""
+
+#: view-offers-add.html:26 view-offers-add.html:33
+#: view-offers-draft-update.html:27 view-offers-draft-update.html:34
+#: view-searches-add.html:34 view-searches-add.html:42
+#: view-searches-draft-update.html:36 view-searches-draft-update.html:44
+msgid "Kategorie"
+msgstr ""
+
+#: view-offers-add.html:301 view-offers-add.html:40
+#: view-offers-draft-update.html:268 view-offers-draft-update.html:41
+#: view-searches-add.html:51 view-searches-draft-update.html:53
+msgid "Kategorie ändern"
+msgstr ""
+
+#: view-trollbox-list.html:50 view-trollbox-message-update-popup.html:41
+#: view-trollbox-message-visibility-popup.html:16
+msgid "Kategorien"
+msgstr ""
+
+#: view-team-change-user-search.html:100
+msgid "Kaufbewertungen ansehen"
+msgstr ""
+
+#: view-dashboard.html:278 view-deals-completed.html:259
+#: view-deals-completed.html:356 view-favorites.html:125
+#: view-offers-advanced-search-results.html:119 view-offers-details.html:69
+#: view-offers-draft.html:62 view-offers-my-requests.html:130
+#: view-offers-my-requests.html:177 view-offers-my-requests.html:230
+#: view-offers-my-requests.html:276 view-offers-my-requests.html:83
+#: view-offers-my.html:98 view-offers-preview.html:56
+#: view-offers-search-by-user.html:158 view-offers-search-by-user.html:54
+#: view-offers-search.html:127 view-offers-search.html:54
+#: view-searches-filter.html:87
+msgid "Kaufbonus"
+msgstr ""
+
+#: view-offers-add.html:264 view-offers-draft-update.html:231
+msgid "Kaufbonus eingeben*"
+msgstr ""
+
+#: view-offers-details.html:150
+msgid "Kaufen"
+msgstr ""
+
+#: view-offers-index.html:28
+msgid "Kaufen / Suchergebnisse / Inserat lesen"
+msgstr ""
+
+#: drawer-main.html:12 view-earn-money.html:33 view-offers-index.html:20
+#: view-offers-index.html:8
+msgid "Kaufen / verkaufen, Interessen angeben"
+msgstr ""
+
+#: country.html:88
+msgid "Kazakhstan"
+msgstr ""
+
+#: view-deals-completed.html:198 view-deals-completed.html:289
+#: view-deals-completed.html:96 view-offers-my.html:154 view-offers-my.html:185
+#: view-searches-my-list.html:89 view-searches-offers-list.html:48
+msgid "Kein Kommentar"
+msgstr ""
+
+#: view-is-working.html:32
+msgid "Keine Abos! Keine Abzocke! Alles echt! - Einfach ausprobieren!"
+msgstr ""
+
+#: view-offers-draft.html:29 view-searches-draft.html:28
+msgid "Keine Entwürfe vorhanden"
+msgstr ""
+
+#: view-dashboard.html:261 view-offers-advanced-search-results.html:102
+#: view-offers-details.html:115 view-offers-details.html:30
+#: view-offers-draft.html:46 view-offers-my.html:39 view-offers-my.html:72
+#: view-offers-preview.html:100 view-offers-preview.html:18
+#: view-offers-search-by-user.html:141 view-offers-search.html:110
+msgid "Keine Kaufmöglichkeit"
+msgstr ""
+
+#: country.html:89
+msgid "Kenya"
+msgstr ""
+
+#: country.html:90
+msgid "Kiribati"
+msgstr ""
+
+#: view-searches-add.html:30 view-searches-draft-update.html:32
+msgid ""
+"Klicke auf <span class=\"icon-info-app\"></span> für weitere Informationen."
+msgstr ""
+
+#: view-user-profile.html:357 view-user-profile.html:358
+msgid "Komm in mein Team!"
+msgstr ""
+
+#: view-invite-email.html:21
+msgid "Kommagetrennt, z.B."
+msgstr ""
+
+#: view-offers-details.html:131 view-offers-update-popup.html:36
+msgid "Kommentar"
+msgstr ""
+
+#: view-offers-details-request-popup.html:8
+msgid "Kommentar an den Anbieter verfassen:"
+msgstr ""
+
+#: view-dashboard.html:661 view-trollbox-list.html:291
+#: view-user-profile.html:568 view-video-identification-popup.html:68
+msgid "Kommentare insgesamt"
+msgstr ""
+
+#: view-dashboard.html:657 view-trollbox-list.html:287
+#: view-user-profile.html:564 view-video-identification-popup.html:64
+msgid "Kommentieren"
+msgstr ""
+
+#: controllers/ChatCtrl.js:471 view-user-profile.html:392
+msgid "Kontakt"
+msgstr ""
+
+#: view-chat.html:156 view-chat.html:321
+msgid "Kontakt annehmen"
+msgstr ""
+
+#: controllers/UserProfileCtrl.js:253 view-all-functions.html:28
+#: view-user-profile.html:83
+msgid "Kontakt entfernen"
+msgstr ""
+
+#: view-all-functions.html:29
+msgid "Kontakt hinzufügen"
+msgstr ""
+
+#: controllers/ChatCtrl.js:589
+msgid "Kontakt schicken"
+msgstr ""
+
+#: view-send-contact-details.html:13
+msgid "Kontakt senden"
+msgstr ""
+
+#: controllers/ChatCtrl.js:551
+msgid "Kontakt wurde erfolgreich importiert"
+msgstr ""
+
+#: view-dashboard.html:486 view-user-profile.html:383
+msgid "Kontakte"
+msgstr ""
+
+#: view-user-profile.html:377
+msgid ""
+"Kontakte & Abonnenten von {{data.userInfo.first_name}} {{data.userInfo."
+"last_name}}"
+msgstr ""
+
+#: view-trollbox-list.html:43
+msgid "Kontakten"
+msgstr ""
+
+#: view-all-functions.html:40
+msgid "Kontaktübersicht"
+msgstr ""
+
+#: view-become-member-facebook-linking.html:23 view-become-member.html:23
+msgid "Konten verknüpfen"
+msgstr ""
+
+#: view-offer-pay.html:42 view-profile-update.html:199 view-profile.html:122
+msgid "Kontoinhaber"
+msgstr ""
+
+#: layout-main.html:8 view-all-functions.html:30 view-funds.html:26
+msgid "Kontostand"
+msgstr ""
+
+#: view-offers-add.html:392 view-offers-draft-update.html:359
+msgid "Kontostand ab"
+msgstr ""
+
+#: country.html:91
+msgid "Korea North"
+msgstr ""
+
+#: country.html:92
+msgid "Korea South"
+msgstr ""
+
+#: country.html:93
+msgid "Kosovo"
+msgstr ""
+
+#: view-offers-add.html:21 view-offers-draft-update.html:22
+msgid "Kostenlos inserieren<br>Verkaufen / Inserat schalten"
+msgstr ""
+
+#: view-registration-payment.html:97
+msgid "Kreditkarte"
+msgstr ""
+
+#: view-all-functions.html:46
+msgid "Kurznachricht schreiben"
+msgstr ""
+
+#: country.html:94
+msgid "Kuwait"
+msgstr ""
+
+#: country.html:95
+msgid "Kyrgyzstan"
+msgstr ""
+
+#: view-invite-friends-popup.html:14
+msgid "Lade Deine Freunde ein, bevor es ein anderer macht!"
+msgstr ""
+
+#: view-invite.html:19
+msgid ""
+"Lade Deine Freunde und Bekannten ein, Jugl kennenzulernen. Mach Du es, bevor "
+"es ein anderer macht."
+msgstr ""
+
+#: view-is-working.html:19
+msgid "Lade Deine Freunde zu Jugl ein."
+msgstr ""
+
+#: view-become-member.html:51 view-offers-add.html:217
+#: view-offers-advanced-search.html:50 view-offers-draft-update.html:185
+#: view-profile-update.html:129 view-profile-update.html:131
+#: view-profile.html:83 view-searches-add.html:141
+#: view-searches-details.html:76 view-searches-draft-update.html:107
+#: view-user-country-update-popup.html:10 view-user-search.html:54
+msgid "Land"
+msgstr ""
+
+#: country.html:96
+msgid "Laos"
+msgstr ""
+
+#: country.html:97
+msgid "Latvia"
+msgstr ""
+
+#: view-all-functions.html:31
+msgid "Laufende Auktionen"
+msgstr ""
+
+#: country.html:98
+msgid "Lebanon"
+msgstr ""
+
+#: view-is-working.html:31
+msgid "Leg jetzt gleich los - viel Spaß beim reich werden."
+msgstr ""
+
+#: view-offers-add.html:313 view-offers-draft-update.html:280
+msgid ""
+"Lege Dein Budget fest (mind. {{data.offer.view_bonus_total_interest}} <span "
+"class=\"currency icon-jugl-light currency-rel\"></span>). Nicht verbrauchtes "
+"Budget wird sofort wieder gutgeschrieben."
+msgstr ""
+
+#: view-searches-add.html:155 view-searches-add.html:164
+#: view-searches-draft-update.html:121 view-searches-draft-update.html:130
+msgid ""
+"Lege fest, wie lange Dein Suchauftrag bei Jugl.net zu sehen sein soll. Bei "
+"fehlender Eingabe ist Dein Auftrag automatisch 6 Monate aktiv. Es sei denn, "
+"Du deaktivierst sie vorher."
+msgstr ""
+
+#: view-offers-add.html:230 view-offers-draft-update.html:198
+msgid "Lege fest, wie lange Deine Inserat bei Jugl.net zu sehen sein soll."
+msgstr ""
+
+#: view-searches-add.html:131 view-searches-draft-update.html:97
+msgid ""
+"Lege fest, wie viel Vermittlungsbonus Du Deinen Helfern für die Vermittlung "
+"eines passenden Angebots zahlst. Bitte beachte, dass Du bei der Annahme "
+"eines Angebots nicht den darin enthaltenen Artikel kaufst, sondern lediglich "
+"für die Recherche zahlst. Der Vermittlungsbonus wird nur fällig, wenn Du das "
+"Angebot annimmst."
+msgstr ""
+
+#: view-dashboard.html:330
+msgid ""
+"Leider gibt es derzeit keine Suchaufträge in den von Dir angegebenen "
+"Interessensgebieten/Ländern."
+msgstr ""
+
+#: view-searches-search-by-user.html:71
+msgid ""
+"Leider gibt es momentan keine Suchaufträge anderer Mitglieder, die Deinen "
+"angegebenen Interessen entsprechen."
+msgstr ""
+
+#: view-searches-search.html:67
+msgid ""
+"Leider gibt es momentan keine Suchaufträge anderer Mitglieder, die Deinen "
+"angegebenen Interessen oder Deinem Filter entsprechen."
+msgstr ""
+
+#: view-offers-advanced-search-results.html:71
+#: view-offers-search-by-user.html:69
+msgid ""
+"Leider gibt es momentan keine Inserat bzw. Produktangebote, die Deinen "
+"eingegebenen Interessen entsprechen."
+msgstr ""
+
+#: view-offers-search.html:79
+msgid ""
+"Leider gibt es momentan keine Inserat bzw. Produktangebote, die Deinen "
+"eingegebenen Interessen/Ländern entsprechen."
+msgstr ""
+
+#: view-dashboard.html:677 view-trollbox-list.html:298
+msgid ""
+"Leider haben wir keine Forumsbeiträge für die ausgewählten Länder gefunden."
+msgstr ""
+
+#: view-info-popup.html:128
+msgid ""
+"Leider haben wir keine Wiki Einträge aus den ausgewählten Ländern gefunden."
+msgstr ""
+
+#: view-dashboard.html:227
+msgid ""
+"Leider haben wir keine auf Deinen Interessen basierenden Angebote mit "
+"Werbebonus bzw. Angebote mit Werbebonus aus den ausgewählten Ländern "
+"gefunden. Klicke bitte auf den Button \"Inserate ohne Werbebonus durchsuchen"
+"\". Dort gibt es weitere Angebote ohne Werbebonus."
+msgstr ""
+
+#: view-dashboard.html:162 view-invite-my-list.html:69
+msgid ""
+"Leider haben wir keine neuen Nutzer für die ausgewählten Länder gefunden."
+msgstr ""
+
+#: controllers/InfoPopupCtrl.js:126 controllers/InfoPopupOldCtrl.js:120
+msgid ""
+"Leider hast Du keine Premium-Mitgliedschaft um diese Funktion nutzen zu "
+"können."
+msgstr ""
+
+#: view-searches-my-list.html:33
+msgid ""
+"Leider hast Du noch keine Suchaufträge erstellt, Du kannst dies mit der "
+"\"Menschlichen Suchmaschine\" tun (Suchauftrag erstellen)."
+msgstr ""
+
+#: view-offers-my.html:53
+msgid ""
+"Leider hast du noch keine Inserat bzw. Produktangebote eingestellt oder "
+"keine passenden Produkte für diesen Filter. Um neue Inserat zu erstellen, "
+"gehe auf „Verkaufen / Inserat schalten\"."
+msgstr ""
+
+#: view-offers-my-requests.html:155
+msgid "Leider hat der Verkäufer Dein Gebot nicht angenommen"
+msgstr ""
+
+#: country.html:99
+msgid "Lesotho"
+msgstr ""
+
+#: country.html:100
+msgid "Liberia"
+msgstr ""
+
+#: country.html:101
+msgid "Libya"
+msgstr ""
+
+#: controllers/UserProfileCtrl.js:327
+msgid "Lieber Jugler, ein Teamwechsel ist nur alle 24h möglich."
+msgstr ""
+
+#: country.html:102
+msgid "Liechtenstein"
+msgstr ""
+
+#: view-offer-pay.html:99
+msgid "Lieferadresse 1:"
+msgstr ""
+
+#: view-offer-pay.html:112
+msgid "Lieferadresse {{$index+2}}:"
+msgstr ""
+
+#: view-offer-pay.html:22 view-offers-details.html:94
+#: view-offers-preview.html:79
+msgid "Lieferzeit"
+msgstr ""
+
+#: view-offers-add.html:183 view-offers-draft-update.html:149
+msgid "Lieferzeit angeben*"
+msgstr ""
+
+#: view-invite-log.html:29
+msgid "Link geklickt"
+msgstr ""
+
+#: country.html:103
+msgid "Lithuania"
+msgstr ""
+
+#: view-activities.html:106 view-deals-completed.html:405 view-faqs.html:36
+#: view-funds.html:111 view-funds.html:183 view-funds.html:220
+#: view-info-popup.html:134 view-invite-log.html:74 view-invite-my-list.html:74
+#: view-manage-network.html:55 view-manage-select-destination.html:76
+#: view-new-user-network.html:48 view-news.html:54
+#: view-offer-history-view-popup.html:27
+#: view-offers-advanced-search-results.html:146 view-offers-draft.html:83
+#: view-offers-my-requests.html:305 view-offers-my.html:246
+#: view-offers-search-by-user.html:186 view-offers-search.html:154
+#: view-searches-details.html:132 view-searches-draft.html:68
+#: view-searches-my-list.html:111 view-searches-my-offers.html:133
+#: view-searches-search-by-user.html:130 view-searches-search.html:152
+#: view-team-change-user-search.html:111 view-trollbox-list.html:305
+#: view-user-become-member-invitations.html:48 view-user-profile.html:215
+#: view-user-profile.html:288 view-user-profile.html:429
+#: view-user-profile.html:469 view-user-profile.html:580
+#: view-user-search.html:134 view-users-new.html:50
+#: view-votes-info-popup.html:35 view-votes-trollbox-popup.html:36
+msgid "Load More"
+msgstr ""
+
+#: view-activities.html:111 view-activities.html:112 view-activities.html:90
+#: view-conversation-gallery.html:33 view-dashboard.html:540
+#: view-deals-completed.html:410 view-deals-completed.html:411
+#: view-deals-completed.html:45 view-faqs.html:24 view-faqs.html:41
+#: view-faqs.html:42 view-favorites.html:39 view-funds.html:117
+#: view-funds.html:118 view-funds.html:156 view-funds.html:188
+#: view-funds.html:189 view-funds.html:225 view-funds.html:226
+#: view-funds.html:84 view-info-popup.html:139 view-info-popup.html:140
+#: view-info-popup.html:28 view-info-popup.html:52 view-invite-log.html:37
+#: view-invite-log.html:79 view-invite-log.html:80 view-invite-my-list.html:42
+#: view-invite-my-list.html:79 view-invite-my-list.html:80
+#: view-manage-network.html:32 view-manage-network.html:60
+#: view-manage-network.html:61 view-manage-select-destination.html:43
+#: view-manage-select-destination.html:81
+#: view-manage-select-destination.html:82 view-new-user-network.html:53
+#: view-new-user-network.html:54 view-news.html:29 view-news.html:59
+#: view-news.html:60 view-offer-history-view-popup.html:32
+#: view-offer-history-view-popup.html:33 view-offers-add.html:140
+#: view-offers-advanced-search-results.html:151
+#: view-offers-advanced-search-results.html:152
+#: view-offers-advanced-search-results.html:67
+#: view-offers-draft-update.html:106 view-offers-draft.html:25
+#: view-offers-draft.html:88 view-offers-draft.html:89
+#: view-offers-my-requests.html:310 view-offers-my-requests.html:311
+#: view-offers-my-requests.html:44 view-offers-my.html:218
+#: view-offers-my.html:251 view-offers-my.html:252 view-offers-my.html:49
+#: view-offers-search-by-user.html:191 view-offers-search-by-user.html:192
+#: view-offers-search-by-user.html:65 view-offers-search.html:159
+#: view-offers-search.html:160 view-offers-search.html:75
+#: view-profile-update.html:52 view-searches-add.html:116
+#: view-searches-details.html:137 view-searches-details.html:138
+#: view-searches-draft-update.html:82 view-searches-draft.html:24
+#: view-searches-draft.html:73 view-searches-draft.html:74
+#: view-searches-filter.html:20 view-searches-my-list.html:116
+#: view-searches-my-list.html:117 view-searches-my-list.html:29
+#: view-searches-my-offers.html:138 view-searches-my-offers.html:139
+#: view-searches-my-offers.html:42 view-searches-offer-add.html:60
+#: view-searches-offer-add.html:97 view-searches-search-by-user.html:135
+#: view-searches-search-by-user.html:136 view-searches-search-by-user.html:67
+#: view-searches-search.html:157 view-searches-search.html:158
+#: view-searches-search.html:63 view-team-change-user-search.html:116
+#: view-team-change-user-search.html:117 view-team-change-user-search.html:69
+#: view-trollbox-list.html:137 view-trollbox-list.html:310
+#: view-trollbox-list.html:311 view-user-become-member-invitations.html:53
+#: view-user-become-member-invitations.html:54 view-user-profile.html:144
+#: view-user-profile.html:220 view-user-profile.html:221
+#: view-user-profile.html:293 view-user-profile.html:294
+#: view-user-profile.html:434 view-user-profile.html:435
+#: view-user-profile.html:474 view-user-profile.html:475
+#: view-user-profile.html:585 view-user-profile.html:586
+#: view-user-search.html:139 view-user-search.html:140 view-user-search.html:99
+#: view-users-new.html:55 view-users-new.html:56 view-votes-info-popup.html:40
+#: view-votes-info-popup.html:41 view-votes-trollbox-popup.html:41
+#: view-votes-trollbox-popup.html:42
+msgid "Loading"
+msgstr ""
+
+#: view-settings.html:51
+msgid "Logineinstellungen"
+msgstr ""
+
+#: country.html:104
+msgid "Luxembourg"
+msgstr ""
+
+#: view-offers-my-requests.html:85 view-offers-my.html:29
+#: view-offers-my.html:85
+msgid "Läuft"
+msgstr ""
+
+#: view-offers-my-requests.html:131 view-offers-my-requests.html:178
+#: view-offers-my-requests.html:231 view-offers-my-requests.html:277
+#: view-offers-my-requests.html:84
+msgid "Läuft bis"
+msgstr ""
+
+#: controllers/UserInterestsUpdateCtrl.js:102
+#: controllers/UserInterestsUpdateCtrl.js:125 services/MessengerService.js:1279
+#: view-user-profile.html:573
+msgid "Löschen"
+msgstr ""
+
+#: country.html:105
+msgid "Macedonia"
+msgstr ""
+
+#: country.html:106
+msgid "Madagascar"
+msgstr ""
+
+#: view-offer-request-payment-complaint-popup.html:8
+msgid "Mahnungstexte:"
+msgstr ""
+
+#: country.html:107
+msgid "Malawi"
+msgstr ""
+
+#: country.html:108
+msgid "Malaysia"
+msgstr ""
+
+#: country.html:109
+msgid "Maldives"
+msgstr ""
+
+#: country.html:110
+msgid "Mali"
+msgstr ""
+
+#: country.html:111
+msgid "Malta"
+msgstr ""
+
+#: country.html:112
+msgid "Marshall Islands"
+msgstr ""
+
+#: country.html:113
+msgid "Mauritania"
+msgstr ""
+
+#: country.html:114
+msgid "Mauritius"
+msgstr ""
+
+#: view-offers-update-popup.html:10
+msgid "Max. Budget für Werbeaktion"
+msgstr ""
+
+#: app.js:121
+msgid "Maximal"
+msgstr ""
+
+#: view-registration-payment.html:32 view-registration-payment.html:66
+msgid "Maximal gewinnbringend"
+msgstr ""
+
+#: view-offers-add.html:290 view-offers-draft-update.html:257
+msgid ""
+"Maximale Aufmerksamkeit für Dich und Dein Produkt! Schalte Deine Annonce auf "
+"der Startseite und profitiere von unserem cleveren System. Mit dem "
+"Werbebonus = \"Jugls for view\" wird der User von Dir dafür belohnt, dass er "
+"sich über Deine Neuigkeiten oder Produkte informiert. Kunden, die Du "
+"normalerweise nicht erreicht hättest, werden durch den Werbebonus auf Dein "
+"Produkt aufmerksam."
+msgstr ""
+
+#: view-how-it-works.html:26
+msgid "Mehr Details"
+msgstr ""
+
+#: view-all-functions.html:32 view-funds.html:12 view-funds.html:22
+msgid "Mein Jugl-Konto"
+msgstr ""
+
+#: view-user-profile.html:52
+msgid "Mein Kontakt"
+msgstr ""
+
+#: drawer-main.html:33 view-favorites.html:11 view-favorites.html:21
+msgid "Mein Merkzettel"
+msgstr ""
+
+#: view-all-functions.html:33
+msgid "Mein Netzwerk"
+msgstr ""
+
+#: view-profile-update.html:208 view-profile.html:125
+msgid "Mein Paypal"
+msgstr ""
+
+#: view-all-functions.html:34 view-profile-fillup.html:11
+#: view-profile-fillup.html:16 view-profile-update.html:11
+msgid "Mein Profil"
+msgstr ""
+
+#: drawer-main.html:36 view-dashboard.html:689 view-profile.html:11
+#: view-profile.html:21
+msgid "Mein Profil / Meine Daten"
+msgstr ""
+
+#: view-dashboard.html:484 view-trollbox-list.html:42
+msgid "Meine"
+msgstr ""
+
+#: view-activities.html:13 view-activities.html:26 view-activities.html:37
+#: view-all-functions.html:35
+msgid "Meine Aktivitäten"
+msgstr ""
+
+#: view-all-functions.html:36
+msgid "Meine Angebote im Bieterverfahren"
+msgstr ""
+
+#: view-dashboard.html:773 view-offers-advanced-search.html:114
+#: view-offers-index.html:37
+msgid "Meine Anzeigen / Inserat verwalten"
+msgstr ""
+
+#: view-all-functions.html:37
+msgid "Meine Auktionen"
+msgstr ""
+
+#: view-profile-update.html:193 view-profile.html:117
+msgid "Meine Bankverbindung"
+msgstr ""
+
+#: view-profile.html:26
+msgid "Meine Daten ändern"
+msgstr ""
+
+#: view-all-functions.html:24 view-offers-my-requests.html:11
+#: view-offers-my-requests.html:23
+msgid "Meine Gebote"
+msgstr ""
+
+#: controllers/ChatCtrl.js:588 controllers/DashboardCtrl.js:872
+#: controllers/TrollBoxCtrl.js:500 controllers/TrollboxMessageUpdateCtrl.js:168
+msgid "Meine Geo-Position schicken"
+msgstr ""
+
+#: view-all-functions.html:38 view-interests-addstep1.html:16
+#: view-interests-addstep2.html:12 view-interests-addstep3.html:12
+#: view-interests-update.html:12 view-interests.html:1
+msgid "Meine Interessen"
+msgstr ""
+
+#: view-all-functions.html:39
+msgid "Meine Käufe"
+msgstr ""
+
+#: view-all-functions.html:41
+msgid "Meine Suchaufträge"
+msgstr ""
+
+#: view-profile-update.html:190 view-profile.html:115
+msgid "Meine Zahlungsinformationen"
+msgstr ""
+
+#: view-all-functions.html:42
+msgid "Menschliche Suchmaschine"
+msgstr ""
+
+#: layout-main.html:5
+msgid "Menu"
+msgstr ""
+
+#: view-offers-advanced-search-results.html:94 view-offers-details.html:25
+#: view-offers-search-by-user.html:133 view-offers-search.html:99
+#: view-searches-details.html:17 view-searches-search-by-user.html:84
+#: view-searches-search.html:80
+msgid "Merken"
+msgstr ""
+
+#: view-all-functions.html:43 view-dashboard.html:785
+msgid "Merkzettel"
+msgstr ""
+
+#: view-all-functions.html:44
+msgid "Messenger"
+msgstr ""
+
+#: country.html:115
+msgid "Mexico"
+msgstr ""
+
+#: country.html:116
+msgid "Micronesia"
+msgstr ""
+
+#: view-offers-add.html:110 view-searches-add.html:87
+msgid "Minute"
+msgstr ""
+
+#: view-is-working.html:23
+msgid ""
+"Mit anderen Worten - nie wieder Inserat ansehen, die Dich nicht wirklich "
+"interessiert und Du bekommst jetzt auch noch Geld (Jugls) dafür. Ja, das "
+"hast du richtig verstanden. Allein nur für das Ansehen der Inserat bekommst "
+"Du Geld (Jugls). Gehe dazu einfach auf den Button <b>„Inserat lesen / "
+"kaufen“</b>. Wenn Du zusätzlich einen Kauf tätigst, bekommst Du auch noch "
+"einen Kaufbonus gutgeschrieben. Als Firma oder Privatperson hast Du die "
+"Möglichkeit Produkte oder Sachen, die Du verkaufen möchtest, anderen "
+"Mitgliedern anzubieten. Gehe dazu einfach auf den Button <b>„Inserat "
+"schalten / verkaufen“</b>."
+msgstr ""
+
+#: view-trollbox-message-visibility-popup.html:30
+msgid "Mit dem Absenden Deines Posts stimmst Du unseren Forumsregeln zu."
+msgstr ""
+
+#: view-registration-data-old.html:37 view-registration-data.html:31
+#: view-registration-index.html:30
+msgid ""
+"Mit dem Klick auf \"Absenden\" akzeptierst Du unsere <a ng-click="
+"\"openUrlInBrowser(config.urls.nutzungsbedingungen)\">Nutzerbedingungen und "
+"unsere Datenschutzrichtlinien</a>."
+msgstr ""
+
+#: view-become-member.html:62
+msgid ""
+"Mit dem Klick auf \"Absenden\" akzeptierst Du unsere <a ng-click="
+"\"openUrlInBrowser(config.urls.nutzungsbedingungen)\">Nutzerbedingungen</a> "
+"und unsere <a ng-click=\"navigate('view-data-protection-not-login."
+"html')\">Datenschutzrichtlinien</a>."
+msgstr ""
+
+#: view-offers-my-requests.html:208 view-offers-my-requests.html:61
+msgid "Mitbieter"
+msgstr ""
+
+#: view-manage-network.html:25 view-manage-select-destination.html:36
+msgid "Mitglied finden"
+msgstr ""
+
+#: view-team-change-user-search.html:85 view-user-profile.html:79
+msgid "Mitglied seit"
+msgstr ""
+
+#: view-offers-add.html:364 view-offers-draft-update.html:331
+msgid "Mitglied seit (in Tagen)"
+msgstr ""
+
+#: view-become-member-facebook-linking.html:11 view-become-member.html:11
+#: view-become-member.html:28 view-become-member.html:29 view-login.html:28
+#: view-registration-data-old.html:11 view-registration-data-old.html:16
+#: view-registration-data.html:11 view-registration-data.html:16
+#: view-registration-index.html:11 view-registration-index.html:16
+msgid "Mitglied werden"
+msgstr ""
+
+#: drawer-main.html:34 view-dashboard.html:784 view-user-search.html:11
+#: view-user-search.html:21
+msgid "Mitglieder suchen"
+msgstr ""
+
+#: controllers/ContactsCtrl.js:388
+msgid "Mitglieder suchen..."
+msgstr ""
+
+#: view-registration-payment.html:75
+msgid ""
+"Mitglieder, die direkt über jugl.net kommen kannst Du in Dein Netzwerk "
+"aufnehmen."
+msgstr ""
+
+#: view-all-functions.html:45
+msgid "Mitgliedersuche"
+msgstr ""
+
+#: view-dashboard.html:424
+msgid "Mitgliederzahl"
+msgstr ""
+
+#: directives/eventText.js:48
+msgid "Mitgliedschaft jetzt verlängern"
+msgstr ""
+
+#: view-registration-payment.html:12 view-registration-payment.html:123
+#: view-registration-payment.html:19 view-registration-payment.html:59
+#: view-registration-payment.html:85
+msgid "Mitgliedschaft wählen"
+msgstr ""
+
+#: controllers/ChatCtrl.js:471
+msgid "Mochten Sie wirklich diese Kontakt importieren?"
+msgstr ""
+
+#: view-chat.html:216 view-chat.html:222 view-chat.html:50 view-chat.html:55
+#: view-dashboard.html:609 view-dashboard.html:613 view-info-popup.html:111
+#: view-info-popup.html:115 view-trollbox-list.html:201
+#: view-trollbox-list.html:205 view-user-profile.html:546
+#: view-user-profile.html:550
+msgid "Moderator"
+msgstr ""
+
+#: country.html:117
+msgid "Moldova"
+msgstr ""
+
+#: view-deals-completed.html:49
+msgid ""
+"Momentan gibt es noch keine von Dir abgeschlossenen oder dem Filter "
+"entsprechenden Geschäfte."
+msgstr ""
+
+#: country.html:118
+msgid "Monaco"
+msgstr ""
+
+#: view-offers-add.html:239 view-offers-add.html:98
+#: view-offers-draft-update.html:207 view-offers-update-popup.html:21
+#: view-profile-update.html:97 view-profile.html:63 view-searches-add.html:171
+#: view-searches-add.html:75 view-searches-draft-update.html:137
+#: view-trollbox-list.html:64
+msgid "Monat"
+msgstr ""
+
+#: view-offers-bet.html:36 view-offers-bet.html:37
+msgid "Monate"
+msgstr ""
+
+#: country.html:119
+msgid "Mongolia"
+msgstr ""
+
+#: country.html:120
+msgid "Montenegro"
+msgstr ""
+
+#: country.html:121
+msgid "Morocco"
+msgstr ""
+
+#: country.html:122
+msgid "Mozambique"
+msgstr ""
+
+#: country.html:123
+msgid "Myanmar, {Burma}"
+msgstr ""
+
+#: view-become-member.html:45 view-offers-add.html:335
+#: view-offers-draft-update.html:302 view-profile-fillup.html:37
+#: view-profile-update.html:85
+msgid "Männlich"
+msgstr ""
+
+#: controllers/ChatCtrl.js:214
+msgid "Möchten Sie das Audio wirklich senden?"
+msgstr ""
+
+#: controllers/ChatCtrl.js:212
+msgid "Möchten Sie das Bild wirklich senden?"
+msgstr ""
+
+#: controllers/ChatCtrl.js:215
+msgid "Möchten Sie das Kontakt wirklich senden?"
+msgstr ""
+
+#: controllers/ChatCtrl.js:213
+msgid "Möchten Sie das Video wirklich senden?"
+msgstr ""
+
+#: controllers/OfferAddCtrl.js:298 controllers/OfferDraftUpdateCtrl.js:276
+#: controllers/ProfileUpdateCtrl.js:146 controllers/SearchRequestAddCtrl.js:162
+#: controllers/SearchRequestDraftUpdateCtrl.js:153
+#: controllers/SearchRequestOfferAddCtrl.js:203
+#: controllers/SearchRequestOfferAddCtrl.js:218
+msgid "Möchten Sie diese bild löschen?"
+msgstr ""
+
+#: controllers/EventCtrl.js:158
+msgid "Möchten sie wirklich Spammeldung zurücknehmen?"
+msgstr ""
+
+#: controllers/UserProfileCtrl.js:437 controllers/UserProfileCtrl.js:464
+msgid "Möchtest Du  wirklich aus Deinen Kontakten entfernen?"
+msgstr ""
+
+#: controllers/DealsCompletedCtrl.js:77
+#: controllers/SearchRequestMyListCtrl.js:71
+msgid "Möchtest Du Deine Suchanzeige endgültig löschen?"
+msgstr ""
+
+#: controllers/SearchRequestDraftCtrl.js:66
+msgid "Möchtest Du Deinen Suchauftrag endgültig löschen?"
+msgstr ""
+
+#: controllers/ChatCtrl.js:415
+msgid "Möchtest Du wirklich die gewählten Nachrichten löschen?"
+msgstr ""
+
+#: controllers/RegistrationPaymentCtrl.js:25
+msgid ""
+"Möchtest Du wirklich nur das Standard-Paket wählen? Dadurch verzichtest Du "
+"auf viele Vorteile des Premium-Pakets wie z.B. höhere Provisionen und "
+"geringere Abgaben. Bitte beachte, das eine nachträgliche Änderung des "
+"gewählten Pakets möglich ist, jedoch nicht mehr zu diesem Preis."
+msgstr ""
+
+#: view-offers-bet-popup.html:7
+msgid "Möchtest du dein Gebot erhöhen?"
+msgstr ""
+
+#: controllers/InviteLogCtrl.js:112
+msgid "Möchtest du die Einladung löschen?"
+msgstr ""
+
+#: view-searches-my-list.html:99 view-searches-offers-list.html:54
+msgid "NACHRICHT GESENDET"
+msgstr ""
+
+#: controllers/SearchRequestMyListCtrl.js:92
+msgid ""
+"Nachdem Du deine Suchanzeige abschaltest, landet sie unter \"Geschäfte & "
+"Bewertungen\". Möchtest Du die Anzeige wirklich abschalten?"
+msgstr ""
+
+#: view-become-member.html:35 view-profile-fillup.html:35
+#: view-profile-update.html:66 view-profile.html:51
+msgid "Nachname"
+msgstr ""
+
+#: controllers/ChatCtrl.js:220 view-invite-email.html:28
+#: view-invite-whatsapp.html:21 view-searches-offer-details.html:59
+msgid "Nachricht"
+msgstr ""
+
+#: controllers/ChatCtrl.js:184 controllers/DashboardCtrl.js:840
+#: controllers/TrollBoxCtrl.js:468 controllers/TrollboxMessageUpdateCtrl.js:136
+msgid "Nachricht Verschiken"
+msgstr ""
+
+#: view-offers-bet.html:41
+msgid "Nachricht an den Verkäufer"
+msgstr ""
+
+#: view-chat.html:185 view-chat.html:352
+msgid "Nachricht eintippen"
+msgstr ""
+
+#: view-chat.html:130 view-chat.html:296
+msgid "Nachricht entfernen"
+msgstr ""
+
+#: view-offers-details.html:148 view-searches-offer-details.html:88
+#: view-user-profile.html:84
+msgid "Nachricht schreiben"
+msgstr ""
+
+#: view-offers-my.html:197
+msgid "Nachricht senden"
+msgstr ""
+
+#: controllers/SelectContactCtrl.js:28
+msgid "Nachricht weiterleiten"
+msgstr ""
+
+#: view-chat.html:364
+msgid "Nachricht wird aufgenommen"
+msgstr ""
+
+#: layout-main.html:6
+msgid "Nachrichten"
+msgstr ""
+
+#: services/MessengerService.js:29
+msgid "Nachrichten entfernen"
+msgstr ""
+
+#: controllers/ChatCtrl.js:416
+msgid "Nachrichten löschen"
+msgstr ""
+
+#: view-activities.html:61
+msgid "Nachrichten vom Administrator"
+msgstr ""
+
+#: view-chat.html:150 view-chat.html:198 view-chat.html:31 view-chat.html:315
+msgid "Nachrichten werden geladen"
+msgstr ""
+
+#: view-offers-add.html:60 view-offers-draft-update.html:61
+msgid "Nachrichten zulassen"
+msgstr ""
+
+#: country.html:124
+msgid "Namibia"
+msgstr ""
+
+#: country.html:125
+msgid "Nauru"
+msgstr ""
+
+#: drawer-main.html:3
+msgid "Navigation"
+msgstr ""
+
+#: directives/eventText.js:26 view-manage-network-confirm-popup.html:14
+msgid "Nein"
+msgstr ""
+
+#: services/ModalService.js:74
+msgid "Nein, beim aktuellen Teamleiter bleiben"
+msgstr ""
+
+#: country.html:126
+msgid "Nepal"
+msgstr ""
+
+#: country.html:127
+msgid "Netherlands"
+msgstr ""
+
+#: view-dashboard.html:469
+msgid "Netzwerk anzeigen"
+msgstr ""
+
+#: view-dashboard.html:78 view-invite-my-list.html:13
+#: view-invite-my-list.html:21
+msgid "Netzwerk aufbauen"
+msgstr ""
+
+#: view-all-functions.html:47
+msgid "Netzwerk erweitern"
+msgstr ""
+
+#: drawer-main.html:37 view-manage-network.html:11 view-manage-network.html:20
+msgid "Netzwerk verwalten"
+msgstr ""
+
+#: view-user-profile.html:78
+msgid "Netzwerktiefe (Level)"
+msgstr ""
+
+#: view-chat.html:211 view-chat.html:44
+msgid "Neu"
+msgstr ""
+
+#: view-offers-my.html:32
+msgid "Neu Kaufinteresse"
+msgstr ""
+
+#: view-profile-update.html:83
+msgid "Neu Passwort wiederholung"
+msgstr ""
+
+#: view-dashboard.html:436 view-new-user-network.html:12
+#: view-new-user-network.html:18
+msgid "Neu in deinem Netzwerk"
+msgstr ""
+
+#: view-activities.html:78
+msgid "Neue Beiträge im Forum"
+msgstr ""
+
+#: view-activities.html:79
+msgid "Neue Beiträge im Jugl-Wiki"
+msgstr ""
+
+#: view-dashboard.html:430
+msgid "Neue Mitglieder anzeigen"
+msgstr ""
+
+#: view-users-new.html:11 view-users-new.html:22
+msgid "Neue Mitglieder heute"
+msgstr ""
+
+#: view-activities.html:77
+msgid "Neue Mitglieder im Team"
+msgstr ""
+
+#: view-dashboard.html:64
+msgid "Neue Videoidents"
+msgstr ""
+
+#: view-interests-update.html:55 view-interests-update.html:63
+msgid "Neues Interesse hinzufügen"
+msgstr ""
+
+#: view-offers-my.html:158
+msgid "Neues Kaufinteresse"
+msgstr ""
+
+#: view-dashboard.html:213
+msgid "Neueste werbung"
+msgstr ""
+
+#: view-info-popup.html:44
+msgid "New"
+msgstr ""
+
+#: country.html:128
+msgid "New Zealand"
+msgstr ""
+
+#: view-news.html:11 view-news.html:22
+msgid "News"
+msgstr ""
+
+#: country.html:129
+msgid "Nicaragua"
+msgstr ""
+
+#: view-user-profile.html:122
+msgid "Nickname"
+msgstr ""
+
+#: country.html:130
+msgid "Niger"
+msgstr ""
+
+#: country.html:131
+msgid "Nigeria"
+msgstr ""
+
+#: view-dashboard.html:470
+msgid "Noch mehr Freunde einladen"
+msgstr ""
+
+#: view-deals-completed.html:134 view-deals-completed.html:218
+#: view-deals-completed.html:306 view-deals-completed.html:35
+#: view-deals-completed.html:383
+msgid "Noch nicht bewertet"
+msgstr ""
+
+#: country.html:132
+msgid "Norway"
+msgstr ""
+
+#: view-searches-offer-add.html:73
+msgid ""
+"Nun hast Du die Möglichkeit, weitere Bilder und Informationen anzuhängen, "
+"die dem Suchenden zunächst unleserlich angezeigt werden. Wenn er dein "
+"Angebot annimmt, erhältst du Deinen Vermittlungsbonus und er kann alles "
+"sehen."
+msgstr ""
+
+#: view-offers-my.html:124
+msgid "Nur abgelaufene"
+msgstr ""
+
+#: view-offers-my.html:123
+msgid "Nur aktive"
+msgstr ""
+
+#: view-profile-update.html:108 view-profile-update.html:120
+#: view-profile-update.html:138 view-profile-update.html:149
+#: view-profile-update.html:163 view-profile-update.html:177
+#: view-profile.html:102 view-profile.html:110 view-profile.html:67
+#: view-profile.html:76 view-profile.html:86 view-profile.html:94
+msgid "Nur für Kontakte sichtbar"
+msgstr ""
+
+#: controllers/OfferAddCtrl.js:90 controllers/OfferDraftUpdateCtrl.js:92
+msgid "Nur mit Werbebudget möglich"
+msgstr ""
+
+#: view-dashboard.html:609 view-dashboard.html:613 view-info-popup.html:111
+#: view-info-popup.html:115 view-trollbox-list.html:201
+#: view-trollbox-list.html:205 view-user-profile.html:546
+#: view-user-profile.html:550
+msgid "Nutzer"
+msgstr ""
+
+#: view-searches-add.html:38 view-searches-draft-update.html:40
+msgid "Nutzer mit ähnlichen Interessen"
+msgstr ""
+
+#: view-offers-add.html:30 view-offers-add.html:404
+#: view-offers-draft-update.html:31 view-offers-draft-update.html:371
+msgid "Nutzer-/Kundenkreis:"
+msgstr ""
+
+#: view-team-change-user-search.html:28 view-user-search.html:51
+msgid "Nutzername"
+msgstr ""
+
+#: view-videos-details.html:60
+msgid "Nächstes Video:"
+msgstr ""
+
+#: view-searches-details.html:74
+msgid "ORT"
+msgstr ""
+
+#: view-interests-addstep3.html:38
+msgid "Oder"
+msgstr ""
+
+#: view-start-popup.html:15
+msgid ""
+"Oder Du fragst denjenigen, der Dich zu Jugl.net eingeladen hat.<br>Sollte "
+"auch das nicht helfen, komme einfach zu uns ins Jugl-Forum, dort werden wir "
+"gerne all Deine Fragen beantworten."
+msgstr ""
+
+#: view-how-it-works.html:15
+msgid ""
+"Oder kurz erklärt „JuglApp“ beinhaltet drei Themenbereiche mit denen Du Geld "
+"verdienen kannst:"
+msgstr ""
+
+#: view-invite-log.html:28
+msgid "Offen"
+msgstr ""
+
+#: view-offers-add.html:50 view-offers-draft-update.html:51
+#: view-offers-search-by-user.html:45 view-offers-search.html:45
+#: view-searches-filter.html:74
+msgid "Ohne Kaufmöglichkeit"
+msgstr ""
+
+#: view-offers-add.html:283 view-offers-draft-update.html:250
+msgid "Ohne Werbebonus"
+msgstr ""
+
+#: controllers/ChatCtrl.js:471 controllers/UserProfileCtrl.js:336
+#: services/InviteService.js:47 services/ModalService.js:39
+msgid "Ok"
+msgstr ""
+
+#: country.html:133
+msgid "Oman"
+msgstr ""
+
+#: view-offer-pay.html:106 view-offer-pay.html:119 view-offers-add.html:213
+#: view-offers-add.html:346 view-offers-advanced-search.html:60
+#: view-offers-draft-update.html:181 view-offers-draft-update.html:313
+#: view-profile-fillup.html:39 view-profile-update.html:127
+#: view-profile.html:82 view-searches-add.html:136 view-searches-add.html:147
+#: view-searches-details.html:78 view-searches-draft-update.html:102
+#: view-searches-draft-update.html:113
+msgid "Ort"
+msgstr ""
+
+#: view-offers-add.html:220 view-offers-draft-update.html:188
+msgid "Ort:"
+msgstr ""
+
+#: view-offers-add.html:345 view-offers-draft-update.html:312
+#: view-searches-add.html:146 view-searches-details.html:77
+#: view-searches-draft-update.html:112
+msgid "PLZ"
+msgstr ""
+
+#: view-team-change-user-search.html:29 view-user-profile.html:128
+#: view-user-search.html:52
+msgid "PLZ / Ort"
+msgstr ""
+
+#: view-offers-add.html:219 view-offers-draft-update.html:187
+msgid "PLZ*:"
+msgstr ""
+
+#: controllers/RegistrationPaymentCtrl.js:26
+msgid "Paket wählen"
+msgstr ""
+
+#: country.html:134
+msgid "Pakistan"
+msgstr ""
+
+#: country.html:135
+msgid "Palau"
+msgstr ""
+
+#: country.html:136
+msgid "Panama"
+msgstr ""
+
+#: country.html:137
+msgid "Papua New Guinea"
+msgstr ""
+
+#: country.html:138
+msgid "Paraguay"
+msgstr ""
+
+#: view-user-profile.html:103 view-user-profile.html:104
+#: view-user-profile.html:106
+msgid "Pass / Ausweis"
+msgstr ""
+
+#: view-become-member-facebook-linking.html:37 view-become-member.html:37
+#: view-become-member.html:73 view-login.html:21
+#: view-registration-data-old.html:21 view-registration-data.html:21
+msgid "Passwort"
+msgstr ""
+
+#: view-profile-update.html:81
+msgid "Passwort Alt"
+msgstr ""
+
+#: view-profile-update.html:82
+msgid "Passwort Neu"
+msgstr ""
+
+#: view-become-member-facebook-linking.html:21 view-become-member.html:21
+msgid "Passwort des Jugl Kontos"
+msgstr ""
+
+#: view-login.html:23
+msgid "Passwort vergessen"
+msgstr ""
+
+#: view-become-member.html:39
+msgid "Passwort wiederholen"
+msgstr ""
+
+#: controllers/RegistrationPaymentCtrl.js:50
+msgid "Payment error, please try again"
+msgstr ""
+
+#: controllers/RegistrationPaymentCtrl.js:61
+msgid "Payment failed, please try another payment method"
+msgstr ""
+
+#: controllers/RegistrationPaymentCtrl.js:56
+msgid "Payment processed successfully"
+msgstr ""
+
+#: view-offers-add.html:200 view-offers-draft-update.html:166
+msgid "Paypal"
+msgstr ""
+
+#: view-offer-pay.html:36
+msgid "Per Banküberweisung an"
+msgstr ""
+
+#: view-invite-email.html:18 view-invite-me-by-email.html:17
+#: view-invite.html:23
+msgid "Per E-Mail einladen"
+msgstr ""
+
+#: view-invite-me-by-sms.html:9 view-invite-sms-send.html:9 view-invite.html:22
+msgid "Per SMS einladen"
+msgstr ""
+
+#: view-invite-me-by-sms.html:15
+msgid "Per SMS einladen *"
+msgstr ""
+
+#: view-invite-whatsapp.html:18 view-invite.html:24
+msgid "Per Whatsapp einladen"
+msgstr ""
+
+#: view-profile-update.html:63 view-profile.html:47 view-user-profile.html:119
+msgid "Persönliche Daten"
+msgstr ""
+
+#: view-all-functions.html:48
+msgid "Persönliche Daten bearbeiten"
+msgstr ""
+
+#: country.html:139
+msgid "Peru"
+msgstr ""
+
+#: country.html:140
+msgid "Philippines"
+msgstr ""
+
+#: controllers/ChatCtrl.js:586 controllers/DashboardCtrl.js:870
+#: controllers/TrollBoxCtrl.js:498 controllers/TrollboxMessageUpdateCtrl.js:166
+msgid "Photo Aufnehmen"
+msgstr ""
+
+#: controllers/InviteSmsContactsCtrl.js:28
+msgid "Please select contacts"
+msgstr ""
+
+#: controllers/InviteMeBySmsCtrl.js:10 controllers/InviteSmsSendCtrl.js:19
+msgid "Please specify invitation text"
+msgstr ""
+
+#: view-offer-pay.html:105 view-offer-pay.html:118 view-profile-update.html:126
+#: view-profile.html:81
+msgid "Plz"
+msgstr ""
+
+#: country.html:141
+msgid "Poland"
+msgstr ""
+
+#: country.html:142
+msgid "Portugal"
+msgstr ""
+
+#: view-dashboard.html:273 view-dashboard.html:365 view-dashboard.html:366
+#: view-offer-pay.html:20 view-offers-advanced-search-results.html:114
+#: view-offers-advanced-search.html:36 view-offers-details.html:63
+#: view-offers-my-requests.html:274 view-offers-preview.html:50
+#: view-offers-search-by-user.html:153 view-offers-search.html:122
+#: view-searches-add.html:125 view-searches-draft-update.html:91
+#: view-searches-offer-add.html:69 view-searches-offer-details.html:55
+msgid "Preis"
+msgstr ""
+
+#: view-offers-add.html:149 view-offers-draft-update.html:115
+msgid "Preis eingeben*"
+msgstr ""
+
+#: view-searches-details.html:25 view-searches-details.html:26
+msgid "Preise"
+msgstr ""
+
+#: view-dashboard.html:274 view-offers-advanced-search-results.html:115
+#: view-offers-details.html:62 view-offers-preview.html:49
+#: view-offers-search-by-user.html:154 view-offers-search.html:123
+#: view-searches-search.html:90 view-searches-search.html:91
+msgid "Preisvorstellung"
+msgstr ""
+
+#: view-offers-add.html:156 view-offers-draft-update.html:122
+msgid "Preisvorstellung eingeben*"
+msgstr ""
+
+#: view-registration-payment.html:65
+msgid "Premium"
+msgstr ""
+
+#: view-offers-add.html:328 view-offers-draft-update.html:295
+msgid "Premium-Mitglieder"
+msgstr ""
+
+#: view-dashboard.html:32
+msgid "Premium-upgrade hier klicken"
+msgstr ""
+
+#: view-registration-payment.html:31
+msgid "PremiumPlus"
+msgstr ""
+
+#: view-all-functions.html:49
+msgid "Privatsphäreeinstellungen"
+msgstr ""
+
+#: controllers/UserProfileCtrl.js:256 controllers/UserProfileCtrl.js:270
+#: controllers/UserProfileCtrl.js:282 controllers/UserProfileCtrl.js:294
+msgid "Processing request"
+msgstr ""
+
+#: view-user-profile.html:24
+msgid "Profil / Daten / Kontodaten bearbeiten"
+msgstr ""
+
+#: view-dashboard.html:692
+msgid "Profil ausgefüllt zu"
+msgstr ""
+
+#: app.js:335 view-profile-update.html:184
+msgid "Profil löschen"
+msgstr ""
+
+#: view-profile-fillup.html:29 view-profile-update.html:27
+msgid "Profilbild hochladen"
+msgstr ""
+
+#: view-all-functions.html:50
+msgid "Profilbild hochladen/ändern"
+msgstr ""
+
+#: view-dashboard.html:700
+msgid "Profile / Daten bearbeiten"
+msgstr ""
+
+#: view-dashboard.html:70
+msgid "Push- / Tonbenachrichtigungen"
+msgstr ""
+
+#: country.html:143
+msgid "Qatar"
+msgstr ""
+
+#: view-searches-filter.html:60 view-searches-search-by-user.html:45
+#: view-searches-search.html:45
+msgid "Rating"
+msgstr ""
+
+#: view-all-functions.html:51
+msgid "Rechercheauftrag annehmen"
+msgstr ""
+
+#: view-become-member.html:32
+msgid "Registrieren mit Facebook"
+msgstr ""
+
+#: view-invite-log.html:30
+msgid "Registriert"
+msgstr ""
+
+#: view-searches-filter.html:58 view-searches-search-by-user.html:43
+#: view-searches-search.html:43
+msgid "Relevance"
+msgstr ""
+
+#: view-offers-details.html:41 view-offers-search-by-user.html:131
+#: view-offers-search-by-user.html:52 view-offers-search.html:52
+#: view-offers-search.html:97 view-searches-filter.html:85
+#: view-searches-my-offers.html:55 view-searches-search-by-user.html:83
+#: view-searches-search.html:79
+msgid "Relevanz"
+msgstr ""
+
+#: controllers/ChatCtrl.js:184 controllers/DashboardCtrl.js:840
+#: controllers/OfferAdvancedSearchCtrl.js:38 controllers/TrollBoxCtrl.js:468
+#: controllers/TrollboxMessageUpdateCtrl.js:136
+msgid "Retrieving geolocation"
+msgstr ""
+
+#: country.html:144
+msgid "Romania"
+msgstr ""
+
+#: country.html:145
+msgid "Russian Federation"
+msgstr ""
+
+#: country.html:146
+msgid "Rwanda"
+msgstr ""
+
+#: view-invite-me-by-sms.html:24 view-invite-sms-send.html:26
+msgid "SMS verschicken"
+msgstr ""
+
+#: country.html:149
+msgid "Saint Vincent & the Grenadines"
+msgstr ""
+
+#: country.html:150
+msgid "Samoa"
+msgstr ""
+
+#: country.html:151
+msgid "San Marino"
+msgstr ""
+
+#: country.html:152
+msgid "Sao Tome & Principe"
+msgstr ""
+
+#: country.html:153
+msgid "Saudi Arabia"
+msgstr ""
+
+#: view-advertising-view-bonus-popup.html:18 view-info-popup.html:150
+#: view-video-identification-popup.html:75 view-votes-info-popup.html:49
+#: view-votes-trollbox-popup.html:50
+msgid "Schließen"
+msgstr ""
+
+#: view-team-change-request-popup.html:10
+msgid ""
+"Schreibe hier einen Text, warum Du in das Team aufgenommen werden willst"
+msgstr ""
+
+#: view-advertising-view-bonus-popup.html:13
+#: view-offers-details-view-bonus-popup.html:20
+#: view-videos-details-view-bonus-popup.html:20
+msgid "Sekunden"
+msgstr ""
+
+#: view-chat.html:182 view-chat.html:349
+msgid "Send"
+msgstr ""
+
+#: controllers/ChatCtrl.js:220 controllers/ChatCtrl.js:347
+#: controllers/ChatCtrl.js:582 controllers/DashboardCtrl.js:224
+#: controllers/DashboardCtrl.js:782 controllers/DashboardCtrl.js:866
+#: controllers/InfoPopupCtrl.js:83 controllers/InfoPopupOldCtrl.js:80
+#: controllers/TrollBoxCtrl.js:290 controllers/TrollBoxCtrl.js:410
+#: controllers/TrollBoxCtrl.js:494 controllers/TrollboxMessageUpdateCtrl.js:162
+#: controllers/TrollboxMessageUpdateCtrl.js:79
+#: view-send-contact-details.html:58
+msgid "Senden"
+msgstr ""
+
+#: controllers/InviteLogCtrl.js:79 controllers/InviteMeBySmsCtrl.js:21
+#: controllers/InviteSmsSendCtrl.js:32
+msgid "Sending SMS"
+msgstr ""
+
+#: country.html:154
+msgid "Senegal"
+msgstr ""
+
+#: country.html:155
+msgid "Serbia"
+msgstr ""
+
+#: country.html:156
+msgid "Seychelles"
+msgstr ""
+
+#: view-offers-add.html:344 view-offers-draft-update.html:311
+msgid "Sichtbarkeit räumlich einschränken:"
+msgstr ""
+
+#: services/ChatUploader.js:27
+msgid ""
+"Sie können nur die Bilder mit folgenden Erweiterungen hochladen: .JPG, ."
+"JPEG, .PNG"
+msgstr ""
+
+#: country.html:157
+msgid "Sierra Leone"
+msgstr ""
+
+#: country.html:158
+msgid "Singapore"
+msgstr ""
+
+#: view-team-change-user-search.html:54 view-user-search.html:85
+msgid "Single"
+msgstr ""
+
+#: country.html:159
+msgid "Slovakia"
+msgstr ""
+
+#: country.html:160
+msgid "Slovenia"
+msgstr ""
+
+#: view-all-functions.html:52 view-dashboard.html:795 view-is-working.html:15
+#: view-is-working.html:9
+msgid "So funktioniert Jugl"
+msgstr ""
+
+#: view-login.html:29
+msgid "So funktioniert es"
+msgstr ""
+
+#: view-dashboard.html:262 view-offers-advanced-search-results.html:103
+#: view-offers-details.html:116 view-offers-details.html:31
+#: view-offers-draft.html:47 view-offers-my.html:38 view-offers-my.html:73
+#: view-offers-preview.html:101 view-offers-preview.html:19
+#: view-offers-search-by-user.html:142 view-offers-search-by-user.html:43
+#: view-offers-search.html:111 view-offers-search.html:43
+#: view-searches-filter.html:72
+msgid "Sofortkauf"
+msgstr ""
+
+#: view-offers-add.html:51 view-offers-draft-update.html:52
+msgid "Sofortkauf (mit Kaufbonus und Provision)"
+msgstr ""
+
+#: view-registration-payment.html:98
+msgid "Sofortüberweisung"
+msgstr ""
+
+#: country.html:161
+msgid "Solomon Islands"
+msgstr ""
+
+#: country.html:162
+msgid "Somalia"
+msgstr ""
+
+#: view-search-request-offer-reject-popup.html:31
+msgid "Sonstiges"
+msgstr ""
+
+#: view-trollbox-list.html:69
+msgid "Sortieren"
+msgstr ""
+
+#: view-offers-my.html:129 view-offers-search-by-user.html:50
+#: view-offers-search.html:50 view-searches-filter.html:55
+#: view-searches-search-by-user.html:41 view-searches-search.html:41
+msgid "Sortieren nach"
+msgstr ""
+
+#: view-searches-filter.html:82
+msgid "Sortieren nach:"
+msgstr ""
+
+#: country.html:163
+msgid "South Africa"
+msgstr ""
+
+#: country.html:164
+msgid "South Sudan"
+msgstr ""
+
+#: country.html:165
+msgid "Spain"
+msgstr ""
+
+#: view-offers-details.html:156 view-searches-details.html:148
+msgid "Spam gemeldet"
+msgstr ""
+
+#: view-chat.html:158 view-chat.html:323 view-offers-details.html:155
+#: view-searches-details.html:147
+msgid "Spam melden"
+msgstr ""
+
+#: directives/eventText.js:32
+msgid "Spammeldung zurücknehmen"
+msgstr ""
+
+#: view-offers-update-popup.html:44 view-profile-update.html:251
+#: view-trollbox-message-update-popup.html:56
+#: view-user-country-update-popup.html:15
+msgid "Speichern"
+msgstr ""
+
+#: view-profile-update.html:67 view-profile.html:52
+msgid "Spitzname"
+msgstr ""
+
+#: controllers/SearchRequestOfferDetailsCtrl.js:34
+msgid "Später aufladen"
+msgstr ""
+
+#: view-invite-friends-popup.html:19 view-profile-fillup.html:58
+#: view-validation-phone-popup.html:13
+msgid "Später erinnern"
+msgstr ""
+
+#: country.html:166
+msgid "Sri Lanka"
+msgstr ""
+
+#: country.html:147
+msgid "St Kitts & Nevis"
+msgstr ""
+
+#: country.html:148
+msgid "St Lucia"
+msgstr ""
+
+#: view-offers-my.html:94
+msgid "Starten"
+msgstr ""
+
+#: drawer-main.html:5 view-dashboard.html:12
+msgid "Startseite"
+msgstr ""
+
+#: view-offers-my.html:28
+msgid "Status Angebote"
+msgstr ""
+
+#: view-offers-bet.html:28 view-offers-bet.html:29 view-offers-bet.html:30
+#: view-offers-bet.html:31 view-offers-bet.html:32
+msgid "Std."
+msgstr ""
+
+#: view-trollbox-list.html:253 view-video-identification-popup.html:30
+msgid "Stimmen"
+msgstr ""
+
+#: view-offers-my.html:93
+msgid "Stoppen"
+msgstr ""
+
+#: view-offer-pay.html:103 view-offer-pay.html:116
+msgid "Strasse"
+msgstr ""
+
+#: view-profile-fillup.html:40 view-profile-update.html:114
+#: view-profile.html:72
+msgid "Straße"
+msgstr ""
+
+#: view-user-profile.html:129
+msgid "Straße / Haus-Nr."
+msgstr ""
+
+#: view-searches-add.html:148 view-searches-details.html:79
+#: view-searches-draft-update.html:114
+msgid "Straße/Nr."
+msgstr ""
+
+#: view-offers-add.html:221 view-offers-draft-update.html:189
+msgid "Straße/Nr.:"
+msgstr ""
+
+#: view-offers-add.html:106 view-searches-add.html:83
+msgid "Stunde"
+msgstr ""
+
+#: view-dashboard.html:279 view-offers-advanced-search-results.html:120
+#: view-offers-details.html:93 view-offers-draft.html:68
+#: view-offers-my.html:104 view-offers-preview.html:78
+#: view-offers-search-by-user.html:159 view-offers-search.html:128
+msgid "Stückzahl"
+msgstr ""
+
+#: view-offers-add.html:172 view-offers-draft-update.html:138
+msgid "Stückzahl angeben*"
+msgstr ""
+
+#: view-offers-add.html:176 view-offers-draft-update.html:142
+msgid "Stückzahl anzeigen"
+msgstr ""
+
+#: view-favorites.html:59
+msgid "Suchanzeige"
+msgstr ""
+
+#: view-all-functions.html:53 view-interests-addstep3.html:43
+msgid "Suchanzeige aufgeben"
+msgstr ""
+
+#: view-dashboard.html:778 view-searches-index.html:25
+msgid "Suchauftrag erstellen"
+msgstr ""
+
+#: view-earn-money.html:40
+msgid "Suchauftrag erstellen / recherchieren"
+msgstr ""
+
+#: view-searches-index.html:15 view-searches-index.html:5
+msgid "Suchauftrag erstellen / recherchieren / vermitteln"
+msgstr ""
+
+#: drawer-main.html:20
+msgid "Suchauftrag erstellen / recherchieren / vermitteln / Interessen angeben"
+msgstr ""
+
+#: view-activities.html:73
+msgid "Suchauftrag erstellt"
+msgstr ""
+
+#: view-favorites.html:28
+msgid "Suchaufträge"
+msgstr ""
+
+#: view-searches-filter.html:105
+msgid "Suche"
+msgstr ""
+
+#: view-dashboard.html:426 view-offers-advanced-search.html:29
+#: view-team-change-user-search.html:62 view-user-search.html:92
+msgid "Suchen"
+msgstr ""
+
+#: view-offers-index.html:26
+msgid "Suchen / Interessen angeben"
+msgstr ""
+
+#: country.html:167
+msgid "Sudan"
+msgstr ""
+
+#: country.html:168
+msgid "Suriname"
+msgstr ""
+
+#: country.html:169
+msgid "Swaziland"
+msgstr ""
+
+#: country.html:170
+msgid "Sweden"
+msgstr ""
+
+#: country.html:3
+msgid "Switzerland"
+msgstr ""
+
+#: country.html:171
+msgid "Syria"
+msgstr ""
+
+#: view-offers-add.html:233 view-offers-add.html:94
+#: view-offers-draft-update.html:201 view-offers-update-popup.html:14
+#: view-profile-update.html:93 view-profile.html:62 view-searches-add.html:167
+#: view-searches-add.html:71 view-searches-draft-update.html:133
+msgid "Tag"
+msgstr ""
+
+#: view-offer-pay.html:22 view-offers-add.html:184 view-offers-bet.html:33
+#: view-offers-details.html:94 view-offers-draft-update.html:150
+#: view-offers-preview.html:79
+msgid "Tage"
+msgstr ""
+
+#: country.html:172
+msgid "Taiwan"
+msgstr ""
+
+#: country.html:173
+msgid "Tajikistan"
+msgstr ""
+
+#: country.html:174
+msgid "Tanzania"
+msgstr ""
+
+#: view-user-profile.html:305
+msgid "Team"
+msgstr ""
+
+#: view-team-change-user-search.html:11 view-team-change-user-search.html:16
+msgid "Team wechseln"
+msgstr ""
+
+#: view-team-change-request-popup.html:8 view-team-change-request-popup2.html:8
+msgid "Teamanfrage an"
+msgstr ""
+
+#: directives/eventText.js:34
+msgid "Teamanfragen erlauben"
+msgstr ""
+
+#: directives/eventText.js:34
+msgid "Teamanfragen stoppen"
+msgstr ""
+
+#: view-user-become-member-invitations.html:33
+msgid "Teamleaderbewertung"
+msgstr ""
+
+#: view-team-change-user-search.html:94
+msgid "Teamleaderbewertungen ansehen"
+msgstr ""
+
+#: view-user-profile.html:159
+msgid "Teamleaderbewertungen anzeigen"
+msgstr ""
+
+#: view-user-profile.html:364
+msgid "Teamleading bewerten"
+msgstr ""
+
+#: view-activities.html:62 view-dashboard.html:38 view-user-profile.html:305
+msgid "Teamwechsel"
+msgstr ""
+
+#: view-team-change-user-search.html:105
+msgid "Teamwechsel anfragen"
+msgstr ""
+
+#: view-team-change-user-search.html:104
+msgid "Teamwechsel bereits angefragt"
+msgstr ""
+
+#: view-user-profile.html:361
+msgid "Teamwechsel bereits beantragt"
+msgstr ""
+
+#: view-profile-update.html:79 view-profile.html:54
+msgid "Telefon"
+msgstr ""
+
+#: view-user-profile.html:100 view-user-profile.html:97
+#: view-user-profile.html:98
+msgid "Telefonnummer"
+msgstr ""
+
+#: view-invite-email.html:28 view-invite-me-by-email.html:21
+#: view-invite-me-by-sms.html:20 view-invite-sms-send.html:20
+#: view-invite-whatsapp.html:21
+msgid "Text"
+msgstr ""
+
+#: view-dashboard.html:527 view-info-popup.html:39 view-trollbox-list.html:125
+#: view-trollbox-message-update-popup.html:30
+msgid "Text eingeben"
+msgstr ""
+
+#: country.html:175
+msgid "Thailand"
+msgstr "Thailand"
+
+#: view-interests.html:1 view-offers-search-by-user.html:33
+#: view-offers-search.html:33 view-searches-filter.html:39
+#: view-searches-search-by-user.html:33 view-searches-search.html:33
+msgid "Themenfilter"
+msgstr "thèmes de filtre"
+
+#: view-offers-add.html:119 view-offers-draft-update.html:85
+msgid "Titel eingeben*"
+msgstr "Entrez le titre *"
+
+#: country.html:176
+msgid "Togo"
+msgstr "Togo"
+
+#: controllers/FundsCtrl.js:280 view-funds.html:208
+msgid "Tokens"
+msgstr ""
+
+#: view-funds.html:200
+msgid "Tokens festgelegt"
+msgstr ""
+
+#: view-funds.html:27
+msgid "Tokentransaktionen"
+msgstr ""
+
+#: view-settings.html:40
+msgid "Toneinstellungen"
+msgstr "paramètres de son"
+
+#: country.html:177
+msgid "Tonga"
+msgstr ""
+
+#: view-funds.html:63
+msgid "Transaktionsübersicht"
+msgstr "Résumé de la transaction"
+
+#: country.html:178
+msgid "Trinidad & Tobago"
+msgstr "Trinidad et Tobago"
+
+#: country.html:179
+msgid "Tunisia"
+msgstr "Tunisie"
+
+#: country.html:180
+msgid "Turkey"
+msgstr "Turkie"
+
+#: country.html:181
+msgid "Turkmenistan"
+msgstr "Turkmenistan"
+
+#: country.html:182
+msgid "Tuvalu"
+msgstr "tuvalu"
+
+#: view-offers-add.html:49 view-offers-draft-update.html:50
+msgid "Typ auswählen"
+msgstr "Sélectionnez le type"
+
+#: view-funds.html:213
+msgid "Typ der Auszahlung ändern"
+msgstr ""
+
+#: view-offers-details.html:113 view-offers-preview.html:98
+msgid "Typ der Inserat"
+msgstr "type de publicité"
+
+#: view-offers-add.html:44 view-offers-draft-update.html:45
+msgid "Typ der Inserat*"
+msgstr "type de publicité*"
+
+#: view-deals-completed.html:27
+msgid "Typ des Handels"
+msgstr "type de commerce"
+
+#: country.html:183
+msgid "Uganda"
+msgstr "Uganda"
+
+#: view-dashboard.html:119 view-dashboard.html:150 view-dashboard.html:609
+#: view-dashboard.html:613 view-info-popup.html:111 view-info-popup.html:115
+#: view-invite-my-list.html:60 view-trollbox-list.html:201
+#: view-trollbox-list.html:205 view-user-become-member-invitations.html:25
+#: view-user-profile.html:546 view-user-profile.html:550
+msgid "Uhr"
+msgstr "montre"
+
+#: country.html:184
+msgid "Ukraine"
+msgstr "Ukraine"
+
+#: app.js:344 app.js:350 controllers/AllFunctionsCtrl.js:8
+msgid ""
+"Um Dein Profil zu löschen, stelle bitte einen schriftlichen Antrag auf "
+"Löschung mit der eMail Adresse mit der Du Dich registriert hast. Bitte mit "
+"Vor- und Nachnamen, vollständiger Anschrift und deiner Unterschrift an "
+"juglapp@gmx.de. Wir bitten um Verständnis, dass wir dies fordern, um "
+"Missbrauch zu vermeiden."
+msgstr ""
+"Pour supprimer votre profil, veuillez soumettre une demande écrite de "
+"suppression avec l'adresse e-mail avec laquelle vous vous êtes inscrit. S'il "
+"vous plaît avec le prénom et le nom, l'adresse complète et votre signature à "
+"juglapp@gmx.de. Nous demandons votre compréhension que nous demandons cela "
+"pour éviter les abus."
+
+#: controllers/TrollboxMessageVisibilityCtrl.js:25
+msgid ""
+"Um Deinen ersten Post bei uns veröffentlichen zu können musst Du Dich zuerst "
+"mittels Video durch unsere Community verifizieren lassen."
+msgstr ""
+
+#: view-add-video-identification.html:24
+msgid ""
+"Um die Videoidentifikation starten zu können, stimmen Sie den AGB zu und "
+"bestätigen, dass Sie die Datenschutzerklärung gelesen haben und klicken Sie "
+"auf den Button „Jetzt Video aufnehmen“."
+msgstr ""
+
+#: view-offers-advanced-search.html:69
+msgid "Umkreissuche"
+msgstr "zone de recherche"
+
+#: view-registration-payment.html:74
+msgid "Unbegrenzt Mitglieder werben für Level 1. (Freigabe nach Prüfung)"
+msgstr ""
+
+#: country.html:185
+msgid "United Arab Emirates"
+msgstr ""
+
+#: country.html:186
+msgid "United Kingdom"
+msgstr "Grande bretagne"
+
+#: country.html:187
+msgid "United States"
+msgstr "Amérique"
+
+#: view-registration-payment.html:119
+msgid ""
+"Unser Tipp: Für nur einmalig 3 € kannst du alle Vorteile von JuglApp "
+"uneingeschränkt nutzen und Du unterstützt unsere Gemeinschaft und somit Dein "
+"eigenes wirtschaftliches Netzwerk."
+msgstr ""
+"Notre conseil: Pour seulement 3 €, vous pouvez profiter pleinement de tous "
+"les avantages de JuglApp et vous soutenez notre communauté et donc votre "
+"propre réseau économique."
+
+#: view-dashboard.html:705
+msgid "Unsere News"
+msgstr "Nos nouvelles"
+
+#: view-offers-search-by-user.html:32 view-offers-search.html:32
+#: view-searches-filter.html:32 view-searches-search-by-user.html:32
+#: view-searches-search.html:32
+msgid "Unterkategorie"
+msgstr "sous-catégorie"
+
+#: view-interests.html:1
+msgid "Unterkategorien"
+msgstr "sous-catégories"
+
+#: view-profile-update.html:38
+msgid "Upgrade"
+msgstr ""
+
+#: controllers/ChatCtrl.js:32 controllers/SearchRequestAddCtrl.js:16
+#: controllers/SearchRequestDraftUpdateCtrl.js:14
+msgid "Upload error. Please try again"
+msgstr ""
+
+#: country.html:188
+msgid "Uruguay"
+msgstr ""
+
+#: view-user-profile.html:12
+msgid "User Profil"
+msgstr "Le profil du membre"
+
+#: country.html:189
+msgid "Uzbekistan"
+msgstr "Uzbekistan"
+
+#: country.html:190
+msgid "Vanuatu"
+msgstr "vanuatu"
+
+#: country.html:191
+msgid "Vatican City"
+msgstr "Vatican"
+
+#: country.html:192
+msgid "Venezuela"
+msgstr "Venezuela"
+
+#: view-offers-details.html:151
+msgid "Verbindlich bieten"
+msgstr "Offre contraignante"
+
+#: view-funds.html:50
+msgid "Verdienst dieses Jahres"
+msgstr "bénéfices cette année"
+
+#: view-funds.html:47
+msgid "Verdienst dieses Monats"
+msgstr "bénéfices ce mois"
+
+#: view-funds.html:44
+msgid "Verdienst gestern"
+msgstr "bénéfices d'hier"
+
+#: view-funds.html:41
+msgid "Verdienst heute"
+msgstr "bénéfices d'aujourd'hui"
+
+#: view-funds.html:53
+msgid "Verdienst seit Registrierung"
+msgstr "bénéfices depuis la régistration"
+
+#: view-offers-add.html:380 view-offers-draft-update.html:347
+msgid ""
+"Verhältnis gekaufter Artikel zu gelesener Inserat (Kaufbonus erhalten) 1"
+msgstr ""
+"Conditions des articles achetés de la publicité lue (recevoir un bonus "
+"d'achat) 1"
+
+#: view-validation-phone-popup.html:9
+msgid ""
+"Verifiziere Dein Profil per SMS, damit Du Deine Identität bestätigst und wir "
+"Deinem Teamleader den Einladungsbonus auszahlen können."
+msgstr ""
+"Vérifiez votre profil par SMS afin de confirmer votre identité et nous "
+"pouvons verser à votre chef d'équipe le bonus d'invitation."
+
+#: view-trollbox-list.html:29
+msgid "Verifizierungsvideos"
+msgstr ""
+
+#: view-dashboard.html:771 view-offers-advanced-search.html:113
+#: view-offers-index.html:31
+msgid "Verkaufen / Inserat schalten"
+msgstr "Vendre / annoncer la publicité"
+
+#: view-offers-my-requests.html:128 view-offers-my-requests.html:175
+msgid "Verkauft für"
+msgstr "Vendu pour"
+
+#: view-searches-add.html:95 view-searches-draft-update.html:61
+msgid ""
+"Verleihe Deinem Auftrag einen aussagekräftigen Titel. Er ist das Erste, was "
+"Deine Helfer lesen."
+msgstr ""
+"Donnez à votre commande un titre significatif. C'est la première chose que "
+"vos assistants lisent."
+
+#: view-searches-index.html:18
+msgid ""
+"Vermittlung, Recherche, Assistenz. Egal was Du oder andere suchen. Du "
+"bekommst dafür Vermittlungsprovision oder profitierst von den Angeboten."
+msgstr ""
+"Médiation, recherche, assistance. Peu importe ce que vous ou d'autres "
+"personnes recherchez. Vous recevez une commission ou bénéficiez des offres."
+
+#: view-searches-details.html:27 view-searches-filter.html:59
+#: view-searches-search-by-user.html:44 view-searches-search.html:44
+msgid "Vermittlungsbonus"
+msgstr ""
+
+#: view-offers-details.html:95 view-offers-draft.html:70
+#: view-offers-my.html:106 view-offers-preview.html:80
+msgid "Versandkosten"
+msgstr "frais d'éxpedition"
+
+#: view-offers-add.html:187 view-offers-draft-update.html:153
+msgid "Versandkosten angeben"
+msgstr "fournir les frais d'éxpédition"
+
+#: view-offer-pay.html:29
+msgid "Verwendungszweck"
+msgstr "référence"
+
+#: view-searches-add.html:187 view-searches-draft-update.html:153
+msgid "Veröffentlichen"
+msgstr "publier"
+
+#: controllers/ChatCtrl.js:587 controllers/DashboardCtrl.js:871
+#: controllers/TrollBoxCtrl.js:499 controllers/TrollboxMessageUpdateCtrl.js:167
+msgid "Video Aufnehmen"
+msgstr "enregistrer une vidéo"
+
+#: view-add-video-identification.html:18
+msgid "Video Ident Starten"
+msgstr ""
+
+#: view-user-profile.html:109 view-user-profile.html:110
+#: view-user-profile.html:112
+msgid "Video Ident."
+msgstr ""
+
+#: view-add-video-identification.html:45
+msgid "Video hochladen"
+msgstr ""
+
+#: view-add-video-identification.html:41
+msgid "Video neu aufnehmen"
+msgstr ""
+
+#: view-trollbox-list.html:33
+msgid "Videoident starten"
+msgstr ""
+
+#: controllers/ChatCtrl.js:351 controllers/DashboardCtrl.js:228
+#: controllers/DashboardCtrl.js:786 controllers/InfoPopupCtrl.js:87
+#: controllers/InfoPopupOldCtrl.js:84 controllers/TrollBoxCtrl.js:294
+#: controllers/TrollBoxCtrl.js:414 controllers/TrollboxMessageUpdateCtrl.js:83
+#: view-dashboard.html:172 view-videos-details.html:27
+msgid "Videos"
+msgstr "videos"
+
+#: services/UploadService.js:187
+msgid "Videos größer als 50 MB können nicht gesendet werden!"
+msgstr "Les vidéos de plus de 50 Mb ne peuvent pas être envoyées!"
+
+#: view-videos-details.html:36
+msgid "Videos heute"
+msgstr "Les vidéos d'aujourd'hui"
+
+#: view-add-video-identification.html:33
+msgid "Videovorschau"
+msgstr ""
+
+#: view-trollbox-list.html:244 view-video-identification-popup.html:21
+msgid "Vielen Dank für Deine Abstimmung"
+msgstr ""
+
+#: view-videos-details-view-bonus-popup.html:10
+msgid "Vielen Dank für das Anschauen des Videos.<br>Dein Interesse wird mit"
+msgstr "Merci pour avoir regarder les videos <br> Vos intérêt sont avec"
+
+#: view-offers-details-view-bonus-popup.html:10
+msgid ""
+"Vielen Dank für das Anschauen meines Angebots.<br>Dein Interesse wird mit"
+msgstr "Merci d'avoir regardé mon offre. <br> Votre intérêt vient avec"
+
+#: view-registration-payment.html:25
+msgid "Vielen Dank!"
+msgstr "Merci!"
+
+#: country.html:193
+msgid "Vietnam"
+msgstr "Vietnam"
+
+#: view-offers-details.html:19
+msgid "Views"
+msgstr "vues"
+
+#: view-become-member.html:34 view-profile-fillup.html:34
+#: view-profile-update.html:65 view-profile.html:50
+msgid "Vorname"
+msgstr "prénom"
+
+#: view-offers-add.html:412 view-offers-draft-update.html:379
+msgid "Vorschau ansehen"
+msgstr "voir les aperçu"
+
+#: view-user-profile.html:88
+msgid "Vorübergehend sperren"
+msgstr "Verrouiller temporairement"
+
+#: view-offers-my.html:58 view-searches-my-list.html:38
+msgid "Wartet auf Veröffentlichung"
+msgstr ""
+
+#: view-searches-add.html:27 view-searches-draft-update.html:29
+msgid ""
+"Was auch immer Du möchtest, ob Haus, Auto, Urlaub oder einfach Kleidung u.v."
+"m., Dein Wunsch ist uns Befehl."
+msgstr ""
+"Tout ce que vous voulez, que ce soit une maison, une voiture, des vacances "
+"ou simplement des vêtements, votre souhait est notre commande."
+
+#: view-searches-my-offers.html:11 view-searches-my-offers.html:23
+msgid "Was habe ich anderen vermittelt"
+msgstr "Qu'est-ce que j'ai fourni aux autres"
+
+#: view-dashboard.html:780 view-searches-index.html:32
+msgid "Was habe ich anderen vermittelt / angeboten?"
+msgstr ""
+
+#: view-activities.html:58
+msgid "Was habe ich erfolgreich angeboten / vermittelt?"
+msgstr ""
+
+#: view-searches-add.html:26 view-searches-draft-update.html:28
+msgid "Was können wir für Dich tun?"
+msgstr ""
+
+#: view-searches-index.html:22 view-searches-search-by-user.html:11
+#: view-searches-search-by-user.html:21 view-searches-search.html:11
+#: view-searches-search.html:21
+msgid "Was suchen andere"
+msgstr ""
+
+#: view-all-functions.html:54 view-dashboard.html:777
+msgid "Was suchen andere?"
+msgstr ""
+
+#: view-dashboard.html:779 view-searches-index.html:29
+msgid "Was wird mir angeboten"
+msgstr ""
+
+#: view-activities.html:56
+msgid "Was wird mir angeboten / vermittelt?"
+msgstr ""
+
+#: view-all-functions.html:55
+msgid "Was wird mir angeboten?"
+msgstr ""
+
+#: view-user-profile.html:320
+msgid "Wechseln"
+msgstr "changer"
+
+#: view-become-member.html:46 view-offers-add.html:334
+#: view-offers-draft-update.html:301 view-profile-fillup.html:36
+#: view-profile-update.html:84
+msgid "Weiblich"
+msgstr "féminin"
+
+#: view-profile-fillup.html:57
+msgid "Weiter"
+msgstr "après"
+
+#: view-offers-details.html:153
+msgid "Weitere Angebote des Anbieters anzeigen"
+msgstr "Afficher plus d'offres de ce fournisseur"
+
+#: view-searches-details.html:146
+msgid "Weitere Anzeigen des Anbieters anzeigen"
+msgstr "Afficher plus d'annonces du fournisseur"
+
+#: view-offer-pay.html:48
+msgid "Weitere Bankverbindingen zeigen"
+msgstr ""
+
+#: view-profile-update.html:204
+msgid "Weitere Bankverbindung eingeben"
+msgstr ""
+
+#: view-earn-money.html:47 view-earn-money.html:48
+msgid "Weitere Details"
+msgstr ""
+
+#: view-earn-money.html:55
+msgid "Weitere Infos"
+msgstr "Informations supplémentaires"
+
+#: view-offer-pay.html:125
+msgid "Weitere Liferadressen zeigen"
+msgstr "Afficher plus d'adresses de livraison"
+
+#: view-searches-offer-add.html:84
+msgid ""
+"Weitere bilder (werden eingeblendet, sobald dein Angebot akzeptiert wird)"
+msgstr "Plus de photos (seront affichées dès que votre offre est acceptée)"
+
+#: view-searches-offer-add.html:77
+msgid ""
+"Weitere details (wird eingeblendet, sobald dein Angebot akzeptiert wird)"
+msgstr "Plus de détails (seront affichés dès que votre offre est acceptée)"
+
+#: view-dashboard.html:731 view-dashboard.html:756
+msgid "Weiterlesen"
+msgstr "Lire plus"
+
+#: view-dashboard.html:414
+msgid "Welchen Auftrag können wir für Dich erledigen?"
+msgstr "Quelle commande pouvons-nous faire pour vous?"
+
+#: view-offers-add.html:181 view-offers-draft-update.html:147
+msgid ""
+"Wenn Du Deine Ware versenden möchtest, dann gib hier bitte die Lieferzeit "
+"ein, die Dein Paket bis zum Empfänger benötigt und wie viel der Versand "
+"kosten soll. Wenn Du Deine Ware nur zur Selbstabholung anbietest, dann gib "
+"hier bitte jeweils eine 0 ein."
+msgstr ""
+"Si vous souhaitez expédier vos marchandises, veuillez entrer ici le délai de "
+"livraison dont votre colis a besoin pour le destinataire et combien de frais "
+"d'expédition il y aura. Si vous offrez seulement vos biens pour l'auto-"
+"ramassage, veuillez entrer un 0 ici."
+
+#: services/InviteService.js:11
+msgid ""
+"Wenn Du auf 'Einverstanden' klickst, bist Du verpflichtet, dieses Mitglied "
+"zu betreuen, d.h. Kontakt zu ihm aufzunehmen und ihm Jugl.net zu erklären.\n"
+"Erkläre ihm Jugl.net daher genau, damit Dein Netzwerk ein aktives Mitglied "
+"gewinnt."
+msgstr ""
+"Si vous cliquez sur \"Accepter\", vous devez servir ce membre, c'est-à-dire: "
+"contactez-le et expliquez-lui tous sur Jugl.net.\n"
+"Expliquez-lui donc Jugl.net exactement, afin que votre réseau gagne un "
+"membre actif."
+
+#: view-offers-add.html:281 view-offers-draft-update.html:248
+msgid "Wenn Du dies nicht willst, setze hier einen Haken:"
+msgstr "Si vous ne le voulez pas, mettez une coche ici:"
+
+#: view-offers-add.html:174 view-offers-draft-update.html:140
+msgid ""
+"Wenn Du hier ein Häkchen setzt, dann wird in Deiner Anzeige die noch "
+"verfügbare Stückzahl Deiner Ware angezeigt."
+msgstr ""
+"Si vous mettez une coche ici, alors dans votre publicité, la quantité encore "
+"disponible de votre marchandise est indiquée."
+
+#: view-start-popup.html:10
+msgid ""
+"Wenn Du mal nicht weiter weißt, drücke einfach auf das jeweilige <span class="
+"\"icon-info-app\"></span> - Symbol, dann geht ein Erklärungstext auf."
+msgstr ""
+"Si vous ne savez plus quoi faire, appuyez simplement sur le \n"
+"<span class=\"icon-info-app\"></span>-symbole correspondant, puis un texte "
+"explicatif apparaîtra."
+
+#: view-invite-me-by-sms.html:30 view-invite-sms-send.html:30
+msgid ""
+"Wenn Sie keine SMS-Flatrate haben, kann der Versand von SMS Kosten bei Ihrem "
+"Mobilfunkanbieter verursachen"
+msgstr ""
+"Si vous n'avez pas de SMS Flatrate, l'envoi de SMS peut coûter un surplus "
+"chez votre fournisseur mobiles"
+
+#: view-add-video-identification.html:22
+msgid ""
+"Wenn die obenstehenden Bedingungen erfüllt sind, kannst Du danach noch "
+"persönliche Grüße oder Informationen zu Deiner Person dem Video hinzufügen."
+msgstr ""
+
+#: view-activities.html:63
+msgid "Wer hat mich geliket"
+msgstr ""
+
+#: view-activities.html:47
+msgid "Wer ist neu in meinem Netzwerk?"
+msgstr "Qui est nouveau dans mon réseau?"
+
+#: view-dashboard.html:277 view-deals-completed.html:258
+#: view-deals-completed.html:355 view-favorites.html:124
+#: view-offers-advanced-search-results.html:118 view-offers-details.html:68
+#: view-offers-draft.html:61 view-offers-my-requests.html:129
+#: view-offers-my-requests.html:176 view-offers-my-requests.html:229
+#: view-offers-my-requests.html:275 view-offers-my-requests.html:82
+#: view-offers-my.html:97 view-offers-preview.html:55
+#: view-offers-search-by-user.html:157 view-offers-search-by-user.html:53
+#: view-offers-search.html:126 view-offers-search.html:53
+#: view-searches-filter.html:86 view-videos-details.html:32
+msgid "Werbebonus"
+msgstr ""
+
+#: view-offers-add.html:304 view-offers-draft-update.html:271
+msgid "Werbebonus festlegen*"
+msgstr ""
+
+#: view-offers-update-popup.html:11
+msgid "Werbebonus pro User*"
+msgstr ""
+
+#: view-activities.html:72
+msgid "Inserat erstellt"
+msgstr "Publicité créée"
+
+#: view-offers-search-by-user.html:11 view-offers-search-by-user.html:21
+#: view-offers-search.html:11
+msgid "Inserat lesen / etwas kaufen"
+msgstr "Lire la publicité/ vendre qch"
+
+#: view-offers-search.html:21
+msgid "Inserat lesen / kaufen"
+msgstr "Lire la publicité / acheter"
+
+#: controllers/OfferDraftCtrl.js:23 controllers/OfferMyListCtrl.js:79
+msgid "Inserat löschen"
+msgstr "supprimer la publicité"
+
+#: view-all-functions.html:56
+msgid "Inserat schalten"
+msgstr ""
+
+#: view-offers-add.html:12 view-offers-draft-update.html:12
+msgid "Inserat schalten / etwas verkaufen"
+msgstr ""
+
+#: view-offers-my.html:11 view-offers-my.html:22
+msgid "Inserat verwalten"
+msgstr "gérer la publicité"
+
+#: view-favorites.html:29
+msgid "Inseraten"
+msgstr "publicité"
+
+#: view-funds.html:148 view-funds.html:76
+msgid "Wert"
+msgstr "valeur"
+
+#: view-offers-search-by-user.html:55 view-offers-search.html:55
+#: view-searches-filter.html:88
+msgid "Wertung"
+msgstr "évaluation"
+
+#: view-is-working.html:28
+msgid ""
+"Wichtig: Hier werden keine Produkte direkt verkauft, Du zahlst bzw. "
+"kassierst lediglich einen Vermittlungsbonus."
+msgstr ""
+"Important:Ici il n'y a pas de produits vendus directement, vous payez ou "
+"encaissez uniquement un bonus de placement."
+
+#: drawer-main.html:6 view-dashboard.html:43
+msgid "Wie funktioniert Jugl.net?"
+msgstr "Comment fonctionne Jugl.net?"
+
+#: view-dashboard.html:796
+msgid "Wie kann ich Geld verdienen?"
+msgstr "Comment je peux gagner de l'argent?"
+
+#: view-earn-money.html:19
+msgid "Wie kann ich mit der Jugl APP Geld verdienen?"
+msgstr "Comment je peux gagner de l'argent avec l'application Jugl?"
+
+#: view-deals-completed.html:235 view-deals-completed.html:59
+msgid "Wiederherstellen"
+msgstr "restaurer"
+
+#: controllers/OfferDraftCtrl.js:22
+msgid "Willst Du Deine Inserat endgültig löschen?"
+msgstr ""
+
+#: controllers/UserProfileCtrl.js:702
+msgid "Willst Du Deinen Beitrag wirklich löschen?"
+msgstr "Voulez-vous vraiment supprimer votre message?"
+
+#: controllers/DashboardCtrl.js:916 controllers/TrollBoxCtrl.js:545
+#: controllers/UserProfileCtrl.js:653 services/MessengerService.js:114
+msgid "Willst Du wirklich den Benutzer für alle Foren entsperren?"
+msgstr "Voulez-vous vraiment débloquer l'utilisateur pour tous les forums?"
+
+#: controllers/DashboardCtrl.js:895 controllers/TrollBoxCtrl.js:524
+#: controllers/UserProfileCtrl.js:632 services/MessengerService.js:93
+msgid "Willst Du wirklich den Benutzer für alle Foren sperren?"
+msgstr "Voulez-vous vraiment verrouiller l'utilisateur pour tous les forums?"
+
+#: services/MessengerService.js:73
+msgid "Willst Du wirklich den Benutzer für dieses Gruppenchat entsperren?"
+msgstr "Êtes-vous sûr de vouloir déverrouiller l'utilisateur pour ce groupe?"
+
+#: services/MessengerService.js:52
+msgid "Willst Du wirklich den Benutzer für dieses Gruppenchat sperren?"
+msgstr "Êtes-vous sûr de vouloir interdire l'utilisateur pour ce groupe?"
+
+#: services/MessengerService.js:28
+msgid "Willst Du wirklich diese Nachricht entfernen??"
+msgstr "Voulez-vous vraiment supprimer ce message ??"
+
+#: controllers/DealsCompletedCtrl.js:58 controllers/OfferMyListCtrl.js:78
+msgid "Willst du Dein Angebot endgültig löschen?"
+msgstr "Voulez-vous supprimer définitivement votre offre?"
+
+#: app.js:333
+msgid "Willst du wirklich dein Profil löschen?"
+msgstr "Voulez-vous vraiement supprimer votre profil?"
+
+#: view-is-working.html:29
+msgid ""
+"Wir befinden uns in der Testphase. Je früher Du einsteigst, desto reicher "
+"kannst du werden. Außerdem sind wir gerade dabei weitere Geschäftsmodelle zu "
+"integrieren, so dass Dein Jugl-Netzwerk zukünftig unendlich für neue "
+"Geschäftsideen zu erweitern ist und Du Dir ein echtes Passiveinkommen "
+"schaffen kannst."
+msgstr ""
+"Nous sommes en phase de test. Le plus tôt vous commencez, le plus riche que "
+"vous pouvez devenir. En outre, nous sommes en train d'intégrer d'autres "
+"modèles d'affaires, de sorte que votre réseau Jugl puisse être étendu "
+"indéfiniment à l'avenir pour de nouvelles idées d'affaires et que vous "
+"puissiez créer un revenu passif réel."
+
+#: view-dashboard.html:413
+msgid "Wir sind {{::data.countTotalUsers}} Helfer stark!"
+msgstr "Nous sommes {{::data.countTotalUsers}} assistants forts!"
+
+#: view-registration-payment.html:22
+msgid ""
+"Wir würden uns sehr freuen, wenn Du Dich für eine PremiumPlus-Mitgliedschaft "
+"entscheidest. Mit einem Beitrag von nur<br><b>{{(data.registeredByCode ? 0:"
+"data.VIPPlusPrice)|priceFormat}}€</b><br>investierst Du nicht nur in Dich "
+"selbst und erhältst dadurch höhere Gewinne, sondern unterstützt auch den "
+"reibungslosen Betrieb der Plattform und somit auch Dein eigenes "
+"wirtschaftliches Netzwerk. Deine <b>{{(data.registeredByCode ? 0:data."
+"VIPPlusPrice)|priceFormat}}€</b> sind eine Investition für's Leben."
+msgstr ""
+
+#: view-funds.html:205
+msgid "Wird freigegeben am"
+msgstr ""
+
+#: view-offers-my.html:89
+msgid "Wird geprüft"
+msgstr "Sera vérifié"
+
+#: controllers/SelectContactCtrl.js:27
+msgid "Wirklich weiterleiten?"
+msgstr "Transmettre vraiement?"
+
+#: view-offers-bet.html:34 view-offers-bet.html:35 view-trollbox-list.html:63
+msgid "Woche"
+msgstr "semaine"
+
+#: view-dashboard.html:309
+msgid "Wofür interessierst Du Dich?"
+msgstr "Qu'est-ce qui vous intéresse?"
+
+#: view-all-functions.html:57
+msgid "Worauf habe ich geboten?"
+msgstr "Sur quoi j'ai fait une offre?"
+
+#: view-deals-completed.html:269
+msgid "Wurde angenommen am {{::dealOffer.closed_dt|date:\"dd.MM.yyyy\"}} von"
+msgstr "A été accepté le {{:: dealOffer.closed_dt | date: \"dd.MM.yyyy\"}} par"
+
+#: view-interests-addstep3.html:17
+msgid "Wähle Themenfilter"
+msgstr ""
+
+#: view-interests-addstep2.html:17
+msgid "Wähle Unterkategorie"
+msgstr "Choississez sous-catégorie"
+
+#: view-interests-addstep1.html:21
+msgid "Wähle allgemeine Interessen kategorie"
+msgstr "Choisissez une catégorie général d'intérêt"
+
+#: view-registration-payment.html:91
+msgid "Wähle die gewünschte Zahlungsart:"
+msgstr "Choisissez la méthode de paiement souhaitée:"
+
+#: view-manage-select-destination.html:27
+msgid ""
+"Wähle einen Mitglied Deines Netzwerks, in dessen Struktur\n"
+"                <div><b>{{data.user|userName}}</b></div>\n"
+"                verschoben werden soll."
+msgstr ""
+"Choisissez un membre de votre réseau, dont en déplace,\n"
+".................<div><b>{{data.user|userName}}</b></div>\n"
+".................dans sa structure."
+
+#: view-registration-payment.html:21
+msgid "Wähle nun Deine Mitgliedschaft"
+msgstr "Choisissez votre adhésion"
+
+#: view-offers-add.html:193 view-offers-draft-update.html:159
+msgid ""
+"Wähle nun die von Dir akzeptierten Zahlungsmethoden aus. Bitte beachte, dass "
+"Du eine Zahlung per Überweisung oder Paypal nur angeben kannst, wenn Du die "
+"dazugehörigen Daten in Deinem Profil (Menüleiste -> Mein Profil / Meine "
+"Daten) hinterlegt hast."
+msgstr ""
+"Choississez  maintenant quelles méthodes de paiement vous acceptez. Notez "
+"que vous ne pouvez spécifier un paiement par virement bancaire ou Paypal, si "
+"vous mettez les données correspondantes dans votre profil - (barre de menu> "
+"Profil / Mes données)."
+
+#: view-manage-network.html:46 view-manage-select-destination.html:65
+msgid "Wählen"
+msgstr "choisir"
+
+#: country.html:194
+msgid "Yemen"
+msgstr "Yemen"
+
+#: services/ModalService.js:56
+msgid "Yes"
+msgstr "Oui"
+
+#: controllers/UserInterestsUpdateCtrl.js:77
+msgid "You really want to delete this user from Themenfilter?"
+msgstr "Voulez-vous vraiment supprimer cet utilisateur du filtre de sujet?"
+
+#: controllers/UserInterestsUpdateCtrl.js:50
+msgid "You really want to delete this user from Unterkategorien?"
+msgstr "Voulez-vous vraiment supprimer cet utilisateur des sous-catégories?"
+
+#: controllers/UserProfileCtrl.js:252
+msgid "You really want to delete this user from friends?"
+msgstr "Voulez-vous vraiment supprimer cet utilisateur de vos amis?"
+
+#: view-offers-details.html:103 view-offers-preview.html:88
+msgid "Zahlung mit Jugls"
+msgstr "paiement par Jugls"
+
+#: view-offers-details.html:101 view-offers-preview.html:86
+msgid "Zahlung per Banküberweisung"
+msgstr "paiement par virement bancaire"
+
+#: view-offers-details.html:102 view-offers-preview.html:87
+msgid "Zahlung per Paypal"
+msgstr "paiement par PayPal"
+
+#: view-offers-details.html:99 view-offers-preview.html:84
+msgid "Zahlungarten"
+msgstr "mode de paiement"
+
+#: country.html:195
+msgid "Zambia"
+msgstr ""
+
+#: view-offers-add.html:395 view-offers-draft-update.html:362
+msgid ""
+"Zeige Deine Anzeige nur Nutzern, die schon einmal Artikel in dieser "
+"Kategorie gekauft haben."
+msgstr ""
+"affichez votre annonce qu'aux utilisateurs ayant déjà acheté des articles "
+"dans cette catégorie."
+
+#: view-offers-add.html:391 view-offers-draft-update.html:358
+msgid ""
+"Zeige Deine Inserat nur Mitgliedern, die genügend Punkte auf ihrem Jugl-"
+"Konto haben, um Deine Waren erwerben zu können."
+msgstr ""
+"Affichez votre annonce qu'aux membres disposant suffisamment de points sur "
+"leur compte Jugl pour acheter votre marchandise."
+
+#: view-funds.html:201
+msgid "Zeitraum"
+msgstr ""
+
+#: view-trollbox-list.html:58
+msgid "Zeitraum wählen"
+msgstr "sélectionnez une période"
+
+#: view-offers-my.html:40
+msgid "Zeitvesetzt"
+msgstr ""
+
+#: view-all-functions.html:58
+msgid "Zielgruppe definieren"
+msgstr "définir le groupe visé"
+
+#: country.html:196
+msgid "Zimbabwe"
+msgstr "Zimbabwe"
+
+#: view-funds.html:203
+msgid "Zinsertrag"
+msgstr ""
+
+#: view-funds.html:202
+msgid "Zinssatz"
+msgstr ""
+
+#: view-user-profile.html:75
+msgid "Zuletzt eingeloggt"
+msgstr "Dernière connection"
+
+#: view-add-video-identification.html:56
+msgid "Zum Forum"
+msgstr ""
+
+#: view-add-video-identification.html:57
+msgid "Zum Profil"
+msgstr ""
+
+#: view-add-video-identification.html:61
+msgid "Zur Info"
+msgstr ""
+
+#: view-add-video-identification.html:12 view-become-member.html:12
+#: view-chat.html:15 view-conversation-gallery.html:13
+#: view-data-protection-not-login.html:9 view-data-protection.html:10
+#: view-error404.html:10 view-faqs.html:12 view-how-it-works.html:9
+#: view-interests-addstep2.html:22 view-interests-addstep3.html:23
+#: view-interests-update.html:13 view-interests.html:1
+#: view-invite-email.html:13 view-invite-log.html:12
+#: view-invite-me-by-email.html:13 view-invite-me-by-sms.html:10
+#: view-invite-my-list.html:16 view-invite-sms-contacts.html:12
+#: view-invite-sms-send.html:10 view-invite-social.html:12
+#: view-invite-whatsapp.html:13 view-invite.html:7 view-is-working.html:10
+#: view-manage-select-destination.html:13 view-network.html:14
+#: view-new-user-network.html:13 view-news.html:13 view-offer-pay.html:13
+#: view-offers-advanced-search-results.html:15
+#: view-offers-advanced-search.html:12 view-offers-bet.html:12
+#: view-offers-details.html:14 view-offers-draft.html:13
+#: view-offers-index.html:9 view-offers-my-requests.html:12
+#: view-offers-my.html:12 view-offers-preview.html:11
+#: view-profile-update.html:12 view-searches-details.html:11
+#: view-searches-draft.html:12 view-searches-filter.html:12
+#: view-searches-my-list.html:12 view-searches-my-offers.html:12
+#: view-searches-offer-add.html:13 view-searches-offer-details.html:11
+#: view-searches-offers-list.html:11 view-select-contact.html:12
+#: view-send-contact-details.html:14 view-trollbox-list.html:15
+#: view-user-become-member-invitations.html:11 view-user-profile.html:13
+#: view-users-new.html:12 view-videos-details.html:14
+msgid "Zurück"
+msgstr "En arrière"
+
+#: view-error404.html:24
+msgid "Zurück zur vorherigen Seite"
+msgstr "Revenir à la page précédente"
+
+#: directives/eventText.js:28
+msgid "Zustimmen"
+msgstr "Accorder"
+
+#: view-searches-offer-add.html:71
+msgid "ab"
+msgstr "depuis"
+
+#: view-searches-my-offers.html:112 view-searches-my-offers.html:116
+msgid "am"
+msgstr "au"
+
+#: services/SettingsService.js:27 view-dashboard.html:73 view-settings.html:26
+#: view-settings.html:27 view-settings.html:28 view-settings.html:29
+#: view-settings.html:30 view-settings.html:31 view-settings.html:32
+#: view-settings.html:34 view-settings.html:36 view-settings.html:42
+#: view-settings.html:43 view-settings.html:44 view-settings.html:45
+#: view-settings.html:46 view-settings.html:47 view-settings.html:53
+msgid "an"
+msgstr "à"
+
+#: view-dashboard.html:438
+msgid "anzeigen"
+msgstr "annoncer"
+
+#: services/SettingsService.js:28 view-dashboard.html:73 view-settings.html:26
+#: view-settings.html:27 view-settings.html:28 view-settings.html:29
+#: view-settings.html:30 view-settings.html:31 view-settings.html:32
+#: view-settings.html:34 view-settings.html:36 view-settings.html:42
+#: view-settings.html:43 view-settings.html:44 view-settings.html:45
+#: view-settings.html:46 view-settings.html:47 view-settings.html:53
+msgid "aus"
+msgstr "de"
+
+#: view-funds.html:210
+msgid "ausgezahlt"
+msgstr ""
+
+#: view-offers-my.html:111
+msgid "bearbeiten"
+msgstr "adapter"
+
+#: view-offers-details-view-bonus-popup.html:16
+#: view-videos-details-view-bonus-popup.html:16
+msgid "belohnt."
+msgstr "récompenser"
+
+#: view-offers-add.html:341 view-offers-add.html:366 view-offers-add.html:376
+#: view-offers-add.html:382 view-offers-add.html:388
+#: view-offers-draft-update.html:308 view-offers-draft-update.html:333
+#: view-offers-draft-update.html:343 view-offers-draft-update.html:349
+#: view-offers-draft-update.html:355 view-searches-add.html:127
+#: view-searches-draft-update.html:93 view-searches-offer-add.html:72
+#: view-team-change-user-search.html:37 view-user-search.html:68
+msgid "bis"
+msgstr "jusque:"
+
+#: view-offers-advanced-search.html:41
+msgid "bis:"
+msgstr "jusque:"
+
+#: view-funds.html:38
+msgid "davon auszahlbar"
+msgstr ""
+
+#: view-funds.html:37
+msgid "davon nicht auszahlbar"
+msgstr "pas payable"
+
+#: controllers/EventCtrl.js:23
+msgid "dd MMMM 'um' HH:mm"
+msgstr ""
+
+#: controllers/OfferHistoryViewPopupCtrl.js:6
+msgid "dd.MM.yyyy 'um' HH:mm"
+msgstr ""
+
+#: view-offers-details-view-bonus-popup.html:22
+#: view-videos-details-view-bonus-popup.html:22
+msgid "den Button klickst."
+msgstr ""
+
+#: view-trollbox-list.html:247 view-video-identification-popup.html:24
+msgid "echt"
+msgstr ""
+
+#: view-dashboard.html:118 view-dashboard.html:149 view-invite-my-list.html:59
+msgid "eingeladen"
+msgstr "inviter"
+
+#: view-registration-payment.html:68
+msgid "einmalig"
+msgstr "unique"
+
+#: view-offers-add.html:298 view-offers-draft-update.html:265
+msgid ""
+"erhält (mind. {{data.offer.view_bonus_interest}} <span class=\"currency icon-"
+"jugl-light currency-rel\"></span>). 1 Jugl = 1 Cent."
+msgstr ""
+"reçoit\n"
+"<span class=\"currency icon-jugl-light currency-rel\"></span>.) 1.Jugl = 1 "
+"Cent."
+
+#: view-registration-payment.html:34
+msgid "für 12 Monate"
+msgstr "pour 12 mois"
+
+#: view-deals-completed.html:31
+msgid "gekaufte Artikel"
+msgstr "articles achetés"
+
+#: controllers/FundsCtrl.js:281
+msgid "geändert"
+msgstr ""
+
+#: view-dashboard.html:429
+msgid "heute neu"
+msgstr "nouveau aujourd'hui"
+
+#: view-deals-completed.html:32
+msgid "ich habe abgemahnt"
+msgstr "j'ai rappelé à l'ordre"
+
+#: view-deals-completed.html:33
+msgid "ich wurde abgemahnt"
+msgstr "J'étais rappelé à l'ordre"
+
+#: view-offers-details.html:95 view-offers-preview.html:80
+msgid "innerhalb von"
+msgstr "dans"
+
+#: view-user-profile.html:339
+msgid "ist im Team von"
+msgstr "est dans l'équipe de"
+
+#: view-offers-add.html:350 view-offers-add.html:351 view-offers-add.html:352
+#: view-offers-add.html:353 view-offers-add.html:354 view-offers-add.html:355
+#: view-offers-advanced-search.html:72 view-offers-draft-update.html:317
+#: view-offers-draft-update.html:318 view-offers-draft-update.html:319
+#: view-offers-draft-update.html:320 view-offers-draft-update.html:321
+#: view-offers-draft-update.html:322
+msgid "km"
+msgstr "km"
+
+#: view-manage-select-destination.html:58
+msgid "level"
+msgstr "niveau"
+
+#: view-offers-my.html:199
+msgid "mal"
+msgstr "fois"
+
+#: view-deals-completed.html:294 view-deals-completed.html:371
+msgid "mit"
+msgstr "avec"
+
+#: view-new-user-network.html:37 view-user-profile.html:67
+#: view-user-search.html:124 view-users-new.html:40
+msgid "mobile"
+msgstr "mobil"
+
+#: view-invite-email.html:23
+msgid "musterfrau@domain2.com usw."
+msgstr "examplemadame@domain2.com etc."
+
+#: view-invite-email.html:22
+msgid "mustermann@domain1.com,"
+msgstr "examplemonsieur@domain1.com,"
+
+#: view-team-change-user-search.html:49 view-user-search.html:80
+msgid "männlich"
+msgstr "masculin"
+
+#: view-trollbox-list.html:246 view-video-identification-popup.html:23
+msgid "nicht echt"
+msgstr ""
+
+#: view-new-user-network.html:36 view-user-profile.html:66
+#: view-user-search.html:123 view-users-new.html:39
+msgid "offline"
+msgstr "hors ligne"
+
+#: view-new-user-network.html:38 view-user-profile.html:68
+#: view-user-search.html:125 view-users-new.html:41
+msgid "online"
+msgstr "en ligne"
+
+#: view-offer-pay.html:75
+msgid "per Jugls"
+msgstr "par Jugls"
+
+#: view-offer-pay.html:54
+msgid "per PayPal an"
+msgstr "par PayPal"
+
+#: view-funds.html:145 view-funds.html:73
+msgid "sortieren nach"
+msgstr "trier par"
+
+#: view-registration-payment.html:114
+msgid "standard"
+msgstr "standard"
+
+#: view-deals-completed.html:30
+msgid "verkaufte Artikel"
+msgstr "articles vendus"
+
+#: view-deals-completed.html:169 view-deals-completed.html:340
+#: view-offers-add.html:340 view-offers-add.html:365 view-offers-add.html:375
+#: view-offers-add.html:381 view-offers-add.html:387
+#: view-offers-draft-update.html:307 view-offers-draft-update.html:332
+#: view-offers-draft-update.html:342 view-offers-draft-update.html:348
+#: view-offers-draft-update.html:354 view-offers-my-requests.html:133
+#: view-offers-my-requests.html:180 view-offers-my-requests.html:234
+#: view-offers-my-requests.html:279 view-offers-my-requests.html:87
+#: view-searches-add.html:126 view-searches-draft-update.html:92
+msgid "von"
+msgstr "de"
+
+#: view-deals-completed.html:103 view-searches-my-offers.html:72
+msgid "von:"
+msgstr "de:"
+
+#: view-become-member.html:20
+msgid "vorhandenes Jugl Konto"
+msgstr "compte Jugl disponible"
+
+#: view-team-change-user-search.html:48 view-user-search.html:79
+msgid "weiblich"
+msgstr "féminin"
+
+#: view-advertising-view-bonus-popup.html:15
+msgid ""
+"während Du Dir den Inhalt anschaust und Du erhältst Deinen Bonus.<br> Nicht "
+"hinter jedem Banner ist eine Belohnung versteckt."
+msgstr ""
+"pendant que vous regardez le contenu et vous obtenez votre bonus. Il n'y a "
+"pas de récompense cachée derrière chaque bannière."
+
+#: view-dashboard.html:73 view-settings.html:26 view-settings.html:27
+#: view-settings.html:28 view-settings.html:29 view-settings.html:30
+#: view-settings.html:31 view-settings.html:32 view-settings.html:36
+#: view-settings.html:42 view-settings.html:43 view-settings.html:44
+#: view-settings.html:45 view-settings.html:46 view-settings.html:47
+#: view-settings.html:53
+msgid "{{'an"
+msgstr ""
+
+#: view-dashboard.html:73 view-settings.html:26 view-settings.html:27
+#: view-settings.html:28 view-settings.html:29 view-settings.html:30
+#: view-settings.html:31 view-settings.html:32 view-settings.html:36
+#: view-settings.html:42 view-settings.html:43 view-settings.html:44
+#: view-settings.html:45 view-settings.html:46 view-settings.html:47
+#: view-settings.html:53
+msgid "{{'aus"
+msgstr ""
+
+#: view-manage-select-destination.html:12
+#: view-manage-select-destination.html:17
+msgid "{{data.user|userName}}"
+msgstr ""
+
+#: view-user-profile.html:132
+msgid "über"
+msgstr "sur"
+
+#: view-profile-update.html:170 view-profile.html:107
+msgid "über mich"
+msgstr "sur moi"
+
+#: view-searches-my-offers.html:112
+msgid "Аngenommen"
+msgstr "Supposer que"
+
+#: controllers/OfferDetailCtrl.js:10
+msgid "„Mit OK bestätigst Du den verbindlichen Kauf des Angebots.“"
+msgstr "\"Avec OK, vous confirmez l'achat obligatoire de l'offre.\""
+
+#~ msgid "Inserat angeschaut"
+#~ msgstr "Vu publicité"

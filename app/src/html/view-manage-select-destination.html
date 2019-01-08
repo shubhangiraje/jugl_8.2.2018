@@ -1,0 +1,90 @@
+<kendo-mobile-view
+    id="view-manage-select-destination"
+    k-layout="'layout-main'"
+    ng-controller="ManageSelectDestinationCtrl as manageSelectDestinationCtrl"
+    k-on-show="data.onShow(kendoEvent)"
+    k-use-native-scrolling="config.views.useNativeScrolling"
+    ng-cloak>
+
+
+    <kendo-mobile-header>
+        <kendo-mobile-nav-bar>
+            <kendo-mobile-view-title><translate>{{data.user|userName}}</translate></kendo-mobile-view-title>
+            <kendo-mobile-back-button data-align="left"><span class="platform-android"><translate>Zurück</translate></span></kendo-mobile-back-button>
+        </kendo-mobile-nav-bar>
+    </kendo-mobile-header>
+
+    <div class="android-title"><h1><translate>{{data.user|userName}}</translate></h1></div>
+
+
+    <div class="user-select-destination-box">
+        <div class="user-sd-left-box">
+            <div class="user-avatar">
+                <img ng-src="{{data.user.avatarMobile}}" />
+            </div>
+        </div>
+        <div class="user-sd-right-box">
+            <translate>
+                Wähle einen Mitglied Deines Netzwerks, in dessen Struktur
+                <div><b>{{data.user|userName}}</b></div>
+                verschoben werden soll.
+            </translate>
+        </div>
+    </div>
+
+    <div class="field-find-member">
+        <input type="text" ng-model="data.users.filter.name" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" placeholder="{{'Mitglied finden'|translate}}">
+    </div>
+
+    <div ng-if="data.users.loading && !data.users.hasMore" class="km-loader km-widget select-loader" data-role="loader">
+        <span class="km-loading km-spin"></span>
+        <span class="km-loading-left"></span>
+        <span class="km-loading-right"></span>
+        <h1><translate>Loading</translate>...</h1>
+    </div>
+
+
+    <kendo-mobile-list-view class="manage-user-list list-user">
+        <li ng-repeat="user in data.users.items">
+            <div class="user-profile">
+                <div class="contact-box-img">
+                    <div class="user-avatar" ng-click="navigate('view-user-profile.html?id='+user.id)">
+                        <img ng-src="{{user.avatarMobile}}" />
+                    </div>
+                </div>
+                <div class="contact-box-info">
+                    <div class="user-data">
+                        <div class="name">{{user|userName}}</div>
+                        <div ng-if="data.users.filter.name" class="level"><translate>level</translate> {{user.level}}</div>
+                        <kendo-mobile-button href="#view-manage-network-confirm-popup" data-rel="modalview"
+                            data-src-id="{{data.user.id}}"
+                            data-src-name="{{data.user|userName}}"
+                            data-dst-id="{{user.id}}"
+                            data-dst-name="{{user|userName}}"
+                        >
+                            <translate>Wählen</translate>
+                        </kendo-mobile-button>
+                        <div ng-if="user.hasChildren && data.users.filter.name==''" class="has-children icon-next" ng-click="data.getHierarchy(user.id)"></div>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </kendo-mobile-list-view>
+
+    <div class="load-btn-box" ng-show="data.users.hasMore">
+        <kendo-mobile-button k-on-click="data.users.loadMore()">
+            <span ng-if="!data.users.loading"><translate>Load More</translate></span>
+            <span ng-if="data.users.loading" class="km-loader km-widget select-loader" data-role="loader" style="">
+                <span class="km-loading km-spin"></span>
+                <span class="km-loading-left"></span>
+                <span class="km-loading-right"></span>
+                <h1><translate>Loading</translate>...</h1>
+                <span class="btn-text-android"><translate>Loading</translate></span>
+            </span>
+        </kendo-mobile-button>
+    </div>
+
+
+
+
+</kendo-mobile-view>

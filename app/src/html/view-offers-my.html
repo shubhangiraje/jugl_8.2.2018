@@ -1,0 +1,261 @@
+<kendo-mobile-view
+    id="view-offers-my"
+    k-layout="'layout-main'"
+    k-on-show="data.onShow(kendoEvent)"
+    ng-controller="OfferMyListCtrl as offerMyListCtrl"
+    k-use-native-scrolling="config.views.useNativeScrolling"
+    ng-cloak>
+
+    <kendo-mobile-header>
+        <kendo-mobile-nav-bar>
+            <kendo-mobile-view-title ng-click="showInfoPopup('view-offers-my')"><div class="view-title-ios"><translate>Inserat verwalten</translate></div></kendo-mobile-view-title>
+            <kendo-mobile-back-button  k-on-click="onClickBack()" data-align="left"><span class="platform-android"><translate>Zurück</translate></span></kendo-mobile-back-button>
+            <kendo-mobile-button class="platform-ios" data-align="right" k-on-click="showInfoPopup('view-offers-my')"><span ng-class="{'blink': isOneShowInfoPopup('view-offers-my')}" class="icon-info-ios"></span></kendo-mobile-button>
+        </kendo-mobile-nav-bar>
+    </kendo-mobile-header>
+
+    <div class="info-icon-box">
+        <span ng-click="showInfoPopup('view-offers-my')" ng-class="{'blink': isOneShowInfoPopup('view-offers-my')}" class="platform-android icon-info-android"></span>
+    </div>
+
+    <div class="android-title">
+        <h1 ng-click="showInfoPopup('view-offers-my')"><translate>Inserat verwalten</translate></h1>
+    </div>
+
+    <kendo-mobile-list-view class="filter-select-list" data-role="listview" data-style="inset">
+        <li>
+            <select ng-model="data.log.filter.status">
+                <option value="" translate>Status Angebote</option>
+                <option value="ACTIVE" translate>Läuft</option>
+                <option value="EXPIRED" translate>Abgelaufen</option>
+                <option value="PAUSED" translate>Gestoppt</option>
+                <option value="REQUEST_NEW" translate>Neu Kaufinteresse</option>
+                <option value="REQUEST_INVITED" translate>Gekauft</option>
+                <option value="REQUEST_PAYED" translate>Bezahlt</option>
+                <option value="REQUEST_PAYING_POD" translate>Barzahlung bei Abholung</option>
+                <option value="REQUEST_CONFIRMED" translate>Geldeingang bestätigt</option>
+                <option value="TYPE_AUCTION" translate>Bieterverfahren</option>
+                <option value="TYPE_AUTOSELL" translate>Sofortkauf</option>
+                <option value="TYPE_AD" translate>Keine Kaufmöglichkeit</option>
+                <option value="SCHEDULED" translate>Zeitvesetzt</option>
+            </select>
+        </li>
+    </kendo-mobile-list-view>
+
+    <div ng-if="data.log.loading && !data.log.hasMore" class="km-loader km-widget select-loader" data-role="loader" style="">
+        <span class="km-loading km-spin"></span>
+        <span class="km-loading-left"></span>
+        <span class="km-loading-right"></span>
+        <h1><translate>Loading</translate>...</h1>
+    </div>
+
+    <div ng-if="data.log.items.length == 0 && !data.log.loading" class="results-empty-text">
+        <translate>Leider hast du noch keine Inserat bzw. Produktangebote eingestellt oder keine passenden Produkte für diesen Filter. Um neue Inserat zu erstellen, gehe auf „Verkaufen / Inserat schalten".</translate>
+    </div>
+
+    <kendo-mobile-list-view class="found-interests-list">
+        <li ng-repeat="item in data.log.items" id="offer-{{item.id}}">
+            <div ng-if="item.status=='SCHEDULED'" class="label-status-scheduled"><translate>Wartet auf Veröffentlichung</translate></div>
+            <div class="found-offer">
+                <div class="box-found-picture">
+                    <a href="" ng-click="navigate('view-offers-details.html?id='+item.id)" class="box-found-link">
+                        <div class="found-img">
+                            <img ng-src="{{::item.image}}" />
+                        </div>
+                    </a>
+                    <div class="found-interested"><span>{{::item.bettersCount}}</span><translate>Interessenten</translate></div>
+                </div>
+
+                <div class="box-found-info">
+                    <div class="found-offer-type">
+                        <span ng-click="showInfoPopup('info-offer-type')" ng-if="item.type == 'AUCTION'"><translate>Bieterverfahren</translate></span>
+                        <span ng-click="showInfoPopup('info-offer-type')" ng-if="item.type == 'AD' && marketingEnabled"><translate>Keine Kaufmöglichkeit</translate></span>
+                        <span ng-click="showInfoPopup('info-offer-type')" ng-if="item.type == 'AUTOSELL'"><translate>Sofortkauf</translate></span>
+                    </div>
+                    <a href="" ng-click="navigate('view-offers-details.html?id='+item.id)" class="box-found-link">
+                        <div class="found-title">{{::item.title}}</div>
+                        <div class="found-category clearfix">
+                            <span>{{::item.level1Interest}}</span>
+                            <span ng-if="item.level2Interest">{{::item.level2Interest}}</span>
+                            <span ng-if="item.level3Interests">{{::item.level3Interests}}</span>
+                        </div>
+                        <div ng-if="item.type!='AD'" class="found-price">{{::item.price|priceFormat}} &euro;</div>
+                    </a>
+
+                    <div once-if="item.status=='ACTIVE' && (!item.pay_status || item.pay_status=='INVITED')" class="found-status offer-status-active"><translate>Läuft</translate></div>
+                    <div once-if="item.status=='EXPIRED'" class="found-status offer-status-expired"><translate>Abgelaufen</translate></div>
+                    <div once-if="item.status=='CLOSED'" class="found-status offer-status-closed"><translate>Abgeschlossen</translate></div>
+                    <div once-if="item.status=='PAUSED'" class="found-status offer-status-expired"><translate>Gestoppt</translate></div>
+                    <div once-if="item.status=='AWAITING_VALIDATION'" class="found-status offer-status-expired"><translate>Wird geprüft</translate></div>
+                    <div once-if="item.status=='REJECTED'" class="found-status offer-status-expired"><translate>Abgelehnt</translate></div>
+
+                    <div>
+                        <a once-if="item.status=='ACTIVE' && (!item.pay_status || item.pay_status=='INVITED')" href="" class="offer-close" ng-click="data.pause(item.id)"><translate>Stoppen</translate></a>
+                        <a once-if="item.status=='PAUSED' && (!item.pay_status || item.pay_status=='INVITED')" href="" class="offer-close" ng-click="data.pause(item.id)"><translate>Starten</translate></a>
+                    </div>
+
+                    <div once-if="item.view_bonus && marketingEnabled" class="found-bonus promotion-bonus"><translate>Werbebonus</translate>:&nbsp;<span>{{::item.view_bonus|priceFormat}}<span class="icon-jugl green"></span></span></div>
+                    <div once-if="item.buy_bonus" class="found-bonus buy-bonus"><translate>Kaufbonus</translate>:&nbsp;<span>{{::item.buy_bonus|priceFormat}}<span class="icon-jugl blue"></span></span></div>
+                    <div once-if="item.view_bonus_total" class="found-bonus">
+                        <translate>Budget</translate>:&nbsp;<span>{{::item.view_bonus_total|priceFormat}}<span class="icon-jugl"></span></span>
+                    </div>
+
+                    <div once-if="item.view_bonus_used" class="found-bonus"><translate>Budget verbraucht</translate>:&nbsp;<span>{{::item.view_bonus_used|priceFormat}}<span class="icon-jugl"></span></span></div>
+                    <div once-if="item.show_amount == 1" class="found-bonus"><translate>Stückzahl</translate>:&nbsp;<span>{{::item.amount}}</span></div>
+                    <div class="found-bonus"><translate>Aktiv bis</translate>:&nbsp;<span>{{::item.active_till|date:"dd.MM.yyyy"}}</span></div>
+                    <div once-if="item.delivery_cost>0" class="found-bonus"><translate>Versandkosten</translate>:&nbsp;<span>{{::item.delivery_cost|priceFormat}} &euro;</span></div>
+                    <div class="found-date">{{::item.create_dt|date:"dd.MM.yyyy"}}</div>
+                    <div class="show-auction-list-btn" ng-if="item.offerRequests.length>0 && item.type == 'AUCTION'" ng-click="item.show_auction_list=!item.show_auction_list"><div>{{::item.offerRequests.length}}</div><span><translate>Gebote</translate></span></div>
+
+                    <div style="margin-top: 10px">
+                        <a class="bonus-total-update" ng-if="item.canUpdateViewBonusTotal" href="#view-offers-update-popup" data-rel="modalview" data-role="button" data-id="{{::item.id}}"><translate>bearbeiten</translate></a>
+                    </div>
+
+                </div>
+
+                <div class="btn-del-offer" ng-click="data.delete(item.id)"></div>
+            </div>
+
+            <div class="sort-item-auction" ng-if="item.type == 'AUCTION' && item.show_auction_list">
+                <div class="sort-item-auction-box">
+                    <select ng-model="item.bet.filter">
+                        <option value="" translate>Filtern nach</option>
+                        <option value="ACTIVE" translate>Nur aktive</option>
+                        <option value="EXPIRED" translate>Nur abgelaufene</option>
+                    </select>
+                </div>
+                <div class="sort-item-auction-box">
+                    <select ng-model="item.bet.sort">
+                        <option value="" translate>Sortieren nach</option>
+                        <option value="-bet_price" translate>Gebotshöhe</option>
+                        <option value="-bet_active_till" translate>Gültigkeit</option>
+                    </select>
+                </div>
+            </div>
+
+            <ul class="found-offer-users-list">
+                <li ng-repeat="request in item.offerRequests" ng-if="item.type != 'AUCTION'">
+                    <div class="offer-user-box clearfix">
+                        <a href="" ng-click="navigate('view-user-profile.html?id='+request.user.id)">
+                            <div class="offer-user-avatar"><img ng-src="{{request.user.avatarMobile}}" alt=""/></div>
+                        </a>
+                        <div class="offer-user-name">{{::request.user|userName}}</div>
+                        <div class="offer-user-rating">
+                            <div class="star-rating">
+                                <span once-style="{width:(+request.user.rating)+'%'}"></span>
+                            </div>
+                            <div class="user-feedback-count">({{::request.user.feedback_count}})</div>
+                            <div ng-if="request.user.packet=='VIP'" class="user-packet">&nbsp;</div>
+                            <div ng-if="request.user.packet=='VIP_PLUS'" class="user-packet-vip-plus">&nbsp;</div>
+                        </div>
+                    </div>
+                    <div class="offer-comments">
+                        <p once-if="request.description">{{::request.description}}</p>
+                        <p once-if="!request.description" class="no-comments"><translate>Kein Kommentar</translate></p>
+                    </div>
+                    <a ng-if="!request.pay_status" href="" ng-click="data.accept(request,item)" class="completing-rate-link"><translate>Akzeptieren</translate></a>
+                    <div>
+                        <div once-if="!request.pay_status" class="offer-pay-status"><translate>Neues Kaufinteresse</translate></div>
+                        <div once-if="request.pay_status=='INVITED'" class="offer-pay-status"><translate>Gekauft</translate></div>
+                        <div once-if="request.pay_status=='PAYED' && request.pay_method!='POD'" class="offer-pay-status"><translate>Als bezahlt markiert</translate></div>
+                        <div once-if="request.pay_status=='PAYED' && request.pay_method=='POD'" class="offer-pay-status"><translate>Barzahlung bei Abholung</translate></div>
+                        <div once-if="request.pay_status=='CONFIRMED'" class="offer-pay-status"><translate>Geldeingang bestätigt</translate></div>
+                    </div>
+                </li>
+                <li ng-repeat="request in item.offerRequests | filter: data.offerRequestFilters[item.bet.filter] | orderBy:item.bet.sort" ng-if="item.type == 'AUCTION' && item.show_auction_list" id="offerRequest-{{request.id}}">
+                    <div class="offer-item-auction-list clearfix">
+                        <div class="offer-item-auction-left">
+                            <div class="offer-user-box clearfix">
+                                <a href="" ng-click="navigate('view-user-profile.html?id='+request.user.id)">
+                                    <div class="offer-user-avatar"><img ng-src="{{request.user.avatarMobile}}" alt=""/></div>
+                                </a>
+                                <div class="offer-user-name">{{::request.user|userName}}</div>
+                                <div class="offer-user-rating">
+                                    <div class="star-rating">
+                                        <span once-style="{width:(+request.user.rating)+'%'}"></span>
+                                    </div>
+                                    <div class="user-feedback-count">({{::request.user.feedback_count}})</div>
+                                    <div ng-if="request.user.packet=='VIP'" class="user-packet">&nbsp;</div>
+                                    <div ng-if="request.user.packet=='VIP_PLUS'" class="user-packet-vip-plus">&nbsp;</div>
+                                </div>
+                            </div>
+                            <div class="current-bid"><translate>Aktuelles Gebot</translate>: <span>{{request.bet_price}} &euro;</span></div>
+                            <div class="offer-item-auction-description-box">
+                                <p once-if="request.description">{{::request.description}}</p>
+                                <p once-if="!request.description" class="no-comments"><translate>Kein Kommentar</translate></p>
+                            </div>
+                        </div>
+                        <div class="offer-item-auction-right clearfix">
+                            <div ng-if="request.status!='ACCEPTED'" class="auction-valid-time"><translate>Gültig</translate>:
+                                <span server-countdown="request.bet_active_till"></span>
+                            </div>
+                            <div ng-if="request.status=='ACCEPTED'" class="auction-valid-time"><translate>Gestoppt</translate>:
+                                <span server-countdown="request.bet_active_till" server-countdown-closed-dt="request.closed_dt"></span>
+                            </div>
+                            <div class="auction-end-time"><translate>Ende</translate>: <b>{{::request.bet_active_till|date:"dd.MM.yyyy HH:mm"}}</b></div>
+                            <div class="accept-bid" ng-if="!request.isExpired && !request.pay_status" ng-click="data.accept(request,item)"><translate>Gebot annehmen</translate></div>
+                            <div class="accept-bid" ng-if="request.isExpired && !request.pay_status" ng-click="data.openChat(request,item)"><translate>Nachricht senden</translate></div>
+                            <div class="auction-status-accepted" ng-if="request.status=='ACCEPTED'"><translate>Gebot angenommen</translate><div class="request-closed_dt">{{::request.closed_dt|date:"dd.MM.yyyy HH:mm"}}</div></div>
+                            <div class="bids-changed" ng-if="request.modificationsCount>0" ng-click="request.show_bids_changed=!request.show_bids_changed"><translate>Gebot geändert</translate>: <span>{{::request.modificationsCount}} <translate>mal</translate>&raquo;</span></div>
+                            <ul ng-if="request.show_bids_changed" class="bids-changed-list">
+                                <li ng-repeat="itemModifications in request.modifications">
+                                    {{::itemModifications.dt|date:"dd.MM.yyyy HH:mm"}} <b>{{::itemModifications.price}} &euro;</b>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+           <!-- <div class="open-offer-view-users">
+                <a href="" ng-click="data.offerViewUsers(item.id)"><translate>Inserat angeschaut</translate></a>
+            </div>-->
+
+            <div ng-if="item.offer_view_users_loader" class="km-loader km-widget select-loader" data-role="loader">
+                <span class="km-loading km-spin"></span>
+                <span class="km-loading-left"></span>
+                <span class="km-loading-right"></span>
+                <h1><translate>Loading</translate>...</h1>
+            </div>
+
+            <div ng-if="item.offer_view_users_load" class="offer-view-users">
+                <div ng-if="item.offer_view_users.count_users>0">
+                    <div class="offer-view-users-count"><translate>Anzahl der User</translate>: <b>{{::item.offer_view_users.count_users}}</b></div>
+                    <div class="offer-view-users-list">
+                        <slick slides-to-show="15" slides-to-scroll="15" responsive="[{breakpoint: 640,settings:{slidesToShow: 10,slidesToScroll: 10}}, {breakpoint: 480,settings:{slidesToShow: 9,slidesToScroll: 9}},{breakpoint: 400,settings:{slidesToShow: 7,slidesToScroll: 7}}]">
+                            <div ng-repeat="offerViewUser in item.offer_view_users.users">
+                                <a data-rel="modalview" href="#view-offer-history-view-popup" data-user-id="{{::offerViewUser.id}}" data-offer-id="{{::item.id}}" data-role="button" class="offer-view-user-avatar">
+                                    <img ng-src="{{::offerViewUser.avatarMobile}}" alt=""/>
+                                </a>
+                            </div>
+                        </slick>
+                    </div>
+                </div>
+                <div ng-if="item.offer_view_users.count_users===0" class="offer-view-users-empty">
+                    <translate>Die Inserat wurde noch von keinem Benutzer angeschaut</translate>
+                </div>
+            </div>
+
+        </li>
+
+    </kendo-mobile-list-view>
+
+
+    <div class="load-btn-box" ng-show="data.log.hasMore">
+        <kendo-mobile-button k-on-click="data.log.loadMore()">
+            <span ng-if="!data.log.loading"><translate>Load More</translate></span>
+            <span ng-if="data.log.loading" class="km-loader km-widget select-loader" data-role="loader" style="">
+                <span class="km-loading km-spin"></span>
+                <span class="km-loading-left"></span>
+                <span class="km-loading-right"></span>
+                <h1><translate>Loading</translate>...</h1>
+                <span class="btn-text-android"><translate>Loading</translate></span>
+            </span>
+        </kendo-mobile-button>
+    </div>
+
+</kendo-mobile-view>
+
+
+
+

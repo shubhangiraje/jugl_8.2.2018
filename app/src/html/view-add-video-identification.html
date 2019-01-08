@@ -1,0 +1,68 @@
+<kendo-mobile-view
+    id="view-add-video-identification"
+    k-layout="'layout-main'"
+    ng-controller="AddVideoIdentificationCtrl as addVideoIdentificationCtrl"
+    k-on-show="data.onShow(kendoEvent)"
+    k-on-hide="data.onHide(kendoEvent)"
+    k-use-native-scrolling="config.views.useNativeScrolling"
+    ng-cloak>
+
+    <kendo-mobile-header>
+        <kendo-mobile-nav-bar>
+            <kendo-mobile-back-button data-align="left"><span class="platform-android"><translate>Zurück</translate></span></kendo-mobile-back-button>
+        </kendo-mobile-nav-bar>
+    </kendo-mobile-header>
+
+    <div class="video-verification-add-box">
+        <div ng-if="!data.recorded && !data.fileUpload">
+            <h1><translate>Video Ident Starten</translate></h1>
+            <p><b><translate>Bedingung</translate>:</b></p>
+            <p><translate>Bitte halte zur korrekten Legitimation einen Zettel mit deinem Vor- und Nachnamen und der Aufschrift „Jugl.net“ in die Kamera. Sag dazu in deiner Landessprache deinen Vor-und nachnamen, sowie Jugl.net.</translate></p>
+            <p><b><translate>Freiwillig</translate>:</b></p>
+            <p><translate>Wenn die obenstehenden Bedingungen erfüllt sind, kannst Du danach noch persönliche Grüße oder Informationen zu Deiner Person dem Video hinzufügen.</translate></p>
+            <p><translate>Achte aber bitte darauf, dass dein Video nicht länger als 60 Sekunden wird.</translate></p>
+            <p><translate>Um die Videoidentifikation starten zu können, stimmen Sie den AGB zu und bestätigen, dass Sie die Datenschutzerklärung gelesen haben und klicken Sie auf den Button „Jetzt Video aufnehmen“.</translate></p>
+
+            <kendo-mobile-list-view class="term-of-use-box clearfix">
+                <li class="term-of-use-box-checkbox"><label class="label-checkbox km-listview-label"><input type="checkbox" ng-model="data.termOfUse" ng-true-value="1" ng-false-value="0" /></label></li>
+                <li class="term-of-use-box-text"><translate>Ich stimme den <a ng-click="openUrlInBrowser(config.urls.nutzungsbedingungen)">Nutzerbedingungen</a> und <a ng-click=navigate('view-data-protection-not-login.html')>Datenschutzrichtlinien</a> zu</translate></li>
+            </kendo-mobile-list-view>
+        </div>
+
+        <div ng-if="data.recorded && !data.fileUpload && !data.uploadSuccess" class="preview-video-verification-add-box">
+            <h2><translate>Videovorschau</translate></h2>
+            <div class="video-box">
+                <video controls="true" muted preload="none">
+                    <source ng-src="{{data.recordedVideoSrs}}" type="video/mp4">
+                </video>
+            </div>
+            <div class="preview-video-bottom-text"><translate>Hier kannst Du dir dein Video nochmal anschauen.</translate></div>
+            <div class="btn-box">
+                <kendo-mobile-button ng-click="data.record()"><translate>Video neu aufnehmen</translate></kendo-mobile-button>
+            </div>
+            <p><translate>Gefällt Dir dein Video? Dann klicke auf „Video hochladen“. Um das Video erneut aufzunehmen klicke auf „Video neu aufnehmen“.</translate></p>
+            <div class="btn-box">
+                <kendo-mobile-button k-on-click="data.save()"><translate>Video hochladen</translate></kendo-mobile-button>
+            </div>
+            <p><translate>Beachte: Das Video ist für alle im Forum sichtbar!</translate></p>
+        </div>
+
+        <div ng-if="data.fileUpload" class="video-verification-loader"></div>
+
+        <div ng-if="!data.fileUpload && data.uploadSuccess" class="video-verification-success"><translate>Dein Video wurde erfolgreich hochgeladen</translate></div>
+
+        <div class="btn-box" ng-if="!data.fileUpload">
+            <kendo-mobile-button ng-if="!data.recorded" k-on-click="data.record()" ng-disabled="!data.termOfUse"><translate>Jetzt Video aufnehmen</translate></kendo-mobile-button>
+            <kendo-mobile-button ng-if="data.uploadSuccess" href="view-trollbox-list.html"><translate>Zum Forum</translate></kendo-mobile-button>
+            <kendo-mobile-button ng-if="data.uploadSuccess" k-on-click="mainProfile()"><translate>Zum Profil</translate></kendo-mobile-button>
+        </div>
+
+        <div ng-if="!data.fileUpload && data.uploadSuccess">
+            <p><translate>Zur Info</translate>:</p>
+            <p><translate>Der nächste Videoupload ist erst wieder in 24 Stunden möglich!</translate></p>
+        </div>
+
+
+    </div>
+
+</kendo-mobile-view>

@@ -1,0 +1,60 @@
+<kendo-mobile-view
+        id="view-user-become-member-invitations"
+        k-layout="'layout-main'"
+        k-use-native-scrolling="config.views.useNativeScrolling"
+        ng-controller="UserBecomeMemberInvitationsCtrl as userBecomeMemberInvitationsCtrl"
+        k-on-show="data.onShow(kendoEvent)"
+        ng-cloak>
+
+    <kendo-mobile-header>
+        <kendo-mobile-nav-bar>
+            <kendo-mobile-back-button k-on-click="onClickBack()" data-align="left"><span class="platform-android"><translate>Zurück</translate></span></kendo-mobile-back-button>
+            <kendo-mobile-view-title><translate>Gewinner</translate></kendo-mobile-view-title>
+        </kendo-mobile-nav-bar>
+    </kendo-mobile-header>
+
+
+    <div class="user-become-member-invitations-box">
+
+        <div class="user-become-member-winner-title"><translate>Gewinner</translate></div>
+
+        <ul class="list-user-become-member-invitations">
+            <li ng-repeat="item in data.log.items" class="clearfix">
+                <div class="user-become-member-winner-dt">
+                    <span class="dt">{{::item.dt|date:'dd.MM.yyyy'}}</span>
+                    <span class="time">{{::item.dt|date:'HH:mm:ss'}}.{{::item.ms}} <translate>Uhr</translate></span>
+                </div>
+                <div class="user-box clearfix">
+                    <div class="user-box-avatar" ng-click="navigate('view-user-profile.html?id='+item.user.id)">
+                        <img ng-src="{{item.user.avatarMobile}}" />
+                    </div>
+                    <div class="user-box-info">
+                        <div class="user-box-username">{{::item.user|userName}}</div>
+                        <div class="user-box-text"><translate>Teamleaderbewertung</translate></div>
+                        <div class="user-box-rating">
+                            <div class="star-rating">
+                                <span once-style="{width:(+item.user.rating)+'%'}"></span>
+                            </div>
+                            <div class="count-user-feedback">({{::item.user.feedback_count}})</div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="load-btn-box" ng-show="data.log.hasMore">
+        <kendo-mobile-button k-on-click="data.log.loadMore()">
+            <span ng-if="!data.log.loading"><translate>Load More</translate></span>
+            <span ng-if="data.log.loading" class="km-loader km-widget select-loader" data-role="loader" style="">
+                <span class="km-loading km-spin"></span>
+                <span class="km-loading-left"></span>
+                <span class="km-loading-right"></span>
+                <h1><translate>Loading</translate>...</h1>
+                <span class="btn-text-android"><translate>Loading</translate></span>
+            </span>
+        </kendo-mobile-button>
+    </div>
+
+
+</kendo-mobile-view>

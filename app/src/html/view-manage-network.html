@@ -1,0 +1,69 @@
+<kendo-mobile-view
+    id="view-manage-network"
+    k-layout="'layout-main'"
+    ng-controller="ManageNetworkCtrl as manageNetworkCtrl"
+    k-on-show="data.onShow(kendoEvent)"
+    k-use-native-scrolling="config.views.useNativeScrolling"
+    ng-cloak>
+
+    <kendo-mobile-header>
+        <kendo-mobile-nav-bar>
+            <kendo-mobile-view-title ng-click="showInfoPopup('view-manage-network')"><div class="view-title-ios"><translate>Netzwerk verwalten</translate></div></kendo-mobile-view-title>
+        </kendo-mobile-nav-bar>
+    </kendo-mobile-header>
+
+    <div class="info-icon-box">
+        <span ng-click="showInfoPopup('view-manage-network')" ng-class="{'blink': isOneShowInfoPopup('view-manage-network')}" class="platform-android icon-info-android"></span>
+    </div>
+
+    <div class="android-title">
+        <h1 ng-click="showInfoPopup('view-manage-network')"><translate>Netzwerk verwalten</translate></h1>
+    </div>
+
+    <p class="text">Hier kannst Du dein eigenes Netzwerk verwalten, indem Du Mitglieder aus der ersten Ebene in die tieferen Ebenen verschiebst.</p>
+    <div class="field-find-member">
+        <input type="text" ng-model="data.users.filter.name" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" placeholder="{{'Mitglied finden'|translate}}">
+    </div>
+
+    <div ng-if="data.users.loading && !data.users.hasMore" class="km-loader km-widget select-loader" data-role="loader">
+        <span class="km-loading km-spin"></span>
+        <span class="km-loading-left"></span>
+        <span class="km-loading-right"></span>
+        <h1><translate>Loading</translate>...</h1>
+    </div>
+
+    <kendo-mobile-list-view class="manage-user-list">
+        <li ng-repeat="user in data.users.items">
+            <div class="user-profile">
+                <div class="contact-box-img">
+                    <div class="user-avatar" ng-click="navigate('view-user-profile.html?id='+user.id)">
+                        <img ng-src="{{user.avatarMobile}}" />
+                    </div>
+                </div>
+                <div class="contact-box-info">
+                    <div class="user-data">
+                        <div class="name">{{::user|userName}}</div>
+                        <kendo-mobile-button ng-click="navigate('view-manage-select-destination.html?move_id='+user.id)"><translate>Wählen</translate></kendo-mobile-button>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </kendo-mobile-list-view>
+
+    <div class="load-btn-box" ng-show="data.users.hasMore">
+        <kendo-mobile-button k-on-click="data.users.loadMore()">
+            <span ng-if="!data.users.loading"><translate>Load More</translate></span>
+            <span ng-if="data.users.loading" class="km-loader km-widget select-loader" data-role="loader" style="">
+                <span class="km-loading km-spin"></span>
+                <span class="km-loading-left"></span>
+                <span class="km-loading-right"></span>
+                <h1><translate>Loading</translate>...</h1>
+                <span class="btn-text-android"><translate>Loading</translate></span>
+            </span>
+        </kendo-mobile-button>
+    </div>
+
+
+
+
+</kendo-mobile-view>

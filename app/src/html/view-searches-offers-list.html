@@ -1,0 +1,64 @@
+<kendo-mobile-view
+        id="view-searches-offers-list"
+        k-layout="'layout-main'"
+        ng-controller="SearchRequestOffersListCtrl"
+        k-on-show="data.onShow(kendoEvent)"
+        k-use-native-scrolling="config.views.useNativeScrolling"
+        ng-cloak>
+
+    <kendo-mobile-header>
+        <kendo-mobile-nav-bar>
+            <kendo-mobile-back-button k-on-click="onClickBack()" data-align="left"><span class="platform-android"><translate>Zurück</translate></span></kendo-mobile-back-button>
+        </kendo-mobile-nav-bar>
+    </kendo-mobile-header>
+
+    <kendo-mobile-list-view class="found-interests-list">
+        <li>
+            <div class="found-offer">
+                <div class="box-found-picture">
+                    <a class="box-found-link" href="" ng-click="navigate('view-searches-details.html?id='+data.searchRequest.id)">
+                        <div class="found-img">
+                            <img ng-src="{{data.searchRequest.image}}" />
+                        </div>
+                    </a>
+                    <div class="found-relevance"><translate>Angebote</translate><span class="relevance-percent">{{data.searchRequest.searchRequestOffers.length}}</span></div>
+                </div>
+
+                <div class="box-found-info">
+                    <a class="box-found-link" href="" ng-click="navigate('view-searches-details.html?id='+data.searchRequest.id)">
+                        <div class="found-title">{{data.searchRequest.title}}</div>
+                    </a>
+                    <div ng-if="data.searchRequest.price_to" class="found-price">{{data.searchRequest.price_from|priceFormat}} - {{data.searchRequest.price_to|priceFormat}} &euro;</div>
+                    <div ng-if="!data.searchRequest.price_to" class="found-price">{{data.searchRequest.price_from|priceFormat}} &euro;</div>
+                    <div ng-if="data.searchRequest.bonus" class="found-jugl">{{data.searchRequest.bonus|priceFormat}} <span class="icon-jugl"></span></div>
+                    <div ng-if="!data.searchRequest.bonus" class="found-jugl">&nbsp;</div>
+                    <div class="found-category clearfix">
+                        <span>{{data.searchRequest.level1Interest}}</span>
+                        <span ng-if="data.searchRequest.level2Interest">{{data.searchRequest.level2Interest}}</span>
+                        <span ng-if="data.searchRequest.level3Interests">{{data.searchRequest.level3Interests}}</span>
+                    </div>
+                    <div class="found-date">{{::data.searchRequest.create_dt|date:"dd.MM.yyyy"}}</div>
+                </div>
+            </div>
+
+            <ul ng-if="data.searchRequest.searchRequestOffers.length > 0" class="found-offer-users-list">
+                <li ng-repeat="offer in data.searchRequest.searchRequestOffers" style="padding-top: 5px">
+                    <div class="offer-comments" style="padding-left: 5px;">
+                        <p class="blurDetails" ng-if="offer.description">{{::offer.description}}</p>
+                        <p class="blurDetails no-comments" ng-if="!offer.description"><translate>Kein Kommentar</translate></p>
+                    </div>
+                    <div ng-if="offer.price_to" class="found-price">{{::offer.price_from|priceFormat}} - {{::offer.price_to|priceFormat}} &euro;</div>
+                    <div ng-if="!offer.price_to" class="found-price">{{::offer.price_from|priceFormat}} &euro;</div>
+                    <div class="offer-box-status-and-link clearfix">
+                        <div class="offer-request-status rejected" ng-if="offer.status=='REJECTED'"><translate>ABGELEHNT</translate></div>
+                        <div class="offer-request-status contacted" ng-if="offer.status=='CONTACTED'"><translate>NACHRICHT GESENDET</translate></div>
+                        <div class="offer-request-status contacted" ng-if="offer.status=='ACCEPTED'"><translate>ANGENOMMEN</translate></div>
+                    </div>
+                </li>
+            </ul>
+
+        </li>
+    </kendo-mobile-list-view>
+
+
+</kendo-mobile-view>

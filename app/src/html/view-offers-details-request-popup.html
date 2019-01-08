@@ -1,0 +1,16 @@
+<kendo-mobile-modal-view
+    id="offers-details-request-popup"
+    k-on-open="data.onOpen(kendoEvent)"
+    ng-controller="OfferDetailsRequestCtrl as offerDetailsRequestCtrl"
+    class="modal" style="width: 90%;" modal ng-cloak>
+
+    <div class="feedback-box">
+        <label><translate>Kommentar an den Anbieter verfassen:</translate></label>
+        <textarea ng-model="data.offerRequest.description" rows="6"></textarea>
+    </div>
+
+    <div class="btn-box">
+        <kendo-mobile-button k-on-click="data.save()"><translate>Abschicken</translate></kendo-mobile-button>
+        <kendo-mobile-button class="closeModalBtn"><translate>Cancel</translate></kendo-mobile-button>
+    </div>
+</kendo-mobile-modal-view>

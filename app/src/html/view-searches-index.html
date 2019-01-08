@@ -1,0 +1,35 @@
+<kendo-mobile-view id="view-searches-index" k-layout="'layout-main'" k-use-native-scrolling="config.views.useNativeScrolling" ng-cloak>
+
+    <kendo-mobile-header>
+        <kendo-mobile-nav-bar>
+            <kendo-view-title ng-click="showInfoPopup('view-searches-index')"><div class="view-title-ios"><translate>Suchauftrag erstellen / recherchieren / vermitteln</translate></div></kendo-view-title>
+            <kendo-mobile-button class="platform-ios" data-align="right" k-on-click="showInfoPopup('view-searches-index')"><span ng-class="{'blink': isOneShowInfoPopup('view-searches-index')}" class="icon-info-ios"></span></kendo-mobile-button>
+        </kendo-mobile-nav-bar>
+    </kendo-mobile-header>
+
+    <div class="info-icon-box">
+        <span ng-click="showInfoPopup('view-searches-index')" ng-class="{'blink': isOneShowInfoPopup('view-searches-index')}" class="platform-android icon-info-android"></span>
+    </div>
+
+    <div class="android-title">
+        <h1 ng-click="showInfoPopup('view-searches-index')"><translate>Suchauftrag erstellen / recherchieren / vermitteln</translate></h1>
+    </div>
+
+    <p class="text"><translate>Vermittlung, Recherche, Assistenz. Egal was Du oder andere suchen. Du bekommst dafür Vermittlungsprovision oder profitierst von den Angeboten.</translate></p>
+
+    <div class="btn-box">
+        <kendo-mobile-button href="view-searches-search.html" k-on-click="refreshList()">
+            <translate>Was suchen andere</translate>
+            <span class="button-badge badge" ng-if="status.user.stat_new_search_requests>0">{{status.user.stat_new_search_requests>99 ? '99+':status.user.stat_new_search_requests}}</span>
+        </kendo-mobile-button>
+        <kendo-mobile-button href="view-searches-add.html"><translate>Suchauftrag erstellen</translate></kendo-mobile-button>
+        <kendo-mobile-button href="view-searches-draft.html"><translate>Entwürfe</translate></kendo-mobile-button>
+        <kendo-mobile-button href="view-interests.html?type=SEARCH_REQUEST"><translate>Interessen angeben</translate></kendo-mobile-button>
+        <kendo-mobile-button href="view-searches-my-list.html" k-on-click="refreshList()">
+            <translate>Was wird mir angeboten</translate>
+            <span class="button-badge badge" ng-if="status.user.stat_new_search_requests_offers>0">{{status.user.stat_new_search_requests_offers>99 ? '99+':status.user.stat_new_search_requests_offers}}</span>
+        </kendo-mobile-button>
+        <kendo-mobile-button href="view-searches-my-offers.html" k-on-click="refreshList()"><translate>Was habe ich anderen vermittelt / angeboten?</translate></kendo-mobile-button>
+    </div>
+
+</kendo-mobile-view>

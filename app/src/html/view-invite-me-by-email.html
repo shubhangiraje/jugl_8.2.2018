@@ -1,0 +1,34 @@
+<kendo-mobile-view
+        ng-controller="InviteMeByEmailCtrl"
+        id="view-invite-me-by-email"
+        k-layout="'layout-main'"
+        class="appearance"
+        k-on-show="data.onShow(kendoEvent)"
+        k-use-native-scrolling="config.views.useNativeScrolling"
+        fields-scroll ng-cloak>
+
+    <kendo-mobile-header>
+        <kendo-mobile-nav-bar>
+            <kendo-mobile-view-title><translate>Einladen per Email</translate></kendo-mobile-view-title>
+            <kendo-mobile-back-button k-on-click="onClickBack()" data-align="left"><span class="platform-android"><translate>Zurück</translate></span></kendo-mobile-back-button>
+        </kendo-mobile-nav-bar>
+    </kendo-mobile-header>
+
+    <h3><translate>Per E-Mail einladen</translate></h3>
+
+    <kendo-mobile-scroller class="box-view-invite-email">
+        <kendo-mobile-list-view class="list-textarea">
+            <li class="textarea-field"><label><translate>Du kannst den untenstehenden Text bearbeiten und das neue Mitglied davon überzeugen, DEINE Einladung zu wählen und nicht die eines anderen.</translate><textarea ng-model="data.text" style="resize: none" placeholder="{{'Text'|translate}}"></textarea></label></li>
+        </kendo-mobile-list-view>
+
+        <div class="btn-box">
+            <kendo-mobile-button k-on-click="data.send()"><translate>Einladung verschicken</translate></kendo-mobile-button>
+        </div>
+    </kendo-mobile-scroller>
+
+</kendo-mobile-view>
+
+
+
+
+

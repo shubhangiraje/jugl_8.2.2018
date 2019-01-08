@@ -1,0 +1,29 @@
+<kendo-mobile-modal-view
+    id="videos-details-view-bonus-popup"
+    k-on-open="data.onOpen(kendoEvent)"
+    k-on-close="data.onClose(kendoEvent)"
+    ng-controller="VideoDetailsViewBonusPopupCtrl as videoDetailsViewBonusPopupCtrl"
+    class="modal" style="width: 90%;" modal ng-cloak>
+
+    <div class="modal-bonus-container">
+        <div class="modal-bonus-box">
+            <p><translate>Vielen Dank für das Anschauen des Videos.<br>Dein Interesse wird mit</translate></p>
+            <div class="modal-bonus">
+                <span class="modal-bonus-left"></span>
+                {{data.bonus}}<span class="icon-jugl"></span>
+                <span class="modal-bonus-right"></span>
+            </div>
+            <p><translate>belohnt.</translate></p>
+            <p><translate>Der Werbebonus wird ausgezahlt, wenn Du innerhalb von</translate></p>
+            <div class="modal-time" ng-click="data.accept()">
+                <div class="time-value">{{data.secondsLeftVideo}}</div>
+                <div class="time-title"><translate>Sekunden</translate></div>
+            </div>
+            <p><translate>den Button klickst.</translate></p>
+        </div>
+
+        <div class="btn-box">
+            <kendo-mobile-button k-on-click="data.accept()"><translate>Belohnung abholen</translate></kendo-mobile-button>
+        </div>
+    </div>
+</kendo-mobile-modal-view>

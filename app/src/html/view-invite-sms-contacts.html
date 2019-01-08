@@ -1,0 +1,23 @@
+<kendo-mobile-view
+        id="view-invite-sms-contacts"
+        ng-controller="InviteSmsContactsCtrl"
+        k-on-show="data.onShow(kendoEvent)"
+        k-layout="'layout-main'"
+        k-use-native-scrolling="config.views.useNativeScrolling"
+        ng-cloak>
+
+    <kendo-mobile-header>
+        <kendo-mobile-nav-bar>
+            <kendo-mobile-view-title><translate>Ihre Kontakte</translate></kendo-mobile-view-title>
+            <kendo-mobile-back-button k-on-click="onClickBack()" data-align="left"><span class="platform-android"><translate>Zurück</translate></span></kendo-mobile-back-button>
+            <kendo-mobile-button k-on-click="data.contactsSelected()" data-align="right"><translate>Einladen</translate></kendo-mobile-button>
+        </kendo-mobile-nav-bar>
+    </kendo-mobile-header>
+
+    <script id="template-invite-sms-contacts-item" type="text/x-kendo-template">
+        <label class="label-checkbox" once-class="{'contact-disabled': dataItem.status}"><input set-if="!dataItem.status" type="checkbox" ng-model="data.contacts[dataItem.id]" />{{::dataItem.name}} {{::dataItem.status ? '('+dataItem.status+')':''}}</label>
+    </script>
+
+    <kendo-mobile-list-view k-options="data.listViewOptions"></kendo-mobile-list-view>
+
+</kendo-mobile-view>

@@ -1,0 +1,13 @@
+#!/bin/bash
+
+set -e
+
+cd "$(dirname "$0")"
+
+APK_FILE=../platforms/android/build/outputs/apk/android-debug.apk
+
+pkg=$(aapt dump badging $1|awk -F" " '/package/ {print $APK_FILE}'|awk -F"'" '/name=/ {print $APK_FILE}')
+act=$(aapt dump badging $1|awk -F" " '/launchable-activity/ {print $APK_FILE}'|awk -F"'" '/name=/ {print $APK_FILE}')
+
+
+echo adb shell am start -n $pkg/$act

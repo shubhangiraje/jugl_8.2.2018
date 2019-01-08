@@ -1,0 +1,57 @@
+<kendo-mobile-view
+        id="view-settings"
+        k-layout="'layout-main'"
+        ng-controller="SettingsCtrl as settingsCtrl"
+        k-use-native-scrolling="config.views.useNativeScrolling"
+        ng-cloak>
+
+    <kendo-mobile-header>
+        <kendo-mobile-nav-bar>
+            <kendo-view-title ng-click="showInfoPopup('view-settings')"><translate>Einstellungen</translate></kendo-view-title>
+            <kendo-mobile-button class="platform-ios" data-align="right" k-on-click="showInfoPopup('view-settings')"><span ng-class="{'blink': isOneShowInfoPopup('view-settings')}" class="icon-info-ios"></span></kendo-mobile-button>
+        </kendo-mobile-nav-bar>
+    </kendo-mobile-header>
+
+    <div class="info-icon-box">
+        <span ng-click="showInfoPopup('view-settings')" ng-class="{'blink': isOneShowInfoPopup('view-settings')}" class="platform-android icon-info-android"></span>
+    </div>
+
+    <div class="android-title">
+        <h1 ng-click="showInfoPopup('view-settings')"><translate>Einstellungen</translate></h1>
+    </div>
+
+    <kendo-mobile-list-view k-type="'group'" k-style="'inset'" class="settings-list">
+        <li><translate>Benachrichtigungen</translate>
+            <ul>
+                <li><div class="setting-label"><translate>Alle Benachrichtigungen</translate></div><kendo-mobile-switch ng-model="settings.notifications.all" k-on-label="'{{'an'|translate}}'" k-off-label="'{{'aus'|translate}}'" /></li>
+                <li><div class="setting-label"><translate>Beim Nachrichteneingang</translate></div><kendo-mobile-switch ng-model="settings.notifications.chat" k-on-label="'{{'an'|translate}}'" k-off-label="'{{'aus'|translate}}'" /></li>
+                <li><div class="setting-label"><translate>Bei neuen Aktivitäten</translate></div><kendo-mobile-switch ng-model="settings.notifications.activity" k-on-label="'{{'an'|translate}}'" k-off-label="'{{'aus'|translate}}'" /></li>
+                <li><div class="setting-label"><translate>Beim Jugls-Eingang</translate></div><kendo-mobile-switch ng-model="settings.notifications.money" k-on-label="'{{'an'|translate}}'" k-off-label="'{{'aus'|translate}}'" /></li>
+                <li><div class="setting-label"><translate>Beim Verkauf/Inserat</translate></div><kendo-mobile-switch ng-model="settings.notifications.offer" k-on-label="'{{'an'|translate}}'" k-off-label="'{{'aus'|translate}}'" /></li>
+                <li><div class="setting-label"><translate>Beim Suchauftrag</translate></div><kendo-mobile-switch ng-model="settings.notifications.search_request" k-on-label="'{{'an'|translate}}'" k-off-label="'{{'aus'|translate}}'" /></li>
+                <li><div class="setting-label"><translate>Bei Likes</translate></div><kendo-mobile-switch ng-model="settingsGlobal.setting_notification_likes" k-on-label="'{{'an'|translate}}'" k-off-label="'{{'aus'|translate}}'" /></li>
+<!--
+                <li><div class="setting-label"><translate>Bei Kommentaren</translate></div><kendo-mobile-switch ng-model="settingsGlobal.setting_notification_comments" k-on-label="'{{'an'|translate}}'" k-off-label="'{{'aus'|translate}}'" /></li>
+-->
+                <li><div class="setting-label"><translate>E-Mails an mich versenden</translate></div><kendo-mobile-switch ng-model="settingsGlobal.setting_send_email" k-on-label="'{{'an'|translate}}'" k-off-label="'{{'aus'|translate}}'" /></li>
+            </ul>
+        </li>
+
+        <li><translate>Toneinstellungen</translate>
+            <ul>
+                <li><div class="setting-label"><translate>Alle Töne</translate></div><kendo-mobile-switch ng-model="settings.sound.all" k-on-label="'{{'an'|translate}}'" k-off-label="'{{'aus'|translate}}'" /></li>
+                <li><div class="setting-label"><translate>Beim Nachrichteneingang</translate></div><kendo-mobile-switch ng-model="settings.sound.chat" k-on-label="'{{'an'|translate}}'" k-off-label="'{{'aus'|translate}}'" /></li>
+                <li><div class="setting-label"><translate>Bei neuen Aktivitäten</translate></div><kendo-mobile-switch ng-model="settings.sound.activity" k-on-label="'{{'an'|translate}}'" k-off-label="'{{'aus'|translate}}'" /></li>
+                <li><div class="setting-label"><translate>Beim Jugls-Eingang</translate></div><kendo-mobile-switch ng-model="settings.sound.money" k-on-label="'{{'an'|translate}}'" k-off-label="'{{'aus'|translate}}'" /></li>
+                <li><div class="setting-label"><translate>Beim Verkauf/Inserat</translate></div><kendo-mobile-switch ng-model="settings.sound.offer" k-on-label="'{{'an'|translate}}'" k-off-label="'{{'aus'|translate}}'" /></li>
+                <li><div class="setting-label"><translate>Beim Suchauftrag</translate></div><kendo-mobile-switch ng-model="settings.sound.search_request" k-on-label="'{{'an'|translate}}'" k-off-label="'{{'aus'|translate}}'" /></li>
+            </ul>
+        </li>
+
+        <li><translate>Logineinstellungen</translate>
+            <ul>
+                <li><div class="setting-label"><translate>Autom. Einloggen</translate></div><kendo-mobile-switch ng-model="settings.login.auto" k-on-label="'{{'an'|translate}}'" k-off-label="'{{'aus'|translate}}'" /></li>
+            </ul>
+        </li>
+    </kendo-mobile-list-view>
+</kendo-mobile-view>

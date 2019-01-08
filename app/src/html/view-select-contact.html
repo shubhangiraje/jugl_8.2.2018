@@ -1,0 +1,51 @@
+<kendo-mobile-view
+        id="view-select-contact"
+        k-layout="'layout-main'"
+        ng-controller="SelectContactCtrl as selectContactCtrl"
+        k-on-show="data.onShow(kendoEvent)"
+        k-use-native-scrolling="config.views.useNativeScrolling"
+        ng-cloak>
+    <kendo-mobile-header>
+        <kendo-mobile-nav-bar>
+            <!--<kendo-mobile-button k-rel="'drawer'" href="#drawer-main" k-icon="'icon-drawer'" k-align="'left'"></kendo-mobile-button>-->
+            <kendo-mobile-view-title><translate>Freunde</translate></kendo-mobile-view-title>
+            <kendo-mobile-button href="#:back" data-align="left" data-role="backbutton"><translate>Zurück</translate></kendo-mobile-button>
+            <kendo-mobile-button data-align="right" k-on-click="data.toggleGrouped()">
+                <span class="km-icon km-icon-group" ng-if="!data.grouped"></span>
+                <span class="km-icon km-icon-ungroup" ng-if="data.grouped"></span>
+                {{data.grouped ? 'Z-A':'A-Z'}}
+            </kendo-mobile-button>
+        </kendo-mobile-nav-bar>
+    </kendo-mobile-header>
+
+    <script id="template-select-contact-item" type="text/x-kendo-template">
+
+        <a href="" ng-click="selectContact(messenger.users[dataItem.id])" class="avatar-link contact-box-img">
+            <div class="user-avatar">
+                <img ng-src="{{user.avatar_mobile_url}}" />
+                <span ng-if="user.unreaded_messages>0" class="badge-message" ng-bind="user.unreaded_messages"></span>
+            </div>
+        </a>
+
+        <a class="details-link contact-box-info"
+           ng-init="user=messenger.users[dataItem.id]"
+           ng-class="{'has-conversation-message':lastMessages[dataItem.id]}"
+           href="" ng-click="selectContact(messenger.users[dataItem.id])"
+                >
+            <div class="username">{{user.userName}}</div>
+            <div ng-if="lastMessages[dataItem.id]" class="message">
+                <span class="time">{{lastMessages[dataItem.id].dt | date : 'HH:mm'}}</span>
+                <span class="body" ng-bind-html="lastMessages[dataItem.id].text | emoticonFixMobile:contactsCtrl | trustAsHtml"></span>
+            </div>
+            <div class="status-box">
+                <span ng-if="user.status==1" class="chat-status chat-status-online"><translate>mobile</translate></span>
+                <span ng-if="user.status==2" class="chat-status chat-status-online"><translate>online</translate></span>
+                <!--<span ng-if="user.status!=1 && user.status!=2" class="chat-status chat-status-offline">offline</span>-->
+            </div>
+        </a>
+    </script>
+
+    <kendo-mobile-list-view k-options="data.listViewOptions" class="list-box-user" k-style="'inset'">
+    </kendo-mobile-list-view>
+
+</kendo-mobile-view>

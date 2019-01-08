@@ -1,0 +1,21 @@
+<kendo-mobile-modal-view
+    id="advertising-view-bonus-popup"
+    k-on-open="data.onOpen(kendoEvent)"
+    k-on-close="data.onClose(kendoEvent)"
+    ng-controller="AdvertisingViewBonusPopupCtrl as advertisingViewBonusPopupCtrl"
+    class="modal" style="width: 90%;" modal ng-cloak>
+
+    <div class="modal-bonus-container">
+        <div class="modal-bonus-box">
+            <p><translate>Dieser Countdown läuft runter, sobald der Inhalt des Banners geladen wurde und Du Dir diesen vollständig angesehen hast (Bildergalerien, Videos, etc.). <br />Das Popup schließt sich automatisch nach</translate></p>
+            <div class="modal-time">
+                <div class="time-value">{{data.secondsLeft}}</div>
+                <div class="time-title"><translate>Sekunden</translate></div>
+            </div>
+            <p><translate>während Du Dir den Inhalt anschaust und Du erhältst Deinen Bonus.<br /> Nicht hinter jedem Banner ist eine Belohnung versteckt.</translate></p>
+        </div>
+		<div class="btn-box">
+            <kendo-mobile-button class="closeModalBtn"><translate>Schließen</translate></kendo-mobile-button>
+        </div>
+    </div>
+</kendo-mobile-modal-view>

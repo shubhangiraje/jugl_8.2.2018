@@ -1,0 +1,23 @@
+{
+  "name": "jugl_chatserv",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "socket.io": "1.2.1",
+    "winston": "0.8.3",
+    "mysql": "2.5.4",
+    "underscore": "1.7.0",
+    "q": "1.1.2",
+    "apn": "1.7.3",
+    "mpns": "2.1.0",
+    "node-gcm": "0.9.15"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "Private"
+}

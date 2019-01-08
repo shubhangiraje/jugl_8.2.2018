@@ -1,0 +1,51 @@
+<kendo-mobile-view
+        id="view-become-member-facebook-linking"
+        k-use-native-scrolling="config.views.useNativeScrolling"
+        ng-controller="BecomeMemberFacebookLinkingCtrl as becomeMemberFacebookLinkingCtrl"
+        k-on-show="data.onShow(kendoEvent)"
+        fields-scroll
+        ng-cloak>
+
+    <kendo-mobile-header>
+        <kendo-mobile-nav-bar>
+            <kendo-mobile-view-title  ng-show="!data.showLinkingFacebook" ><translate>Mitglied werden</translate></kendo-mobile-view-title>
+        </kendo-mobile-nav-bar>
+    </kendo-mobile-header>
+
+    <div class="registration-box">
+	<div class="dashboard-box-title"><translate>Bereits Mitglied?</translate></div> 
+	<p><translate>Gib hier einmalig dein Passwort für dein vorhandenes Jugl Konto ein, dass Du mit Facebook verknüpfen möchtest.</translate></p>
+		<div class="registration-form-box">
+		<kendo-mobile-list-view data-role="listview" data-style="inset">
+		<li><label><input type="text" ng-model="data.user.existing_account" placeholder="{{data.user.existing_account}}" /></label></li>
+		<li><label><input type="password" ng-model="data.user.existing_password" placeholder="{{'Passwort des Jugl Kontos'|translate}}" /></label></li>
+		<div class="btn-box">
+                <kendo-mobile-button k-on-click="data.saveFacebook()"><translate>Konten verknüpfen</translate></kendo-mobile-button>
+            </div>
+		</kendo-mobile-list-view>	
+		</div>
+    </div>
+
+
+<!--    <div class="registration-box">
+        <h2 class="android-title"><translate>Mitglied werden</translate></h2>
+        <p><translate>Wenn Du keinen Einladungscode hast, kannst Du hier von den anderen Mitgliedern der jugl.net - Gemeinschaft eingeladen werden. Einfach Deine Kontaktdaten eingeben und auf eine Einladung warten:</translate></p>
+
+        <div class="registration-form-box">
+            <kendo-mobile-list-view data-role="listview" data-style="inset">
+                <li><label><input type="text" ng-model="data.user.email" placeholder="{{'Email'|translate}}" /></label></li>
+                <li><label><input type="password" ng-model="data.user.password" placeholder="{{'Passwort'|translate}}" /></label></li>
+            </kendo-mobile-list-view>
+
+            <div class="registration-notes-text"><translate>Das Passwort muss folgende Voraussetzungen haben: mind. 6 Zeichen, davon mind. einen Buchstaben und eine Ziffer.</translate></div>
+
+            <div class="btn-box">
+                <kendo-mobile-button k-on-click="data.save()"><translate>Absenden</translate></kendo-mobile-button>
+            </div>
+        </div>
+
+        <p><translate>Mit dem Klick auf "Absenden" akzeptierst Du unsere <a ng-click="openUrlInBrowser(config.urls.nutzungsbedingungen)">Nutzerbedingungen und unsere Datenschutzrichtlinien</a>.</translate></p>
+    </div>-->
+
+
+</kendo-mobile-view>

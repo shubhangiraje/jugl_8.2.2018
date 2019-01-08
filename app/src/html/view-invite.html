@@ -1,0 +1,29 @@
+<kendo-mobile-view id="view-invite" k-layout="'layout-main'" ng-cloak>
+
+    <kendo-mobile-header>
+        <kendo-mobile-nav-bar>
+            <kendo-mobile-view-title ng-click="showInfoPopup('view-invite')" ><translate>Freunde einladen</translate></kendo-mobile-view-title>
+            <kendo-mobile-button href="view-invite-log.html" data-align="right"><translate>History</translate></kendo-mobile-button>
+            <kendo-mobile-back-button k-on-click="onClickBack()" data-align="left"><span class="platform-android"><translate>Zurück</translate></span></kendo-mobile-back-button>
+        </kendo-mobile-nav-bar>
+    </kendo-mobile-header>
+
+    <div class="info-icon-box">
+        <span ng-click="showInfoPopup('view-invite')" ng-class="{'blink': isOneShowInfoPopup('view-invite')}" class="platform-android icon-info-android"></span>
+    </div>
+
+    <div class="android-title">
+        <h1 ng-click="showInfoPopup('view-invite')"><translate>Freunde einladen / Netzwerk aufbauen</translate></h1>
+    </div>
+
+    <p class="text"><translate>Lade Deine Freunde und Bekannten ein, Jugl kennenzulernen. Mach Du es, bevor es ein anderer macht.</translate></p>
+
+    <kendo-mobile-list-view class="friends-invite-list">
+        <li k-icon="'icon-sms'"><a href="view-invite-sms-contacts.html"><translate>Per SMS einladen</translate></a></li>
+        <li k-icon="'icon-email'"><a href="view-invite-email.html"><translate>Per E-Mail einladen</translate></a></li>
+        <li k-icon="'icon-whatsapp'"><a href="view-invite-whatsapp.html"><translate>Per Whatsapp einladen</translate></a></li>
+        <li k-icon="'icon-social'"><a href="view-invite-social.html">{{"Einladungslink auf Facebook & Co. posten"|translate}}</a></li>
+        <li k-icon="'icon-clock'"><a href="view-invite-log.html"><translate>Einladungshistorie</translate></a></li>
+    </kendo-mobile-list-view>
+
+</kendo-mobile-view>

@@ -1,0 +1,49 @@
+<kendo-mobile-modal-view
+        k-on-open="data.onOpen(kendoEvent)"
+        ng-controller="OfferUpdateCtrl as offerUpdateCtrl"
+        id="view-offers-update-popup"
+        class="modal" style="width: 90%;" modal ng-cloak>
+
+    <div class="offer-update-box">
+        <div class="offer-update-popup">
+            <kendo-mobile-list-view class="searches-add-list" k-style="'inset'">
+                <li ng-if="!data.offerUpdateForm.without_bonus"><label><translate>Max. Budget für Werbeaktion</translate>:<input ng-model="data.offerUpdateForm.view_bonus_total" type="number" /><span class="currency icon-jugl-light"></span></label></li>
+                <li ng-if="!data.offerUpdateForm.without_bonus && marketingEnabled"><label><translate>Werbebonus pro User*</translate>:<input ng-model="data.offerUpdateForm.view_bonus" type="number" /><span class="currency icon-jugl-light"></span></label></li>
+                <li><label><translate>Anzeige aktiv bis:</translate></label></li>
+                <li>
+                    <label><translate>Tag</translate>:
+                        <select ng-model="data.offerUpdateForm.active_till_day" ng-options="item.key as item.val for item in data.birthDayList">
+                            <option value=""></option>
+                        </select>
+                    </label>
+                </li>
+                <li>
+                    <label><translate>Monat</translate>:
+                        <select ng-model="data.offerUpdateForm.active_till_month"  ng-options="item.key as item.val for item in data.birthMonthList">
+                            <option value=""></option>
+                        </select>
+                    </label>
+                </li>
+                <li>
+                    <label><translate>Jahr</translate>:
+                        <select ng-model="data.offerUpdateForm.active_till_year" ng-options="item.key as item.val for item in data.birthYearList">
+                            <option value=""></option>
+                        </select>
+                    </label>
+                </li>
+                </li>
+                <li class="textarea-field box-sizing" bs-has-classes>
+                    <label><translate>Kommentar</translate>:</label>
+                    <textarea rows="4" ng-model="data.offerUpdateForm.comment" maxlength="2000" server-error="data.offerUpdateForm.$errors.description"></textarea>
+                </li>
+
+            </kendo-mobile-list-view>
+        </div>
+
+        <div class="btn-box">
+            <kendo-mobile-button k-on-click="data.save()"><translate>Speichern</translate></kendo-mobile-button>
+            <kendo-mobile-button class="closeModalBtn"><translate>Cancel</translate></kendo-mobile-button>
+        </div>
+    </div>
+
+</kendo-mobile-modal-view>

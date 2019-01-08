@@ -1,0 +1,5 @@
+D9fNdbJKmobliONhAscj7IYhcG4=
+
+Generated with following command (execute in dist folder) Windows 10:
+
+ keytool -exportcert -alias alias_name -keystore my-release-key.keystore | openssl sha1 -binary | openssl base64

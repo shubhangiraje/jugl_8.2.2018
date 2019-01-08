@@ -1,0 +1,33 @@
+<kendo-mobile-view
+    id="view-login"
+    ng-controller="LoginCtrl as loginCtrl"
+    class="appearance"
+    k-use-native-scrolling="config.views.useNativeScrolling"
+    k-on-show="loginCtrl.onShow(kendoEvent)"
+    fields-scroll
+    ng-cloak>
+
+    <div class="login-box">
+
+        <div class="logo-app">
+            <div class="logo-img">
+                <img src="img/logo-app.png" alt="logo-app">
+            </div>
+        </div>
+
+        <div class="border-box">
+            <kendo-mobile-list-view data-role="listview" data-style="inset">
+                <li class="login-input"><label for="username"><input type="text" id="username" ng-model="loginForm.username" placeholder="{{'E-Mail'|translate}}" /></label></li>
+                <li class="login-input"><label for="password"><input type="password" id="password" ng-model="loginForm.password" placeholder="{{'Passwort'|translate}}" /></label></li>
+            </kendo-mobile-list-view>
+            <a href="" class="restore-password-link" ng-click="openUrlInBrowser(config.urls.passwort_vergessen)"><translate>Passwort vergessen</translate></a>
+            <kendo-mobile-button k-on-click="loginCtrl.login()" class="transitions-button-login"><translate>Einloggen</translate></kendo-mobile-button>
+			<kendo-mobile-button ng-disabled="data.disableFBLogin" k-on-click="loginCtrl.loginWithFacebook()" class="transitions-button-login fb-login"><span class="icon-icomoon-facebook"></span><translate>Einloggen mit Facebook</translate></kendo-mobile-button>
+        </div>
+
+        <kendo-mobile-button href="view-become-member.html" class="transitions-button" style="margin-top: 15px;"><translate>Mitglied werden</translate></kendo-mobile-button>
+        <kendo-mobile-button k-on-click="openUrlInBrowser(config.urls.so_funktioniert)" ng-click="" style="margin-top: 15px;" class="transitions-button"><translate>So funktioniert es</translate></kendo-mobile-button>
+        <kendo-mobile-button k-on-click="openUrlInBrowser('googlechrome://navigate?url=https://jugl.net/static/app/index.html')" ng-click="" style="margin-top: 15px;" class="transitions-button"><translate>OPEN JUGL</translate></kendo-mobile-button>
+    </div>
+
+</kendo-mobile-view>

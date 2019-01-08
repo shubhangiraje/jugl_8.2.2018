@@ -1,0 +1,119 @@
+<kendo-mobile-view
+        id="view-activities"
+        k-layout="'layout-main'"
+        k-use-native-scrolling="config.views.useNativeScrolling"
+        ng-controller="EventCtrl as eventCtrl"
+        k-on-show="data.onShow(kendoEvent)"
+        class="appearance"
+        ng-cloak >
+
+    <kendo-mobile-header>
+        <kendo-mobile-nav-bar>
+            <kendo-mobile-view-title ng-click="showInfoPopup('view-activities')">
+                <span ng-if="data.mode=='event'"><translate>Meine Aktivitäten</translate></span>
+                <span ng-if="data.mode=='event_follower'"><translate>Abos Aktivitäten</translate></span>
+            </kendo-mobile-view-title>
+            <kendo-mobile-button class="platform-ios" data-align="right" k-on-click="showInfoPopup('view-activities')"><span ng-class="{'blink': isOneShowInfoPopup('view-activities')}" class="icon-info-ios"></span></kendo-mobile-button>
+        </kendo-mobile-nav-bar>
+    </kendo-mobile-header>
+
+    <div class="info-icon-box">
+        <span ng-click="showInfoPopup('view-activities')" class="platform-android icon-info-android" ng-class="{'blink': isOneShowInfoPopup('view-activities')}"></span>
+    </div>
+
+    <div class="change-event-btn-box">
+        <kendo-mobile-button ng-click="data.changeMode('event_follower')" ng-if="data.mode=='event_follower'">
+            <span><translate>Meine Aktivitäten</translate></span>
+            <div class="button-badge badge" ng-if="status.user.new_events>0">{{status.user.new_events>99 ? '99+':status.user.new_events}}</div>
+        </kendo-mobile-button>
+        <kendo-mobile-button ng-click="data.changeMode('event')" ng-if="data.mode=='event'">
+            <span><translate>Abos Aktivitäten</translate></span>
+            <div class="button-badge badge" ng-if="status.user.new_follower_events>0">{{status.user.new_follower_events>99 ? '99+':status.user.new_follower_events}}</div>
+        </kendo-mobile-button>
+    </div>
+
+    <div class="android-title">
+        <h1 ng-click="showInfoPopup('view-activities')">
+            <span ng-if="data.mode=='event'"><translate>Meine Aktivitäten</translate></span>
+            <span ng-if="data.mode=='event_follower'"><translate>Abos Aktivitäten</translate></span>
+        </h1>
+    </div>
+
+    <kendo-mobile-list-view ng-if="data.mode=='event'" class="filter-select-list" data-role="listview" data-style="inset">
+        <li>
+            <select ng-model="data.log.filter.type">
+                <option value="" translate>Alle Aktivitäten</option>
+                <!--<option value="FRIEND_REQUEST" translate>Kontaktanfragen</option>-->
+                <option value="NEW_NETWORK_MEMBER" translate>Wer ist neu in meinem Netzwerk?</option>
+                <option value="OFFER_MY_REQUEST" translate>Ich habe diese Artikel gekauft</option>
+                <option value="OFFER_REQUEST_SOLD" translate>Ich habe diese Artikel verkauft</option>
+                <option value="OFFER_MY_REQUEST_BET" translate>Ich habe auf diese Artikel geboten</option>
+                <option value="OFFER_REQUEST_NEW_BET" translate>Gebote, die ich auf meine Artikel erhalten habe</option>
+                <option value="OFFER_REQUEST_ACCEPTED" translate>Ich muss noch bezahlen</option>
+                <option value="OFFER_REQUEST_ACCEPTED_PAYED" translate>Ich habe schon bezahlt</option>
+                <option value="OFFER_REQUEST_PAYING_PAYED" translate>Erwarteter Geldeingang</option>
+                <option value="OFFER_REQUEST_PAYING_PAYED_CONFIRMED" translate>Bestätigter Geldeingang</option>
+                <option value="WAS_WIRD_MIR_ANGEBOTEN" translate>Was wird mir angeboten / vermittelt?</option>
+                <option value="SEARCH_REQUEST_MY_OFFER" translate>Ich habe angeboten / vermittelt </option>
+                <option value="AKZEPTIERTES_ANGEBOT" translate>Was habe ich erfolgreich angeboten / vermittelt?</option>
+                <option value="ICH_WURDE_BEWERTET" translate>Ich wurde bewertet</option>
+                <option value="MY_FEEDBACKS" translate>Ich habe bewertet</option>
+                <option value="BROADCAST_MESSAGE" translate>Nachrichten vom Administrator</option>
+                <option value="TEAM_CHANGE" translate>Teamwechsel</option>
+                <option value="LIKE" translate>Wer hat mich geliket</option>
+            </select>
+        </li>
+    </kendo-mobile-list-view>
+
+    <kendo-mobile-list-view ng-if="data.mode=='event_follower'" class="filter-select-list" data-role="listview" data-style="inset">
+        <li>
+            <select ng-model="data.log.filter.type">
+                <option value="" translate>Alle Aktivitäten</option>
+                <option value="NEW_OFFER" translate>Inserat erstellt</option>
+                <option value="NEW_SEARCH_REQUEST" translate>Suchauftrag erstellt</option>
+                <option value="OFFER_BUY" translate>Gekauft</option>
+                <option value="OFFER_BET" translate>Gebot abgegeben</option>
+                <option value="NEW_SEARCH_REQUEST_OFFER" translate>Angebot auf einen Suchauftrag</option>
+                <option value="NEW_REFERRAL" translate>Neue Mitglieder im Team</option>
+                <option value="NEW_TROLLBOX_MESSAGE" translate>Neue Beiträge im Forum</option>
+                <option value="NEW_INFO_COMMENT" translate>Neue Beiträge im Jugl-Wiki</option>
+            </select>
+        </li>
+    </kendo-mobile-list-view>
+
+
+
+    <div ng-if="data.log.loading && !data.log.hasMore" class="km-loader km-widget select-loader" data-role="loader" style="">
+        <span class="km-loading km-spin"></span>
+        <span class="km-loading-left"></span>
+        <span class="km-loading-right"></span>
+        <h1><translate>Loading</translate>...</h1>
+    </div>
+
+    <kendo-mobile-list-view class="activity-list" data-role="listview" data-style="inset">
+        <li ng-repeat="event in data.log.items">
+            <div set-if="event.user" class="activity-user-avatar" ng-click="data.gotoProfile(event.user.id)">
+                <img src="{{::event.user.avatarMobile}}" alt="default_avatar">
+            </div>
+            <div class="activity-dt">{{::event.dt|date:data.dateTimeFormat}}</div>
+            <div set-if="event.user" class="activity-username">{{::event.user|userName}}</div>
+            <div class="activity-text" event-text="event.text"></div>
+        </li>
+    </kendo-mobile-list-view>
+
+    <div class="load-btn-box" ng-show="data.log.hasMore">
+        <kendo-mobile-button k-on-click="data.log.loadMore()">
+            <span ng-if="!data.log.loading"><translate>Load More</translate></span>
+            <span ng-if="data.log.loading" class="km-loader km-widget select-loader" data-role="loader" style="">
+                <span class="km-loading km-spin"></span>
+                <span class="km-loading-left"></span>
+                <span class="km-loading-right"></span>
+                <h1><translate>Loading</translate>...</h1>
+                <span class="btn-text-android"><translate>Loading</translate></span>
+            </span>
+        </kendo-mobile-button>
+    </div>
+
+
+
+</kendo-mobile-view>

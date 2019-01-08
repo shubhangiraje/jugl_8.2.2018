@@ -1,0 +1,133 @@
+<kendo-mobile-view
+   id="view-profile"
+   k-layout="'layout-main'"
+   ng-controller="ProfileCtrl as profileCtrl"
+   k-on-show="data.onShow(kendoEvent)"
+   k-use-native-scrolling="config.views.useNativeScrolling"
+   ng-cloak>
+
+    <kendo-mobile-header>
+        <kendo-mobile-nav-bar>
+            <kendo-mobile-view-title ng-click="showInfoPopup('view-profile')"><translate>Mein Profil / Meine Daten</translate></kendo-mobile-view-title>
+            <kendo-mobile-button class="platform-ios" data-align="right" k-on-click="showInfoPopup('view-profile')"><span ng-class="{'blink': isOneShowInfoPopup('view-profile')}" class="icon-info-ios"></span></kendo-mobile-button>
+        </kendo-mobile-nav-bar>
+    </kendo-mobile-header>
+
+    <div class="info-icon-box">
+        <span ng-click="showInfoPopup('view-profile')" ng-class="{'blink': isOneShowInfoPopup('view-profile')}" class="platform-android icon-info-android"></span>
+    </div>
+
+    <div class="android-title">
+        <h1 ng-click="showInfoPopup('view-profile')"><translate>Mein Profil / Meine Daten</translate></h1>
+    </div>
+
+    <div class="btn-box">
+        <!--<kendo-mobile-button k-on-click="openUrlInBrowser(config.urls.profile)" class="friend-btn"><translate>Meine Daten ändern</translate></kendo-mobile-button>-->
+        <kendo-mobile-button href="view-profile-update.html"><translate>Meine Daten ändern</translate></kendo-mobile-button>
+    </div>
+
+    <div class="user-profile">
+        <div class="contact-box-img">
+            <div class="user-avatar"><img ng-src="{{status.user.avatarMobile}}" /></div>
+        </div>
+        <div class="contact-box-info">
+            <span class="firstname">{{status.user.first_name}}</span>
+            <span class="lastname">{{status.user.last_name}}</span>
+        </div>
+    </div>
+
+    <kendo-mobile-list-view class="profile-data-list" k-type="'group'" k-style="'inset'">
+        <li class="first-li">
+            <ul class="profile-list">
+                <li><translate>Erfolgreich eingeladen</translate>:<span>{{status.user.invitations}}</span></li>
+                <li><translate>Insgesamt im Netzwerk</translate>:<span>{{status.user.network_size}}</span></li>
+                <li ng-if="status.user.packet=='VIP_PLUS'"><translate> Anzahl der Mitglieder, die vom Abwerben verhindert werden können</translate>:<span>{{status.user.availableStickRequestsCount}}</span></li>
+            </ul>
+        </li>
+        <li class="show-in-become-member-box"><translate>Persönliche Daten</translate>
+            <span class="show-in-become-member" ng-if="data.user.status=='ACTIVE' && data.user.show_in_become_member==1">W</span>
+            <ul class="profile-list">
+                <li><translate>Vorname</translate>:<span>{{data.user.first_name}}</span></li>
+                <li><translate>Nachname</translate>:<span>{{data.user.last_name}}</span></li>
+                <li ng-if="status.user.nick_name"><translate>Spitzname</translate>:<span>{{data.user.nick_name}}</span></li>
+                <li ng-if="status.user.company_name" class="company-name"><translate>Firmenname</translate>:<span>{{data.user.company_name}}</span></li>
+                <li><translate>Telefon</translate>:<span>{{data.user.phone}}</span></li>
+                <li><translate>E-mail</translate>:<span>{{data.user.email}}</span></li>
+                <li><translate>Geschlecht</translate>:<span>{{data.sexes[data.user.sex]}}</span></li>
+            </ul>
+        </li>
+        <li><translate>Ergänzende Daten</translate>
+            <ul class="profile-list group one">
+                <li><translate>Geburtstag</translate>:<span></span></li>
+                <li><translate>Tag</translate>:<span>{{data.user.birthDay}}</span></li>
+                <li><translate>Monat</translate>:<span ng-repeat="item in data.birthMonthList" ng-if="item.key == data.user.birthMonth">{{item.val}}</span></li>
+                <li><translate>Jahr</translate>:<span>{{data.user.birthYear}}</span></li>
+                <li>
+                    <span ng-if="data.user.visibility_birthday == 'all'"><translate>Für alle sichtbar</translate></span>
+                    <span ng-if="data.user.visibility_birthday == 'friends'"><translate>Nur für Kontakte sichtbar</translate></span>
+                    <span ng-if="data.user.visibility_birthday == 'none'"><translate>Für niemanden sichtbar</translate></span>
+                </li>
+            </ul>
+            <ul class="profile-list group">
+                <li><translate>Straße</translate>:<span>{{data.user.street}}</span></li>
+                <li><translate>Haus-Nr.</translate>:<span>{{data.user.house_number}}</span></li>
+                <li>
+                    <span ng-if="data.user.visibility_birthday == 'all'"><translate>Für alle sichtbar</translate></span>
+                    <span ng-if="data.user.visibility_birthday == 'friends'"><translate>Nur für Kontakte sichtbar</translate></span>
+                    <span ng-if="data.user.visibility_birthday == 'none'"><translate>Für niemanden sichtbar</translate></span>
+                </li>
+            </ul>
+            <ul class="profile-list group">
+                <li><translate>Plz</translate>:<span>{{data.user.zip}}</span></li>
+                <li><translate>Ort</translate>:<span>{{data.user.city}}</span></li>
+                <li><translate>Land</translate>:<span ng-repeat="item in data.countries" ng-if="item.id == data.user.country_id">{{item.country}}</span></li>
+                <li>
+                    <span ng-if="data.user.visibility_birthday == 'all'"><translate>Für alle sichtbar</translate></span>
+                    <span ng-if="data.user.visibility_birthday == 'friends'"><translate>Nur für Kontakte sichtbar</translate></span>
+                    <span ng-if="data.user.visibility_birthday == 'none'"><translate>Für niemanden sichtbar</translate></span>
+                </li>
+            </ul>
+            <ul class="profile-list group">
+                <li><translate>Beruf</translate>:<span>{{data.user.profession}}</span></li>
+                <li>
+                    <span ng-if="data.user.visibility_birthday == 'all'"><translate>Für alle sichtbar</translate></span>
+                    <span ng-if="data.user.visibility_birthday == 'friends'"><translate>Nur für Kontakte sichtbar</translate></span>
+                    <span ng-if="data.user.visibility_birthday == 'none'"><translate>Für niemanden sichtbar</translate></span>
+                </li>
+            </ul>
+            <ul class="profile-list group">
+                <li><translate>Familienstand</translate>:<span ng-repeat="item in data.maritalStatuses" ng-if="item.value == data.user.marital_status">{{item.name}}</span></li>
+                <li>
+                    <span ng-if="data.user.visibility_birthday == 'all'"><translate>Für alle sichtbar</translate></span>
+                    <span ng-if="data.user.visibility_birthday == 'friends'"><translate>Nur für Kontakte sichtbar</translate></span>
+                    <span ng-if="data.user.visibility_birthday == 'none'"><translate>Für niemanden sichtbar</translate></span>
+                </li>
+            </ul>
+            <ul class="profile-list group">
+                <li><translate>über mich</translate>:<div>{{data.user.about}}</div></li>
+                <li>
+                    <span ng-if="data.user.visibility_birthday == 'all'"><translate>Für alle sichtbar</translate></span>
+                    <span ng-if="data.user.visibility_birthday == 'friends'"><translate>Nur für Kontakte sichtbar</translate></span>
+                    <span ng-if="data.user.visibility_birthday == 'none'"><translate>Für niemanden sichtbar</translate></span>
+                </li>
+            </ul>
+        </li>
+        <li><translate>Meine Zahlungsinformationen</translate>
+            <ul class="profile-list">
+                <li><translate>Meine Bankverbindung</translate>:</li>
+                <li class="profile-bank-data">
+                    <ul ng-repeat="bankData in data.user.bankDatas" class="test profile-bank-data-list">
+                        <li><translate>IBAN</translate>:<span>{{bankData.iban}}</span></li>
+                        <li><translate>BIC</translate>:<span>{{bankData.bic}}</span></li>
+                        <li><translate>Kontoinhaber</translate>:<span>{{bankData.owner}}</span></li>
+                    </ul>
+                </li>
+                <li><translate>Mein Paypal</translate>:</li>
+                <li><translate>E-mail</translate>:<span>{{data.user.paypal_email}}</span></li>
+            </ul>
+        </li>
+    </kendo-mobile-list-view>
+
+
+
+</kendo-mobile-view>

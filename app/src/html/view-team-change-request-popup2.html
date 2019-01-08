@@ -1,0 +1,17 @@
+<kendo-mobile-modal-view
+    id="team-change-request-popup2"
+    k-on-open="data.onOpen(kendoEvent)"
+    ng-controller="TeamChangeRequestPopup2Ctrl as teamChangeRequestPopup"
+    class="modal" style="width: 90%;" modal ng-cloak>
+
+    <div class="feedback-box">
+        <label><translate>Teamanfrage an</translate></label>
+        <label style="height: 20px"><span>{{data.userTeamRequest.user.name}}</span></label>
+        <textarea ng-model="data.userTeamRequest.text" rows="6" placeholder="{{'Erkläre hier dem neuen Mitglied, warum Du der bessere Teamleader bist und warum es in Dein Team wechseln soll.'|translate}}"></textarea>
+    </div>
+
+    <div class="btn-box">
+        <kendo-mobile-button k-on-click="data.save()"><translate>Absenden</translate></kendo-mobile-button>
+        <kendo-mobile-button class="closeModalBtn"><translate>Abbrechen</translate></kendo-mobile-button>
+    </div>
+</kendo-mobile-modal-view>

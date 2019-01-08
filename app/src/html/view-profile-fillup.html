@@ -1,0 +1,61 @@
+<kendo-mobile-view
+        id="view-profile-fillup"
+        ng-controller="ProfileFillupCtrl as profileFillupCtrl"
+        k-on-show="data.onShow(kendoEvent)"
+        k-on-before-hide="data.beforeHide(kendoEvent)"
+        k-use-native-scrolling="config.views.useNativeScrolling"
+        fields-scroll ng-cloak>
+
+    <kendo-mobile-header>
+        <kendo-mobile-nav-bar>
+            <kendo-mobile-view-title><translate>Mein Profil</translate></kendo-mobile-view-title>
+        </kendo-mobile-nav-bar>
+    </kendo-mobile-header>
+
+    <div class="android-title">
+        <h1><translate>Mein Profil</translate></h1>
+    </div>
+
+    <div ng-if="(status.user.status=='LOGINED' && (status.user.packet=='VIP' || status.user.packet=='VIP_PLUS')) || (status.user.status=='ACTIVE' && ((status.user.packet=='VIP' || status.user.packet=='VIP_PLUS') || status.user.packet=='STANDART'))" class="profile-fillup-text">
+        <translate>Du hast jetzt die Gelegenheit, einmalig Deinen Namen und Deine Daten zu ändern. Es ist wichtig, dass Du den richtigen Namen in Deinem Profil angegeben hast, sonst kannst Du Deine Jugl-Punkte nicht einlösen. Jugl.net verkauft keine Daten oder Email-Adressen an Dritte. Keine lästige Inserat per Email.</translate>
+    </div>
+
+    <div class="profile-update-avatar-box">
+        <div class="profile-update-avatar">
+            <img ng-src="{{data.user.avatarFile.thumbs.avatarMobile}}" />
+        </div>
+
+        <div class="btn-box">
+            <kendo-mobile-button k-on-click="data.uploadImage()"><translate>Profilbild hochladen</translate></kendo-mobile-button>
+        </div>
+    </div>
+
+    <kendo-mobile-list-view class="profile-fillup-list" k-style="'inset'">
+        <li><label><translate>Vorname</translate>:</label><input type="text" ng-model="data.user.first_name" /></li>
+        <li><label><translate>Nachname</translate>:</label><input type="text" ng-model="data.user.last_name" /></li>
+        <li><label class="label-checkbox"><translate>Weiblich</translate><input type="radio" value="F"  ng-model="data.user.sex" /></label></li>
+        <li><label class="label-checkbox"><translate>Männlich</translate><input value="M" type="radio" ng-model="data.user.sex" /></label></li>
+        <li ng-if="(status.user.status=='LOGINED' && (status.user.packet=='VIP' || status.user.packet=='VIP_PLUS')) || (status.user.status=='ACTIVE' && ((status.user.packet=='VIP' || status.user.packet=='VIP_PLUS') || status.user.packet=='STANDART'))"><label><translate>Geburtsdatum</translate>:</label><input type="date" ng-model="data.user.birthday" max="2005-12-31" min="1917-12-31" /></li>
+        <li ng-if="(status.user.status=='LOGINED' && (status.user.packet=='VIP' || status.user.packet=='VIP_PLUS')) || (status.user.status=='ACTIVE' && ((status.user.packet=='VIP' || status.user.packet=='VIP_PLUS') || status.user.packet=='STANDART'))"><label><translate>Ort</translate>:</label><input type="text" ng-model="data.user.city" /></li>
+        <li ng-if="(status.user.status=='LOGINED' && (status.user.packet=='VIP' || status.user.packet=='VIP_PLUS')) || (status.user.status=='ACTIVE' && ((status.user.packet=='VIP' || status.user.packet=='VIP_PLUS') || status.user.packet=='STANDART'))"><label><translate>Straße</translate>:</label><input type="text" ng-model="data.user.street" /></li>
+        <li ng-if="(status.user.status=='LOGINED' && (status.user.packet=='VIP' || status.user.packet=='VIP_PLUS')) || (status.user.status=='ACTIVE' && ((status.user.packet=='VIP' || status.user.packet=='VIP_PLUS') || status.user.packet=='STANDART'))"><label><translate>Hausnummer</translate>:</label><input type="text" ng-model="data.user.house_number" /></li>
+        <li ng-if="(status.user.status=='LOGINED' && (status.user.packet=='VIP' || status.user.packet=='VIP_PLUS')) || (status.user.status=='ACTIVE' && ((status.user.packet=='VIP' || status.user.packet=='VIP_PLUS') || status.user.packet=='STANDART'))"><label class="label-checkbox km-listview-label"><translate>Gewerblich</translate>:<input type="checkbox" ng-true-value="1" ng-false-value="0" ng-model="data.user.is_company_name" class="km-widget km-icon km-check" /></label></li>
+        <li ng-if="(status.user.status=='LOGINED' && (status.user.packet=='VIP' || status.user.packet=='VIP_PLUS')) || (status.user.status=='ACTIVE' && ((status.user.packet=='VIP' || status.user.packet=='VIP_PLUS') || status.user.packet=='STANDART'))"><label><translate>Firma</translate>:</label><input type="text" ng-model="data.user.company_name" /></li>
+
+        <li ng-if="data.user.is_company_name"><label><translate>Geschäftsführer</translate>:</label><input type="text" ng-model="data.user.company_manager" /></li>
+        <li ng-if="data.user.is_company_name" class="textarea-field">
+            <label><translate>Impressum</translate>:</label>
+            <textarea rows="4" ng-model="data.user.impressum"></textarea>
+        </li>
+        <li ng-if="data.user.is_company_name" class="textarea-field">
+            <label><translate>AGBs</translate>:</label>
+            <textarea rows="4" ng-model="data.user.agb"></textarea>
+        </li>
+    </kendo-mobile-list-view>
+
+    <div class="btn-box">
+        <kendo-mobile-button k-on-click="data.save()"><translate>Weiter</translate></kendo-mobile-button>
+        <kendo-mobile-button ng-if="(status.user.status=='LOGINED' && (status.user.packet=='VIP' || status.user.packet=='VIP_PLUS')) || (status.user.status=='ACTIVE' && ((status.user.packet=='VIP' || status.user.packet=='VIP_PLUS') || status.user.packet=='STANDART'))" k-on-click="data.close()"><translate>Später erinnern</translate></kendo-mobile-button>
+    </div>
+
+</kendo-mobile-view>

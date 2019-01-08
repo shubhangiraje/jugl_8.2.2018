@@ -1,0 +1,34 @@
+<kendo-mobile-view
+    id="view-registration-index"
+    k-use-native-scrolling="config.views.useNativeScrolling"
+    ng-controller="RegistrationIndexCtrl as registrationIndexCtrl"
+    k-on-show="data.onShow(kendoEvent)"
+    fields-scroll
+    ng-cloak>
+
+    <kendo-mobile-header>
+        <kendo-mobile-nav-bar>
+            <kendo-mobile-view-title><translate>Mitglied werden</translate></kendo-mobile-view-title>
+        </kendo-mobile-nav-bar>
+    </kendo-mobile-header>
+
+    <div class="registration-box">
+        <h2 class="android-title"><translate>Mitglied werden</translate></h2>
+
+        <div class="registration-form-box">
+            <p><translate>Gib hier bitte Deinen Einladungsgutschein-Code zur Anmeldung als Premium-Mitglied ein.</translate></p>
+
+            <kendo-mobile-list-view data-role="listview" data-style="inset">
+                <li><label><input type="text" ng-model="data.code" placeholder="{{'Einladungscode'|translate}}" /></label></li>
+            </kendo-mobile-list-view>
+
+            <div class="btn-box">
+                <kendo-mobile-button k-on-click="data.sendCode()"><translate>Absenden</translate></kendo-mobile-button>
+            </div>
+        </div>
+
+        <p><translate>Mit dem Klick auf "Absenden" akzeptierst Du unsere <a ng-click="openUrlInBrowser(config.urls.nutzungsbedingungen)">Nutzerbedingungen und unsere Datenschutzrichtlinien</a>.</translate></p>
+
+    </div>
+
+</kendo-mobile-view>

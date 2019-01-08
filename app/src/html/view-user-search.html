@@ -1,0 +1,145 @@
+<kendo-mobile-view
+        id="view-user-search"
+        k-layout="'layout-main'"
+        k-use-native-scrolling="config.views.useNativeScrolling"
+        ng-controller="UserSearchCtrl as userSearchCtrl"
+        k-on-show="data.onShow(kendoEvent)"
+        ng-cloak>
+
+    <kendo-mobile-header>
+        <kendo-mobile-nav-bar>
+            <kendo-mobile-view-title ng-click="showInfoPopup('view-user-search')"><translate>Mitglieder suchen</translate></kendo-mobile-view-title>
+            <kendo-mobile-button class="platform-ios" data-align="right" k-on-click="showInfoPopup('view-user-search')"><span ng-class="{'blink': isOneShowInfoPopup('view-user-search')}" class="icon-info-ios"></span></kendo-mobile-button>
+        </kendo-mobile-nav-bar>
+    </kendo-mobile-header>
+
+    <div class="info-icon-box">
+        <span ng-click="showInfoPopup('view-user-search')" ng-class="{'blink': isOneShowInfoPopup('view-user-search')}" class="platform-android icon-info-android"></span>
+    </div>
+
+    <div class="android-title">
+        <h1 ng-click="showInfoPopup('view-user-search')"><translate>Mitglieder suchen</translate></h1>
+    </div>
+
+   <!-- <kendo-mobile-list-view k-style="'inset'" k-type="'group'">
+        <li>
+            <ul class="search-form-list">
+                <li><label><translate>Nutzername</translate><input type="text" ng-model="data.users.filter.name" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" /></label></li>
+                <li><label><translate>PLZ / Ort</translate><input type="text" ng-model="data.users.filter.zipcity" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" /></label></li>
+                <li>
+                    <div class="search-age">
+                        <label><translate>Alter</translate>
+                            <input type="number" ng-model="data.users.filter.age" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" />
+                        </label>
+                    </div>
+                    <div class="search-sex">
+                        <label><translate>Geschlecht</translate>
+                            <select ng-model="data.users.filter.sex">
+                                <option value="" translate>Alle</option>
+                                <option value="F" translate>weiblich</option>
+                                <option value="M" translate>männlich</option>
+                            </select>
+                        </label>
+                    </div>
+                </li>
+            </ul>
+        </li>
+    </kendo-mobile-list-view>-->
+
+
+    <kendo-mobile-list-view class="user-serarch-list-params box-sizing">
+        <li><label><translate>Nutzername</translate>:<input type="text" ng-model="data.users.filter.name" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" /></label></li>
+        <li><label><translate>PLZ / Ort</translate>:<input type="text" ng-model="data.users.filter.zipcity" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" /></label></li>
+		<li>
+            <label><translate>Land</translate>:</label>
+             <div class="blue-multiselect search-filter">
+				<multiselect ng-model="data.users.filter.country" labels="labels"
+							 search-limit="20"  options="data.countryArrayUserSearch" id-prop="id" display-prop="name" show-select-all="true" show-unselect-all="true" show-search="true" 
+				></multiselect>
+			</div>    
+        </li>
+        <li class="field-user-age box-sizing clearfix">
+            <div class="field-user-age-label">
+                <label><translate>Alter</translate>:</label>
+            </div>
+            <div class="field-user-age-input-box">
+                <div class="field-user-age-from">
+                    <input type="number" ng-model="data.users.filter.ageFrom" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" />
+                    <span><translate>bis</translate>:</span>
+                </div>
+                <div class="field-user-age-to">
+                    <input type="number" ng-model="data.users.filter.ageTo" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" />
+                </div>
+            </div>
+        </li>
+        <li>
+            <label><translate>Geschlecht</translate>:
+                <select ng-model="data.users.filter.sex">
+                    <option value="" translate>Alle</option>
+                    <option value="F" translate>weiblich</option>
+                    <option value="M" translate>männlich</option>
+                </select>
+            </label>
+        </li>
+        <li>
+            <label class="label-checkbox"><translate>Single</translate>:<input ng-model="data.users.filter.single" type="checkbox" class="km-widget km-icon km-check"></label>
+        </li>
+		
+    </kendo-mobile-list-view>
+
+
+    <div class="btn-box">
+        <kendo-mobile-button k-on-click="data.userSearch()" ><translate>Suchen</translate></kendo-mobile-button>
+    </div>
+
+    <div ng-if="data.users.loading && !data.users.hasMore" class="km-loader km-widget select-loader" data-role="loader" style="">
+        <span class="km-loading km-spin"></span>
+        <span class="km-loading-left"></span>
+        <span class="km-loading-right"></span>
+        <h1><translate>Loading</translate>...</h1>
+    </div>
+
+    <div class="user-search-count"><translate>Gefunden</translate>: {{data.users.searchUserCount}}</div>
+
+    <ul class="km-widget km-listview km-list list-user-search">
+        <li ng-repeat="item in data.users.items">
+            <div class="user-profile">
+                <div class="contact-box-img" ng-click="navigate('view-user-profile.html?id='+item.id)">
+                    <div class="user-avatar">
+                        <img ng-src="{{item.avatarMobile}}" />
+                    </div>
+                </div>
+
+                <div class="contact-box-info">
+                    <div class="user-data">
+                        <h2>{{::item|userName}}</h2><div class="flag-container"><div ng-click="updateCountry(item.id, item);" id="{{::item.flag}}" class="flag flag-32 flag-{{item.flag}}"></div></div>
+                        <div class="registration-date">{{::item.registration_dt|date:'dd.MM.yyyy'}}</div>
+                        <div class="box-icons-action">
+                            <span class="icon-info"></span>
+                            <span class="icon-chat"></span>
+                        </div>
+                    </div>
+                    <div class="status-box">
+                        <span once-if="item.online==0" class="chat-status chat-status-offline"><translate>offline</translate></span>
+                        <span once-if="item.online==1" class="chat-status chat-status-online"><translate>mobile</translate></span>
+                        <span once-if="item.online==2" class="chat-status chat-status-online"><translate>online</translate></span>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+
+    <div class="load-btn-box" ng-show="data.users.hasMore">
+        <kendo-mobile-button k-on-click="data.users.loadMore()">
+            <span ng-if="!data.users.loading"><translate>Load More</translate></span>
+            <span ng-if="data.users.loading" class="km-loader km-widget select-loader" data-role="loader" style="">
+                <span class="km-loading km-spin"></span>
+                <span class="km-loading-left"></span>
+                <span class="km-loading-right"></span>
+                <h1><translate>Loading</translate>...</h1>
+                <span class="btn-text-android"><translate>Loading</translate></span>
+            </span>
+        </kendo-mobile-button>
+    </div>
+
+</kendo-mobile-view>

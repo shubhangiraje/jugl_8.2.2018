@@ -1,0 +1,58 @@
+<kendo-mobile-view
+        id="view-earn-money"
+        k-layout="'layout-main'"
+        k-use-native-scrolling="config.views.useNativeScrolling"
+        ng-cloak>
+
+    <kendo-mobile-header>
+        <kendo-mobile-nav-bar>
+            <kendo-mobile-button class="platform-ios" data-align="right" k-on-click="showInfoPopup('view-earn-money')"><span ng-class="{'blink': isOneShowInfoPopup('view-earn-money')}" class="icon-info-ios"></span></kendo-mobile-button>
+            <kendo-mobile-view-title ng-click="showInfoPopup('view-earn-money')"><translate>Geld verdienen</translate></kendo-mobile-view-title>
+        </kendo-mobile-nav-bar>
+    </kendo-mobile-header>
+
+    <div class="info-icon-box">
+        <span ng-click="showInfoPopup('view-earn-money')" ng-class="{'blink': isOneShowInfoPopup('view-earn-money')}" class="platform-android icon-info-android"></span>
+    </div>
+
+    <div class="head-title">
+        <h1 ng-click="showInfoPopup('view-earn-money')"><translate>Wie kann ich mit der Jugl APP Geld verdienen?</translate></h1>
+    </div>
+
+    <div class="earn-money-content">
+        <div class="earn-money-box">
+            <p><translate>1. Ich lade meine Freunde ein und baue mir damit mein Netzwerk auf.</translate></p>
+            <div class="btn-box">
+                <kendo-mobile-button href="view-invite.html"><translate>Freunde einladen / Netzwerk aufbauen</translate></kendo-mobile-button>
+            </div>
+        </div>
+
+        <div class="earn-money-box">
+            <p><translate>2. Ich gebe meine Interessen an (von der Zahnbürste bis zum Luxus Auto) und bleibe dabei anonym und bekomme vorwiegend von Händlern aber auch von Privatpersonen, auf meinen Interessen basierende Produktangebote (Inserat). Für jede gelesene Inserat verdienst Du Jugls</translate> (<span class="icon-jugl-light"></span>)</p>
+            <div class="btn-box">
+                <kendo-mobile-button href="view-offers-index.html"><translate>Kaufen / verkaufen, Interessen angeben</translate></kendo-mobile-button>
+            </div>
+        </div>
+
+        <div class="earn-money-box">
+            <p><translate>3. Vermittlung, Recherche, Assistenz. Egal was Du oder andere suchen. Du bekommst dafür Vermittlungsprovision oder profitierst von den Angeboten.</translate></p>
+            <div class="btn-box">
+                <kendo-mobile-button href="view-searches-index.html"><translate>Suchauftrag erstellen / recherchieren</translate></kendo-mobile-button>
+            </div>
+        </div>
+
+        <div ng-if="marketingEnabled" class="earn-money-box">
+            <p><translate>4. ExtraCash - der Name ist Programm. Sammle noch mehr Jugls bei unseren Partnern und verschaffe Dir so einen waschechten Booster für Dein Konto.</translate></p>
+            <div class="btn-box">
+                <kendo-mobile-button class="platform-android" k-on-click="openUrlInBrowser('https://offerwall.annecy.media/?country='+status.user.country_short_name+'&platform=android&token=acda9842-3f24-4ea6-aa19-592a974877ba&user_id='+status.user.id)"><translate>Weitere Details</translate></kendo-mobile-button>
+                <kendo-mobile-button class="platform-ios" k-on-click="openUrlInBrowser('https://offerwall.annecy.media/?country='+status.user.country_short_name+'&platform=ios&token=acda9842-3f24-4ea6-aa19-592a974877ba&user_id='+status.user.id)"><translate>Weitere Details</translate></kendo-mobile-button>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="btn-box">
+        <kendo-mobile-button ng-click="openUrlInBrowser(config.urls.so_funktioniert)"><translate>Weitere Infos</translate></kendo-mobile-button>
+    </div>
+
+</kendo-mobile-view>

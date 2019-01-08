@@ -1,0 +1,157 @@
+<kendo-mobile-modal-view
+    ng-if="infoPopup.show"
+    id="view-info-popup"
+    ng-controller="InfoPopupCtrl as infoPopupCtrl"
+    k-on-open="data.onOpen(kendoEvent)"
+    k-on-close="data.onClose(kendoEvent)"
+    k-use-native-scrolling="config.views.useNativeScrolling"
+    class="modal" style="width: 94%;" modal ng-cloak>
+
+    <div class="info-popup-box">
+        <div class="info-popup-close closeModalBtn"></div>
+
+        <div class="info-box">
+            <h1 ng-if="data.info.title">{{data.info.title}}</h1>
+            <div ng-bind-html="data.info.description|trustAsHtml" class="info-box-text" img-src></div>
+        </div>
+
+        <div class="info-wiki">
+            <h2><translate>Jugl-Wiki</translate></h2>
+            <div class="jugl-forum-send-box">
+                <div class="jugl-forum-upload-box clearfix">
+                    <div ng-click="data.infoCommentUpload()" class="jugl-forum-upload-preview-box">
+                        <img ng-src="{{data.infoComment.newComment.image|default:'img/default_product.jpg'}}">
+                        <div ng-if="!data.fileUpload" class="km-loader km-widget select-loader" data-role="loader">
+                            <span class="km-loading km-spin"></span>
+                            <span class="km-loading-left"></span>
+                            <span class="km-loading-right"></span>
+                            <h1><translate>Loading</translate>...</h1>
+                        </div>
+                    </div>
+                    <div class="jugl-forum-upload-btn-box">
+                        <span><translate>Bild hochladen</translate></span>
+                        <div>
+                            <kendo-mobile-button k-on-click="data.addComment()"><translate>Absenden</translate></kendo-mobile-button>
+                        </div>
+                    </div>
+                </div>
+                <div class="jugl-forum-send-textarea textarea-field box-sizing">
+                    <textarea placeholder="{{'Text eingeben'|translate}}" ng-model="data.infoComment.newComment.comment"></textarea>
+                </div>
+            </div>
+
+            <div ng-if="data.infoComments.items.length>0" class="info-comments-sort-box">
+                <div ng-click="data.sortComment('dt')" ng-class="{'active': data.infoComments.sort=='dt'}"><translate>New</translate></div>
+                <div ng-click="data.sortComment('votes_up')" ng-class="{'active': data.infoComments.sort=='votes_up'}"><translate>Best</translate></div>
+            </div>
+
+            <div ng-if="data.infoComments.loading && !data.infoComments.hasMore" class="km-loader km-widget select-loader" data-role="loader" style="">
+                <span class="km-loading km-spin"></span>
+                <span class="km-loading-left"></span>
+                <span class="km-loading-right"></span>
+                <h1><translate>Loading</translate>...</h1>
+            </div>
+
+			<div class="blue-multiselect">
+				<multiselect ng-model="data.currentCountry" labels="labels"
+                     search-limit="20" selection-limit="1" options="data.countryList" id-prop="id" display-prop="name" show-select-all="false" show-unselect-all="false" show-search="true"
+				></multiselect>
+			</div>
+			
+            <div ng-if="data.infoComments.items.length>0" class="jugl-forum-list-box" >
+                <div ng-repeat="itemComment in data.infoComments.items" class="jugl-forum-item-box clearfix">
+
+                    <div set-if="itemComment.file" class="jugl-forum-left-box">
+                        <div ng-if="itemComment.file.ext!='mp4'" class="jugl-forum-item-picture">
+                            <a href="#view-photo-swipe-popup" data-url="{{::itemComment.file.image_big}}" data-rel="modalview" data-role="button">
+                                <img once-src="itemComment.file.image_medium">
+                            </a>
+                        </div>
+
+                        <div ng-if="itemComment.file.ext=='mp4'" class="video-box">
+                            <video video ng-attr-poster="{{itemComment.file.image_medium}}" playsinline webkit-playsinline loop muted preload="none">
+                                <source ng-src="{{itemComment.file.url|trustResourceUrl}}" type="video/mp4">
+                            </video>
+                        </div>
+
+                    </div>
+                    <div class="jugl-forum-right-box">
+                        <div class="jugl-forum-item-text" ng-bind-html="itemComment.comment|linky" open-link></div>
+                        <div class="jugl-forum-item-info clearfix">
+                            <div class="jugl-forum-item-user" ng-click="navigate('view-user-profile.html?id='+itemComment.user.id)">
+                                <div class="jugl-forum-user-avatar">
+                                    <img once-src="itemComment.user.avatar">
+                                </div>
+                                <div ng-if="!itemComment.user.is_company_name" class="jugl-forum-user-name">
+                                    <span>{{::itemComment.user.first_name}}</span>
+                                    <span>{{::itemComment.user.last_name}}</span>
+                                </div>
+                                <div ng-if="itemComment.user.is_company_name" class="jugl-forum-user-name" style="line-height: 27px; margin-top: 0">
+                                    <span>{{::itemComment.user.company_name}}</span>
+                                </div>
+                            </div>
+                            <div class="jugl-forum-dt-adn-like-box">
+                                <div class="like-box clearfix">
+                                    <div ng-click="data.commentVoteDown(itemComment.id)" class="dislike-btn">{{::itemComment.votes_down}}</div>
+                                    <div ng-click="data.commentVoteUp(itemComment.id)" class="like-btn">{{::itemComment.votes_up}}</div>
+                                    <div ng-click="(itemComment.votes_down+itemComment.votes_up)>0 ? data.viewVotes(itemComment.id):null" class="votes-view" ng-class="{'no-votes':(itemComment.votes_down+itemComment.votes_up)===0}">&nbsp;</div>
+                                </div>
+                                <div class="jugl-forum-message-dt">{{::itemComment.dt|date : 'dd.MM.yyyy HH:mm'}}</div>
+                            </div>
+                        </div>
+
+                        <div ng-if="status.user.is_moderator" class="message-actions-box clearfix box-sizing">
+                            <div class="message-actions-left">
+                                <div><kendo-mobile-button set-if="itemComment.status=='ACTIVE'" k-on-click="data.commentReject(itemComment)" class="btn-reject-message"><translate>Blockieren</translate></kendo-mobile-button></div>
+                                <div><kendo-mobile-button set-if="itemComment.status=='REJECTED'" k-on-click="data.commentAccept(itemComment)" class="btn-accept-message"><translate>Entblocken</translate></kendo-mobile-button></div>
+                            </div>
+
+                            <div class="message-actions-right">
+                                <div set-if="itemComment.status=='REJECTED' && itemComment.status_changed_dt" class="message-reject">
+                                    <div class="dt-message-reject">{{::itemComment.status_changed_dt|date : 'dd.MM.yyyy - HH:mm'}} <translate>Uhr</translate> <translate ng-if="itemComment.user.id==itemComment.status_changed_user_id">Nutzer</translate><translate ng-if="itemComment.user.id!=itemComment.status_changed_user_id">Moderator</translate></div>
+                                    <div class="user-message-reject">{{::itemComment.statusChangedUser}}</div>
+                                </div>
+                                <div set-if="itemComment.status=='ACTIVE' && itemComment.status_changed_dt" class="message-accept">
+                                    <div class="dt-message-accept">{{::itemComment.status_changed_dt|date : 'dd.MM.yyyy - HH:mm'}} <translate>Uhr</translate> <translate ng-if="itemComment.user.id==itemComment.status_changed_user_id">Nutzer</translate><translate ng-if="itemComment.user.id!=itemComment.status_changed_user_id">Moderator</translate></div>
+                                    <div class="user-message-accept">{{::itemComment.statusChangedUser}}</div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+			
+			<div ng-show="data.infoComments.items.length==0" class="offers-empty-box">         
+                <div class="no-offers">
+                    <translate>Leider haben wir keine Wiki Einträge aus den ausgewählten Ländern gefunden.</translate>
+                </div> 
+            </div>
+
+            <div class="load-btn-box" ng-show="data.infoComments.hasMore">
+                <kendo-mobile-button k-on-click="data.infoComments.loadMore()">
+                    <span ng-if="!data.infoComments.loading"><translate>Load More</translate></span>
+                    <span ng-if="data.infoComments.loading" class="km-loader km-widget select-loader" data-role="loader" style="">
+                <span class="km-loading km-spin"></span>
+                <span class="km-loading-left"></span>
+                <span class="km-loading-right"></span>
+                <h1><translate>Loading</translate>...</h1>
+                <span class="btn-text-android"><translate>Loading</translate></span>
+            </span>
+                </kendo-mobile-button>
+            </div>
+
+        </div>
+
+
+
+        <div class="info-box-close-btn btn-box">
+            <kendo-mobile-button class="closeModalBtn"><translate>Schließen</translate></kendo-mobile-button>
+        </div>
+    </div>
+
+
+</kendo-mobile-modal-view>
+
+

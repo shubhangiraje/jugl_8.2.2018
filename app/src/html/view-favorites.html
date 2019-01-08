@@ -1,0 +1,136 @@
+<kendo-mobile-view
+    id="view-favorites"
+    k-layout="'layout-main'"
+    ng-controller="FavoritesCtrl as favoritesCtrl"
+    k-on-show="data.onShow(kendoEvent)"
+    k-use-native-scrolling="config.views.useNativeScrolling"
+    ng-cloak>
+
+    <kendo-mobile-header>
+        <kendo-mobile-nav-bar>
+            <kendo-view-title ng-click="showInfoPopup('view-favorites')"><translate>Mein Merkzettel</translate></kendo-view-title>
+            <kendo-mobile-button class="platform-ios" data-align="right" k-on-click="showInfoPopup('view-favorites')"><span ng-class="{'blink': isOneShowInfoPopup('view-favorites')}" class="icon-info-ios"></span></kendo-mobile-button>
+        </kendo-mobile-nav-bar>
+    </kendo-mobile-header>
+
+    <div class="info-icon-box">
+        <span ng-click="showInfoPopup('view-favorites')" ng-class="{'blink': isOneShowInfoPopup('view-favorites')}" class="platform-android icon-info-android"></span>
+    </div>
+
+    <div class="android-title">
+        <h1 ng-click="showInfoPopup('view-favorites')"><translate>Mein Merkzettel</translate></h1>
+    </div>
+
+    <kendo-mobile-list-view class="filter-select-list" data-role="listview" data-style="inset">
+        <li>
+            <select ng-model="data.log.filter.type">
+                <option value="" translate>Alles zeigen</option>
+                <option value="search_request" translate>Suchaufträge</option>
+                <option value="offer" translate>Inseraten</option>
+            </select>
+        </li>
+    </kendo-mobile-list-view>
+
+
+    <div ng-if="data.log.loading && !data.log.hasMore" class="km-loader km-widget select-loader" data-role="loader" style="">
+        <span class="km-loading km-spin"></span>
+        <span class="km-loading-left"></span>
+        <span class="km-loading-right"></span>
+        <h1><translate>Loading</translate>...</h1>
+    </div>
+
+    <div ng-if="data.log.items.length == 0 && !data.log.loading" class="results-empty-text">
+        <translate>Du hast noch nichts in Deinem Merkzettel abgespeichert.</translate>
+    </div>
+
+    <kendo-mobile-list-view class="list-deals-completed">
+        <li ng-repeat="item in data.log.items">
+            <div ng-if="item.type=='search_request'" class="offer-type offer-type-search-request">
+                <div class="found-offer">
+                    <div class="box-found-picture">
+                        <a href="" ng-click="navigate('view-searches-details.html?id='+item.id)">
+                            <div class="found-img">
+                                <img ng-src="{{::item.favorite.image}}" />
+                            </div>
+                        </a>
+                    </div>
+                    <div class="box-found-info">
+                        <a href="" ng-click="navigate('view-searches-details.html?id='+item.id)">
+                            <div class="found-info-type"><translate>Suchanzeige</translate></div>
+                            <div class="found-title">{{::item.favorite.title}}</div>
+                            <div class="found-category clearfix">
+                                <span>{{::item.favorite.level1Interest}}</span>
+                                <span ng-if="item.favorite.level2Interest">{{::item.favorite.level2Interest}}</span>
+                                <span ng-if="item.favorite.level3Interests">{{::item.favorite.level3Interests}}</span>
+                            </div>
+                        </a>
+                        <div class="offer-user-box clearfix">
+                            <div class="offer-user-avatar" ng-click="data.gotoProfile(item.favorite.user.id)">
+                                <img ng-src="{{item.favorite.user.avatarMobile}}" alt=""/>
+                            </div>
+                            <div class="offer-user-name">{{::item.favorite.user|userName}}</div>
+                            <div class="offer-user-rating">
+                                <div class="star-rating">
+                                    <span once-style="{width:(+item.favorite.user.rating)+'%'}"></span>
+                                </div>
+                                <div class="user-feedback-count">({{::item.favorite.user.feedback_count}})</div>
+                                <div ng-if="item.favorite.user.packet=='VIP'" class="user-packet">&nbsp;</div>
+                                <div ng-if="item.favorite.user.packet=='VIP_PLUS'" class="user-packet-vip-plus">&nbsp;</div>
+                            </div>
+                        </div>
+                        <div class="found-price">{{::item.favorite.price_from|priceFormat}} - {{::item.favorite.price_to|priceFormat}} &euro;</div>
+
+                        <div class="found-date">{{::item.favorite.create_dt|date:"dd.MM.yyyy"}}</div>
+                    </div>
+                    <button class="btn-del-favorite" ng-click="data.delete(item.id, 'search_request')"></button>
+                </div>
+            </div>
+
+            <div ng-if="item.type=='offer'" class="offer-type offer-type-offer">
+                <div class="found-offer">
+                    <div class="box-found-picture">
+                        <a href="" ng-click="navigate('view-offers-details.html?id='+item.id)">
+                            <div class="found-img">
+                                <img ng-src="{{::item.favorite.image}}" />
+                            </div>
+                        </a>
+                    </div>
+                    <div class="box-found-info">
+                        <a href="" ng-click="navigate('view-offers-details.html?id='+item.id)">
+                            <div class="found-info-type"><translate>Angebot</translate></div>
+                            <div class="found-title">{{::item.favorite.title}}</div>
+                            <div class="found-category clearfix">
+                                <span>{{::item.favorite.level1Interest}}</span>
+                                <span ng-if="item.favorite.level2Interest">{{::item.favorite.level2Interest}}</span>
+                                <span ng-if="item.favorite.level3Interests">{{::item.favorite.level3Interests}}</span>
+                            </div>
+                        </a>
+                        <div class="offer-user-box clearfix">
+                            <div class="offer-user-avatar" ng-click="data.gotoProfile(item.favorite.user.id)">
+                                <img ng-src="{{item.favorite.user.avatarMobile}}" alt=""/>
+                            </div>
+                            <div class="offer-user-name">{{::item.favorite.user|userName}}</div>
+                            <div class="offer-user-rating">
+                                <div class="star-rating">
+                                    <span once-style="{width:(+item.favorite.user.rating)+'%'}"></span>
+                                </div>
+                                <div class="user-feedback-count">({{::item.favorite.user.feedback_count}})</div>
+                                <div ng-if="item.favorite.user.packet=='VIP'" class="user-packet">&nbsp;</div>
+                                <div ng-if="item.favorite.user.packet=='VIP_PLUS'" class="user-packet-vip-plus">&nbsp;</div>
+                            </div>
+                        </div>
+                        <div class="found-price">{{::item.favorite.price|priceFormat}} &euro;</div>
+
+                        <div once-if="item.favorite.view_bonus && marketingEnabled" class="found-bonus promotion-bonus"><translate>Werbebonus</translate>:&nbsp;<span>{{::item.favorite.view_bonus|priceFormat}}<span class="icon-jugl green"></span></span></div>
+                        <div once-if="item.favorite.view_bonus" class="found-bonus buy-bonus"><translate>Kaufbonus</translate>:&nbsp;<span>{{::item.favorite.buy_bonus|priceFormat}}<span class="icon-jugl blue"></span></span></div>
+
+                        <div class="found-date">{{::item.favorite.create_dt|date:"dd.MM.yyyy"}}</div>
+                    </div>
+                    <div class="btn-del-favorite" ng-click="data.delete(item.id, 'offer')"></div>
+                </div>
+            </div>
+
+        </li>
+    </kendo-mobile-list-view>
+
+</kendo-mobile-view>

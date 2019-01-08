@@ -1,0 +1,257 @@
+<kendo-mobile-view
+        id="view-profile-update"
+        k-layout="'layout-main'"
+        ng-controller="ProfileUpdateCtrl as profileUpdateCtrl"
+        k-on-show="data.onShow(kendoEvent)"
+        k-use-native-scrolling="config.views.useNativeScrolling"
+        fields-scroll ng-cloak>
+
+    <kendo-mobile-header>
+        <kendo-mobile-nav-bar>
+            <kendo-mobile-view-title ng-click="showInfoPopup('view-profile')"><translate>Mein Profil</translate></kendo-mobile-view-title>
+            <kendo-mobile-back-button k-on-click="onClickBack()" data-align="left"><span class="platform-android"><translate>Zurück</translate></span></kendo-mobile-back-button>
+            <kendo-mobile-button class="platform-ios" data-align="right" k-on-click="showInfoPopup('view-profile')"><span ng-class="{'blink': isOneShowInfoPopup('view-profile')}" class="icon-info-ios"></span></kendo-mobile-button>
+        </kendo-mobile-nav-bar>
+    </kendo-mobile-header>
+
+    <div class="info-icon-box">
+        <span ng-click="showInfoPopup('view-profile')" ng-class="{'blink': isOneShowInfoPopup('view-profile')}" class="platform-android icon-info-android"></span>
+    </div>
+
+    <div class="profile-update-avatar-box">
+        <div class="profile-update-avatar">
+            <img ng-src="{{data.user.avatarFile.thumbs.avatarMobile}}" />
+        </div>
+
+        <div class="btn-box">
+            <kendo-mobile-button k-on-click="data.uploadImage()"><translate>Profilbild hochladen</translate></kendo-mobile-button>
+        </div>
+
+        <div class="profile-update-packet" ng-if="status.user.packet=='VIP_PLUS' || status.user.packet=='VIP' || status.user.packet=='STANDART'">
+            <div class="profile-update-packet-text-box">
+                <translate>Ihre Mitgliedschaft</translate>:
+                <span class="profile-update-packet-current" ng-if="status.user.packet=='VIP'"><translit>Premium</translit></span>
+                <span class="profile-update-packet-current" ng-if="status.user.packet=='VIP_PLUS'"><translit>PremiumPlus</translit></span>
+                <span class="profile-update-packet-current" ng-if="status.user.packet=='STANDART'"><translit>Standard</translit></span>
+            </div>
+            <div ng-if="status.user.packet!='VIP_PLUS'" class="btn-box">
+                <kendo-mobile-button href="view-registration-payment.html?isUpgrade=1"><translate>Upgrade</translate></kendo-mobile-button>
+            </div>
+        </div>
+        <div class="profile-user-photos">
+            <ul ng-if="data.user.photos.length > 0" class="uploaded-pictures-box">
+                <li ng-repeat="photo in data.user.photos">
+                    <img ng-src="{{photo.thumbs.imageBig}}" />
+                    <span class="delete" ng-click="data.deletePhoto(photo.id)"></span>
+                </li>
+            </ul>
+            <div ng-if="!data.fileUpload" class="km-loader km-widget select-loader" data-role="loader">
+                <span class="km-loading km-spin"></span>
+                <span class="km-loading-left"></span>
+                <span class="km-loading-right"></span>
+                <h1><translate>Loading</translate>...</h1>
+            </div>
+            <div ng-if="data.user.photos.length != 30" class="upload-pictures-box" ng-click="data.uploadPhotos()">
+                <span class="icon-add-image"></span>
+            </div>
+        </div>
+
+    </div>
+
+
+    <kendo-mobile-list-view class="profile-update-list" k-type="'group'" k-style="'inset'">
+        <li><translate>Persönliche Daten</translate>
+            <ul class="list-personal-data">
+                <li><label><translate>Vorname</translate>:</label><input type="text" disabled ng-model="data.user.first_name" /></li>
+                <li><label><translate>Nachname</translate>:</label><input type="text" disabled ng-model="data.user.last_name" /></li>
+                <li ng-if="!data.user.is_company_name"><label><translate>Spitzname</translate>:</label><input ng-model-options="{updateOn: 'default blur', debounce: { 'default': 5000, 'blur': 0 }}" type="text" ng-model="data.user.nick_name" /></li>
+                <li ng-if="data.user.is_company_name"><label><translate>Geschäftsführer</translate>:</label><input type="text" ng-model="data.user.company_manager" /></li>
+                <li><label class="label-checkbox km-listview-label"><translate>Gewerblich</translate>:<input type="checkbox" ng-true-value="1" ng-false-value="0" ng-model="data.user.is_company_name" class="km-widget km-icon km-check" /></label></li>
+                <li><label><translate>Firmenname</translate>:</label><input type="text" ng-model="data.user.company_name" /></li>
+                <li ng-if="data.user.is_company_name" class="textarea-field">
+                    <label><translate>Impressum</translate>:</label>
+                    <textarea rows="4" ng-model="data.user.impressum"></textarea>
+                </li>
+                <li ng-if="data.user.is_company_name" class="textarea-field">
+                    <label><translate>AGBs</translate>:</label>
+                    <textarea rows="4" ng-model="data.user.agb"></textarea>
+                </li>
+                <li><label><translate>Telefon</translate>:</label><input ng-model-options="{updateOn: 'default blur', debounce: { 'default': 5000, 'blur': 0 }}" type="text" ng-model="data.user.phone" /></li>
+                <li><label><translate>E-mail</translate>:</label><input type="text" ng-model="data.user.email" /></li>
+                <li><label><translate>Passwort Alt</translate>:</label><input type="password" ng-model="data.user.oldPassword" /></li>
+                <li><label><translate>Passwort Neu</translate>:</label><input type="password" ng-model="data.user.newPassword" /></li>
+                <li><label><translate>Neu Passwort wiederholung</translate>:</label><input type="password" ng-model="data.user.newPasswordRepeat" /></li>
+                <li><label class="label-checkbox"><translate>Weiblich</translate><input type="radio" value="F"  ng-model="data.user.sex" /></label></li>
+                <li><label class="label-checkbox"><translate>Männlich</translate><input value="M" type="radio" ng-model="data.user.sex" /></label></li>
+            </ul>
+        </li>
+
+        <li><translate>Ergänzende Daten</translate>
+            <ul class="list-personal-data group">
+                <li class="label-title"><label><translate>Geburtstag</translate>:</label></li>
+                <li>
+                    <label><translate>Tag</translate>:</label>
+                    <select ng-model="data.user.birthDay" ng-options="item.key as item.val for item in data.birthDayList"></select>
+                </li>
+                <li>
+                    <label><translate>Monat</translate>:</label>
+                    <select ng-model="data.user.birthMonth" ng-options="item.key as item.val for item in data.birthMonthList"></select>
+                </li>
+                <li>
+                    <label><translate>Jahr</translate>:</label>
+                    <select ng-model="data.user.birthYear" ng-options="item.key as item.val for item in data.birthYearList"></select>
+                </li>
+                <li class="your-personal-data">
+                    <label><translate>&nbsp;</translate></label>
+                    <select ng-model="data.user.visibility_birthday">
+                        <option value="all" translate>Für alle sichtbar</option>
+                        <option value="friends" translate>Nur für Kontakte sichtbar</option>
+                        <option value="none" translate>Für niemanden sichtbar</option>
+                    </select>
+                </li>
+            </ul>
+            <ul class="list-personal-data group">
+                <li><label>{{"Straße"|translate}}:</label><input ng-model-options="{updateOn: 'default blur', debounce: { 'default': 5000, 'blur': 0 }}" type="text" ng-model="data.user.street" /></li>
+                <li><label><translate>Haus-Nr.</translate>:</label><input ng-model-options="{updateOn: 'default blur', debounce: { 'default': 5000, 'blur': 0 }}" type="text" ng-model="data.user.house_number" /></li>
+                <li class="your-personal-data">
+                    <label><translate>&nbsp;</translate></label>
+                    <select ng-model="data.user.visibility_address1">
+                        <option value="all" translate>Für alle sichtbar</option>
+                        <option value="friends" translate>Nur für Kontakte sichtbar</option>
+                        <option value="none" translate>Für niemanden sichtbar</option>
+                    </select>
+                </li>
+            </ul>
+            <ul class="list-personal-data group">
+                <li><label><translate>Plz</translate>:</label><input ng-model-options="{updateOn: 'default blur', debounce: { 'default': 5000, 'blur': 0 }}" type="text" ng-model="data.user.zip" /></li>
+                <li><label><translate>Ort</translate>:</label><input ng-model-options="{updateOn: 'default blur', debounce: { 'default': 5000, 'blur': 0 }}" type="text" ng-model="data.user.city" /></li>
+                <li>
+                    <label><translate>Land</translate>:</label>
+                    <select ng-model="data.user.country_id" ng-disabled="!data.user.is_moderator && !data.user.allow_country_change" ng-options="item.id as item.country for item in data.countries">
+                        <option value=""><translate>Land</translate></option>
+                    </select>
+                </li>
+                <li class="your-personal-data group">
+                    <label><translate>&nbsp;</translate></label>
+                    <select ng-model="data.user.visibility_address2">
+                        <option value="all" translate>Für alle sichtbar</option>
+                        <option value="friends" translate>Nur für Kontakte sichtbar</option>
+                        <option value="none" translate>Für niemanden sichtbar</option>
+                    </select>
+                </li>
+            </ul>
+            <ul class="list-personal-data group">
+                <li><label><translate>Beruf</translate>:</label><input ng-model-options="{updateOn: 'default blur', debounce: { 'default': 5000, 'blur': 0 }}" type="text" ng-model="data.user.profession" /></li>
+                <li class="your-personal-data">
+                    <label><translate>&nbsp;</translate></label>
+                    <select ng-model="data.user.visibility_profession">
+                        <option value="all" translate>Für alle sichtbar</option>
+                        <option value="friends" translate>Nur für Kontakte sichtbar</option>
+                        <option value="none" translate>Für niemanden sichtbar</option>
+                    </select>
+                </li>
+            </ul>
+            <ul class="list-personal-data group">
+                <li>
+                    <label><translate>Familienstand</translate>:</label>
+                    <select ng-model="data.user.marital_status" ng-options="item.value as item.name for item in data.maritalStatuses"></select>
+                </li>
+                <li class="your-personal-data">
+                    <label><translate>&nbsp;</translate></label>
+                    <select ng-model="data.user.visibility_marital_status">
+                        <option value="all" translate>Für alle sichtbar</option>
+                        <option value="friends" translate>Nur für Kontakte sichtbar</option>
+                        <option value="none" translate>Für niemanden sichtbar</option>
+                    </select>
+                </li>
+            </ul>
+            <ul class="list-personal-data group">
+                <li class="textarea-field">
+                    <label><translate>über mich</translate>:</label>
+                    <textarea ng-model-options="{updateOn: 'default blur', debounce: { 'default': 5000, 'blur': 0 }}" rows="4" ng-model="data.user.about"></textarea>
+                </li>
+                <li class="your-personal-data">
+                    <label><translate>&nbsp;</translate></label>
+                    <select ng-model="data.user.visibility_about">
+                        <option value="all" translate>Für alle sichtbar</option>
+                        <option value="friends" translate>Nur für Kontakte sichtbar</option>
+                        <option value="none" translate>Für niemanden sichtbar</option>
+                    </select>
+                </li>
+            </ul>
+
+            <div ng-if="status.user.validation_phone_status!=='VALIDATED' && status.user.parent_registration_bonus===0" class="btn-box" style="margin-top: 15px">
+                <kendo-mobile-button ng-click="deleteProfile()"><translate>Profil löschen</translate></kendo-mobile-button>
+            </div>
+
+
+        </li>
+
+        <li><translate>Meine Zahlungsinformationen</translate>
+
+            <ul class="list-personal-data">
+                <li class="label-title"><label><translate>Meine Bankverbindung</translate>:</label></li>
+            </ul>
+
+            <ul class="km-list list-personal-data" ng-repeat="bankData in data.user.bankDatas">
+                <li><label><translate>IBAN</translate>:</label><input ng-model-options="{updateOn: 'default blur', debounce: { 'default': 5000, 'blur': 0 }}" type="text" ng-model="bankData.iban" /></li>
+                <li><label><translate>BIC</translate>:</label><input ng-model-options="{updateOn: 'default blur', debounce: { 'default': 5000, 'blur': 0 }}" type="text" ng-model="bankData.bic" /></li>
+                <li><label><translate>Kontoinhaber</translate>:</label><input ng-model-options="{updateOn: 'default blur', debounce: { 'default': 5000, 'blur': 0 }}" type="text" ng-model="bankData.owner" /></li>
+            </ul>
+
+            <ul class="list-personal-data">
+                <li class="add-bank-details">
+                    <button type="button" ng-click="data.user.bankDatas.push({})"><translate>Weitere Bankverbindung eingeben</translate></button>
+                </li>
+            </ul>
+            <ul class="list-personal-data">
+                <li class="label-title"><label><translate>Mein Paypal</translate>:</label></li>
+                <li><label><translate>E-mail</translate>:</label><input ng-model-options="{updateOn: 'default blur', debounce: { 'default': 5000, 'blur': 0 }}" type="text" ng-model="data.user.paypal_email" /></li>
+            </ul>
+        </li>
+
+
+        <li ng-if="data.user.validation_phone_status!='VALIDATED'" id="validationPhone" class="profile-update-validation-data"><translate>Daten Bestätigen</translate>
+            <ul style="margin-bottom: 0;">
+                <li><p><translate>Damit derjenige, der Dich zu Jugl.net eingeladen hat, seinen Einladungsbonus erhält, gib hier Deine Handynummer an. Wir senden Dir einen Bestätigungscode per SMS zu, den Du unten in das Feld einträgst.</translate></p></li>
+            </ul>
+            <ul ng-if="!data.validation_code_success">
+                <li style="padding-top: 0;"><label><translate>Hier Handynummer eingeben</translate>:</label></li>
+                <li style="padding-top: 0;"><input type="text" ng-model="data.user.validation_phone" placeholder="z.B. +4917612345678" /></li>
+                <li>
+                    <div class="btn-box" style="padding: 0">
+                        <kendo-mobile-button ng-show="data.user.validation_phone_status=='NOT_VALIDATED'" k-on-click="data.sendValidationPhone()">
+                            <translate>Absenden</translate>
+						</kendo-mobile-button>
+						<kendo-mobile-button ng-show="data.user.validation_phone_status=='SEND_CODE' && data.new_code_interval == 0" k-on-click="data.sendValidationPhone()">                          
+                            <translate>Erneut zusenden</translate>                
+						</kendo-mobile-button>
+						<kendo-mobile-button ng-disabled="true" ng-show="data.user.validation_phone_status=='SEND_CODE' && data.new_code_interval > 0" k-on-click="data.sendValidationPhone()">                           
+                            <translate>Bitte Warte {{data.new_code_interval}} Sek.</translate>
+						</kendo-mobile-button>
+                    </div>
+                </li>
+                <li ng-if="data.user.validation_phone_status=='SEND_CODE'"><input type="text" ng-model="data.user.validation_code_form" placeholder="{{'Hier Code eingeben'|translate}}" /></li>
+                <li ng-if="data.user.validation_phone_status=='SEND_CODE'">
+                    <div class="btn-box" style="padding: 0">
+                        <kendo-mobile-button ng-disabled="data.code_clicked" k-on-click="data.sendValidationCode()"><translate>Code absenden</translate></kendo-mobile-button>
+                    </div>
+                </li>
+            </ul>
+            <ul ng-show="data.validation_code_success">
+                <li><div class="text-success"><translate>Die Bestätigung wurde erfolgreich abgeschlossen</translate></div></li>
+            </ul>
+        </li>
+
+
+    </kendo-mobile-list-view>
+
+
+    <div class="btn-box">
+        <kendo-mobile-button k-on-click="data.save()"><translate>Speichern</translate></kendo-mobile-button>
+    </div>
+
+
+
+
+</kendo-mobile-view>

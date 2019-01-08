@@ -1,0 +1,4 @@
+*.css diff
+*.less diff
+*.js diff
+*.html diff

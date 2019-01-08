@@ -1,0 +1,29 @@
+<kendo-mobile-view
+        id="view-how-it-works"
+        k-layout="'layout-main'"
+        k-use-native-scrolling="config.views.useNativeScrolling"
+        ng-cloak>
+
+    <kendo-mobile-header>
+        <kendo-mobile-nav-bar>
+            <kendo-mobile-back-button k-on-click="onClickBack()" data-align="left"><span class="platform-android"><translate>Zurück</translate></span></kendo-mobile-back-button>
+        </kendo-mobile-nav-bar>
+    </kendo-mobile-header>
+
+
+    <div class="head-title">
+        <h1><translate>Oder kurz erklärt „JuglApp“ beinhaltet drei Themenbereiche mit denen Du Geld verdienen kannst:</translate></h1>
+    </div>
+
+    <div class="page-content">
+        <p><translate>1. Ich lade meine Freunde ein und baue mir damit mein Netzwerk auf.</translate></p>
+        <p><translate>2. Ich gebe meine Interessen an (von der Zahnbürste bis zum Luxus Auto) und bliebe dabei anonym und bekomme vorwiegend von Händlern aber auch von Privatpersonen, auf meinen Interessen basierende Produktangebote (Inserat).</translate></p>
+        <p><translate>3. Assistenz, Recherche, Vermittlung… egal ob günstigste Reise, schönste Veranstaltung oder Traumwohnung. Hierbei ist mein Profil zu sehen und ich erhalte ein individuell auf mich zugeschnittenes Angebot.</translate></p>
+        <p><translate>4. Du verdienst immer an allen Aktivitäten in Deinem Netzwerk mit.</translate></p>
+    </div>
+
+    <div class="btn-box">
+        <kendo-mobile-button ng-click="openUrlInBrowser(config.urls.so_funktioniert)"><translate>Mehr Details</translate></kendo-mobile-button>
+    </div>
+
+</kendo-mobile-view>

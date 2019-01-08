@@ -1,0 +1,232 @@
+<kendo-mobile-view
+        id="view-funds"
+        k-layout="'layout-main'"
+        ng-controller="FundsCtrl as fundsCtrl"
+        k-on-show="data.onShow(kendoEvent)"
+        k-on-hide="data.onShow(kendoEvent)"
+        k-use-native-scrolling="config.views.useNativeScrolling"
+        ng-cloak>
+
+    <kendo-mobile-header>
+        <kendo-mobile-nav-bar>
+            <kendo-mobile-view-title ng-click="showInfoPopup('view-funds-app')"><translate>Mein Jugl-Konto</translate></kendo-mobile-view-title>
+            <kendo-mobile-button class="platform-ios" data-align="right" k-on-click="showInfoPopup('view-funds-app')"><span ng-class="{'blink': isOneShowInfoPopup('view-funds-app')}" class="icon-info-ios"></span></kendo-mobile-button>
+        </kendo-mobile-nav-bar>
+    </kendo-mobile-header>
+
+    <div class="info-icon-box">
+        <span ng-click="showInfoPopup('view-funds-app')" ng-class="{'blink': isOneShowInfoPopup('view-funds-app')}" class="platform-android icon-info-android"></span>
+    </div>
+
+    <div class="android-title">
+        <h1 ng-click="showInfoPopup('view-funds-app')"><translate>Mein Jugl-Konto</translate></h1>
+    </div>
+
+    <kendo-mobile-button-group k-options="data.typeFund" class="funds-filter-type">
+        <li><translate>Kontostand</translate></li>
+        <li><translate>Tokentransaktionen</translate></li>
+        <!--
+            <li><translate>Tokens festgelegt</translate></li>
+        -->
+    </kendo-mobile-button-group>
+
+    <div ng-if="data.typeFund.index==0">
+        <kendo-mobile-list-view class="funds-user-list">
+            <li class="balance">
+                <div><translate>Aktueller Kontostand</translate><span class="value">{{status.user.balance|priceFormat}} <i class="icon-jugl"></i></span></div>
+                <div class="balance-sep"><translate>davon nicht auszahlbar</translate><span class="value">{{status.user.balance_buyed|priceFormat}} <i class="icon-jugl"></i></span></span></div>
+                <div class="balance-sep"><translate>davon auszahlbar</translate><span class="value">{{status.user.balance_earned|priceFormat}} <i class="icon-jugl"></i></span></span></div>
+            </li>
+            <li class="earned-today">
+                <div><translate>Verdienst heute</translate><span class="value">{{status.user.earned_today|priceFormat}} <i class="icon-jugl light-blue"></i></span></div>
+            </li>
+            <li class="earned-yesterday">
+                <div><translate>Verdienst gestern</translate><span class="value">{{status.user.earned_yesterday|priceFormat}} <i class="icon-jugl light-blue"></i></span></div>
+            </li>
+            <li class="earned-month">
+                <div><translate>Verdienst dieses Monats</translate><span class="value">{{status.user.earned_this_month|priceFormat}} <i class="icon-jugl"></i></span></div>
+            </li>
+            <li class="earned-year">
+                <div><translate>Verdienst dieses Jahres</translate><span class="value">{{status.user.earned_this_year|priceFormat}} <i class="icon-jugl"></i></span></div>
+            </li>
+            <li class="earned-total">
+                <div><translate>Verdienst seit Registrierung</translate><span class="value">{{status.user.earned_total|priceFormat}} <i class="icon-jugl"></i></span></div>
+            </li>
+        </kendo-mobile-list-view>
+
+        <div class="funds-payout-btn">
+            <kendo-mobile-button k-on-click="openUrlInBrowser(config.urls.payout)"><translate>Jugls verkaufen</translate></kendo-mobile-button>
+            <kendo-mobile-button k-on-click="openUrlInBrowser(config.urls.payin)"><translate>Jugls aufladen</translate></kendo-mobile-button>
+        </div>
+
+        <div class="group-title-text">
+            <div class="title-text"><translate>Transaktionsübersicht</translate></div>
+        </div>
+
+        <kendo-mobile-button-group k-options="data.statusFilterOptions" id="select-period">
+            <li><translate>Alles zeigen</translate></li>
+            <li><translate>Eingang</translate></li>
+            <li><translate>Ausgang</translate></li>
+        </kendo-mobile-button-group>
+
+        <div class="sort-funds-list-box clearfix">
+            <div><translate>sortieren nach</translate></div>
+            <ul>
+                <li ng-click="data.setSort('dt')" ng-class="{'sort-asc':data.log.sort=='dt','sort-desc':data.log.sort=='-dt'}"><translate>Datum</translate></li>
+                <li ng-click="data.setSort('sum')" ng-class="{'sort-asc':data.log.sort=='sum','sort-desc':data.log.sort=='-sum'}"><translate>Wert</translate></li>
+            </ul>
+        </div>
+
+        <div ng-if="data.log.loading && !data.log.hasMore" class="km-loader km-widget select-loader" data-role="loader" style="">
+            <span class="km-loading km-spin"></span>
+            <span class="km-loading-left"></span>
+            <span class="km-loading-right"></span>
+            <h1><translate>Loading</translate>...</h1>
+        </div>
+
+        <kendo-mobile-list-view class="funds-list">
+            <li ng-repeat="item in data.log.items">
+                <div class="funds-collapsible">
+                    <div class="funds-collaps-head" ng-click="item.showDetails=!item.showDetails" ng-class="{'active': item.showDetails}">
+                        {{::item.dt | date:'dd.MM.yyyy HH:mm' }}
+                        <span set-if="(+item.sum)>=0" class="sales-up">&uarr; {{::item.sum|priceFormat}} <span class="icon-jugl-light dark-green"></span></span>
+                        <span set-if="(+item.sum)<0" class="sales-down">&darr; {{::item.sum|priceFormat}} <span class="icon-jugl-light red"></span></span>
+                    </div>
+                    <ul ng-if="item.showDetails" class="funds-collaps-info clearfix">
+                        <li class="funds-user-box clearfix">
+                            <div ng-click="data.gotoProfile(item.user.id)" class="funds-user-avatar"><img src="{{::item.user.avatarMobile}}" alt=""/></div>
+                            <div class="funds-user-name">{{::item.user|userName}}</div>
+                        </li>
+                        <li class="funds-type-box">
+                            <span set-if="(+item.sum)>=0" class="sales-up" event-text="item.type"></span>
+                            <span set-if="(+item.sum)<0" class="sales-down" event-text="item.type"></span>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+        </kendo-mobile-list-view>
+
+        <div class="load-btn-box" ng-show="data.log.hasMore">
+            <kendo-mobile-button k-on-click="data.log.loadMore()">
+                <span ng-if="!data.log.loading"><translate>Load More</translate></span>
+                <!-- <span ng-if="data.log.loading">Loading</span>-->
+                <span ng-if="data.log.loading" class="km-loader km-widget select-loader" data-role="loader" style="">
+                <span class="km-loading km-spin"></span>
+                <span class="km-loading-left"></span>
+                <span class="km-loading-right"></span>
+                <h1><translate>Loading</translate>...</h1>
+                <span class="btn-text-android"><translate>Loading</translate></span>
+            </span>
+            </kendo-mobile-button>
+        </div>
+    </div>
+
+    <div ng-if="data.typeFund.index==1">
+<!--
+        <kendo-mobile-list-view class="funds-user-list">
+            <li class="balance">
+                <div><translate>Aktueller Tokenstand</translate><span class="value">{{status.user.balance_token|priceFormat}}</span></div>
+                <div class="balance-sep"><translate>tokens durch eigenen Kauf</translate>:<span class="value">{{status.user.balance_token_buyed|priceFormat}}</span></span></div>
+                <div class="balance-sep"><translate>tokens durch Netzwerk:</translate><span class="value">{{status.user.balance_token_earned|priceFormat}}</span></span></div>
+            </li>
+        </kendo-mobile-list-view>
+
+        <div class="group-title-text">
+            <div class="title-text"><translate>Transaktionsübersicht</translate></div>
+        </div>
+-->
+        <kendo-mobile-button-group k-options="data.statusFilterTokenOptions" id="select-period">
+            <li><translate>Alles zeigen</translate></li>
+            <li><translate>Eingang</translate></li>
+            <li><translate>Ausgang</translate></li>
+        </kendo-mobile-button-group>
+
+        <div class="sort-funds-list-box clearfix">
+            <div><translate>sortieren nach</translate></div>
+            <ul>
+                <li ng-click="data.setSortToken('dt')" ng-class="{'sort-asc':data.tokenLog.sort=='dt','sort-desc':data.tokenLog.sort=='-dt'}"><translate>Datum</translate></li>
+                <li ng-click="data.setSortToken('sum')" ng-class="{'sort-asc':data.tokenLog.sort=='sum','sort-desc':data.tokenLog.sort=='-sum'}"><translate>Wert</translate></li>
+            </ul>
+        </div>
+
+        <div ng-if="data.tokenLog.loading && !data.tokenLog.hasMore" class="km-loader km-widget select-loader" data-role="loader" style="">
+            <span class="km-loading km-spin"></span>
+            <span class="km-loading-left"></span>
+            <span class="km-loading-right"></span>
+            <h1><translate>Loading</translate>...</h1>
+        </div>
+
+        <kendo-mobile-list-view class="funds-list">
+            <li ng-repeat="item in data.tokenLog.items">
+                <div class="funds-collapsible">
+                    <div class="funds-collaps-head" ng-click="item.showDetails=!item.showDetails" ng-class="{'active': item.showDetails}">
+                        {{::item.dt | date:'dd.MM.yyyy HH:mm' }}
+                        <span set-if="(+item.sum)>=0" class="sales-up">&uarr; {{::item.sum|priceFormat}}</span>
+                        <span set-if="(+item.sum)<0" class="sales-down">&darr; {{::item.sum|priceFormat}}</span>
+                    </div>
+                    <ul ng-if="item.showDetails" class="funds-collaps-info clearfix">
+                        <li class="funds-user-box clearfix">
+                            <div ng-click="data.gotoProfile(item.user.id)" class="funds-user-avatar"><img src="{{::item.user.avatarMobile}}" alt=""/></div>
+                            <div class="funds-user-name">{{::item.user|userName}}</div>
+                        </li>
+                        <li class="funds-type-box">
+                            <span set-if="(+item.sum)>=0" class="sales-up" event-text="item.type"></span>
+                            <span set-if="(+item.sum)<0" class="sales-down" event-text="item.type"></span>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+        </kendo-mobile-list-view>
+
+        <div class="load-btn-box" ng-show="data.tokenLog.hasMore">
+            <kendo-mobile-button k-on-click="data.tokenLog.loadMore()">
+                <span ng-if="!data.tokenLog.loading"><translate>Load More</translate></span>
+                <span ng-if="data.tokenLog.loading" class="km-loader km-widget select-loader" data-role="loader" style="">
+                <span class="km-loading km-spin"></span>
+                <span class="km-loading-left"></span>
+                <span class="km-loading-right"></span>
+                <h1><translate>Loading</translate>...</h1>
+                <span class="btn-text-android"><translate>Loading</translate></span>
+            </span>
+            </kendo-mobile-button>
+        </div>
+
+    </div>
+<!--
+    <div ng-if="data.typeFund.index==2">
+
+        <kendo-mobile-list-view class="funds-token-deposit-list">
+            <li ng-repeat="item in data.tokenDepositLog.items">
+                <div class="ftd-item main"><translate>Tokens festgelegt</translate>:<span class="value">{{item.sum|priceFormat}}</span></div>
+                <div class="ftd-item"><translate>Zeitraum</translate>:<span class="value">{{item.period_months/12}} <translate>Jahr(e)</translate></span></div>
+                <div class="ftd-item"><translate>Zinssatz</translate>:<span class="value">{{item.contribution_percentage}}%</span></div>
+                <div class="ftd-item"><translate>Zinsertrag</translate>:<span class="value">{{item.percent_sum|priceFormat}}</span></div>
+                <div class="ftd-item"><translate>Erstellt am</translate>:<span class="value">{{item.created_at|date:"dd.MM.yyyy"}}</span></div>
+                <div class="ftd-item"><translate>Wird freigegeben am</translate>:<span class="value">{{item.completion_dt|date:"dd.MM.yyyy"}}</span></div>
+
+                <div class="fixed-tokens-pay-text"><translate>Festgelegte Tokens werden als</translate>
+                    <span ng-if="item.payout_type=='TOKENS'"><translate>Tokens</translate></span>
+                    <span ng-if="item.payout_type=='JUGLS'"><translate>Jugls</translate></span>
+                    <translate>ausgezahlt</translate>
+                </div>
+                <div class="btn-box">
+                    <kendo-mobile-button k-on-click="data.payoutTypeToggle(item)"><translate>Typ der Auszahlung ändern</translate></kendo-mobile-button>
+                </div>
+            </li>
+        </kendo-mobile-list-view>
+
+        <div class="load-btn-box" ng-show="data.tokenDepositLog.hasMore">
+            <kendo-mobile-button k-on-click="data.tokenDepositLog.loadMore()">
+                <span ng-if="!data.tokenDepositLog.loading"><translate>Load More</translate></span>
+                <span ng-if="data.tokenDepositLog.loading" class="km-loader km-widget select-loader" data-role="loader" style="">
+                <span class="km-loading km-spin"></span>
+                <span class="km-loading-left"></span>
+                <span class="km-loading-right"></span>
+                <h1><translate>Loading</translate>...</h1>
+                <span class="btn-text-android"><translate>Loading</translate></span>
+            </span>
+            </kendo-mobile-button>
+        </div>
+-->
+    </div>
+</kendo-mobile-view>

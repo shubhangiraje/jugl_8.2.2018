@@ -1,0 +1,62 @@
+<kendo-mobile-view
+        id="view-all-functions"
+        k-layout="'layout-main'"
+        k-use-native-scrolling="config.views.useNativeScrolling"
+        ng-controller="AllFunctionsCtrl as allFunctionsCtrl"
+        ng-cloak >
+
+    <kendo-mobile-header>
+        <kendo-mobile-nav-bar>
+            <kendo-mobile-view-title><translate>Alle Funktionen</translate></kendo-mobile-view-title>
+        </kendo-mobile-nav-bar>
+    </kendo-mobile-header>
+
+    <kendo-mobile-list-view class="list-all-functions" k-style="'inset'" >
+        <li><a ng-click="auth.logout()"><translate>Abmelden</translate></a></li>
+        <li><a href="view-invite-log.html"><translate>Einladungshistorie</translate></a></li>
+        <li><a href="view-settings.html"><translate>Einstellungen</translate></a></li>
+        <li><a href="view-invite.html"><translate>Freunde einladen</translate></a></li>
+        <li><a href="view-earn-money.html"><translate>Geld verdienen</translate></a></li>
+        <li><a ng-click="refreshList(); navigate('view-deals-completed.html');"><translate>Geschäfte und Bewertungen</translate></a></li>
+        <!--<li><a ng-click="openUrlInBrowser(config.urls.help)"><translate>Hilfe</translate></a></li>-->
+        <li><a href="view-deals-completed.html?filter=offer|1"><translate>Ich habe abgemahnt</translate></a></li>
+        <li><a href="view-deals-completed.html?filter=offer_request|1"><translate>Ich wurde abgemahnt</translate></a></li>
+        <li><a ng-click="refreshList(); navigate('view-offers-my-requests.html');"><translate>Meine Gebote</translate></a></li>
+        <li><a ng-click="data.accountDelete()"><translate>Jugl Account löschen</translate></a></li>
+        <li><a href="view-funds.html"><translate>Jugl-Punkte kaufen</translate></a></li>
+        <li><a href="view-funds.html"><translate>Jugl-Punkte verkaufen</translate></a></li>
+        <li><a href="view-contacts.html"><translate>Kontakt entfernen</translate></a></li>
+        <li><a href="view-user-search.html"><translate>Kontakt hinzufügen</translate></a></li>
+        <li><a href="view-funds.html"><translate>Kontostand</translate></a></li>
+        <li><a href="view-offers-search.html?filter=AUCTION"><translate>Laufende Auktionen</translate></a></li>
+        <li><a href="view-funds.html"><translate>Mein Jugl-Konto</translate></a></li>
+        <li><a href="view-network.html?id={{status.user.id}}"><translate>Mein Netzwerk</translate></a></li>
+        <li><a href="view-profile.html"><translate>Mein Profil</translate></a></li>
+        <li><a href="view-activities.html"><translate>Meine Aktivitäten</translate></a></li>
+        <li><a href="view-offers-my.html?filter=TYPE_AUCTION"><translate>Meine Angebote im Bieterverfahren</translate></a></li>
+        <li><a href="view-offers-my.html?filter=TYPE_AUCTION"><translate>Meine Auktionen</translate></a></li>
+        <li><a href="view-interests.html?type=OFFER"><translate>Meine Interessen</translate></a></li>
+        <li><a ng-click="refreshList(); navigate('view-deals-completed.html');"><translate>Meine Käufe</translate></a></li>
+        <li><a href="view-contacts.html"><translate>Kontaktübersicht</translate></a></li>
+        <li><a href="view-searches-my-list.html"><translate>Meine Suchaufträge</translate></a></li>
+        <li><a href="view-searches-add.html"><translate>Menschliche Suchmaschine</translate></a></li>
+        <li><a href="view-favorites.html"><translate>Merkzettel</translate></a></li>
+        <li><a href="view-contacts.html"><translate>Messenger</translate></a></li>
+        <li><a href="view-user-search.html"><translate>Mitgliedersuche</translate></a></li>
+        <li><a href="view-contacts.html"><translate>Kurznachricht schreiben</translate></a></li>
+        <li><a href="view-invite.html"><translate>Netzwerk erweitern</translate></a></li>
+        <li><a href="view-profile-update.html"><translate>Persönliche Daten bearbeiten</translate></a></li>
+        <li><a href="view-profile-update.html"><translate>Privatsphäreeinstellungen</translate></a></li>
+        <li><a href="view-profile-update.html"><translate>Profilbild hochladen/ändern</translate></a></li>
+        <li><a href="view-searches-search.html"><translate>Rechercheauftrag annehmen</translate></a></li>
+        <li><a ng-click="showInfoPopup('view-earn-money')"><translate>So funktioniert Jugl</translate></a></li>
+        <li><a href="view-searches-add.html"><translate>Suchanzeige aufgeben</translate></a></li>
+        <li><a href="view-searches-search.html"><translate>Was suchen andere?</translate></a></li>
+        <li><a href="view-searches-my-list.html"><translate>Was wird mir angeboten?</translate></a></li>
+        <li><a href="view-offers-add.html"><translate>Inserat schalten</translate></a></li>
+        <li><a href="view-offers-my-requests.html"><translate>Worauf habe ich geboten?</translate></a></li>
+        <li><a href="view-interests.html?type=OFFER"><translate>Zielgruppe definieren</translate></a></li>
+
+    </kendo-mobile-list-view>
+
+</kendo-mobile-view>

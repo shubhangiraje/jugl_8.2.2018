@@ -1,0 +1,806 @@
+<kendo-mobile-view
+        id="view-dashboard"
+        k-layout="'layout-main'"
+        ng-controller="DashboardCtrl as dashboardCtrl"
+        k-on-show="data.onShow(kendoEvent)"
+        k-on-hide="data.onHide(kendoEvent)"
+        k-use-native-scrolling="config.views.useNativeScrolling"
+        ng-cloak>
+
+    <kendo-mobile-header>
+        <kendo-mobile-nav-bar>
+            <kendo-mobile-view-title><translate>Startseite</translate></kendo-mobile-view-title>
+        </kendo-mobile-nav-bar>
+    </kendo-mobile-header>
+
+    <div ng-if="data.isDashboardShow">
+        <div class="dashboard-packet-box clearfix" set-if="status.user.packet!='VIP_PLUS'">
+            <div class="dashboard-packet-text-box">
+                <translate>Ihre Mitgliedschaft</translate>:
+                <span class="dashboard-packet-current" set-if="status.user.packet=='STANDART'"><translit>Standard</translit></span>
+				<span class="dashboard-packet-current" set-if="status.user.packet=='VIP'"><translit>Premium</translit></span>
+            </div>
+
+            <div class="dashboard-packet-upgrade-btn-box">
+                <kendo-mobile-button set-if="status.user.packet=='VIP'" class="dashboard-btn" href="view-registration-payment.html?isUpgrade=1"><translate>Jetzt Premiumplusmitglied werden!</translate></kendo-mobile-button>
+				<kendo-mobile-button set-if="status.user.packet!='VIP'" class="dashboard-btn" href="view-registration-payment.html?isUpgrade=1"><translate>Jetzt Premiummitglied werden!</translate></kendo-mobile-button>
+            </div>
+        </div>
+
+        <div class="dashboard-packet-box no-packet clearfix" set-if="status.user.packet!='VIP_PLUS' && status.user.packet!='VIP' && status.user.packet!='STANDART'">
+            <div class="dashboard-packet-text-box">
+                <a href="" ng-click="navigate('view-registration-payment.html?isUpgrade=1')"><translate>Premium-upgrade hier klicken</translate></a>
+            </div>
+        </div>
+
+        <div class="dashboard-team-change box-sizing" ng-if="status.user.teamChangeFinishTime">
+            <div server-countdown="status.user.teamChangeFinishTime" server-countdown-with-days="true"></div>
+            <kendo-mobile-button class="dashboard-btn" href="view-team-change-user-search.html"><translate>Teamwechsel</translate></kendo-mobile-button>
+        </div>
+
+        <div class="dashboard-funds-box">
+			<div class="dashboard-funds-btn-box">
+                <kendo-mobile-button class="dashboard-funds-btn" ng-class="{'blink': isOneShowInfoPopup('view-earn-money')}" ng-click="showInfoPopup('view-earn-money')"><span><translate>Wie funktioniert Jugl.net?</translate> <span class="dashboard-button-icon icon-info-android-white icon-info-ios-how"></span></span></kendo-mobile-button>
+            </div>
+            <div class="dashboard-funds-btn-box">
+                <kendo-mobile-button class="dashboard-funds-btn" href="view-funds.html"><span><translate>Dein Kontostand</translate>: <span class="nowrap">{{status.user.balance|priceFormat}} <span class="icon-jugl-light"></span></span></span></kendo-mobile-button>
+                <span class="icon-info-dashboard-btn" ng-click="showInfoPopup('view-funds-app')"></span>
+            </div>
+            <div class="dashboard-funds-btn-box">
+                <kendo-mobile-button class="dashboard-funds-btn" href="view-invite.html"><translate>Freunde einladen</translate></kendo-mobile-button>
+                <span class="icon-info-dashboard-btn" ng-click="showInfoPopup('view-invite')"></span>
+            </div>
+			<!--
+			<div class="dashboard-funds-btn-box">
+				<kendo-mobile-button class="dashboard-funds-btn" k-on-click="openUrlInBrowser(config.urls.buyTokenUrl)"><translate>Tokens kaufen</translate></kendo-mobile-button>
+			</div>
+			<div class="dashboard-funds-btn-box">
+				<kendo-mobile-button class="dashboard-funds-btn" k-on-click="openUrlInBrowser(config.urls.buyTokenDepositUrl)"><translate>Tokens festlegen</translate></kendo-mobile-button>
+			</div>
+			-->
+        </div>
+
+		<div class="dashboard-new-video-identification">
+			<a ng-click="refreshList(); navigate('view-trollbox-list.html?type=VIDEO_IDENTIFICATION');"><translate>Neue Videoidents</translate>:</a>
+			<span>{{data.count_video_identification}}</span>
+		</div>
+
+
+        <div class="dashboard-settings">
+            <label ng-click="navigate('view-settings.html')"><translate>Push- / Tonbenachrichtigungen</translate></label>
+            <div class="dashboard-settings-field clearfix">
+                <a href="" ng-click="navigate('view-settings.html')"><translate>Hier klicken für Feineinstellungen</translate></a>
+                <kendo-mobile-switch class="dashboard-setting-switch" ng-model="data.settingAll" k-on-label="'{{'an'|translate}}'" k-off-label="'{{'aus'|translate}}'" />
+            </div>
+        </div>
+
+        <div class="dashboard-carousel-box">
+			<div class="dashboard-box-title swipe-icon-title"><translate>Netzwerk aufbauen</translate>
+				<span class="icon-info-dashboard" ng-click="showInfoPopup('view-invite-my-list')"></span>
+			</div>
+
+			<div class="dashboard-box-title multi-select">
+				<multiselect ng-change="data.onChangeInviteMe()" ng-model="data.inviteMeCountry" labels="labels"
+					search-limit="2"  options="data.countryArrayInviteMe" id-prop="id" display-prop="name" show-select-all="true" show-unselect-all="true" show-search="true">
+				</multiselect>
+			</div>
+			<ks-swiper-container
+				swiper="swiper"
+				on-ready="onReadySwiperInviteMe(swiper)"
+				slides-per-view="2"
+				space-between="10"
+				calculate-height="true"
+				calculate-on-init="true"
+				child-element-to-calculate="'.swiper-users .slick-box'"
+				>
+
+				<ks-swiper-slide ng-repeat="itemInviteUser in data.inviteMe" class="swiper-slide slick-dashboard slick-users" ng-if="!itemInviteUser.winner && data.user_status.delay_invited_member <= 0">
+					<div class="slick-user swiper-users">
+						<div class="slick-box">
+							<div class="slick-invite-user-center">
+								<div ng-click="navigate('view-user-profile.html?id='+itemInviteUser.id)" class="slick-username">
+									<div ng-show="!itemInviteUser.is_company_name">
+										<span>{{itemInviteUser.first_name}}</span>
+										<span>{{itemInviteUser.last_name}}</span>
+										<div id="{{itemInviteUser.flag}}" class="flag flag-32 flag-{{itemInviteUser.flag}}"></div>
+									</div>
+									<div ng-show="itemInviteUser.is_company_name"><span>{{itemInviteUser.company_name}}</span></div>
+								</div>
+								<a ng-show="!itemInviteUser.winner" href="" class="btn-invite" ng-click="data.invite(itemInviteUser)"><translate>Einladen</translate></a>
+								<div set-if="itemInviteUser.invited_count>0" class="invite-count-type-box clearfix">
+									<div class="invite-count" ng-class="{'invite-count-center': !itemInviteUser.invited_by_email && !itemInviteUser.invited_by_sms}">{{itemInviteUser.invited_count}}</div>
+									<div class="invite-type">
+										<span set-if="itemInviteUser.invited_by_email" class="invite-type-email"></span>
+										<span set-if="itemInviteUser.invited_by_sms" class="invite-type-sms"></span>
+									</div>
+								</div>
+								<div ng-show="itemInviteUser.winner" class="invite-winner-box">
+									<div><translate>eingeladen</translate></div>
+									<div class="invite-winner-dt">{{itemInviteUser.winner.dt|date:'dd.MM.yyyy HH:mm'}} <translate>Uhr</translate></div>
+									<div>{{itemInviteUser.winner.userName}}</div>
+									<a href="" ng-click="navigate('view-user-become-member-invitations.html?id='+itemInviteUser.id)">{{itemInviteUser.winner.count}}</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</ks-swiper-slide>
+
+				<ks-swiper-slide ng-repeat="itemInviteUser in data.inviteMe" class="swiper-slide slick-dashboard slick-users" ng-if="itemInviteUser.winner">
+					<div class="slick-user">
+						<div class="slick-box">
+							<div class="slick-invite-user-center">
+								<div ng-click="navigate('view-user-profile.html?id='+itemInviteUser.id)" class="slick-username">
+									<div ng-show="!itemInviteUser.is_company_name">
+										<span>{{itemInviteUser.first_name}}</span>
+										<span>{{itemInviteUser.last_name}}</span>
+										<div id="{{itemInviteUser.flag}}" class="flag flag-32 flag-{{itemInviteUser.flag}}"></div>
+									</div>
+									<div ng-show="itemInviteUser.is_company_name"><span>{{itemInviteUser.company_name}}</span></div>
+								</div>
+								<a ng-show="!itemInviteUser.winner" href="" class="btn-invite" ng-click="data.invite(itemInviteUser)"><translate>Einladen</translate></a>
+								<div set-if="itemInviteUser.invited_count>0" class="invite-count-type-box clearfix">
+									<div class="invite-count" ng-class="{'invite-count-center': !itemInviteUser.invited_by_email && !itemInviteUser.invited_by_sms}">{{itemInviteUser.invited_count}}</div>
+									<div class="invite-type">
+										<span set-if="itemInviteUser.invited_by_email" class="invite-type-email"></span>
+										<span set-if="itemInviteUser.invited_by_sms" class="invite-type-sms"></span>
+									</div>
+								</div>
+								<div ng-show="itemInviteUser.winner" class="invite-winner-box">
+									<div><translate>eingeladen</translate></div>
+									<div class="invite-winner-dt">{{itemInviteUser.winner.dt|date:'dd.MM.yyyy HH:mm'}} <translate>Uhr</translate></div>
+									<div>{{itemInviteUser.winner.userName}}</div>
+									<a href="" ng-click="navigate('view-user-become-member-invitations.html?id='+itemInviteUser.id)">{{itemInviteUser.winner.count}}</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</ks-swiper-slide>
+			</ks-swiper-container>
+
+			<div ng-show="data.inviteMe.length < 1"  class="offers-empty-box">
+				<div class="no-offers">
+					<translate>Leider haben wir keine neuen Nutzer für die ausgewählten Länder gefunden.</translate>
+				</div>
+			</div>
+			<div ng-show="data.inviteMe.length>0" class="carousel-btn-box">
+				<kendo-mobile-button href="view-invite-my-list.html" k-on-click="refreshList()"><translate>Alle zeigen</translate></kendo-mobile-button>
+			</div>
+        </div>
+
+		<div class="dashboard-carousel-box" ng-if="data.videos.length>0">
+            <div class="dashboard-box-title swipe-icon-title">
+				<translate>Videos</translate>
+				<span class="icon-info-dashboard" ng-click="showInfoPopup('view-new-videos')"></span>
+			</div>
+			<ks-swiper-container
+			slides-per-view="2"
+			space-between="10"
+			swiper="swiper"
+			on-ready="onReadySwiperVideos(swiper)"
+			calculate-height="true"
+			calculate-on-init="true"
+			child-element-to-calculate="'.slick-videos .slick-box'"
+			>
+                 <ks-swiper-slide ng-repeat="itemVideos in data.videos" class="swiper-slide slick-dashboard slick-offers" >
+                    <div class="slick-videos">
+					  <div class="slick-box">
+						<div class="box-video-picture">
+							<a href="" ng-click="navigate('view-videos-details.html?id='+itemVideos.video_id)" class="box-video-link">
+								<div class="video-img" style="background:url('{{itemVideos.image}}')">
+								</div>
+							</a>
+						</div>
+						<div class="dashboard-videos-info">
+							<div class="video-title">
+								<!--<a ui-sref="videos.details({id: itemVideos.video_id})">{{itemVideos.name}} <div id="{{itemVideos.flag}}" class="img-thumbnail flag flag-icon flag-icon-{{itemVideos.language}}"></div></a>-->
+								<a href="" ng-click="navigate('view-videos-details.html?id='+itemVideos.video_id)" >{{itemVideos.name}}</a>
+							</div>
+							<div class="video-category clearfix">
+								<span class="ng-binding">{{itemVideos.cat_name}}</span>
+							</div>
+							<div ng-if="itemVideos.bonus" class="dashboard-videos-param video-bonus promotion-bonus"><translate>Bonus</translate>: <span class="dashboard-videos-value">{{itemVideos.bonus}} <jugl-currency></jugl-currency></span><br>Falls Inserat vorhanden</div>
+						</div>
+					  </div>
+					</div>
+
+                </ks-swiper-slide>
+
+			</ks-swiper-container>
+		</div>
+
+
+        <div class="dashboard-carousel-box">
+            <div class="dashboard-box-title swipe-icon-title"><translate>Neueste werbung</translate><span class="icon-info-dashboard" ng-click="showInfoPopup('view-offers-search')"></span>
+			</div>
+			<div class="dashboard-box-title multi-select">
+				<multiselect ng-change="data.onChangeOffers()" ng-model="data
+				.offersCountry" labels="labels"
+						 search-limit="2"  options="data.countryArrayOffers" id-prop="id" display-prop="name" show-select-all="true" show-unselect-all="true" show-search="true"
+				></multiselect>
+			</div>
+
+            <div ng-show="data.offers.length==0" class="offers-empty-box">
+                <div ng-show="data.countUserInterests==0" class="interest-no-select">
+                    <translate>Hier steht noch keine Inserat mit Werbebonus, weil Du noch keine Interessenskategorien ausgewählt hast. Bitte klicke dafür auf den Button "Wofür interessierst Du Dich?"</translate>
+                </div>
+                <div ng-show="data.countUserInterests >0 && data.offers.length==0" class="no-offers">
+                    <translate>Leider haben wir keine auf Deinen Interessen basierenden Angebote mit Werbebonus bzw. Angebote mit Werbebonus aus den ausgewählten Ländern gefunden. Klicke bitte auf den Button "Inserate ohne Werbebonus durchsuchen". Dort gibt es weitere Angebote ohne Werbebonus.</translate>
+                </div>
+                <div style="text-align: center">
+                    <kendo-mobile-button href="view-offers-search.html" k-on-click="refreshList()"><translate>Alle Werbebonusanzeigen</translate></kendo-mobile-button>
+                </div>
+            </div>
+				<ks-swiper-container
+				swiper="swiper"
+				on-ready="onReadySwiperOffers(swiper)"
+				slides-per-view="1.7"
+				space-between="10"
+				calculate-height="true"
+				calculate-on-init="true"
+				child-element-to-calculate="'.swiper-offers .slick-box'"
+				>
+                    <ks-swiper-slide class="swiper-slide slick-dashboard"  ng-repeat="item in data.offers">
+						<div class="swiper-offers slick-offer found-offer">
+							<div class="slick-box">
+								<div class="advertising_banner" ng-if="item.advertising_display_name && item.advertising_type == 'BANNER' && item.id && item.user_bonus && item.link && item.banner">
+									<div id="advertising-{{item.id}}" a-data-id="{{item.id}}" a-data-user-bonus="{{item.user_bonus}}" ng-click="dashboardCtrl.setAdvertising(item.id, item.user_bonus, item.click_interval,item.link, item.popup_interval)">
+										<img src ="{{item.banner}}" alt="{{item.advertising_display_name}}">
+									</div>
+								</div>
+								
+								<div class="box-found-picture" ng-if="!item.advertising_type">
+									<a href="" ng-click="navigate('view-offers-details.html?id='+item.id)" class="box-found-link">
+										<div class="found-img">
+											<img ng-src="{{::item.image}}" />
+										</div>
+									</a>
+								</div>
+								<div class="box-found-info" ng-if="!item.advertising_type">
+									<div ng-click="showInfoPopup('info-offer-type')" class="found-offer-type">
+										<span ng-if="item.type == 'AUCTION'"><translate>Bieterverfahren</translate></span>
+										<span ng-if="item.type == 'AD'"><translate>Keine Kaufmöglichkeit</translate></span>
+										<span ng-if="item.type == 'AUTOSELL'"><translate>Sofortkauf</translate></span>
+									</div>
+									
+									<a href="" ng-click="navigate('view-offers-details.html?id='+item.id)" class="box-found-link">
+										<div class="found-title">{{::item.title}}</div>
+										<div class="found-category clearfix">
+											<span>{{::item.level1Interest}}</span>
+											<span set-if="item.level2Interest">{{::item.level2Interest}}</span>
+											<span set-if="item.level3Interests">{{::item.level3Interests}}</span>
+										</div>
+									</a>
+									<div set-if="item.type == 'AUTOSELL'" class="found-param"><translate>Preis</translate>: <span class="found-value">{{::item.price|priceFormat}} &euro;</span></div>
+									<div set-if="item.type == 'AUCTION'" class="found-param"><translate>Preisvorstellung</translate>: <span class="found-value">{{::item.price|priceFormat}} &euro;</span></div>
+									<div class="found-place">{{::item.zip}} {{::item.city}}</div>
+
+									<div set-if="item.view_bonus && marketingEnabled" class="found-bonus promotion-bonus"><translate>Werbebonus</translate>:&nbsp;<span>{{::item.view_bonus|priceFormat}}<span class="icon-jugl green"></span></span></div>
+									<div set-if="item.buy_bonus" class="found-bonus buy-bonus"><translate>Kaufbonus</translate>:&nbsp;<span>{{::item.buy_bonus|priceFormat}}<span class="icon-jugl blue"></span></span></div>
+									<div set-if="item.show_amount==1" class="found-bonus"><translate>Stückzahl</translate>:&nbsp;<span>{{::item.amount}}</span></div>
+									<div class="found-bonus"><translate>Aktiv bis</translate>:&nbsp;<span>{{::item.active_till|date:"dd.MM.yyyy"}}</span></div>
+									<div class="found-date">{{::item.create_dt|date:"dd.MM.yyyy"}}</div>
+									<div class="offer-user-box clearfix">
+										<a href="" ng-click="navigate('view-user-profile.html?id='+item.user.id)">
+											<div class="offer-user-avatar">
+												<img ng-src="{{item.user.avatarMobile}}" alt=""/>
+											</div>
+										</a>
+										<div class="offer-user-name">{{::item.user|userName}}<div ng-click="updateCountry(item.user.id, [data.offers,data.searchRequest,data.networkMembers,data.trollbox.messages]); $event.stopPropagation();" id="{{::item.user.flag}}" class="flag flag-32 flag-{{item.user.flag}}"></div></div>
+										<div class="offer-user-rating">
+											<div class="star-rating">
+												<span once-style="{width:(+item.user.rating)+'%'}"></span>
+											</div>
+											<div class="user-feedback-count">({{::item.user.feedback_count}})</div>
+											<div set-if="item.user.packet=='VIP'" class="user-packet">&nbsp;</div>
+											<div set-if="item.user.packet=='VIP_PLUS'" class="user-packet-vip-plus">&nbsp;</div>
+										</div>
+									</div>
+								</div>
+                            </div>
+						</div>
+                </ks-swiper-slide>
+			</ks-swiper-container>
+       </div>
+
+
+        <div class="dashboard-interests-buttons dashboard-buttons-box">
+            <kendo-mobile-button class="dashboard-btn" href="view-offers-advanced-search.html"><translate>Inserate ohne Werbebonus durchsuchen</translate></kendo-mobile-button>
+            <div class="dashboard-total-offers-text">{{::data.countTotalOffers}} <translate>Inserate insgesamt</translate></div>
+            <kendo-mobile-button class="dashboard-btn" href="view-interests.html?type=OFFER"><translate>Wofür interessierst Du Dich?</translate></kendo-mobile-button>
+            <kendo-mobile-button class="dashboard-btn" href="view-offers-search.html" k-on-click="refreshList()"><translate>Inserate mit Werbebonus</translate></kendo-mobile-button>
+            <kendo-mobile-button class="dashboard-btn" href="view-offers-add.html"><translate>Anzeige aufgeben</translate></kendo-mobile-button>
+        </div>
+
+        <div class="dashboard-carousel-box carousel-search-request">
+            <div class="dashboard-box-title swipe-icon-title"><translate>Aufträge</translate><span class="icon-info-dashboard" ng-click="showInfoPopup('view-searches-search')"></span>
+
+			</div>
+
+			<div class="dashboard-box-title multi-select">
+			<multiselect  ng-change="data.onChangeSearchRequests()" ng-model="data.searchRequestsCountry" labels="labels"
+						 search-limit="2"  options="data.countryArraySearchRequests" id-prop="id" display-prop="name" show-select-all="true" show-unselect-all="true" show-search="true"
+			></multiselect>
+			</div>
+
+            <div ng-show="data.searchRequest.length==0" class="search-request-empty-box">
+                <div ng-show="data.countUserInterests==0" class="interest-no-select">
+                    <translate>Hier stehen noch keine Suchaufträge, weil Du noch nicht ausgewählt hast, in welchen Interessenskategorien Du für andere Mitglieder recherchieren mochtest. Bitte klicke dazu auf den Button “Womit kennst Du Dich aus?”</translate>
+                </div>
+                <div ng-show="data.countUserInterests>0 && data.searchRequest.length==0" class="no-offers">
+                    <translate>Leider gibt es derzeit keine Suchaufträge in den von Dir angegebenen Interessensgebieten/Ländern.</translate>
+                </div>
+                <div style="text-align: center">
+                    <kendo-mobile-button href="view-searches-search.html" k-on-click="refreshList()"><translate>Alle Suchaufträge anzeigen</translate></kendo-mobile-button>
+                </div>
+            </div>
+            <ks-swiper-container
+			swiper="swiper"
+			on-ready="onReadySwiperSearchRequests(swiper)"
+			slides-per-view="1.7"
+			space-between="10"
+			calculate-height="true"
+			calculate-on-init="true"
+			child-element-to-calculate="'.swiper-requests .slick-box'"
+			>
+                    <ks-swiper-slide class="swiper-slide slick-dashboard" ng-repeat="item in data.searchRequest">
+                        <div class="slick-offer swiper-requests found-offer">
+							<div class="slick-box">
+								<div class="box-found-picture">
+									<a class="box-found-link" href="" ng-click="navigate('view-searches-details.html?id='+item.id)">
+										<div class="found-img">
+											<img ng-src="{{::item.image}}" />
+										</div>
+									</a>
+								</div>
+								<div class="box-found-link" ng-click="navigate('view-searches-details.html?id='+item.id)">
+									<div class="box-found-info">
+										<div class="found-category clearfix">
+											<span>{{::item.level1Interest}}</span>
+											<span set-if="item.level2Interest">{{::item.level2Interest}}</span>
+											<span set-if="item.level3Interests">{{::item.level3Interests}}</span>
+										</div>
+
+										<div class="found-title">{{::item.title}}</div>
+
+										<div set-if="item.price_to" class="found-price"><translate>Preis</translate>: {{::item.price_from|priceFormat}} - {{::item.price_to|priceFormat}} &euro;</div>
+										<div set-if="!item.price_to" class="found-price"><translate>Preis</translate>: {{::item.price_from|priceFormat}} &euro;</div>
+
+										<div set-if="item.bonus" class="found-param"><translate>Für die Vermittlung eines passenden Angebots zahle ich:</translate> <span class="found-value">{{::item.bonus|priceFormat}} <span class="icon-jugl"></span></span></div>
+
+										<div class="found-date">{{::item.create_dt|date:"dd.MM.yyyy"}}</div>
+
+										<div class="offer-user-box clearfix">
+											<div class="offer-user-avatar" ng-click="navigate('view-user-profile.html?id='+item.user.id)">
+												<img ng-src="{{item.user.avatarMobile}}" alt=""/>
+											</div>
+											<div class="offer-user-name">{{::item.user|userName}} <div ng-click="updateCountry(item.user.id, [data.offers,data.searchRequest,data.networkMembers,data.trollbox.messages]); $event.stopPropagation();" id="{{::item.user.flag}}" class="flag flag-32 flag-{{item.user.flag}}"></div></div>
+											<div class="offer-user-rating">
+												<div class="star-rating">
+													<span once-style="{width:(+item.user.rating)+'%'}"></span>
+												</div>
+												<div class="user-feedback-count">({{::item.user.feedback_count}})</div>
+												<div set-if="item.user.packet=='VIP'" class="user-packet">&nbsp;</div>
+												<div set-if="item.user.packet=='VIP_PLUS'" class="user-packet-vip-plus">&nbsp;</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="search-request-item-statistic box-sizing">
+									<div ng-click="item.count_total>0?navigate('view-searches-offers-list.html?id='+item.id):null" class="clearfix">
+										<span class="param"><translate>Angebote</translate></span>
+										<span class="value">{{::item.count_total|default:0}} <span ng-if="item.count_total>0" class="icon-eye"></span></span>
+									</div>
+									<div ng-click="item.count_rejected>0?navigate('view-searches-offers-list.html?id='+item.id):null" class="clearfix">
+										<span class="param"><translate>Abgelehnt</translate></span>
+										<span class="value">{{::item.count_rejected|default:0}} <span ng-if="item.count_rejected>0" class="icon-eye"></span></span>
+									</div>
+									<div ng-click="item.count_accepted>0?navigate('view-searches-offers-list.html?id='+item.id):null" class="clearfix">
+										<span class="param"><translate>Angenommen</translate></span>
+										<span class="value">{{::item.count_accepted|default:0}} <span ng-if="item.count_accepted>0" class="icon-eye"></span></span>
+									</div>
+								</div>
+							</div>
+                        </div>
+				</ks-swiper-slide>
+			</ks-swiper-container>
+
+
+        </div>
+
+        <div class="dashboard-grey-box-btn dashboard-buttons-box">
+
+            <div class="dashboard-search-request-text">
+                <p><span><translate>Wir sind {{::data.countTotalUsers}} Helfer stark!</translate></span></p>
+                <p><translate>Welchen Auftrag können wir für Dich erledigen?</translate></p>
+                <p><translate>Jede erdenkliche Dienstleistung und Hilfe ist möglich!</translate></p>
+            </div>
+
+            <kendo-mobile-button class="dashboard-btn" href="view-searches-add.html"><translate>Auftrag erstellen</translate></kendo-mobile-button>
+            <kendo-mobile-button class="dashboard-btn" href="view-interests.html?type=SEARCH_REQUEST"><translate>Aufträge durchsuchen</translate></kendo-mobile-button>
+        </div>
+
+        <div class="dashboard-carousel-box"">
+            <div class="dashboard-box-title">
+                <translate>Mitgliederzahl</translate>
+                <span class="count-network-members">{{::data.countTotalUsers}}</span>
+                <a class="dashboard-user-search-link" ng-click="navigate('view-user-search.html')"><translate>Suchen</translate></a>
+            </div>
+            <div class="dashboard-new-users-field clearfix">
+                <label><translate>heute neu</translate>: <span>{{::data.countNewUserToday}}</span></label>
+                <kendo-mobile-button href="view-users-new.html"><translate>Neue Mitglieder anzeigen</translate></kendo-mobile-button>
+            </div>
+        </div>
+
+        <div set-if="data.networkMembers.length > 0" class="dashboard-carousel-box">
+            <div class="dashboard-box-title dashboard-network-members swipe-icon-title">
+                <translate>Neu in deinem Netzwerk</translate>
+                <span class="count-network-members">{{::data.countNewUsers}}</span>
+                <a href="" ng-click="navigate('view-new-user-network.html')"><translate>anzeigen</translate></a>
+                <span class="icon-info-dashboard" ng-click="showInfoPopup('view-network')"></span>
+            </div>
+
+			<ks-swiper-container
+				slides-per-view="3"
+				space-between="10"
+				calculate-height="true"
+				calculate-on-init="true"
+				child-element-to-calculate="'.swiper-network .slick-box'"
+			>
+                 <ks-swiper-slide class="slick-dashboard slick-users" ng-repeat="itemUser in data.networkMembers">
+                    <div class="slick-user swiper-network">
+						<div class="slick-box">
+							<a href="" ng-click="navigate('view-user-profile.html?id='+itemUser.id)">
+								<div class="user-avatar">
+									<img ng-src="{{::itemUser.avatarMobile}}" />
+								</div>
+							</a>
+							<div class="slick-username">
+								<span>{{::itemUser.first_name}}</span>
+								<span>{{::itemUser.last_name}}</span>
+								<div ng-click="updateCountry(itemUser.id, [data.offers,data.searchRequest,data.networkMembers,data.trollbox.messages])" id="{{::itemUser.flag}}" class="flag flag-32 flag-{{itemUser.flag}}"></div>
+							</div>
+							<div class="slick-user-registration_dt">{{::itemUser.registration_dt|date:"dd.MM.yyyy HH:mm:ss"}}</div>
+						</div>
+                    </div>
+				</ks-swiper-slide>
+			</ks-swiper-container>
+
+            <div class="carousel-btn-box">
+                <kendo-mobile-button href="view-network.html?id={{status.user.id}}"><translate>Netzwerk anzeigen</translate></kendo-mobile-button>
+                <kendo-mobile-button href="view-invite.html"><translate>Noch mehr Freunde einladen</translate></kendo-mobile-button>
+            </div>
+        </div>
+
+
+
+        <div class="dashboard-carousel-box jugl-forum" id="dashboard-forum">
+            <div class="dashboard-box-title">
+				<div class="clearfix">
+					<div class="dashboard-forum-title"><translate>Jugl Forum</translate></div>
+					<span class="icon-info-dashboard" ng-click="showInfoPopup('view-forum')"></span>
+				</div>
+				<div class="dashboard-box-title-filter-link-box">
+					<a ng-click="refreshList(); navigate('view-trollbox-list.html');" class="active"><translate>Alle</translate></a>
+					<a ng-click="navigate('view-user-profile.html?id='+status.user.id+'&scroll-to-trollbox-messages=1')"><translate>Meine</translate></a>
+					<a ng-click="refreshList(); navigate('view-trollbox-list.html?filter=FOLLOWING');"><translate>Abos</translate></a>
+					<a ng-click="refreshList(); navigate('view-trollbox-list.html?filter=CONTACTS');"><translate>Kontakte</translate></a>
+				</div>
+            </div>
+			<div class="dashboard-box-title multi-select">
+				<multiselect  ng-change="data.onChangeTrollbox()" ng-model="data
+				.trollboxCountry" labels="labels"
+						 search-limit="2"  options="data.countryArrayTrollbox" id-prop="id" display-prop="name" show-select-all="true" show-unselect-all="true" show-search="true"
+				></multiselect>
+			</div>
+            <div class="jugl-forum-box">
+				<div class="jugl-forum-text" ng-bind-html="data.dashboardForumText" open-link></div>
+
+                <div class="jugl-forum-send-box">
+
+                    <div class="jugl-forum-upload-box clearfix">
+						<div ng-click="data.sendSomething()" class="jugl-forum-upload-data-box">
+							<span ng-if="!data.trollbox.newMessage.image && !data.fileUpload" class="jugl-forum-upload-icon"></span>
+							<img ng-if="data.trollbox.newMessage.image" ng-src="{{data.trollbox.newMessage.image}}">
+							<div ng-if="data.fileUpload" class="km-loader km-widget select-loader" data-role="loader">
+								<span class="km-loading km-spin"></span>
+								<span class="km-loading-left"></span>
+								<span class="km-loading-right"></span>
+							</div>
+						</div>
+                        <div class="jugl-forum-upload-btn-box">
+                            <div>
+								<div class="smiles" emoticons-tooltip emoticons-forum="true" emoticons-list="dashboardCtrl.emoticonsList" message-text="data.trollbox.newMessage.text">
+									<div class="emoticons-tooltip"></div>
+								</div>
+								<kendo-mobile-button data-rel="modalview"
+													 data-trollbox-message-text={{data.trollbox.newMessage}}
+													 data-trollbox-country-ids={{data.trollboxCountryIds}}
+													 data-trollbox-category-list={{data.trollboxCategoryList}}
+													 href="#view-trollbox-message-visibility-popup">
+									<translate>Absenden</translate>
+								</kendo-mobile-button>
+							</div>
+                        </div>
+                    </div>
+
+                    <div class="jugl-forum-send-textarea textarea-field">
+                        <textarea maxlength="2500" placeholder="{{'Text eingeben'|translate}}" ng-model="data.trollbox.newMessage.text"></textarea>
+                    </div>
+
+                </div>
+
+                <div class="btn-box forum-update-btn-box">
+                    <kendo-mobile-button ng-click="data.updateTrollbox()"><translate>Chats aktualisieren</translate></kendo-mobile-button>
+                </div>
+
+                <div ng-if="data.trollbox.loading" class="km-loader km-widget select-loader" data-role="loader" style="">
+                    <span class="km-loading km-spin"></span>
+                    <span class="km-loading-left"></span>
+                    <span class="km-loading-right"></span>
+                    <h1><translate>Loading</translate>...</h1>
+                </div>
+
+                <div class="jugl-forum-list-box">
+					<div class="jugl-forum-item-box clearfix">
+						<div ng-repeat="advertising in data.advertisings.FORUM_TOP" class="advertising-cnt" ng-if="advertising.advertising_type == 'BANNER'">
+							<div id="advertising-{{advertising.id}}" a-data-id="{{advertising.id}}" a-data-user-bonus="{{advertising.user_bonus}}" class="advertising_script" ng-click="dashboardCtrl.setAdvertising(advertising.id, advertising.user_bonus, advertising.click_interval,advertising.link, advertising.popup_interval)">
+							<img src ="{{advertising.banner}}" alt="{{advertising.advertising_display_name}}">
+							</div>
+						</div>
+					</div>	
+				
+                    <div ng-repeat="message in data.trollbox.messages" class="jugl-forum-item-box clearfix">
+                        <div class="clearfix">
+							<div class="jugl-forum-header-box clearfix">
+								<div class="jugl-forum-user-box" ng-click="navigate('view-user-profile.html?id='+message.user.id)">
+									<div class="jugl-forum-user-avatar">
+										<img once-src="message.user.avatar">
+									</div>
+									<div class="trollbox-messsage-username">
+										<span ng-if="!message.user.is_company_name">{{::message.user|userName}}</span>
+										<span ng-if="message.user.is_company_name">{{::message.user.company_name}}</span>
+										<div ng-click="updateCountry(message.user.id, [data.offers,data.searchRequest,data.networkMembers,data.trollbox.messages]); $event.stopPropagation();" id="{{::message.user.flag}}" class="flag flag-32 flag-{{message.user.flag}}"></div>
+									</div>
+								</div>
+								<div class="jugl-forum-header-left-box">
+									<div class="jugl-forum-message-dt">{{::message.dt|date : 'dd.MM.yyyy HH:mm'}}</div>
+								</div>
+							</div>
+
+							<div set-if="message.file.image" class="trollbox-messsage-item-picture">
+								<div ng-if="message.file.ext!='mp4'" class="trollbox-messsage-picture">
+									<a href="#view-photo-swipe-popup" data-url="{{::message.file.image_medium}}" data-rel="modalview" data-role="button">
+										<img once-src="message.file.image_medium">
+									</a>
+								</div>
+
+								<!--<div ng-if="message.file.ext=='mp4'" ng-click="data.showVideo(message)" class="trollbox-messsage-picture trollbox-messsage-video">
+									<img once-src="message.file.image_medium">
+								</div>
+								<div ng-if="message.file.downloading" class="file-progress">{{message.file.progress}}</div>-->
+
+								<div ng-if="message.file.ext=='mp4'" class="video-box">
+									<video video ng-attr-poster="{{message.file.image_medium}}" playsinline webkit-playsinline loop muted preload="none">
+										<source ng-src="{{message.file.url|trustResourceUrl}}" type="video/mp4">
+									</video>
+								</div>
+
+							</div>
+
+							<div class="jugl-forum-item-text" ng-bind-html="message.text|emoticonFixMobile:true" open-link></div>
+
+							<div class="jugl-forum-like-box clearfix">
+								<div ng-click="data.trollboxVoteDown(message.id)" class="dislike-btn">{{::message.votes_down}}</div>
+								<div ng-if="message.votes_down+message.votes_up>0" ng-click="data.viewVotes(message.id)" class="votes-view">&nbsp;</div>
+								<div ng-click="data.trollboxVoteUp(message.id)" class="like-btn">{{::message.votes_up}}</div>
+							</div>
+
+							<div ng-if="message.trollbox_category_id" class="trollbox-message-category">{{message.trollbox_category}}</div>
+                        </div>
+
+                        <div ng-if="status.user.is_moderator" class="message-actions-box clearfix box-sizing">
+                            <div class="message-actions-left" ng-class="{'message-actions-only-btn': message.status=='AWAITING_ACTIVATION' || message.status=='AWAITING_ACTIVATION'}">
+                                <div><kendo-mobile-button set-if="message.status=='ACTIVE' || message.status=='AWAITING_ACTIVATION'" k-on-click="data.trollboxRejectMessage(message)" class="btn-reject-message"><translate set-if="message.status=='AWAITING_ACTIVATION'">Ablehnen</translate><translate set-if="message.status=='ACTIVE'">Blockieren</translate></kendo-mobile-button></div>
+                                <div><kendo-mobile-button set-if="message.status=='REJECTED' || message.status=='AWAITING_ACTIVATION'" k-on-click="data.trollboxAcceptMessage(message)" class="btn-accept-message"><translate set-if="message.status=='AWAITING_ACTIVATION'">Freigeben</translate><translate set-if="message.status=='REJECTED'">Entblocken</translate></kendo-mobile-button></div>
+                            </div>
+
+                            <div class="message-actions-right">
+                                <div set-if="message.status=='REJECTED' && message.status_changed_dt" class="message-reject">
+                                    <div class="dt-message-reject">{{::message.status_changed_dt|date : 'dd.MM.yyyy - HH:mm'}} <translate>Uhr</translate> <translate ng-if="message.user.id==message.status_changed_user_id">Nutzer</translate> <translate ng-if="message.user.id!=message.status_changed_user_id">Moderator</translate></div>
+                                    <div class="user-message-reject">{{::message.statusChangedUser}}</div>
+                                </div>
+                                <div set-if="message.status=='ACTIVE' && message.status_changed_dt" class="message-accept">
+                                    <div class="dt-message-accept">{{::message.status_changed_dt|date : 'dd.MM.yyyy - HH:mm'}} <translate>Uhr</translate> <translate ng-if="message.user.id==message.status_changed_user_id">Nutzer</translate> <translate ng-if="message.user.id!=message.status_changed_user_id">Moderator</translate></div>
+                                    <div class="user-message-accept">{{::message.statusChangedUser}}</div>
+                                </div>
+                            </div>
+                        </div>
+
+						<div ng-if="status.user.is_moderator" class="trollbox-message-actions-btn-box">
+							<kendo-mobile-button ng-click="data.trollboxBlockUser(message)" ng-if="!message.user.is_blocked_in_trollbox"><translate>Für alle Foren sperren</translate></kendo-mobile-button>
+							<kendo-mobile-button ng-click="data.trollboxUnblockUser(message)" ng-if="message.user.is_blocked_in_trollbox"><translate>Für alle Foren entsperren</translate></kendo-mobile-button>
+							<kendo-mobile-button ng-click="data.trollboxSetStickyTrollboxMessage(message)" set-if="!message.is_sticky"><translate>Beitrag anpinnen</translate></kendo-mobile-button>
+							<kendo-mobile-button ng-click="data.trollboxUnsetStickyTrollboxMessage(message)" set-if="message.is_sticky"><translate>Beitrag entpinnen</translate></kendo-mobile-button>
+						</div>
+
+						<div ng-if="message.messages.length>0" class="trollbox-message-box">
+							<div class="trollbox-message-item" ng-repeat="itemMessage in message.messages">
+								<div class="trollbox-message-box-info" ng-click="data.enterGroupChat(message.id)">
+									<div class="trollbox-message-data clearfix">
+										<div class="trollbox-message-user-data">
+											<div class="jugl-forum-user-avatar" ng-click="navigate('view-user-profile.html?id='+itemMessage.user.id)">
+												<img once-src="itemMessage.user.avatar" />
+											</div>
+											<div class="trollbox-message-user">{{::itemMessage.user|userName}}</div>
+											<div ng-click="updateCountry(itemMessage.user.id, [data.offers,data.searchRequest,data.networkMembers,data.trollbox.messages]); $event.stopPropagation();" id="{{::itemMessage.user.flag}}" class="flag flag-32 flag-{{itemMessage.user.flag}}"></div>
+										</div>
+										<div class="trollbox-message-dt-data">
+											<div class="trollbox-message-dt">{{::itemMessage.dt|date:"dd MMMM yyyy | HH:mm"}}</div>
+										</div>
+									</div>
+
+									<div ng-if="itemMessage.content_type!='IMAGE' || itemMessage.content_type!='VIDEO'" class="trollbox-message-message" ng-bind-html="itemMessage.text|emoticonFixMobile:true" open-link></div>
+
+									<div ng-if="itemMessage.content_type=='IMAGE'" class="trollbox-message-message-picture">
+										<img once-src="itemMessage.file.thumb_url">
+									</div>
+
+									<div ng-if="itemMessage.content_type=='VIDEO'" class="trollbox-message-message-picture trollbox-messsage-video">
+										<img once-src="itemMessage.file.thumb_url">
+									</div>
+
+								</div>
+							</div>
+						</div>
+						
+                        <div class="box-sizing message-comment-btn-box">
+                            <kendo-mobile-button ng-click="data.enterGroupChat(message.id)"><translate>Kommentieren</translate></kendo-mobile-button>
+                        </div>
+
+                        <div class="trollbox-message-total-box">
+                            <div ng-click="data.enterGroupChat(message.id)" class="trollbox-message-total-info"><span>{{::message.messagesCount|default:0}}</span><translate>Kommentare insgesamt</translate></div>
+                        </div>
+
+                    </div>
+					<div class="jugl-forum-item-box clearfix">
+						<div ng-repeat="advertising in data.advertisings.FORUM_BOTTOM" class="advertising-cnt" ng-if="advertising.advertising_type == 'BANNER'">
+							<div id="advertising-{{advertising.id}}" a-data-id="{{advertising.id}}" a-data-user-bonus="{{advertising.user_bonus}}" class="advertising_script" ng-click="dashboardCtrl.setAdvertising(advertising.id, advertising.user_bonus, advertising.click_interval,advertising.link, advertising.popup_interval)">
+							<img src ="{{advertising.banner}}" alt="{{advertising.advertising_display_name}}">
+							</div>
+						</div>
+					</div>
+                </div>
+
+                <!--/kendo-mobile-scroller-->
+				<div ng-show="data.trollbox.messages.length < 1"  class="offers-empty-box">
+					<div class="no-offers">
+						<translate>Leider haben wir keine Forumsbeiträge für die ausgewählten Länder gefunden.</translate>
+					</div>
+				</div>
+                <div class="carousel-btn-box">
+                    <kendo-mobile-button href="view-trollbox-list.html" k-on-click="refreshList()"><translate>Alle Gruppenchats anzeigen</translate></kendo-mobile-button>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="dashboard-carousel-box">
+            <div class="dashboard-box-title "><translate>Mein Profil / Meine Daten</translate><span class="icon-info-dashboard" ng-click="showInfoPopup('view-profile')"></span></div>
+            <a href="#view-profile-update.html" class="link-profile-percent">
+                <div class="profile-percent-box">
+                    <div class="profile-percent-title"><translate>Profil ausgefüllt zu</translate>:</div>
+                    <div class="profile-percent-count">{{data.profile.percent}}%</div>
+                    <div class="profile-percent-line">
+                        <div class="profile-percent-progress-bar" once-style="{width:(+data.profile.percent)+'%'}"></div>
+                    </div>
+                </div>
+            </a>
+            <div class="carousel-btn-box">
+                <kendo-mobile-button href="view-profile-update.html"><translate>Profile / Daten bearbeiten</translate></kendo-mobile-button>
+            </div>
+        </div>
+
+        <div set-if="data.news.length > 0" class="dashboard-carousel-box">
+            <div class="dashboard-box-title swipe-icon-title"><translate>Unsere News</translate><span class="icon-info-dashboard" ng-click="showInfoPopup('view-news')"></span></div>
+            <ks-swiper-container
+				slides-per-view="1"
+				calculate-height="true"
+				calculate-on-init="true"
+				child-element-to-calculate="'.news-box .slick-box'"
+				>
+                <ks-swiper-slide class="swiper-slide slick-dashboard slick-news" ng-repeat="item in data.news">
+                    <div class="news-box">
+						<div class="slick-box">
+							<div class="slick-news-box-item">
+								<div class="news-head-box">
+									<div class="news-picture-box">
+										<div class="news-picture">
+											<a ng-if="item.images.fancybox" href="#view-photo-swipe-popup" data-url="{{item.images.fancybox}}" data-rel="modalview" data-role="button">
+												<img ng-src="{{::item.images.image}}" />
+											</a>
+											<img ng-if="!item.images.fancybox" ng-src="{{::item.images.image}}" />
+										</div>
+									</div>
+									<div class="news-title-box">
+										<div class="news-title">{{::item.title}}</div>
+										<div class="news-date">{{::item.dt|date:"dd.MM.yyyy"}}</div>
+									</div>
+								</div>
+								<div class="news-text" ng-bind-html="item.text"></div>
+								<kendo-mobile-button class="read-btn-box" k-on-click="data.goItemNews(item.id)"><translate>Weiterlesen</translate></kendo-mobile-button>
+							</div>
+						</div>
+					</div>
+				</ks-swiper-slide>
+            </ks-swiper-container>
+            <div class="carousel-btn-box">
+                <kendo-mobile-button href="view-news.html" k-on-click="refreshList()"><translate>Alle zeigen</translate></kendo-mobile-button>
+            </div>
+        </div>
+
+        <div set-if="data.faqs.length > 0" class="dashboard-carousel-box">
+            <div class="dashboard-box-title swipe-icon-title"><translate>Fragen / Antworten</translate></div>
+             <ks-swiper-container
+				slides-per-view="1"
+				calculate-height="true"
+				calculate-on-init="true"
+				child-element-to-calculate="'.faq-box .slick-box'"
+				>
+                <ks-swiper-slide class="swiper-slide slick-dashboard slick-faqs"  ng-repeat="item in data.faqs">
+                    <div class="faq-box">
+						<div class="slick-box">
+							<div class="slick-faqs-box-item">
+								<div class="faq-question">{{::item.question}}</div>
+								<div class="faq-response" ng-bind-html="item.response"></div>
+								<kendo-mobile-button class="read-btn-box" k-on-click="data.goItemFaq(item.id)"><translate>Weiterlesen</translate></kendo-mobile-button>
+							</div>
+						</div>
+                    </div>
+				</ks-swiper-slide>
+			</ks-swiper-container>
+            <div class="carousel-btn-box">
+                <kendo-mobile-button href="view-faqs.html" k-on-click="refreshList()"><translate>Alle zeigen</translate></kendo-mobile-button>
+            </div>
+        </div>
+
+
+        <div class="dashboard-buttons-box dashboard-bottom-buttons" style="margin-top: -15px">
+            <div class="dashboard-btns-group-box">
+                <kendo-mobile-button class="dashboard-btn" href="view-offers-search.html" k-on-click="refreshList()"><translate>Anzeigen mit Werbebonus</translate></kendo-mobile-button>
+                <kendo-mobile-button class="dashboard-btn" href="view-offers-add.html"><translate>Verkaufen / Inserat schalten</translate></kendo-mobile-button>
+                <kendo-mobile-button class="dashboard-btn" href="view-offers-my-requests.html" k-on-click="refreshList()"><translate>Ich habe geboten / gekauft</translate></kendo-mobile-button>
+                <kendo-mobile-button class="dashboard-btn" href="view-offers-my.html" k-on-click="refreshList()"><translate>Meine Anzeigen / Inserat verwalten</translate></kendo-mobile-button>
+            </div>
+
+            <div class="dashboard-btns-group-box">
+                <kendo-mobile-button class="dashboard-btn" href="view-searches-search.html" k-on-click="refreshList()"><translate>Was suchen andere?</translate></kendo-mobile-button>
+                <kendo-mobile-button class="dashboard-btn" href="view-searches-add.html"><translate>Suchauftrag erstellen</translate></kendo-mobile-button>
+                <kendo-mobile-button class="dashboard-btn" href="view-searches-my-list.html" k-on-click="refreshList()"><translate>Was wird mir angeboten</translate></kendo-mobile-button>
+                <kendo-mobile-button class="dashboard-btn" href="view-searches-my-offers.html" k-on-click="refreshList()"><translate>Was habe ich anderen vermittelt / angeboten?</translate></kendo-mobile-button>
+            </div>
+
+            <div class="dashboard-btns-group-box">
+                <kendo-mobile-button class="dashboard-btn" href="view-user-search.html"><translate>Mitglieder suchen</translate></kendo-mobile-button>
+                <kendo-mobile-button class="dashboard-btn" href="view-favorites.html"><translate>Merkzettel</translate></kendo-mobile-button>
+                <kendo-mobile-button class="dashboard-btn" k-on-click="refreshList(); navigate('view-deals-completed.html');">{{"Geschäfte & Bewertungen"|translate}}</kendo-mobile-button>
+            </div>
+
+            <div class="dashboard-btns-group-box">
+                <kendo-mobile-button class="dashboard-btn" k-on-click="openUrlInBrowser(config.urls.payin)"><translate>Jugl aufladen</translate></kendo-mobile-button>
+                <kendo-mobile-button class="dashboard-btn" k-on-click="openUrlInBrowser(config.urls.payout)"><translate>Jugl einlösen</translate></kendo-mobile-button>
+            </div>
+
+            <div class="dashboard-btns-group-box">
+                <kendo-mobile-button ng-click="showInfoPopup('view-earn-money')" class="dashboard-btn"><translate>So funktioniert Jugl</translate></kendo-mobile-button>
+                <kendo-mobile-button class="dashboard-btn" href="view-earn-money.html"><translate>Wie kann ich Geld verdienen?</translate></kendo-mobile-button>
+                <!--<kendo-mobile-button class="dashboard-btn" k-on-click="openUrlInBrowser(config.urls.help)"><translate>Hilfe</translate></kendo-mobile-button>-->
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+</kendo-mobile-view>

@@ -1,0 +1,36 @@
+<kendo-mobile-view
+    id="view-conversation-gallery"
+    k-layout="'layout-main'"
+    k-on-show="data.onShow(kendoEvent)"
+    ng-controller="ConversationGalleryCtrl as conversationGalleryCtrl"
+    k-use-native-scrolling="config.views.useNativeScrolling"
+    ng-cloak
+    >
+
+    <kendo-mobile-header>
+        <kendo-mobile-nav-bar>
+            <kendo-view-title><a ng-click="data.gotoProfile(data.user_id)" ng-bind="(messenger.users[data.user_id] | default : messenger.conversation.user) | userName"></a></kendo-view-title>
+            <kendo-mobile-back-button k-on-click="onClickBack()" data-align="left"><translate>Zurück</translate></kendo-mobile-back-button>
+        </kendo-mobile-nav-bar>
+    </kendo-mobile-header>
+
+    <script id="template-media-gallery-item" type="text/x-kendo-template">
+        <div class="media-gallery-page" style="background-image: url({{dataItem.image}});" ng-click="data.showMedia(dataItem)"></div>
+    </script>
+
+    <div kendo-mobile-scroll-view="mediaGallery"
+            id="media-scroll"
+            k-velocity-threshold="0.1"
+            k-duration="200"
+            k-options="data.mediaOptions"
+            class="km-scrollview-overlay">
+    </div>
+
+    <div ng-if="data.loading" class="km-loader km-widget select-loader" data-role="loader" style="">
+        <span class="km-loading km-spin"></span>
+        <span class="km-loading-left"></span>
+        <span class="km-loading-right"></span>
+        <h1><translate>Loading</translate>...</h1>
+    </div>
+
+</kendo-mobile-view>

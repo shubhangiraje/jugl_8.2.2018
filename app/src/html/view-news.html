@@ -1,0 +1,65 @@
+<kendo-mobile-view
+    id="view-news"
+    k-layout="'layout-main'"
+    ng-controller="NewsCtrl as newsCtrl"
+    k-on-show="data.onShow(kendoEvent)"
+    k-use-native-scrolling="config.views.useNativeScrolling"
+    ng-cloak>
+
+    <kendo-mobile-header>
+        <kendo-mobile-nav-bar>
+            <kendo-mobile-view-title ng-click="showInfoPopup('view-news')"><div class="view-title-ios"><translate>News</translate></div></kendo-mobile-view-title>
+            <kendo-mobile-button class="platform-ios" data-align="right" k-on-click="showInfoPopup('view-news')"><span ng-class="{'blink': isOneShowInfoPopup('view-news')}" class="icon-info-ios"></span></kendo-mobile-button>
+            <kendo-mobile-back-button k-on-click="onClickBack()" data-align="left"><span class="platform-android"><translate>Zurück</translate></span></kendo-mobile-back-button>
+        </kendo-mobile-nav-bar>
+    </kendo-mobile-header>
+
+    <div class="info-icon-box">
+        <span ng-click="showInfoPopup('view-news')" ng-class="{'blink': isOneShowInfoPopup('view-news')}" class="platform-android icon-info-android"></span>
+    </div>
+
+    <div class="android-title">
+        <h1 ng-click="showInfoPopup('view-news')"><translate>News</translate></h1>
+    </div>
+
+    <div ng-if="data.log.loading && !data.log.hasMore" class="km-loader km-widget select-loader" data-role="loader">
+        <span class="km-loading km-spin"></span>
+        <span class="km-loading-left"></span>
+        <span class="km-loading-right"></span>
+        <h1><translate>Loading</translate>...</h1>
+    </div>
+
+    <kendo-mobile-list-view ng-if="data.log.items.length > 0" class="news-list-box">
+        <li ng-repeat="item in data.log.items" class="news-box" id="news{{item.id}}">
+            <div class="news-head-box">
+                <div class="news-picture-box">
+                    <div class="news-picture">
+                        <a ng-if="item.images.fancybox" href="#view-photo-swipe-popup" data-url="{{item.images.fancybox}}" data-rel="modalview" data-role="button">
+                            <img ng-src="{{::item.images.image}}" />
+                        </a>
+                        <img ng-if="!item.images.fancybox" ng-src="{{::item.images.image}}" />
+                    </div>
+                </div>
+                <div class="news-title-box">
+                    <div class="news-title">{{::item.title}}</div>
+                    <div class="news-date">{{::item.dt|date:"dd.MM.yyyy"}}</div>
+                </div>
+            </div>
+            <div class="news-text" ng-bind-html="item.text"></div>
+        </li>
+    </kendo-mobile-list-view>
+
+    <div class="load-btn-box" ng-show="data.log.hasMore">
+        <kendo-mobile-button k-on-click="data.log.loadMore()">
+            <span ng-if="!data.log.loading"><translate>Load More</translate></span>
+            <span ng-if="data.log.loading" class="km-loader km-widget select-loader" data-role="loader" style="">
+                <span class="km-loading km-spin"></span>
+                <span class="km-loading-left"></span>
+                <span class="km-loading-right"></span>
+                <h1><translate>Loading</translate>...</h1>
+                <span class="btn-text-android"><translate>Loading</translate></span>
+            </span>
+        </kendo-mobile-button>
+    </div>
+
+</kendo-mobile-view>

@@ -1,0 +1,79 @@
+<kendo-mobile-view
+        id="view-searches-draft"
+        k-layout="'layout-main'"
+        ng-controller="SearchRequestDraftCtrl"
+        k-on-show="data.onShow(kendoEvent)"
+        k-use-native-scrolling="config.views.useNativeScrolling"
+        ng-cloak>
+
+    <kendo-mobile-header>
+        <kendo-mobile-nav-bar>
+            <kendo-mobile-view-title><translate>Entwürfe</translate></kendo-mobile-view-title>
+            <kendo-mobile-back-button k-on-click="onClickBack()" data-align="left"><span class="platform-android"><translate>Zurück</translate></span></kendo-mobile-back-button>
+        </kendo-mobile-nav-bar>
+    </kendo-mobile-header>
+
+    <div class="android-title">
+        <h1><translate>Entwürfe</translate></h1>
+    </div>
+
+    <div ng-if="data.log.loading && !data.log.hasMore" class="km-loader km-widget select-loader" data-role="loader" style="">
+        <span class="km-loading km-spin"></span>
+        <span class="km-loading-left"></span>
+        <span class="km-loading-right"></span>
+        <h1><translate>Loading</translate>...</h1>
+    </div>
+
+    <div ng-if="data.log.items.length == 0 && !data.log.loading" class="results-empty-text">
+        <translate>Keine Entwürfe vorhanden</translate>
+    </div>
+
+    <kendo-mobile-list-view ng-if="data.log.items.length > 0" class="found-interests-list">
+        <li ng-repeat="item in data.log.items">
+
+            <div class="found-offer">
+                <div class="box-found-picture">
+                    <a class="box-found-link" href="" ng-click="navigate('view-searches-draft-update.html?id='+item.id)">
+                        <div class="found-img">
+                            <img ng-src="{{::item.image}}" />
+                        </div>
+                    </a>
+                </div>
+
+                <div class="box-found-info">
+                    <a class="box-found-link" href="" ng-click="navigate('view-searches-draft-update.html?id='+item.id)">
+                        <div ng-if="item.title" class="found-title">{{::item.title}}</div>
+                        <div ng-if="!item.title" class="found-title">(<translate>Entwurf</translate>)</div>
+                    </a>
+                    <div ng-if="item.price_from && item.price_to" class="found-price">{{::item.price_from|priceFormat}} - {{::item.price_to|priceFormat}} &euro;</div>
+                    <div ng-if="item.price_from && !item.price_to" class="found-price">{{::item.price_from|priceFormat}} &euro;</div>
+                    <div ng-if="item.bonus" class="found-jugl">{{::item.bonus|priceFormat}} <span class="icon-jugl"></span></div>
+                    <div class="found-category clearfix">
+                        <span>{{::item.level1Interest}}</span>
+                        <span ng-if="item.level2Interest">{{::item.level2Interest}}</span>
+                        <span ng-if="item.level3Interests">{{::item.level3Interests}}</span>
+                    </div>
+                    <div class="found-date">{{::item.create_dt|date:"dd.MM.yyyy"}}</div>
+                </div>
+
+                <div class="btn-del-offer" ng-click="data.delete(item.id)"></div>
+
+            </div>
+
+        </li>
+    </kendo-mobile-list-view>
+
+    <div class="load-btn-box" ng-show="data.log.hasMore">
+        <kendo-mobile-button k-on-click="data.log.loadMore()">
+            <span ng-if="!data.log.loading"><translate>Load More</translate></span>
+            <span ng-if="data.log.loading" class="km-loader km-widget select-loader" data-role="loader" style="">
+                <span class="km-loading km-spin"></span>
+                <span class="km-loading-left"></span>
+                <span class="km-loading-right"></span>
+                <h1><translate>Loading</translate>...</h1>
+                <span class="btn-text-android"><translate>Loading</translate></span>
+            </span>
+        </kendo-mobile-button>
+    </div>
+
+</kendo-mobile-view>

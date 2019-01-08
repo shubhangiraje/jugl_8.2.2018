@@ -1,0 +1,17 @@
+<kendo-mobile-modal-view
+        id="view-manage-network-confirm-popup"
+        k-on-open="data.onOpen(kendoEvent)"
+        ng-controller="ManageNetworkConfirmPopupCtrl as manageNetworkConfirmPopupCtrl"
+        class="modal" style="width: 90%;" modal ng-cloak>
+
+
+    <div class="manage-network-confirm-box">
+        <div><translate><b>{{data.users.src_name}}</b>in die Struktur von<b>{{data.users.dst_name}}</b>verschieben?</translate></div>
+    </div>
+
+    <div class="btn-inline-box">
+        <kendo-mobile-button k-on-click="data.save()"><translate>Ja</translate></kendo-mobile-button>
+        <kendo-mobile-button class="closeModalBtn"><translate>Nein</translate></kendo-mobile-button>
+    </div>
+
+</kendo-mobile-modal-view>

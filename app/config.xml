@@ -1,0 +1,127 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.kreado.jugl2" version="1.1.57" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Jugl</name>
+    <description>
+        Jugl.net mobile application.
+    </description>
+    <author email="pavel@kreado.com" href="http://www.kreado.com">
+        KREADO GmbH &amp; Co. KG
+    </author>
+    <content src="index.html" />
+    <access origin="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <allow-intent href="whatsapp:*" />
+    <allow-intent href="googlechrome:*" />
+    <preference name="orientation" value="portrait" />
+    <preference name="AllowInlineMediaPlayback" value="true" />
+    <platform name="android">
+        <allow-intent href="market:*" />
+        <preference name="android-minSdkVersion" value="19" />
+        <preference name="android-targetSdkVersion" value="26" />
+        <splash density="land-hdpi" src="res/android/drawable-land-hdpi/screen.png" />
+        <splash density="land-ldpi" src="res/android/drawable-land-ldpi/screen.png" />
+        <splash density="land-mdpi" src="res/android/drawable-land-mdpi/screen.png" />
+        <splash density="land-xhdpi" src="res/android/drawable-land-xhdpi/screen.png" />
+        <splash density="port-hdpi" src="res/android/drawable-port-hdpi/screen.png" />
+        <splash density="port-ldpi" src="res/android/drawable-port-ldpi/screen.png" />
+        <splash density="port-mdpi" src="res/android/drawable-port-mdpi/screen.png" />
+        <splash density="port-xhdpi" src="res/android/drawable-port-xhdpi/screen.png" />
+        <icon density="ldpi" src="res/android/drawable-ldpi/icon.png" />
+        <icon density="mdpi" src="res/android/drawable-mdpi/icon.png" />
+        <icon density="hdpi" src="res/android/drawable-hdpi/icon.png" />
+        <icon density="xhdpi" src="res/android/drawable-xhdpi/icon.png" />
+    </platform>
+    <platform name="ios">
+        <allow-intent href="itms:*" />
+        <allow-intent href="itms-apps:*" />
+        <splash height="480" src="res/ios/splash/Default~iphone.png" width="320" />
+        <splash height="960" src="res/ios/splash/Default@2x~iphone.png" width="640" />
+        <splash height="1024" src="res/ios/splash/Default-Portrait~ipad.png" width="768" />
+        <splash height="2048" src="res/ios/splash/Default-Portrait@2x~ipad.png" width="1536" />
+        <splash height="768" src="res/ios/splash/Default-Landscape~ipad.png" width="1024" />
+        <splash height="1536" src="res/ios/splash/Default-Landscape@2x~ipad.png" width="2048" />
+        <splash height="1136" src="res/ios/splash/Default-568h@2x~iphone.png" width="640" />
+        <splash height="1334" src="res/ios/splash/Default-667h.png" width="750" />
+        <splash height="2208" src="res/ios/splash/Default-736h.png" width="1242" />
+        <splash height="1242" src="res/ios/splash/Default-Landscape-736h.png" width="2208" />
+        <icon height="180" src="res/ios/icons/icon-60@3x.png" width="180" />
+        <icon height="60" src="res/ios/icons/icon-60.png" width="60" />
+        <icon height="120" src="res/ios/icons/icon-60@2x.png" width="120" />
+        <icon height="76" src="res/ios/icons/icon-76.png" width="76" />
+        <icon height="152" src="res/ios/icons/icon-76@2x.png" width="152" />
+        <icon height="40" src="res/ios/icons/icon-40.png" width="40" />
+        <icon height="80" src="res/ios/icons/icon-40@2x.png" width="80" />
+        <icon height="57" src="res/ios/icons/icon.png" width="57" />
+        <icon height="114" src="res/ios/icons/icon@2x.png" width="114" />
+        <icon height="72" src="res/ios/icons/icon-72.png" width="72" />
+        <icon height="144" src="res/ios/icons/icon-72@2x.png" width="144" />
+        <icon height="29" src="res/ios/icons/icon-small.png" width="29" />
+        <icon height="58" src="res/ios/icons/icon-small@2x.png" width="58" />
+        <icon height="50" src="res/ios/icons/icon-50.png" width="50" />
+        <icon height="100" src="res/ios/icons/icon-50@2x.png" width="100" />
+        <edit-config file="*-Info.plist" mode="merge" target="NSMicrophoneUsageDescription">
+            <string>Somit kannst Du Video- und Audio-Dateien an Deine Freunde sende</string>
+        </edit-config>
+        <edit-config file="*-Info.plist" mode="merge" target="NSCameraUsageDescription">
+            <string>Somit kannst Du Video- und Audio-Dateien an Deine Freunde senden</string>
+        </edit-config>
+        <edit-config file="*-Info.plist" mode="merge" target="NSContactsUsageDescription">
+            <string>Somit kannst Du Kontakte an Deine Freunde senden</string>
+        </edit-config>
+        <edit-config file="*-Info.plist" mode="merge" target="NSLocationWhenInUseUsageDescription">
+            <string>Somit kannst Du Deinen Ort an Deine Freunde senden</string>
+        </edit-config>
+    </platform>
+    <engine name="ios" spec="^4.5.4" />
+    <engine name="android" spec="^6.4.0" />
+    <plugin name="call-number" spec="0.0.2" />
+    <plugin name="cordova-plugin-whitelist" spec="^1.3.3" />
+    <plugin name="br.com.brunogrossi.MediaScannerPlugin" spec="https://github.com/begrossi/MediaScannerPlugin.git" />
+    <plugin name="com.verso.cordova.clipboard" spec="^0.1.0" />
+    <plugin name="cordova-sms-plugin" spec="^0.1.11" />
+    <plugin name="cordova-plugin-actionsheet" spec="^2.3.3" />
+    <plugin name="cordova-plugin-spinner-dialog" spec="^1.3.1" />
+    <plugin name="cordova-plugin-splashscreen" spec="^5.0.2" />
+    <plugin name="cordova-plugin-x-socialsharing" spec="^5.4.0" />
+    <plugin name="mx.ferreyra.callnumber" spec="~0.0.2" />
+    <plugin name="cordova-plugin-camera" spec="^4.0.3" />
+    <plugin name="cordova-plugin-device" spec="^2.0.2" />
+    <plugin name="cordova-plugin-dialogs" spec="^2.0.1" />
+    <plugin name="cordova-plugin-file" spec="^6.0.1" />
+    <plugin name="cordova-plugin-file-transfer" spec="^1.7.1" />
+    <plugin name="cordova-plugin-globalization" spec="^1.11.0" />
+    <plugin name="cordova-plugin-media" spec="^5.0.2">
+        <variable name="KEEP_AVAUDIOSESSION_ALWAYS_ACTIVE" value="NO" />
+    </plugin>
+    <plugin name="cordova-plugin-inappbrowser" spec="^3.0.0" />
+    <plugin name="cordova-plugin-geolocation" spec="^4.0.1" />
+    <plugin name="org.loicknuchel.cordova.deviceaccounts" spec="https://github.com/loicknuchel/cordova-device-accounts.git" />
+    <plugin name="cordova-plugin-media-capture" spec="^3.0.2" />
+    <plugin name="cordova-open" spec="^1.0.12" />
+    <plugin name="cordova-plugin-compat" spec="^1.2.0" />
+    <plugin name="cordova-plugin-contacts" spec="^3.0.1" />
+    <plugin name="cordova-plugin-video-capture-plus" spec="file:src/plugins/VideoCapturePlus-PhoneGap-Plugin" />
+    <plugin name="cordova-plugin-image-picker" spec="file:src/plugins/cordova-imagePicker">
+        <variable name="PHOTO_LIBRARY_USAGE_DESCRIPTION" value=" " />
+    </plugin>
+    <plugin name="cordova-plugin-streaming-media" spec="git+https://github.com/nchutchind/cordova-plugin-streaming-media.git" />
+    <plugin name="phonegap-plugin-push" spec="^1.11.1">
+        <variable name="SENDER_ID" value="85075801930" />
+    </plugin>
+    <plugin name="cordova-plugin-admobpro" spec="^2.35.3">
+        <variable name="PLAY_SERVICES_VERSION" value="16.0.0" />
+    </plugin>
+    <plugin name="cordova-plugin-facebook4" spec="^3.1.0">
+        <variable name="APP_ID" value="118475612161878" />
+        <variable name="APP_NAME" value="Jugl App" />
+        <variable name="FACEBOOK_ANDROID_SDK_VERSION" value="4.35.0" />
+    </plugin>
+    <plugin name="cordova-plugin-app-version" spec="^0.1.9" />
+    <plugin name="phonegap-plugin-media-stream" spec="^1.2.1" />
+    <plugin name="cordova-plugin-inapppurchase" spec="^1.2.0" />
+</widget>

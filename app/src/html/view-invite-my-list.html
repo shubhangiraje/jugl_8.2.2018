@@ -1,0 +1,85 @@
+<kendo-mobile-view
+        id="view-invite-my-list"
+        k-layout="'layout-main'"
+        ng-controller="InviteMyListCtrl as inviteMyListCtrl"
+        k-on-show="data.onShow(kendoEvent)"
+        k-on-hide="data.onHide(kendoEvent)"
+        k-use-native-scrolling="config.views.useNativeScrolling"
+        ng-cloak>
+
+    <kendo-mobile-header>
+        <kendo-mobile-nav-bar>
+            <kendo-mobile-view-title ng-click="showInfoPopup('view-invite-my-list')">
+			<div class="view-title-ios"><translate>Netzwerk aufbauen</translate></div>
+			</kendo-mobile-view-title>
+            <kendo-mobile-button class="platform-ios" data-align="right" k-on-click="showInfoPopup('view-invite-my-list')"><span ng-class="{'blink': isOneShowInfoPopup('view-invite-my-list')}" class="icon-info-ios"></span></kendo-mobile-button>
+            <kendo-mobile-back-button k-on-click="onClickBack()" data-align="left"><span class="platform-android"><translate>Zurück</translate></span></kendo-mobile-back-button>
+        </kendo-mobile-nav-bar>
+    </kendo-mobile-header>
+
+    <div class="android-title">
+        <h1 ng-click="showInfoPopup('view-invite-my-list')"><translate>Netzwerk aufbauen</translate></h1>
+    </div>
+
+    <div class="info-icon-box">
+        <span ng-click="showInfoPopup('view-invite-my-list')" ng-class="{'blink': isOneShowInfoPopup('view-invite-my-list')}" class="platform-android icon-info-android"></span>
+    </div>
+
+    <div class="blue-multiselect">
+        <multiselect ng-if="data.countryList.length>0" ng-model="data.currentCountry" labels="labels"
+             search-limit="20" options="data.countryList" id-prop="id" display-prop="name" show-select-all="true" show-unselect-all="true" show-search="true"
+        ></multiselect>
+	</div>
+
+	<div class="btn-box">
+		 <kendo-mobile-button k-on-click="data.refresh()"><translate>Aktualisieren</translate></kendo-mobile-button>
+	</div>
+
+    <div ng-if="data.state.loading && !data.log.hasMore" class="km-loader km-widget select-loader" data-role="loader">
+        <span class="km-loading km-spin"></span>
+        <span class="km-loading-left"></span>
+        <span class="km-loading-right"></span>
+        <h1><translate>Loading</translate>...</h1>
+    </div>
+
+    <kendo-mobile-list-view ng-if="data.log.items.length > 0" class="invite-my-list-box">
+        <li ng-repeat="itemUser in data.log.items" ng-if="!itemUser.winner && data.user_status.delay_invited_member <= 0">
+            <div class="invite-my-list-item">
+                <span ng-click="navigate('view-user-profile.html?id='+itemUser.id)">{{::itemUser|userName}}</span>
+                <kendo-mobile-button set-if="!itemUser.winner" k-on-click="data.invite(itemUser)"><translate>Einladen</translate></kendo-mobile-button>
+                <div class="flag-container"><div id="{{itemUser.flag}}" class="flag flag-32 flag-{{itemUser.flag}}"></div></div>
+            </div>
+        </li>
+        <li ng-repeat="itemUser in data.log.items" ng-if="itemUser.winner">
+            <div class="invite-my-list-item">
+                <span ng-click="navigate('view-user-profile.html?id='+itemUser.id)">{{::itemUser|userName}}</span>
+                <kendo-mobile-button set-if="!itemUser.winner" k-on-click="data.invite(itemUser)"><translate>Einladen</translate></kendo-mobile-button>
+                <div class="flag-container"><div id="{{itemUser.flag}}" class="flag flag-32 flag-{{itemUser.flag}}"></div></div>
+                <div class="invite-winner-box">
+                    <div><translate>eingeladen</translate></div>
+                    <div class="invite-winner-dt">{{::itemUser.winner.dt|date:'dd.MM.yyyy HH:mm'}} <translate>Uhr</translate></div>
+                    <div>{{::itemUser.winner.userName}}</div>
+                    <a href="" ng-click="navigate('view-user-become-member-invitations.html?id='+itemUser.id)">{{::itemUser.winner.count}}</a>
+                </div>
+            </div>
+        </li>
+    </kendo-mobile-list-view>
+	
+	<div ng-show="data.log.items.length < 1" class="results-empty-text">
+        <translate>Leider haben wir keine neuen Nutzer für die ausgewählten Länder gefunden.</translate>
+    </div>
+
+    <div class="load-btn-box" ng-show="data.log.hasMore">
+        <kendo-mobile-button k-on-click="data.loadMore()">
+            <span ng-if="!data.state.loading"><translate>Load More</translate></span>
+            <span ng-if="data.state.loading" class="km-loader km-widget select-loader" data-role="loader" style="">
+                <span class="km-loading km-spin"></span>
+                <span class="km-loading-left"></span>
+                <span class="km-loading-right"></span>
+                <h1><translate>Loading</translate>...</h1>
+                <span class="btn-text-android"><translate>Loading</translate></span>
+            </span>
+        </kendo-mobile-button>
+    </div>
+
+</kendo-mobile-view>

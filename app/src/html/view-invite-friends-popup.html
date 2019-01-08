@@ -1,0 +1,23 @@
+<kendo-mobile-modal-view
+    id="invite-friends-popup"
+    class="modal" style="width: 90%;"
+    ng-controller="InviteFriendsPopupCtrl as inviteFriendsPopupCtrl"
+    k-on-open="data.onOpen(kendoEvent)"
+    modal ng-cloak>
+
+    <div class="info-popup-box">
+        <div class="info-box">
+            <h1><translate>Jetzt kommt der spannende Teil!</translate></h1>
+            <div class="info-box-text">
+                <p><translate>Damit unsere Gemeinschaft groß und erfolgreich wird, lade möglichst viele Freunde und Bekannte ein, egal ob 5, 50 oder 500. Gemeinsam erreichen wir unser Ziel, passiv und mit viel Spaß Geld zu verdienen.</translate></p>
+                <p><translate>Du baust Dir jetzt Dein Netzwerk auf und bist zukünftig an allen Umsätzen und Gewinnen beteiligt. Je größer und stärker Dein Netzwerk ist, desto mehr Gewinn und Spaß wirst Du haben.</translate></p>
+                <p><translate>Lade Deine Freunde ein, bevor es ein anderer macht!</translate></p>
+            </div>
+        </div>
+        <div class="btn-box">
+            <kendo-mobile-button href="view-invite.html"><translate>Jetzt Freunde & Bekannte einladen</translate></kendo-mobile-button>
+            <kendo-mobile-button class="closeModalBtn"><translate>Später erinnern</translate></kendo-mobile-button>
+        </div>
+    </div>
+
+</kendo-mobile-modal-view>
